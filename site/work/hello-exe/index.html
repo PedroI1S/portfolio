@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hello.exe · Juno Rebelo, designer-engineer</title>
+  <meta name="description" content="hello.exe is the portfolio of Juno Rebelo, a designer-engineer in Porto: interfaces, type and small tools. A fictional portfolio, designed as a Y2K chrome and old-OS website concept.">
+  <meta name="theme-color" content="#BFDDF0">
+  <meta property="og:title" content="hello.exe · Juno Rebelo, designer-engineer">
+  <meta property="og:description" content="A Y2K chrome and old-OS website concept for a fictional designer-engineer.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=TikTok+Sans:opsz,wdth,wght@12..36,75..150,300..900&family=Unbounded:wght@900&display=swap">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" crossorigin>
+  <link rel="stylesheet" href="style.css?v=25">
+  <script>
+    document.documentElement.classList.add('js');
+    try { if (localStorage.getItem('hello-exe-theme') === 'g') document.documentElement.dataset.theme = 'g'; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- shared gradients for the desktop icons -->
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE6F1"/></linearGradient>
+      <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7DB5F2"/><stop offset=".55" stop-color="#2F7FDC"/><stop offset="1" stop-color="#1C5DB0"/></linearGradient>
+      <linearGradient id="g-cloud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C9DAEC"/></linearGradient>
+      <radialGradient id="g-sun" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".6" stop-color="#FFC95C"/><stop offset="1" stop-color="#F09341"/></radialGradient>
+      <linearGradient id="g-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7FBFF"/><stop offset=".48" stop-color="#C9D6E6"/><stop offset=".52" stop-color="#9DB2CC"/><stop offset="1" stop-color="#E4EDF7"/></linearGradient>
+      <radialGradient id="g-knob" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#A9BCD4"/><stop offset="1" stop-color="#4E6587"/></radialGradient>
+      <linearGradient id="g-folder" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9DAFA"/><stop offset=".5" stop-color="#7DB3EC"/><stop offset="1" stop-color="#4C8BD6"/></linearGradient>
+      <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E9F2FA" stop-opacity=".95"/><stop offset=".5" stop-color="#B9CEE4" stop-opacity=".8"/><stop offset="1" stop-color="#E4EDF7" stop-opacity=".95"/></linearGradient>
+    </defs>
+  </svg>
+
+  <header class="bar" id="top">
+    <a class="bar__logo" href="#top" aria-label="hello.exe, back to top">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 2v14l4-3.4 2.6 5.8 2.6-1.2-2.6-5.6H15z"/></svg>
+      <span>hello.exe</span>
+    </a>
+    <nav class="bar__nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#now">Now</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="bar__toggles">
+      <button class="toggle" type="button" data-toggle="theme"><span aria-hidden="true">Theme[<b data-theme-label>A</b>]</span><span class="sr" data-theme-sr>Theme: Aqua. Switch to Graphite</span></button>
+      <button class="toggle" type="button" data-toggle="sound" aria-pressed="false"><span aria-hidden="true">Sound[<b data-sound-label>·</b>]</span><span class="sr">Sound effects</span></button>
+    </div>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu"><span aria-hidden="true">Menu[<b>+</b>]</span><span class="sr">Menu</span></button>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a href="#work"><i class="mono">[01]</i> Work</a>
+      <a href="#now"><i class="mono">[02]</i> Now</a>
+      <a href="#contact"><i class="mono">[03]</i> Contact</a>
+    </nav>
+    <div class="menu__toggles">
+      <button class="toggle" type="button" data-toggle="theme"><span aria-hidden="true">Theme[<b data-theme-label>A</b>]</span><span class="sr" data-theme-sr>Theme: Aqua. Switch to Graphite</span></button>
+      <button class="toggle" type="button" data-toggle="sound" aria-pressed="false"><span aria-hidden="true">Sound[<b data-sound-label>·</b>]</span><span class="sr">Sound effects</span></button>
+    </div>
+    <p class="menu__note mono">Juno Rebelo · designer-engineer · Porto</p>
+  </div>
+
+  <main id="main">
+    <!-- 01 · Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__sky" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="hero__fallback" aria-hidden="true">hey</p>
+      <canvas class="hero__gl" aria-hidden="true"></canvas>
+      <div class="grid" data-grid data-rows="27,76" aria-hidden="true"></div>
+
+      <div class="hero__top">
+        <p class="hero__sub">Interfaces, type<br>and small tools</p>
+        <p class="hero__intro mono">Juno Rebelo, designer-engineer in Porto. I draw it, I build it, then I sand it down.</p>
+        <p class="hero__now mono">Booking one project from January 2027<span class="caret" aria-hidden="true"></span></p>
+      </div>
+
+      <h1 class="hero__title" id="hero-title">
+        <span class="line"><span>Software</span></span>
+        <span class="line"><span>with a nice</span></span>
+        <span class="line"><span>finish.</span></span>
+      </h1>
+
+      <div class="hero__hud mono" aria-hidden="true">
+        <span class="hud-xy"><b data-x>0000</b> X <b data-y>0000</b> Y</span>
+        <span class="hud-hint" data-hint>Poke the word</span>
+        <span class="hud-clock"><span data-clock>--:--</span> Porto · <span data-status>Online</span></span>
+      </div>
+    </section>
+
+    <!-- 02 · Desktop -->
+    <section class="desk" id="work" aria-labelledby="work-title">
+      <header class="sec-head">
+        <p class="label mono">[01] Desktop</p>
+        <h2 class="sec-title" id="work-title">Selected work, still running</h2>
+        <p class="sec-hint mono">Double-click an icon to open it (tap on touch, Enter on a keyboard). Drag a window by its title bar, or focus its grip and use the arrow keys. Throw them, they bounce.</p>
+      </header>
+
+      <div class="screen">
+        <div class="hero__sky screen__sky" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="grid" data-grid data-rows="33.333,66.666" aria-hidden="true"></div>
+        <canvas class="icons__gl" aria-hidden="true"></canvas>
+        <ul class="icons" aria-label="Desktop icons">
+          <li><button class="icon" type="button" data-open="w-readme" aria-label="Open readme.txt">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 6h25l11 11v41H15z" fill="url(#g-paper)" class="ln"/><path d="M40 6v11h11" fill="#DCE6F1" class="ln"/><path d="M21 27h23M21 33h23M21 39h17M21 45h21" stroke="#7F98B8" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <span>readme.txt</span></button></li>
+          <li><button class="icon" type="button" data-open="w-linha" aria-label="Open linha.app">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="8" width="48" height="48" rx="13" fill="url(#g-blue)" class="ln"/><path d="M11 23c0-6.6 5.4-12 12-12h18c6.6 0 12 5.4 12 12v3c-12 4.5-30 4.5-42 0z" fill="#fff" opacity=".38"/><path d="M17 43h10l8-15h12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="43" r="3.8" fill="#fff"/><circle cx="47" cy="28" r="3.8" fill="#fff"/></svg>
+            <span>linha.app</span></button></li>
+          <li><button class="icon" type="button" data-open="w-nimbus" aria-label="Open nimbus98.exe">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="41" cy="22" r="11" fill="url(#g-sun)"/><path d="M17 48a9.5 9.5 0 0 1 1.6-18.9A12.5 12.5 0 0 1 42 25.6 10 10 0 0 1 48.5 48z" fill="url(#g-cloud)" class="ln"/></svg>
+            <span>nimbus98.exe</span></button></li>
+          <li><button class="icon" type="button" data-open="w-azulejo" aria-label="Open azulejo.ttf">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="7" width="44" height="50" rx="4" fill="url(#g-paper)" class="ln"/><path d="M10 19h44M10 45h44M22 7v50M42 7v50" stroke="#A9C3E2" stroke-width="1.2"/><text x="32" y="39" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="17" fill="#1F4E8C">Aa</text></svg>
+            <span>azulejo.ttf</span></button></li>
+          <li><button class="icon" type="button" data-open="w-pocket" aria-label="Open pocketfm.dmg">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="7" y="17" width="50" height="32" rx="7" fill="url(#g-silver)" class="ln"/><circle cx="23" cy="33" r="8.5" fill="url(#g-knob)" class="ln"/><circle cx="43" cy="33" r="6.5" fill="url(#g-knob)" class="ln"/><path d="M23 33l-4.5-5.5M43 33l4-4" stroke="#1D2B40" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>pocketfm.dmg</span></button></li>
+          <li><button class="icon" type="button" data-open="w-granite" aria-label="Open granite folder">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M7 19c0-2.2 1.8-4 4-4h13l4.5 5H53c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H11c-2.2 0-4-1.8-4-4z" fill="url(#g-folder)" class="ln"/><path d="M8 27h48" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/><path d="M26 38l6-5 6 5-6 5z" fill="#fff" opacity=".75"/></svg>
+            <span>granite</span></button></li>
+          <li><button class="icon" type="button" data-open="w-trash" aria-label="Open Recycle Bin">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 17h32l-3.2 39H19.2z" fill="url(#g-glass)" class="ln"/><ellipse cx="32" cy="17" rx="16" ry="3.6" fill="#EEF4FA" class="ln"/><path d="M23 23l1.8 29M32 23v29M41 23l-1.8 29" stroke="#7F98B8" stroke-width="1.4"/><path class="trash-paper" d="M27 13l5-6 7 4-3 6z" fill="#fff" stroke="#7F98B8"/></svg>
+            <span>Recycle Bin</span></button></li>
+        </ul>
+
+        <div class="wins">
+          <section class="win" id="w-readme" aria-labelledby="w-readme-t" data-x="4" data-y="6" data-open>
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move readme.txt with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-readme-t">readme.txt</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise readme.txt"><i></i></button><button class="win__close" type="button" aria-label="Close readme.txt"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <ol class="md mono" data-md>
+                <li><span class="md-h"># </span><b>hi, I’m Juno.</b></li>
+                <li>designer who writes the code. or the other way round.</li>
+                <li>&nbsp;</li>
+                <li><span class="md-h">## </span><b>now</b></li>
+                <li><span class="md-b">- </span>independent, in Porto</li>
+                <li><span class="md-b">- </span>eleven years, two studios, still friends with both</li>
+                <li><span class="md-b">- </span>one project at a time, from sketch to ship</li>
+                <li>&nbsp;</li>
+                <li><span class="md-h">## </span><b>likes</b></li>
+                <li><span class="md-b">- </span>interfaces with weight, a click and a finish</li>
+                <li><span class="md-b">- </span>type that survives a small screen</li>
+                <li><span class="md-b">- </span>software that says sorry when it breaks</li>
+                <li>&nbsp;</li>
+                <li>everything on this desk still runs. <span class="md-k">double-click something</span></li>
+              </ol>
+            </div>
+            <p class="win__status mono"><span>readme.txt</span><span>UTF-8</span><span>14 lines</span><span>Ln 14, Col 52</span></p>
+          </section>
+          <section class="win win--wide" id="w-linha" aria-labelledby="w-linha-t" data-x="36" data-y="4" data-open>
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move linha.app with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-linha-t">linha.app</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise linha.app"><i></i></button><button class="win__close" type="button" aria-label="Close linha.app"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="kiosk" data-kiosk>
+                <div class="kiosk__bezel">
+                  <div class="kiosk__screen">
+                    <div class="kiosk__head mono"><span class="kiosk__brand"><i></i>Linha</span><span class="kiosk__time" data-k-time>Tap to start</span></div>
+                    <div class="kiosk__track" data-k-track>
+                      <div class="kiosk__panel">
+                        <p class="kiosk__q">Where to?</p>
+                        <div class="kiosk__zones">
+                        <button class="kbtn" type="button" data-zone="1" data-label="1 zone" data-price="1.40"><b>1</b><span>zone</span><em>1,40 €</em></button>
+                        <button class="kbtn" type="button" data-zone="2" data-label="2 zones" data-price="1.90"><b>2</b><span>zones</span><em>1,90 €</em></button>
+                        <button class="kbtn" type="button" data-zone="3" data-label="3 zones" data-price="2.40"><b>3</b><span>zones</span><em>2,40 €</em></button>
+                        <button class="kbtn" type="button" data-zone="24h" data-label="24h day pass" data-price="5.50"><b>24h</b><span>day pass</span><em>5,50 €</em></button>
+                        </div>
+                      </div>
+                      <div class="kiosk__panel">
+                        <p class="kiosk__q">How many?</p>
+                        <div class="kiosk__count">
+                          <button class="kbtn kbtn--round" type="button" data-k-minus aria-label="One fewer">−</button>
+                          <output class="kiosk__n" data-k-count aria-live="polite">1</output>
+                          <button class="kbtn kbtn--round" type="button" data-k-plus aria-label="One more">+</button>
+                        </div>
+                        <button class="kbtn kbtn--pay" type="button" data-k-pay>Pay <span data-k-total>1,40 €</span></button>
+                        <button class="kiosk__back mono" type="button" data-k-back>← Change zone</button>
+                      </div>
+                      <div class="kiosk__panel kiosk__panel--pay">
+                        <button class="kiosk__reader" type="button" data-k-reader><span class="kiosk__waves" aria-hidden="true"><i></i><i></i><i></i></span><span data-k-msg>Tap your card here</span></button>
+                      </div>
+                    </div>
+                    <div class="kiosk__drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  </div>
+                  <div class="kiosk__slot" aria-hidden="true"></div>
+                </div>
+                <div class="kiosk__out" data-k-out>
+                  <div class="kiosk__outclip">
+                    <div class="ticket mono" data-k-ticket>
+                      <p class="ticket__head"><b>LINHA</b><span data-t-time>--:--</span></p>
+                      <p class="ticket__big" data-t-what>2 zones × 1</p>
+                      <div class="ticket__row"><span class="ticket__code" data-t-code aria-hidden="true"></span><span>Valid 60 min<br>from first tap<br><b data-t-price>1,90 €</b></span></div>
+                      <p class="ticket__verdict" data-t-verdict>Bought in 0.0 s</p>
+                    </div>
+                  </div>
+                  <button class="gbtn" type="button" data-k-again hidden>Buy another</button>
+                </div>
+              </div>
+              <p class="win__caption"><strong>Linha.</strong> Ticket machines for a city tram network, used in the rain with gloves on. Buy one: every button is big enough for a mitten, and the whole thing works one-handed.</p>
+            </div>
+            <p class="win__status mono"><span>Interaction lead, front-end</span><span>2025</span><span>Svelte</span><span>140 machines in service</span></p>
+          </section>
+          <section class="win" id="w-nimbus" aria-labelledby="w-nimbus-t" data-x="22" data-y="8">
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move nimbus98.exe with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-nimbus-t">nimbus98.exe</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise nimbus98.exe"><i></i></button><button class="win__close" type="button" aria-label="Close nimbus98.exe"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="nimbus" data-nimbus>
+                <div class="nimbus__frame"><canvas class="nimbus__cv" width="160" height="120" aria-hidden="true"></canvas></div>
+                <p class="sr" data-n-sr aria-live="polite">Porto: partly cloudy, 17 degrees.</p>
+                <div class="nimbus__bar">
+                  <button class="gbtn" type="button" data-n-update>Update</button>
+                  <span class="nimbus__modem mono" data-n-modem>Updated 08:00 · 16 colours</span>
+                </div>
+              </div>
+              <p class="win__caption"><strong>Nimbus 98.</strong> A desktop weather widget that draws today’s forecast as if it were 1998: ordered dithering, sixteen colours and a modem noise when it updates (only if your sound is on).</p>
+            </div>
+            <p class="win__status mono"><span>Everything, evenings</span><span>2024</span><span>Rust → WebAssembly</span><span>38k installs</span></p>
+          </section>
+          <section class="win win--wide" id="w-azulejo" aria-labelledby="w-azulejo-t" data-x="28" data-y="4">
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move azulejo.ttf with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-azulejo-t">azulejo.ttf</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise azulejo.ttf"><i></i></button><button class="win__close" type="button" aria-label="Close azulejo.ttf"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="azul" data-azul>
+                <div class="azul__stage"><svg class="azul__svg" data-a-svg role="img" aria-label="AZULEJO set in Azulejo Mono"></svg></div>
+                <label class="azul__input"><span class="sr">Text to set in Azulejo Mono</span><input type="text" maxlength="12" value="AZULEJO" data-a-text spellcheck="false" autocomplete="off" autocapitalize="characters"><span class="azul__hint mono" aria-hidden="true">type here</span></label>
+                <div class="azul__axes">
+                  <label class="axis"><span class="mono">Weight <output data-a-wv>560</output></span><input class="gslider" type="range" min="100" max="900" value="560" data-a-w></label>
+                  <label class="axis"><span class="mono">Glaze <output data-a-gv>45</output></span><input class="gslider" type="range" min="0" max="100" value="45" data-a-g></label>
+                </div>
+              </div>
+              <p class="win__caption"><strong>Azulejo Mono.</strong> A variable monospace where every letter is laid in tiles on a five-by-five grid. Two axes: weight sets the size of each tile, glaze rounds and fires its edges.</p>
+            </div>
+            <p class="win__status mono"><span>Type design, font engineering</span><span>2023–now</span><span>v0.9</span><span>48 glyphs</span></p>
+          </section>
+          <section class="win win--wide" id="w-pocket" aria-labelledby="w-pocket-t" data-x="42" data-y="6">
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move pocketfm.dmg with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-pocket-t">pocketfm.dmg</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise pocketfm.dmg"><i></i></button><button class="win__close" type="button" aria-label="Close pocketfm.dmg"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="fm" data-fm>
+                <div class="fm__wall"><canvas data-fm-wall aria-hidden="true"></canvas></div>
+                <div class="fm__panel">
+                  <div class="fm__unit">
+                    <div class="fm__knob" role="slider" tabindex="0" aria-label="Voice 1 pitch" aria-valuemin="0" aria-valuemax="7" aria-valuenow="2" data-voice="0" style="--c:#3080D8"><span class="fm__cap"><i></i></span></div>
+                    <span class="fm__label mono"><i style="background:#3080D8"></i>V1</span>
+                  </div>
+                  <div class="fm__unit">
+                    <div class="fm__knob" role="slider" tabindex="0" aria-label="Voice 2 pitch" aria-valuemin="0" aria-valuemax="7" aria-valuenow="5" data-voice="1" style="--c:#F09341"><span class="fm__cap"><i></i></span></div>
+                    <span class="fm__label mono"><i style="background:#F09341"></i>V2</span>
+                  </div>
+                  <div class="fm__unit">
+                    <div class="fm__knob" role="slider" tabindex="0" aria-label="Voice 3 pitch" aria-valuemin="0" aria-valuemax="7" aria-valuenow="1" data-voice="2" style="--c:#BFD040"><span class="fm__cap"><i></i></span></div>
+                    <span class="fm__label mono"><i style="background:#BFD040"></i>V3</span>
+                  </div>
+                  <div class="fm__unit">
+                    <div class="fm__knob" role="slider" tabindex="0" aria-label="Voice 4 pitch" aria-valuemin="0" aria-valuemax="7" aria-valuenow="6" data-voice="3" style="--c:#E58BC4"><span class="fm__cap"><i></i></span></div>
+                    <span class="fm__label mono"><i style="background:#E58BC4"></i>V4</span>
+                  </div>
+                </div>
+                <div class="fm__bar">
+                  <button class="gbtn gbtn--blue" type="button" data-fm-demo aria-pressed="false">Play demo</button>
+                  <span class="fm__note mono">Drag a knob up or down. It makes sound.</span>
+                </div>
+              </div>
+              <p class="win__caption"><strong>Pocket FM.</strong> Four big knobs in a science museum’s sound room. Each is a voice; turn one and the LED wall answers in its colour.</p>
+            </div>
+            <p class="win__status mono"><span>Design, audio engineering</span><span>2024</span><span>Web Audio, Raspberry Pi</span><span>Installed, open daily</span></p>
+          </section>
+          <section class="win win--wide" id="w-granite" aria-labelledby="w-granite-t" data-x="12" data-y="10">
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move granite with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-granite-t">granite</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise granite"><i></i></button><button class="win__close" type="button" aria-label="Close granite"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="ga" data-granite>
+                <div class="ga__bar">
+                  <div class="seg" role="radiogroup" aria-label="Table density" data-g-seg>
+                    <span class="seg__thumb" aria-hidden="true"></span>
+                    <button type="button" role="radio" aria-checked="false" data-d="30">Compact</button>
+                    <button type="button" role="radio" aria-checked="true" data-d="40">Regular</button>
+                    <button type="button" role="radio" aria-checked="false" data-d="52">Comfy</button>
+                  </div>
+                  <span class="ga__count mono">10,000 bookings</span>
+                </div>
+                <div class="ga__table" role="table" aria-label="Freight bookings" aria-rowcount="10001">
+                  <div class="ga__row ga__row--head mono" role="row"><span role="columnheader">Booking</span><span role="columnheader">Route</span><span role="columnheader">Box</span><span role="columnheader">Status</span></div>
+                  <div class="ga__scroll" tabindex="0" aria-label="Scroll the bookings" data-g-scroll><div class="ga__spacer" data-g-spacer></div></div>
+                </div>
+                <p class="ga__foot mono" data-g-foot>Scroll it. Rendering 0 of 10,000 rows.</p>
+              </div>
+              <p class="win__caption"><strong>Granite.</strong> A design system for a freight-booking platform: 140 components, three densities and a table that scrolls ten thousand rows without blinking. This one is real; try the densities.</p>
+            </div>
+            <p class="win__status mono"><span>Design-system lead</span><span>2022–2024</span><span>Figma, React</span><span>Client under NDA</span></p>
+          </section>
+          <section class="win win--narrow" id="w-trash" aria-labelledby="w-trash-t" data-x="54" data-y="26">
+            <div class="win__bar">
+              <button class="win__grip" type="button" aria-label="Move Recycle Bin with the arrow keys"><i></i></button>
+              <h3 class="win__title" id="w-trash-t">Recycle Bin</h3>
+              <div class="win__btns"><button class="win__min" type="button" aria-label="Minimise Recycle Bin"><i></i></button><button class="win__close" type="button" aria-label="Close Recycle Bin"><i></i></button></div>
+            </div>
+            <div class="win__body">
+              <div class="bin" data-bin>
+                <p class="bin__count mono" data-bin-count>4 items · ideas that didn’t make it</p>
+                <ul class="bin__list" data-bin-list>
+                  <li class="bin__item"><span class="bin__doc" aria-hidden="true"></span><span class="bin__name mono">todo-app-final-v3.fig</span><span class="bin__why">the world has enough</span></li>
+                  <li class="bin__item"><span class="bin__doc" aria-hidden="true"></span><span class="bin__name mono">calculator-dark-mode.sketch</span><span class="bin__why">again</span></li>
+                  <li class="bin__item"><span class="bin__doc" aria-hidden="true"></span><span class="bin__name mono">logo-1000-balloons.ai</span><span class="bin__why">client: “maybe 999?”</span></li>
+                  <li class="bin__item"><span class="bin__doc" aria-hidden="true"></span><span class="bin__name mono">blog-engine/</span><span class="bin__why">I post once a year</span></li>
+                </ul>
+                <div class="bin__foot">
+                  <button class="gbtn" type="button" data-bin-empty>Empty bin</button>
+                  <button class="gbtn" type="button" data-bin-restore hidden>Put them back</button>
+                  <span class="bin__can" aria-hidden="true"><i class="bin__lid"></i></span>
+                </div>
+              </div>
+            </div>
+            <p class="win__status mono"><span>Recycle Bin</span><span>4 items</span><span>Emptied never</span></p>
+          </section>
+        </div>
+
+        <div class="taskbar mono">
+          <span class="taskbar__start"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 2v14l4-3.4 2.6 5.8 2.6-1.2-2.6-5.6H15z"/></svg><span>hello.exe</span></span>
+          <div class="taskbar__chips" role="group" aria-label="Open windows" data-chips></div>
+          <span class="taskbar__clock" aria-hidden="true" data-clock>--:--</span>
+        </div>
+        <div class="lasso" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 03 · Now -->
+    <section class="now" id="now" aria-labelledby="now-title">
+      <header class="sec-head">
+        <p class="label mono">[02] Now</p>
+        <h2 class="sec-title" id="now-title">Now building, now playing</h2>
+        <p class="sec-hint mono">Live readouts from the desk. The two switches are real.</p>
+      </header>
+
+      <div class="hud">
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Local time</p>
+          <p class="cell__v cell__v--big mono"><span data-clock-s>--:--:--</span></p>
+          <p class="cell__s mono">Porto · <span data-tzname>WET</span></p>
+        </div>
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Status</p>
+          <p class="cell__v mono">[<span data-status>Online</span>]</p>
+          <p class="cell__s mono" data-status-note>Replies within a day.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Now building</p>
+          <p class="cell__v cell__v--s">Azulejo Mono v1.0</p>
+          <p class="bar-meter mono" role="img" aria-label="72 percent done"><span class="bar-meter__fill" aria-hidden="true">▓▓▓▓▓▓▓</span><span aria-hidden="true">░░░</span> 72%</p>
+          <p class="cell__s mono">Kerning the zero. Again.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Now playing</p>
+          <p class="cell__v cell__v--s">Room tone, third floor</p>
+          <p class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></p>
+          <p class="cell__s mono">The fridge, in roughly B♭.</p>
+        </div>
+        <div class="cell cell--switch" data-reveal>
+          <p class="cell__k mono">Theme</p>
+          <button class="toggle toggle--big" type="button" data-toggle="theme"><span class="gel" aria-hidden="true"><i></i></span><span aria-hidden="true">Theme[<b data-theme-label>A</b>]</span><span class="sr" data-theme-sr>Theme: Aqua. Switch to Graphite</span></button>
+          <p class="cell__s mono">A: Aqua, for daytime.<br>G: Graphite, for after.</p>
+        </div>
+        <div class="cell cell--switch" data-reveal>
+          <p class="cell__k mono">Sound</p>
+          <button class="toggle toggle--big" type="button" data-toggle="sound" aria-pressed="false"><span class="gel" aria-hidden="true"><i></i></span><span aria-hidden="true">Sound[<b data-sound-label>·</b>]</span><span class="sr">Sound effects</span></button>
+          <p class="cell__s mono">UI clicks, made live with Web Audio. Off until you say so.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Your cursor</p>
+          <p class="cell__v cell__v--big mono"><span data-odo>000.00</span> m</p>
+          <p class="cell__s mono">Travelled on this page, at 96 dpi.</p>
+        </div>
+        <div class="cell" data-reveal>
+          <p class="cell__k mono">Uptime</p>
+          <p class="cell__v cell__v--big mono"><span data-uptime>00:00</span></p>
+          <p class="cell__s mono">hello.exe loaded in <span data-load>—</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="grid" data-grid data-rows="" aria-hidden="true"></div>
+      <p class="label mono">[03] Contact</p>
+      <h2 class="stack" id="contact-title">
+        <span class="stack__w" data-split>Say</span>
+        <span class="stack__w stack__w--chrome"><span data-split>hello</span><canvas class="stack__gl" aria-hidden="true"></canvas></span>
+        <span class="stack__w" data-split>back.</span>
+      </h2>
+      <div class="contact__foot">
+        <p class="contact__note">Taking one project from January 2027: design, build, or both. Tell me what it should feel like.</p>
+        <button class="copy mono" type="button" data-copy="juno@hello.exe">
+          <span class="copy__addr">juno@hello.exe</span>
+          <span class="copy__tag" aria-hidden="true">[Copy]</span>
+          <span class="sr">Copy email address</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <div class="foot__row">
+      <span>© 2026 hello.exe</span>
+      <span>Set in TikTok Sans, Unbounded &amp; Space Mono</span>
+      <span>Session <span data-uptime>00:00</span></span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+    <p class="foot__note">hello.exe and Juno Rebelo are fictional, created as a website concept by [Studio name]. The projects, clients, figures and email address are invented; juno@hello.exe cannot receive mail.</p>
+  </footer>
+
+  <div class="scrolly" aria-hidden="true"><i></i></div>
+  <div class="toast mono" role="status" aria-live="polite"></div>
+
+  <script src="main.js?v=21" defer></script>
+  <script src="apps.js?v=24" defer></script>
+</body>
+</html>

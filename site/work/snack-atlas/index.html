@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snack Atlas · The world, by the mouthful</title>
+  <meta name="description" content="Snack Atlas posts you a box of snacks from one country every month, with the stories behind them. A fictional snack subscription, designed as a playful, illustrative website concept.">
+  <meta name="theme-color" content="#ff5a36">
+  <meta property="og:title" content="Snack Atlas · The world, by the mouthful">
+  <meta property="og:description" content="A playful / illustrative website concept for a fictional one-country-a-month snack box.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Caveat:wght@500..700&family=Figtree:wght@400..700&family=Geist+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="style.css?v=11">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Illustration set: every snack, the box and the mascot are drawn once here and reused -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="pt-tile" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect width="40" height="40" fill="#fff3e2"/>
+        <path d="M20 8c4 0 6 4 6 6s-2 6-6 6-6-4-6-6 2-6 6-6Zm0 24c-4 0-6-4-6-6s2-6 6-6 6 4 6 6-2 6-6 6ZM8 20c0-4 4-6 6-6s6 2 6 6-4 6-6 6-6-2-6-6Zm24 0c0 4-4 6-6 6s-6-2-6-6 4-6 6-6 6 2 6 6Z" fill="#2b44e0"/>
+        <circle cx="20" cy="20" r="3" fill="#ffd35a"/>
+        <path d="M0 6a6 6 0 0 0 6-6H0Zm40 0a6 6 0 0 1-6-6h6ZM0 34a6 6 0 0 1 6 6H0Zm40 0a6 6 0 0 0-6 6h6Z" fill="#1a2ba6"/>
+      </pattern>
+    </defs>
+
+    <symbol id="i-chip" viewBox="0 0 140 110">
+      <path d="M16 54C10 28 38 10 70 13c32-5 62 13 57 42 6 27-23 46-56 42-32 6-61-14-55-43Z" fill="#ffcb4c"/>
+      <path d="M127 55c6 27-23 46-56 42-32 6-61-14-55-43 10 22 34 34 58 32 28 1 48-12 53-31Z" fill="#eca42a"/>
+      <path d="M30 42q10-9 20 0t20 0 20 0 20 0M26 58q10-9 20 0t20 0 20 0 20 0M38 74q10-9 20 0t20 0 20 0" fill="none" stroke="#e3961f" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      <path d="M33 27q14-10 31-9" fill="none" stroke="#fff4d0" stroke-width="5" stroke-linecap="round"/>
+      <g fill="#d9472a"><circle cx="48" cy="50" r="2.2"/><circle cx="82" cy="36" r="1.8"/><circle cx="96" cy="66" r="2.2"/><circle cx="62" cy="80" r="1.8"/><circle cx="104" cy="44" r="1.6"/></g>
+    </symbol>
+
+    <symbol id="i-pretzel" viewBox="0 0 140 120">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke="#8a461c" stroke-width="15" transform="translate(2 4)">
+          <path d="M40 90C10 82 6 34 38 22c18-7 32 4 32 18 0-14 14-25 32-18 32 12 28 60-2 68"/>
+          <path d="M40 90C62 76 74 58 70 40M100 90C78 76 66 58 70 40"/>
+        </g>
+        <g stroke="#c4773a" stroke-width="15">
+          <path d="M40 90C10 82 6 34 38 22c18-7 32 4 32 18 0-14 14-25 32-18 32 12 28 60-2 68"/>
+          <path d="M40 90C62 76 74 58 70 40M100 90C78 76 66 58 70 40"/>
+        </g>
+        <g stroke="#eeb173" stroke-width="4" stroke-dasharray="26 60">
+          <path d="M22 70C14 52 20 30 38 22" transform="translate(-1 -2)"/>
+          <path d="M102 22c18 6 24 24 20 40" transform="translate(-1 -3)"/>
+        </g>
+      </g>
+      <g fill="#fff3e2"><rect x="24" y="38" width="5" height="4" rx="1" transform="rotate(20 26 40)"/><rect x="46" y="26" width="5" height="4" rx="1"/><rect x="96" y="30" width="5" height="4" rx="1" transform="rotate(-25 98 32)"/><rect x="112" y="52" width="5" height="4" rx="1"/><rect x="60" y="70" width="5" height="4" rx="1" transform="rotate(40 62 72)"/><rect x="82" y="66" width="4" height="4" rx="1"/></g>
+    </symbol>
+
+    <symbol id="i-candy" viewBox="0 0 170 90">
+      <path d="M52 45 14 18q-10 10-4 20-8 7 0 14-6 10 4 20Z" fill="#ffb3d4"/>
+      <path d="M118 45 156 18q10 10 4 20 8 7 0 14 6 10-4 20Z" fill="#ffb3d4"/>
+      <path d="M44 42 20 30M44 48 20 60M126 42l24-12M126 48l24 12" stroke="#e2558f" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="85" cy="45" rx="38" ry="29" fill="#ff7db5"/>
+      <path d="M123 45c0 16-17 29-38 29S47 61 47 45c8 14 22 21 38 21s30-7 38-21Z" fill="#e2558f"/>
+      <path d="M66 22 54 62M86 17 72 72M106 20 94 72" stroke="#fff3e2" stroke-width="5" opacity=".55"/>
+      <ellipse cx="72" cy="31" rx="11" ry="5" fill="#fff" opacity=".65" transform="rotate(-22 72 31)"/>
+    </symbol>
+
+    <symbol id="i-cookie" viewBox="0 0 120 110">
+      <ellipse cx="60" cy="78" rx="48" ry="19" fill="#341a13"/>
+      <rect x="12" y="64" width="96" height="14" fill="#341a13"/>
+      <ellipse cx="60" cy="64" rx="46" ry="18" fill="#fff1dc"/>
+      <rect x="14" y="55" width="92" height="9" fill="#fff1dc"/>
+      <ellipse cx="60" cy="56" rx="48" ry="19" fill="#3e2119"/>
+      <rect x="12" y="43" width="96" height="13" fill="#3e2119"/>
+      <ellipse cx="60" cy="43" rx="48" ry="19" fill="#6a3b2a"/>
+      <ellipse cx="60" cy="43" rx="33" ry="12" fill="none" stroke="#4a2619" stroke-width="3"/>
+      <g fill="#4a2619"><circle cx="60" cy="27" r="2.4"/><circle cx="60" cy="59" r="2.4"/><circle cx="21" cy="43" r="2.4"/><circle cx="99" cy="43" r="2.4"/><circle cx="31" cy="31" r="2.2"/><circle cx="89" cy="31" r="2.2"/><circle cx="31" cy="55" r="2.2"/><circle cx="89" cy="55" r="2.2"/></g>
+      <path d="M22 36c6-8 18-12 30-13" fill="none" stroke="#9a634c" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-peanut" viewBox="0 0 120 80">
+      <path d="M30 18c16-6 26 4 30 12 6-8 20-16 34-10 16 8 18 32 4 42-12 8-26 0-36-8-6 8-20 16-34 10C12 56 12 26 30 18Z" fill="#e7b47b"/>
+      <path d="M98 62c-12 8-26 0-36-8-6 8-20 16-34 10C16 59 13 46 15 36c4 12 12 20 22 20 12 0 18-8 25-14 8 8 18 14 30 12 9-2 15-8 18-16 2 10-1 19-14 24Z" fill="#c78a4f"/>
+      <g stroke="#b97e46" stroke-width="2.5" stroke-linecap="round" opacity=".7"><path d="m28 30 4 4M38 26l4 4M26 42l4 4M40 40l4 4M84 26l4 4M96 30l4 4M82 40l4 4M94 42l4 4"/></g>
+      <path d="M26 24q8-4 16-2M82 22q8-3 14 0" fill="none" stroke="#fbe0bb" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-lolly" viewBox="0 0 110 160">
+      <rect x="51" y="78" width="9" height="78" rx="4.5" fill="#fff3e2"/>
+      <rect x="56" y="78" width="4" height="78" rx="2" fill="#e8cfb3"/>
+      <clipPath id="cp-lolly"><circle cx="55" cy="52" r="42"/></clipPath>
+      <circle cx="55" cy="52" r="42" fill="#fff3e2"/>
+      <g clip-path="url(#cp-lolly)">
+        <path d="M55 52a5 5 0 0 1 10 0 10 10 0 0 1-20 0 15 15 0 0 1 30 0 20 20 0 0 1-40 0 25 25 0 0 1 50 0 30 30 0 0 1-60 0 35 35 0 0 1 70 0 40 40 0 0 1-80 0" fill="none" stroke="#2b44e0" stroke-width="8"/>
+        <path d="M97 52a42 42 0 0 1-84 0c10 22 26 32 42 32s32-10 42-32Z" fill="#1a2ba6" opacity=".28"/>
+      </g>
+      <path d="M26 34q8-14 22-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+
+    <symbol id="i-gummy" viewBox="0 0 100 120">
+      <g fill="#7fddb4">
+        <circle cx="30" cy="18" r="10"/><circle cx="70" cy="18" r="10"/>
+        <circle cx="50" cy="34" r="24"/>
+        <ellipse cx="50" cy="78" rx="28" ry="32"/>
+        <circle cx="22" cy="62" r="10"/><circle cx="78" cy="62" r="10"/>
+        <circle cx="32" cy="104" r="11"/><circle cx="68" cy="104" r="11"/>
+      </g>
+      <ellipse cx="50" cy="80" rx="16" ry="20" fill="#b8f2d8"/>
+      <path d="M74 80c0 18-10 30-24 30-10 0-18-6-22-14 6 4 12 6 20 6 14 0 24-10 26-22Z" fill="#45b98b" opacity=".6"/>
+      <g fill="#2e8f6b"><circle cx="42" cy="32" r="2.6"/><circle cx="58" cy="32" r="2.6"/></g>
+      <path d="M34 20q6-8 14-8" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+    </symbol>
+
+    <symbol id="i-globe" viewBox="0 0 100 100">
+      <mask id="mk-bite"><rect width="100" height="100" fill="#fff"/><g fill="#000"><circle cx="91" cy="22" r="14"/><circle cx="99" cy="40" r="11"/><circle cx="78" cy="7" r="12"/></g></mask>
+      <g mask="url(#mk-bite)">
+        <circle cx="50" cy="52" r="44" fill="#2b44e0"/>
+        <path d="M18 36c8-10 22-10 27-2s-3 14 3 21-5 16-14 12-14-14-16-21c-1-4-1-7 0-10Z" fill="#9be6c6"/>
+        <path d="M56 60c9-5 20-1 22 8s-6 17-15 17-13-6-13-12 0-11 6-13Z" fill="#9be6c6"/>
+        <path d="M60 26c5-2 10 1 10 5s-5 5-8 4-5-7-2-9Z" fill="#9be6c6"/>
+        <path d="M94 52A44 44 0 0 1 6 52c6 22 24 36 44 36s38-14 44-36Z" fill="#1a2ba6" opacity=".55"/>
+        <path d="M20 30q10-16 28-20" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" opacity=".55"/>
+      </g>
+      <g fill="#2b44e0"><rect x="84" y="50" width="5" height="5" rx="1" transform="rotate(20 86 52)"/><rect x="92" y="60" width="4" height="4" rx="1"/></g>
+    </symbol>
+
+    <symbol id="i-mascot" viewBox="0 0 120 130">
+      <use href="#i-globe" x="10" y="4" width="100" height="100"/>
+      <g fill="#170f1f"><ellipse cx="50" cy="54" rx="5.5" ry="7.5"/><ellipse cx="72" cy="54" rx="5.5" ry="7.5"/></g>
+      <g fill="#fff"><circle cx="52" cy="51" r="2"/><circle cx="74" cy="51" r="2"/></g>
+      <g fill="#ff8dbf" opacity=".9"><ellipse cx="40" cy="66" rx="6" ry="3.5"/><ellipse cx="82" cy="66" rx="6" ry="3.5"/></g>
+      <path d="M53 68q8 9 16 0" fill="none" stroke="#170f1f" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M48 98v16M74 98v16" stroke="#170f1f" stroke-width="4" stroke-linecap="round"/>
+      <g fill="#170f1f"><ellipse cx="44" cy="118" rx="9" ry="5"/><ellipse cx="78" cy="118" rx="9" ry="5"/></g>
+    </symbol>
+
+    <symbol id="i-bag" viewBox="0 0 140 190">
+      <path d="M18 26C8 70 8 130 18 166h104c10-36 10-96 0-140Z" fill="#9be6c6"/>
+      <path d="M122 26c10 44 10 104 0 140H92c12-40 12-100 4-140Z" fill="#3fb78c" opacity=".55"/>
+      <path d="M30 40c-6 36-6 80 0 116" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+      <path d="M14 10h112v18H14Z" fill="#3fb78c"/>
+      <path d="M14 10l7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7v4H14Z" fill="#3fb78c"/>
+      <path d="M22 13v12M32 13v12M42 13v12M52 13v12M62 13v12M72 13v12M82 13v12M92 13v12M102 13v12M112 13v12" stroke="#2d8e6a" stroke-width="2"/>
+      <path d="M14 164h112v16H14Z" fill="#3fb78c"/>
+      <path d="M14 180l7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7v-4H14Z" fill="#3fb78c"/>
+      <ellipse cx="68" cy="96" rx="36" ry="40" fill="#fff3e2"/>
+      <use href="#i-globe" x="40" y="66" width="56" height="56"/>
+      <path d="M40 140q28 10 56 0" fill="none" stroke="#ff5a36" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-spark" viewBox="0 0 40 40">
+      <path d="M20 0c2 14 6 18 20 20-14 2-18 6-20 20-2-14-6-18-20-20 14-2 18-6 20-20Z"/>
+    </symbol>
+
+    <!-- The box is split in two so the mascot can sit inside it -->
+    <symbol id="i-box-back" viewBox="-100 -165 590 380">
+      <path d="M90-60h300l20-92-312-4Z" fill="#4560f0"/>
+      <path d="M0 0 90-60 4-120-84-62Z" fill="#3a55ea"/>
+      <path d="M300 0 390-60 482-86 392-24Z" fill="#3a55ea"/>
+      <path d="M0 0 90-60V0Z" fill="#0d1452"/>
+      <path d="M90-60h300L300 0H90Z" fill="#16218a"/>
+    </symbol>
+    <symbol id="i-box-front" viewBox="-100 -165 590 380">
+      <path d="M300 0 390-60v200l-90 60Z" fill="#1d30b4"/>
+      <rect x="0" y="0" width="300" height="200" fill="#2b44e0"/>
+      <path d="M0 0h300l10 56H10Z" fill="#4c66f2"/>
+      <path d="M10 56h300" stroke="#1d30b4" stroke-width="3" opacity=".6"/>
+      <path d="M0 0h300" stroke="#8a9cff" stroke-width="4"/>
+      <rect x="36" y="82" width="228" height="92" rx="14" fill="#fff3e2"/>
+      <use href="#i-globe" x="48" y="94" width="66" height="66"/>
+      <text x="122" y="124" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="31" fill="#170f1f" letter-spacing="-.5">SNACK</text>
+      <text x="122" y="155" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="31" fill="#170f1f" letter-spacing="-.5">ATLAS</text>
+      <g transform="matrix(1 -.667 0 1 300 0)">
+        <circle cx="46" cy="96" r="25" fill="#ffd35a"/>
+        <text x="46" y="103" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="19" fill="#170f1f">MX</text>
+        <rect x="8" y="150" width="76" height="20" rx="3" fill="#ff8dbf"/>
+        <text x="46" y="164.5" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" font-weight="500" fill="#170f1f">CRUNCHY!</text>
+      </g>
+    </symbol>
+
+    <!-- This month: Mexico -->
+    <symbol id="m-wheel" viewBox="0 0 64 64">
+      <circle cx="32" cy="33" r="27" fill="#c9862f"/>
+      <circle cx="32" cy="31" r="27" fill="#f2b04a"/>
+      <circle cx="32" cy="31" r="20" fill="none" stroke="#d98f2c" stroke-width="3"/>
+      <path d="M32 11v40M14.7 21l34.6 20M14.7 41l34.6-20" stroke="#d98f2c" stroke-width="3.5"/>
+      <circle cx="32" cy="31" r="6" fill="#d98f2c"/>
+      <g fill="#e5482a"><circle cx="20" cy="18" r="2.4"/><circle cx="44" cy="44" r="2.8"/><circle cx="47" cy="22" r="1.8"/><circle cx="18" cy="40" r="2"/></g>
+      <path d="M14 22q4-8 12-11" fill="none" stroke="#ffe0a3" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="m-japo" viewBox="0 0 64 64">
+      <ellipse cx="22" cy="40" rx="14" ry="10" fill="#9a531f" transform="rotate(-20 22 40)"/>
+      <ellipse cx="22" cy="38" rx="14" ry="10" fill="#d0803a" transform="rotate(-20 22 38)"/>
+      <ellipse cx="42" cy="26" rx="14" ry="10" fill="#9a531f" transform="rotate(25 42 26)"/>
+      <ellipse cx="42" cy="24" rx="14" ry="10" fill="#d0803a" transform="rotate(25 42 24)"/>
+      <ellipse cx="44" cy="47" rx="11" ry="8" fill="#9a531f" transform="rotate(-5 44 47)"/>
+      <ellipse cx="44" cy="45" rx="11" ry="8" fill="#e09450" transform="rotate(-5 44 45)"/>
+      <g fill="#fff" opacity=".75"><ellipse cx="17" cy="33" rx="5" ry="2.4" transform="rotate(-20 17 33)"/><ellipse cx="38" cy="19" rx="5" ry="2.4" transform="rotate(25 38 19)"/><ellipse cx="40" cy="41" rx="4" ry="2" /></g>
+    </symbol>
+    <symbol id="m-bar" viewBox="0 0 64 64">
+      <rect x="6" y="20" width="54" height="30" rx="7" fill="#a5601f" transform="rotate(-8 33 35)"/>
+      <rect x="6" y="16" width="54" height="30" rx="7" fill="#e0a046" transform="rotate(-8 33 31)"/>
+      <g fill="#f6d3a0"><ellipse cx="18" cy="31" rx="5" ry="3.4" transform="rotate(-30 18 31)"/><ellipse cx="30" cy="25" rx="5" ry="3.4" transform="rotate(20 30 25)"/><ellipse cx="34" cy="36" rx="5" ry="3.4" transform="rotate(-10 34 36)"/><ellipse cx="46" cy="26" rx="5" ry="3.4" transform="rotate(40 46 26)"/><ellipse cx="50" cy="35" rx="4.4" ry="3" transform="rotate(-25 50 35)"/></g>
+      <path d="M12 24q14-6 30-6" fill="none" stroke="#fff3d6" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+    <symbol id="m-seed" viewBox="0 0 64 64">
+      <path d="M26 52a19 19 0 0 0 36-8Z" fill="#4f9a2e"/>
+      <path d="M29.5 50.6a15.5 15.5 0 0 0 29-6Z" fill="#c9e98a"/>
+      <path d="M44 47.6l-9 5.6M44 47.6l1 7.6M44 47.6l9 3.4" stroke="#9ccc5c" stroke-width="1.6"/>
+      <g stroke="#5c9a3a" stroke-width="2">
+        <path d="M0-14C8-10 9 8 0 14-9 8-8-10 0-14Z" fill="#9ccf6c" transform="translate(18 26) rotate(-35)"/>
+        <path d="M0-14C8-10 9 8 0 14-9 8-8-10 0-14Z" fill="#8cc464" transform="translate(37 17) rotate(25)"/>
+        <path d="M0-14C8-10 9 8 0 14-9 8-8-10 0-14Z" fill="#9ccf6c" transform="translate(18 47) rotate(70)"/>
+      </g>
+      <g stroke="#cfeaa8" stroke-width="2" stroke-linecap="round"><path d="M17 22l-4 7" /><path d="M36 12l3 7"/></g>
+      <g fill="#e5482a"><circle cx="24" cy="24" r="1.7"/><circle cx="40" cy="22" r="1.7"/><circle cx="22" cy="44" r="1.7"/><circle cx="30" cy="34" r="1.4"/></g>
+    </symbol>
+    <symbol id="m-wafer" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="42" rx="26" ry="11" fill="#e3c79e"/>
+      <rect x="6" y="36" width="52" height="6" fill="#e3c79e"/>
+      <ellipse cx="32" cy="36" rx="26" ry="11" fill="#b5652b"/>
+      <rect x="6" y="30" width="52" height="6" fill="#b5652b"/>
+      <ellipse cx="32" cy="30" rx="26" ry="11" fill="#e8b1c6"/>
+      <rect x="6" y="26" width="52" height="4" fill="#e8b1c6"/>
+      <ellipse cx="32" cy="26" rx="26" ry="11" fill="#ffd6e5"/>
+      <path d="M14 26h36M20 20l24 12M44 20 20 32" stroke="#efb3c9" stroke-width="2" opacity=".9"/>
+      <path d="M58 35q-4 8-6 14" fill="none" stroke="#8d4a1e" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="m-mazapan" viewBox="0 0 64 64">
+      <ellipse cx="30" cy="40" rx="24" ry="10" fill="#c8945c"/>
+      <rect x="6" y="30" width="48" height="10" fill="#c8945c"/>
+      <ellipse cx="30" cy="30" rx="24" ry="10" fill="#efcb98"/>
+      <path d="M26 22l4 7-5 4 3 6" fill="none" stroke="#c8945c" stroke-width="2.5" stroke-linejoin="round"/>
+      <g fill="#efcb98"><circle cx="56" cy="44" r="3"/><circle cx="58" cy="54" r="2.2"/><circle cx="50" cy="56" r="1.6"/><rect x="52" y="34" width="4" height="4" rx="1"/></g>
+      <g fill="#c8945c" opacity=".7"><circle cx="18" cy="30" r="1.4"/><circle cx="38" cy="27" r="1.4"/><circle cx="34" cy="34" r="1.2"/></g>
+    </symbol>
+  </svg>
+
+  <header class="nav" id="top">
+    <a class="pill pill--logo" href="#top" aria-label="Snack Atlas, back to top">
+      <svg class="pill__mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#i-globe"/></svg>
+      <span>Snack Atlas</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="pill" href="#how"><span class="roll" data-text="How it works">How it works</span></a>
+      <a class="pill" href="#this-month"><span class="roll" data-text="This month">This month</span></a>
+      <a class="pill" href="#plans"><span class="roll" data-text="Plans">Plans</span></a>
+      <a class="pill" href="#faq"><span class="roll" data-text="FAQ">FAQ</span></a>
+    </nav>
+    <a class="cta cta--sm nav__cta" href="#plans">
+      <span class="cta__label"><span class="roll" data-text="Get a box">Get a box</span></span>
+      <span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <button class="pill nav__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="#how">How it works</a>
+      <a href="#this-month">This month</a>
+      <a href="#plans">Plans</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <svg class="menu__mascot" viewBox="0 0 120 130" aria-hidden="true"><use href="#i-mascot"/></svg>
+    <p class="menu__note">from $24 a box · free shipping</p>
+  </div>
+
+  <main id="main">
+    <!-- 1 · Hero -->
+    <section class="hero field field--tomato" aria-labelledby="hero-title">
+      <svg class="hero__blobs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M760 40c180-90 470-60 620 70s110 330 40 470-200 300-420 300-420-80-480-250S580 130 760 40Z" fill="#ff7756"/>
+        <path d="M840 190c140-70 360-30 450 90s50 290-40 380-260 150-400 90-250-200-230-320 80-170 220-240Z" fill="#ff9677"/>
+        <path d="M960 330c90-40 220-10 260 70s0 190-80 230-200 30-250-40-30-150 10-200 30-40 60-60Z" fill="#ffb49b"/>
+        <path d="M-120 700c110-80 290-60 360 30s20 210-110 230-300-20-330-110 10-110 80-150Z" fill="#ff7756"/>
+      </svg>
+
+      <div class="hero__copy">
+        <div class="hero__heading">
+        <p class="hero__kicker chip">Snack club · one country a month</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span class="w"><span>The</span></span> <span class="w"><span>world,</span></span></span>
+          <span class="line"><span class="w"><span>by</span></span> <span class="w"><span>the</span></span></span>
+          <span class="line"><span class="w"><span>mouthful.</span></span></span>
+        </h1>
+        </div>
+        <p class="hero__lead">A new country’s best snacks. At your door, every month.</p>
+        <div class="hero__actions">
+          <a class="cta cta--jiggle" href="#plans">
+            <span class="cta__peek" aria-hidden="true"><svg viewBox="0 0 120 130"><use href="#i-mascot"/></svg></span>
+            <span class="cta__label"><span class="roll" data-text="Get the Mexico box">Get the Mexico box</span></span>
+            <span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="link" href="#this-month">See what's inside</a>
+        </div>
+        <p class="hero__facts">From $24 a box <span aria-hidden="true">·</span> Free shipping <span aria-hidden="true">·</span> Skip or cancel anytime</p>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <p class="hero__note"><span>psst! this month<br>we're in Mexico</span>
+          <svg class="hero__arrow" viewBox="0 0 160 120"><path d="M10 20c40-14 92-6 112 30 10 18 8 38-4 56" pathLength="1"/><path d="M139 99 118 106l-2-21" pathLength="1"/></svg>
+        </p>
+        <div class="obj obj--far o-gummy"><div class="par"><div class="still"><svg viewBox="0 0 100 120"><use href="#i-gummy"/></svg></div></div></div>
+        <div class="obj obj--far o-lolly"><div class="par"><div class="still"><svg viewBox="0 0 110 160"><use href="#i-lolly"/></svg></div></div></div>
+        <div class="obj obj--box o-box">
+          <div class="par"><div class="still">
+            <svg viewBox="-100 -165 590 380">
+              <use href="#i-box-back" x="-100" y="-165" width="590" height="380"/>
+              <g class="mascot-bob"><use href="#i-mascot" x="96" y="-136" width="160" height="173"/></g>
+              <use href="#i-box-front" x="-100" y="-165" width="590" height="380"/>
+            </svg>
+          </div></div>
+        </div>
+        <div class="obj obj--snack o-bag"><div class="par"><div class="bob"><svg viewBox="0 0 140 190"><use href="#i-bag"/></svg></div></div></div>
+        <div class="obj obj--snack o-chip"><div class="par"><div class="bob"><svg viewBox="0 0 140 110"><use href="#i-chip"/></svg></div></div></div>
+        <div class="obj obj--snack o-pretzel"><div class="par"><div class="still"><svg viewBox="0 0 140 120"><use href="#i-pretzel"/></svg></div></div></div>
+        <div class="obj obj--snack o-candy"><div class="par"><div class="still"><svg viewBox="0 0 170 90"><use href="#i-candy"/></svg></div></div></div>
+        <div class="obj obj--snack o-cookie"><div class="par"><div class="still"><svg viewBox="0 0 120 110"><use href="#i-cookie"/></svg></div></div></div>
+        <div class="obj obj--snack o-peanut"><div class="par"><div class="still"><svg viewBox="0 0 120 80"><use href="#i-peanut"/></svg></div></div></div>
+        <svg class="spark s1" viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <svg class="spark s2" viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <svg class="spark s3" viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+      </div>
+    </section>
+
+    <!-- 2 · Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>No passport required</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <span>One country a month</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <span>Free shipping, always</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <span>Crunch-tested by a very serious panel</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <span>Skip a month, no hard feelings</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+        <span>Next stop: top secret</span><svg viewBox="0 0 40 40"><use href="#i-spark"/></svg>
+      </div>
+    </div>
+
+    <!-- 3 · How it works -->
+    <section class="how field field--cream field--crimp" id="how" aria-labelledby="how-title">
+      <div class="how__pin">
+      <div class="section-head">
+        <p class="chip chip--ink">How it works</p>
+        <h2 id="how-title">Three steps. One of them is eating.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <svg class="step__art" viewBox="0 0 240 180" aria-hidden="true">
+            <ellipse cx="120" cy="160" rx="92" ry="10" fill="#170f1f" opacity=".12"/>
+            <path d="M28 52 92 34v112l-64 18Z" fill="#9be6c6"/>
+            <path d="m92 34 64 18v112l-64-18Z" fill="#fff3e2"/>
+            <path d="m156 52 64-18v112l-64 18Z" fill="#7fd8b3"/>
+            <path d="m156 52 64-18v112l-64 18Z" fill="#3fb78c" opacity=".25"/>
+            <path d="M28 52 92 34v112l-64 18Z" fill="#3fb78c" opacity=".12"/>
+            <path d="M44 140c14-30 34-20 48-44s34-26 44-6 30 6 40-20" fill="none" stroke="#170f1f" stroke-width="3.5" stroke-dasharray="2 9" stroke-linecap="round"/>
+            <circle cx="44" cy="140" r="6" fill="#170f1f"/>
+            <g class="step__wiggle">
+              <path d="M176 96c-4-12-26-30-26-54a26 26 0 0 1 52 0c0 24-22 42-26 54Z" fill="#ff5a36"/>
+              <circle cx="176" cy="42" r="10" fill="#fff3e2"/>
+              <path d="M160 30q6-10 16-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+            </g>
+          </svg>
+          <h3><span class="sr-only">Step 1: </span>We pick a country</h3>
+          <p>Our taste team spends a month in one place's corner shops, markets and gas stations. Very hard work. Someone has to do it.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <svg class="step__art" viewBox="0 0 240 180" aria-hidden="true">
+            <ellipse cx="120" cy="162" rx="86" ry="10" fill="#170f1f" opacity=".12"/>
+            <path d="M58 82c0-50 124-50 124 0" fill="none" stroke="#a5601f" stroke-width="9" stroke-linecap="round"/>
+            <g class="step__wiggle">
+              <use href="#i-lolly" x="64" y="10" width="54" height="80" transform="rotate(-14 90 50)"/>
+              <use href="#i-chip" x="104" y="34" width="72" height="56" transform="rotate(12 140 62)"/>
+              <use href="#i-candy" x="44" y="56" width="80" height="42" transform="rotate(-8 84 76)"/>
+            </g>
+            <path d="M40 84h160l-18 72H58Z" fill="#e0a046"/>
+            <path d="M40 84h160l-3 12H43Z" fill="#a5601f"/>
+            <path d="M62 100l8 52M88 100l4 52M120 100v52M152 100l-4 52M178 100l-8 52M48 116h144M52 134h136" stroke="#c07b2c" stroke-width="3"/>
+          </svg>
+          <h3><span class="sr-only">Step 2: </span>We fill the box</h3>
+          <p>8 to 24 snacks, sweet to spicy, chosen so no two are alike, plus a little zine about where each one comes from.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <svg class="step__art" viewBox="0 0 240 180" aria-hidden="true">
+            <rect x="24" y="25" width="190" height="130" rx="8" fill="#9be6c6" stroke="#170f1f" stroke-width="2" transform="rotate(-5 120 90)"/>
+            <path d="M132 50v85M44 108h64M44 122h64M44 136h46" stroke="#170f1f" stroke-width="2" opacity=".45"/>
+            <text x="42" y="80" font-family="Caveat, cursive" font-size="28" fill="#170f1f">To: you!</text>
+            <rect x="148" y="36" width="56" height="58" fill="#fff3e2" stroke="#170f1f" stroke-dasharray="3 3"/>
+            <svg x="142" y="42" width="67" height="45" viewBox="-100 -165 590 380"><use href="#i-box-back" x="-100" y="-165" width="590" height="380"/><use href="#i-box-front" x="-100" y="-165" width="590" height="380"/></svg>
+            <path d="M162 114h32M162 126h32M162 138h22" stroke="#170f1f" stroke-width="2"/>
+          </svg>
+          <h3><span class="sr-only">Step 3: </span>You crunch, rate, repeat</h3>
+          <p>Your box lands in the last week of the month. Rate every snack, and next month we fly somewhere new.</p>
+        </li>
+      </ol>
+      <div class="packing" aria-hidden="true">
+        <svg class="packing__art" viewBox="0 0 720 600">
+          <defs><clipPath id="pack-mouth"><path d="M-300-290H300V40H-300Z"/></clipPath></defs>
+          <ellipse cx="370" cy="474" rx="245" ry="37" fill="#170f1f" opacity=".07"/>
+          <g class="pack-map">
+            <path d="M50 102 234 58l174 46 232-44v238l-232 44-174-46-184 44Z" fill="#9be6c6" stroke="#170f1f" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M234 58v238m174-192v238" fill="none" stroke="#3fb78c" stroke-width="2"/>
+            <path d="m134 123 38-24 38 8 19 30 37 10 20 34-20 25-30-3-4 24-19 5-12-20-29-9-8-23-21-11Z" fill="#fff3e2"/>
+            <path class="pack-mexico" d="m213 231 19-4 16 25 25 5 15 17-12 8-25-8-21-18Z" fill="#ff5a36" stroke="#170f1f" stroke-width="2"/>
+            <path d="m282 288 27 9 20 29-14 43-17-21-13-34Z" fill="#fff3e2"/>
+            <path d="m415 140 29-14 24 16-8 22-31 10-19-14Zm16 46 44-5 29 40-15 58-35 8-20-44Zm83-59 61 3 28 36-22 41-31-5-18-34-25-7Z" fill="#fff3e2"/>
+            <path class="pack-route" d="M555 165C526 61 296 64 254 245" fill="none" stroke="#170f1f" stroke-width="3" stroke-dasharray="3 10" stroke-linecap="round"/>
+            <g class="pack-pin"><path d="M254 248c-4-12-30-33-30-59a30 30 0 0 1 60 0c0 26-26 47-30 59Z" fill="#ff5a36" stroke="#170f1f" stroke-width="2"/><circle cx="254" cy="189" r="11" fill="#fff3e2"/></g>
+            <g class="pack-country"><rect x="313" y="236" width="213" height="55" rx="27" fill="#170f1f"/><text x="419" y="271" text-anchor="middle" fill="#fff3e2" font-family="Bricolage Grotesque, sans-serif" font-size="27" font-weight="800">Next stop: Mexico</text></g>
+          </g>
+          <g class="pack-card">
+            <rect x="87" y="126" width="550" height="350" rx="13" fill="#170f1f" transform="translate(8 8)"/>
+            <rect x="87" y="126" width="550" height="350" rx="13" fill="#9be6c6" stroke="#170f1f" stroke-width="2"/>
+            <path d="M358 164v273M121 370h204M121 396h204M121 422h143" stroke="#170f1f" stroke-width="2" opacity=".35"/>
+            <text x="118" y="209" fill="#170f1f" font-family="Caveat, cursive" font-size="33" transform="rotate(-5 118 209)">Greetings from</text>
+            <text x="116" y="270" fill="#2b44e0" font-family="Bricolage Grotesque, sans-serif" font-size="57" font-weight="800" letter-spacing="-2">MÉXICO</text>
+            <text x="392" y="333" fill="#170f1f" font-family="Caveat, cursive" font-size="35">To: you</text>
+            <path d="M392 357h196M392 389h196M392 421h142" stroke="#170f1f" stroke-width="2" opacity=".5"/>
+          </g>
+          <g class="pack-box-back">
+            <rect class="pack-stamp-paper" x="-267" y="-185" width="534" height="370" fill="#fff3e2" stroke="#170f1f" stroke-width="8" stroke-dasharray="12 9"/>
+            <svg class="pack-open" x="-245" y="-158" width="490" height="316" viewBox="-100 -165 590 380"><use href="#i-box-back" x="-100" y="-165" width="590" height="380"/></svg>
+          </g>
+          <g class="pack-foods" clip-path="url(#pack-mouth)">
+            <svg class="pack-food pack-food--1" x="-52" y="-48" width="104" height="96" viewBox="0 0 140 110"><use href="#i-chip"/></svg>
+            <svg class="pack-food pack-food--2" x="-45" y="-61" width="90" height="122" viewBox="0 0 140 190"><use href="#i-bag"/></svg>
+            <svg class="pack-food pack-food--3" x="-61" y="-32" width="122" height="64" viewBox="0 0 170 90"><use href="#i-candy"/></svg>
+          </g>
+          <g class="pack-box-front">
+            <svg x="-245" y="-158" width="490" height="316" viewBox="-100 -165 590 380">
+              <use href="#i-box-front" x="-100" y="-165" width="590" height="380"/>
+              <path class="pack-lid" d="M0 0 90-60h300L300 0Z" fill="#4560f0" stroke="#8a9cff" stroke-width="3"/>
+            </svg>
+          </g>
+          <g class="pack-postmark" fill="none" stroke="#170f1f" stroke-width="2"><circle cx="505" cy="227" r="35"/><circle cx="505" cy="227" r="28"/><path d="M543 208q12-8 24 0t24 0 24 0M543 225q12-8 24 0t24 0 24 0M543 242q12-8 24 0t24 0 24 0"/><text x="505" y="231" text-anchor="middle" fill="#170f1f" stroke="none" font-family="Geist Mono, monospace" font-size="11">OCT 28</text></g>
+        </svg>
+        <p class="packing__note">a little box. a very big world.</p>
+        <div class="packing__beats"><span>01 · Pick</span><span>02 · Pack</span><span>03 · Post</span></div>
+      </div>
+      </div>
+
+    </section>
+
+    <!-- 4 · This month's country -->
+    <section class="month field field--mint field--crimp" id="this-month" aria-labelledby="month-title">
+      <div class="month__card" data-reveal>
+        <div class="postcard" id="postcard">
+          <div class="postcard__inner">
+            <div class="postcard__face postcard__front">
+              <svg class="postcard__box-stamp" viewBox="0 0 100 90" aria-hidden="true"><rect x="3" y="3" width="94" height="84" fill="#fff3e2" stroke="#170f1f" stroke-width="2" stroke-dasharray="3 3"/><svg x="5" y="9" width="90" height="65" viewBox="-100 -165 590 380"><use href="#i-box-back" x="-100" y="-165" width="590" height="380"/><use href="#i-box-front" x="-100" y="-165" width="590" height="380"/></svg><text x="50" y="81" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" fill="#170f1f">MX · 14¢</text></svg>
+              <p class="postcard__greet">Greetings from</p>
+              <p class="postcard__word" data-text="MÉXICO">MÉXICO</p>
+              <p class="postcard__meta">Issue 14 · October 2026 · 6 finds inside</p>
+              <span class="postcard__seal">ships<br>Oct 28</span>
+            </div>
+            <div class="postcard__face postcard__back">
+              <p class="postcard__msg">¡Hola! We ate our way through 40-odd tiendas and two markets to pick these. Start quiet with the mazapán and work up to the chicharrones. Lime is not optional.<span>— the Atlas taste team</span></p>
+              <div class="postcard__addr">
+                <svg class="stamp" viewBox="0 0 80 96" aria-hidden="true">
+                  <rect width="80" height="96" fill="#fff8ee"/>
+                  <rect x="7" y="7" width="66" height="82" fill="#2b44e0"/>
+                  <rect x="7" y="7" width="66" height="82" fill="url(#pt-tile)" opacity=".35"/>
+                  <svg x="10" y="16" width="60" height="52" viewBox="-100 -165 590 380"><use href="#i-box-back" x="-100" y="-165" width="590" height="380"/><use href="#i-box-front" x="-100" y="-165" width="590" height="380"/></svg>
+                  <text x="40" y="82" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="13" fill="#fff3e2">14¢</text>
+                </svg>
+                <svg class="postmark" viewBox="0 0 150 90" aria-hidden="true">
+                  <circle cx="45" cy="45" r="34" fill="none" stroke="#170f1f" stroke-width="2"/>
+                  <circle cx="45" cy="45" r="25" fill="none" stroke="#170f1f" stroke-width="1"/>
+                  <text x="45" y="42" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" fill="#170f1f">OCT</text>
+                  <text x="45" y="53" text-anchor="middle" font-family="Geist Mono, monospace" font-size="8" fill="#170f1f">2026</text>
+                  <path d="M84 30q8-6 16 0t16 0 16 0 16 0M84 45q8-6 16 0t16 0 16 0 16 0M84 60q8-6 16 0t16 0 16 0 16 0" fill="none" stroke="#170f1f" stroke-width="2"/>
+                </svg>
+                <p class="postcard__to"><span>To: you</span><span>your kitchen table</span><span>somewhere very snackable</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="tile-btn" type="button" aria-controls="postcard" aria-pressed="false">
+          <span class="tile-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 0 1 14-3l2 2M20 15a8 8 0 0 1-14 3l-2-2M20 4v4h-4M4 20v-4h4"/></svg></span>
+          <span class="tile-btn__label">Flip the postcard</span>
+        </button>
+      </div>
+
+      <div class="month__list">
+        <div class="section-head" data-reveal>
+          <p class="chip chip--ink">Issue 14 · October 2026</p>
+          <h2 id="month-title">This month: Mexico</h2>
+          <p class="section-lead">Six favourites from Mexico City's corner tiendas and market stalls, sorted loudest to quietest by our crunch-o-meter.</p>
+        </div>
+        <ul class="snacks">
+          <li class="snack" data-reveal style="--v:10">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-wheel"/></svg>
+            <div class="snack__text"><h3>Chicharrones de harina</h3><p>Puffed wheat wheels with lime and hot sauce. Eat over a plate.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="crunch__val">10/10 · deafening<span class="sr-only"> crunch</span></span></div>
+          </li>
+          <li class="snack" data-reveal style="--v:9">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-japo"/></svg>
+            <div class="snack__text"><h3>Cacahuates japoneses</h3><p>Peanuts in a crisp soy-glazed shell. Invented in Mexico City, despite the name.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="crunch__val">9/10 · loud<span class="sr-only"> crunch</span></span></div>
+          </li>
+          <li class="snack" data-reveal style="--v:8">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-bar"/></svg>
+            <div class="snack__text"><h3>Palanqueta</h3><p>Peanut brittle bar set in piloncillo, the dark cane sugar.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="crunch__val">8/10 · snappy<span class="sr-only"> crunch</span></span></div>
+          </li>
+          <li class="snack" data-reveal style="--v:6">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-seed"/></svg>
+            <div class="snack__text"><h3>Pepitas con chile y limón</h3><p>Toasted pumpkin seeds, chilli and lime. Dangerously handful-sized.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="crunch__val">6/10 · polite<span class="sr-only"> crunch</span></span></div>
+          </li>
+          <li class="snack" data-reveal style="--v:3">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-wafer"/></svg>
+            <div class="snack__text"><h3>Obleas con cajeta</h3><p>Paper-thin wafers sandwiching goat's milk caramel.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="crunch__val">3/10 · whisper<span class="sr-only"> crunch</span></span></div>
+          </li>
+          <li class="snack" data-reveal style="--v:1">
+            <svg class="snack__icon" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-mazapan"/></svg>
+            <div class="snack__text"><h3>Mazapán de cacahuate</h3><p>Pressed peanut candy that crumbles if you look at it. Unwrap with care.</p></div>
+            <div class="crunch"><span class="crunch__bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="crunch__val">1/10 · silent<span class="sr-only"> crunch</span></span></div>
+          </li>
+        </ul>
+        <div class="month__cta" data-reveal>
+          <a class="cta" href="#plans">
+            <span class="cta__peek" aria-hidden="true"><svg viewBox="0 0 120 130"><use href="#i-mascot"/></svg></span>
+            <span class="cta__label"><span class="roll" data-text="Get the Mexico box">Get the Mexico box</span></span>
+            <span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <p class="month__small">Order by October 25. Every box has full ingredient lists in English.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Pricing -->
+    <section class="plans field field--tomato field--crimp" id="plans" aria-labelledby="plans-title">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="chip chip--ink">Plans</p>
+        <h2 id="plans-title">Pick your appetite.</h2>
+        <fieldset class="toggle">
+          <legend class="sr-only">Billing</legend>
+          <label><input type="radio" name="billing" value="month" checked><span>Pay monthly</span></label>
+          <label><input type="radio" name="billing" value="six"><span>Every 6 months <em>save ~10%</em></span></label>
+        </fieldset>
+      </div>
+      <div class="tiers">
+        <article class="tier" data-reveal>
+          <h3>Nibbler</h3>
+          <p class="tier__blurb">A first taste for one.</p>
+          <p class="tier__price"><span class="tier__cur">$</span><span class="tier__num" data-month="24" data-six="22">24</span><span class="tier__per">/ box</span></p>
+          <p class="tier__bill" data-month="Billed monthly" data-six="Billed $132 every 6 months">Billed monthly</p>
+          <ul class="ticks">
+            <li>8 snacks from one country</li>
+            <li>Tasting-notes zine</li>
+            <li>Free shipping</li>
+            <li>Skip or cancel anytime</li>
+          </ul>
+          <a class="cta cta--block" href="#plans"><span class="cta__label"><span class="roll" data-text="Start nibbling">Start nibbling</span></span><span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
+        </article>
+        <article class="tier tier--pick" data-reveal>
+          <p class="sticker" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M60 2l9 13 15-6 3 16 16 1-4 16 14 8-10 13 10 13-14 8 4 16-16 1-3 16-15-6-9 13-9-13-15 6-3-16-16-1 4-16-14-8 10-13L4 46l14-8-4-16 16-1 3-16 15 6Z"/></svg><span>Most<br>crunched!</span></p>
+          <h3>Explorer <span class="sr-only">(most popular)</span></h3>
+          <p class="tier__blurb">The full trip, plus a drink.</p>
+          <p class="tier__price"><span class="tier__cur">$</span><span class="tier__num" data-month="36" data-six="33">36</span><span class="tier__per">/ box</span></p>
+          <p class="tier__bill" data-month="Billed monthly" data-six="Billed $198 every 6 months">Billed monthly</p>
+          <ul class="ticks">
+            <li>14 snacks, sweet to spicy</li>
+            <li>1 drink from the same country</li>
+            <li>Zine and snack rating card</li>
+            <li>Free shipping</li>
+            <li>Skip or cancel anytime</li>
+          </ul>
+          <a class="cta cta--block" href="#plans"><span class="cta__label"><span class="roll" data-text="Start exploring">Start exploring</span></span><span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
+        </article>
+        <article class="tier" data-reveal>
+          <h3>Feast</h3>
+          <p class="tier__blurb">For sharing. Or not.</p>
+          <p class="tier__price"><span class="tier__cur">$</span><span class="tier__num" data-month="58" data-six="53">58</span><span class="tier__per">/ box</span></p>
+          <p class="tier__bill" data-month="Billed monthly" data-six="Billed $318 every 6 months">Billed monthly</p>
+          <ul class="ticks">
+            <li>24 snacks, sharing sizes</li>
+            <li>2 drinks</li>
+            <li>A bag of mystery minis</li>
+            <li>Free shipping</li>
+            <li>Skip or cancel anytime</li>
+          </ul>
+          <a class="cta cta--block" href="#plans"><span class="cta__label"><span class="roll" data-text="Start the feast">Start the feast</span></span><span class="cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
+        </article>
+      </div>
+      <p class="plans__note" data-reveal>Prices in US dollars. We ship to the US and Canada. Boxes go out in the last week of each month.</p>
+    </section>
+
+    <!-- 6 · FAQ -->
+    <section class="faq field field--cream field--crimp" id="faq" aria-labelledby="faq-title">
+      <div class="faq__side" data-reveal>
+        <p class="chip chip--ink">FAQ</p>
+        <h2 id="faq-title">Questions, answered with our mouths full.</h2>
+        <svg class="faq__mascot" viewBox="0 0 120 130" aria-hidden="true"><use href="#i-mascot"/></svg>
+      </div>
+      <div class="faq__list">
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa1" id="qa1-q"><span>What's actually in the box?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa1" role="region" aria-labelledby="qa1-q"><div><p>Between 8 and 24 snacks depending on your plan, all from the same country, plus a short zine that says what each one is, where it's from and how to eat it. (Some need lime.)</p></div></div>
+        </div>
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa2" id="qa2-q"><span>I have allergies. Is this a terrible idea?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa2" role="region" aria-labelledby="qa2-q"><div><p>Not at all. Tell us when you sign up and we'll swap anything with nuts, gluten, dairy or sesame for something safe from the same country. Every snack comes with a full ingredient list in English.</p></div></div>
+        </div>
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa3" id="qa3-q"><span>Can I skip a month, or stop?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa3" role="region" aria-labelledby="qa3-q"><div><p>Yes, and yes. Skip or cancel from your account any time before the 20th of the month. Two clicks, no phone calls, no guilt trip.</p></div></div>
+        </div>
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa4" id="qa4-q"><span>Do you ship outside the US and Canada?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa4" role="region" aria-labelledby="qa4-q"><div><p>Not yet. We're working on it, starting with the UK next spring. Join the newsletter and you'll hear first.</p></div></div>
+        </div>
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa5" id="qa5-q"><span>Which country is next?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa5" role="region" aria-labelledby="qa5-q"><div><p>It's a secret until the box ships. Subscribers get a hint on the 1st. (It's somewhere with excellent seaweed.)</p></div></div>
+        </div>
+        <div class="qa">
+          <h3><button type="button" aria-expanded="false" aria-controls="qa6" id="qa6-q"><span>Can I send a box as a gift?</span><i class="plus" aria-hidden="true"></i></button></h3>
+          <div class="qa__a" id="qa6" role="region" aria-labelledby="qa6-q"><div><p>Of course. Pick one box or three, add a note, and we'll post it in plain packaging so the surprise survives the doorstep.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7 · Footer -->
+  <footer class="footer">
+      <div class="footer__top">
+        <form class="news" novalidate>
+          <h2 class="news__title">Get a postcard from the snack road.</h2>
+          <p>One email a month: next country's hint, a recipe, zero spam.</p>
+          <div class="news__row">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <button class="news__btn" type="submit"><span class="roll" data-text="Sign me up">Sign me up</span></button>
+          </div>
+          <p class="news__msg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="footer__links">
+          <ul class="social" aria-label="Social">
+            <li><a href="#top" aria-label="Instagram (concept link)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6"/></svg></a></li>
+            <li><a href="#top" aria-label="TikTok (concept link)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.4 2.6 2.2 4.2 5 4.4"/></svg></a></li>
+            <li><a href="#top" aria-label="YouTube (concept link)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10.5 9.5 4 2.5-4 2.5Z"/></svg></a></li>
+          </ul>
+          <ul class="footer__nav">
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#faq">Allergens</a></li>
+            <li><a href="#faq">Gift a box</a></li>
+            <li><a href="#faq">Shipping</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__logo">
+        <svg class="footer__mascot" viewBox="0 0 120 130" aria-hidden="true"><use href="#i-mascot"/></svg>
+        <p aria-hidden="true">Snack Atlas</p>
+      </div>
+      <div class="footer__legal">
+        <p>Snack Atlas is a fictional company created as a website concept by [Studio name]. No snacks are sold or shipped. Plans, prices, products and allergen details on this page are illustrative.</p>
+        <p class="footer__meta"><span>© 2026 Snack Atlas</span><a class="link" href="#top">Back to top</a></p>
+      </div>
+  </footer>
+
+  <script src="main.js?v=4" defer></script>
+</body>
+</html>

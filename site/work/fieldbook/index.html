@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fieldbook Type · Independent type foundry, Ghent</title>
+  <meta name="description" content="Fieldbook Type is a fictional independent type foundry: eight families, a live type tester and plain, perpetual licences. A brutalist, ledger-style website concept.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Fieldbook Type · Independent type foundry">
+  <meta property="og:description" content="A brutalist, ledger-style website concept for a fictional type foundry.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Newsreader:opsz,wght@6..72,200..800&family=Space+Grotesk:wght@300..700&display=swap">
+  <link rel="stylesheet" href="style.css?v=17">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try { if (localStorage.getItem('fieldbook-theme') === 'dark') d.setAttribute('data-theme', 'dark'); } catch (e) {}
+    })();
+  </script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="head">
+    <a class="head__mark" href="#top">Fieldbook Type</a>
+    <button class="head__menu wipe" type="button" aria-expanded="false" aria-controls="primary-nav">[ Index + ]</button>
+    <nav class="head__nav" id="primary-nav" aria-label="Primary">
+      <ul class="index-nav">
+        <li><a class="wipe" href="#specimens">(01) Specimens</a></li>
+        <li><a class="wipe" href="#families">(02) Families</a></li>
+        <li><a class="wipe" href="#tester">(03) Tester</a></li>
+        <li><a class="wipe" href="#licensing">(04) Licensing</a></li>
+        <li><a class="wipe" href="#letters">(05) Letters</a></li>
+      </ul>
+    </nav>
+    <div class="head__theme" role="group" aria-label="Colour theme">
+      <button class="wipe" type="button" data-theme-set="light" aria-pressed="true">Paper</button><span aria-hidden="true">/</span><button class="wipe" type="button" data-theme-set="dark" aria-pressed="false">Ink</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- The Plot: the typeface is the instrument. Always visible, even before fonts or JS. -->
+    <section class="plot" id="plot" aria-labelledby="plot-title">
+      <div class="plot__field">
+        <div class="plot__top"><p>(00) The Plot<br><span>Traverse / variable grotesk</span></p><p class="plot__readout">wght <output id="plot-weight-out">400</output> · wdth <output id="plot-width-out">100</output></p></div>
+        <div class="ruler ruler--x" aria-hidden="true"><span>062</span><span>WIDTH →</span><span>125</span></div>
+        <div class="ruler ruler--y" aria-hidden="true"><span>100</span><span>WEIGHT →</span><span>900</span></div>
+        <svg class="plot__traverse" aria-hidden="true"><polyline points=""/><g></g></svg>
+        <h1 class="plot__title" id="plot-title" aria-label="Fieldbook"><svg aria-hidden="true"><text x="0" y="58%">FIELDBOOK</text></svg></h1>
+        <div class="metric" aria-hidden="true" data-metric="ascender" style="--line-y:34%"><span data-name="Ascender">Ascender <b>220</b> px</span></div>
+        <div class="metric" aria-hidden="true" data-metric="cap" style="--line-y:36%"><span data-name="Cap height">Cap height <b>200</b> px</span></div>
+        <div class="metric" aria-hidden="true" data-metric="x" style="--line-y:42%"><span data-name="x-height">x-height <b>145</b> px</span></div>
+        <div class="metric metric--baseline" aria-hidden="true" data-metric="baseline" style="--line-y:58%"><span data-name="Baseline">Baseline <b>0</b> px</span></div>
+        <div class="metric" aria-hidden="true" data-metric="descender" style="--line-y:64%"><span data-name="Descender">Descender <b>50</b> px</span></div>
+        <div class="crosshair" aria-hidden="true"><i></i><i></i><span>01</span></div>
+        <div class="plot__annotation"><p>Letters, measured in the field.</p><p class="plot__instruction">Move to draw a different cut.<br>X = width · Y = weight</p><button type="button" class="plot__pause wipe" aria-pressed="false">[ Pause plot ]</button></div>
+        <div class="plot__bottom">
+          <p>Independent type from a former seed store in Ghent.<br> Drawn slowly. Tested in public. Yours to set.</p>
+          <dl class="plot__facts"><div><dt>Families</dt><dd>08</dd></div><div><dt>Styles</dt><dd>96</dd></div><div><dt>On the desk</dt><dd>03</dd></div></dl>
+        </div>
+      </div>
+      <div class="plot__axes">
+        <label for="plot-weight">Weight <input id="plot-weight" type="range" min="100" max="900" step="25" value="400"></label>
+        <label for="plot-width">Width <input id="plot-width" type="range" min="62" max="125" step="0.1" value="100" aria-valuetext="100 width units"></label>
+      </div>
+    </section>
+
+    <!-- 01 Specimens: the one rich element -->
+    <section class="section section--tight specimens" id="specimens" aria-labelledby="spec-title">
+      <div class="band band--stage">
+        <h2 class="band__title" id="spec-title"><span class="band__no">(01)</span> Specimens</h2>
+        <div class="clist formations" role="group" aria-label="Formation">
+          <button type="button" class="wipe" data-formation="ring" aria-pressed="true">Ring</button>
+          <button type="button" class="wipe" data-formation="grid" aria-pressed="false">Grid</button>
+          <button type="button" class="wipe" data-formation="spiral" aria-pressed="false">Spiral</button>
+          <button type="button" class="wipe" data-formation="scatter" aria-pressed="false">Scatter</button>
+        </div>
+        <p class="band__meta"><button type="button" class="stage__pause" aria-pressed="false">Pause</button><span class="band__count">24 cuts from 8 families</span></p>
+      </div>
+      <div class="stage" data-formation="ring">
+        <p class="sr-only" id="cloud-help">Use the arrow keys to move between specimens. Press Enter to open a family in the tester.</p>
+        <ul class="cloud" aria-describedby="cloud-help">
+          <li class="card" data-family="traverse">
+            <a class="card__btn" href="#tester" data-family="traverse" draggable="false" aria-label="Traverse, Wide Black">
+              <span class="card__face">
+                <span class="card__row"><span>(01)</span><span>Traverse</span></span>
+                <span class="card__glyph card__glyph--2 ff-traverse" style="font-stretch:125%;font-weight:900">Rg</span>
+                <span class="card__row"><span>Wide Black</span><span>900</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(01)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="hedgerow">
+            <a class="card__btn" href="#tester" data-family="hedgerow" draggable="false" aria-label="Hedgerow, Soft Black">
+              <span class="card__face">
+                <span class="card__row"><span>(02)</span><span>Hedgerow</span></span>
+                <span class="card__glyph ff-hedgerow" style="font-weight:900;font-variation-settings:'SOFT' 100">a</span>
+                <span class="card__row"><span>Soft Black</span><span>900</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(02)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="backsight">
+            <a class="card__btn" href="#tester" data-family="backsight" draggable="false" aria-label="Backsight, Bold">
+              <span class="card__face">
+                <span class="card__row"><span>(03)</span><span>Backsight</span></span>
+                <span class="card__glyph ff-backsight" style="font-weight:700">G</span>
+                <span class="card__row"><span>Bold</span><span>700</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(03)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="scholia">
+            <a class="card__btn" href="#tester" data-family="scholia" draggable="false" aria-label="Scholia, Italic">
+              <span class="card__face">
+                <span class="card__row"><span>(04)</span><span>Scholia</span></span>
+                <span class="card__glyph ff-scholia" style="font-style:italic">&amp;</span>
+                <span class="card__row"><span>Italic</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(04)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="offcut">
+            <a class="card__btn" href="#tester" data-family="offcut" draggable="false" aria-label="Offcut, Condensed ExtraBold">
+              <span class="card__face">
+                <span class="card__row"><span>(05)</span><span>Offcut</span></span>
+                <span class="card__glyph ff-offcut" style="font-stretch:75%;font-weight:800">e</span>
+                <span class="card__row"><span>Cond. ExtraBold</span><span>800</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(05)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="chainline">
+            <a class="card__btn" href="#tester" data-family="chainline" draggable="false" aria-label="Chainline Mono, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(06)</span><span>Chainline Mono</span></span>
+                <span class="card__glyph card__glyph--2 ff-chainline" style="font-weight:400">{}</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(06)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="almanac">
+            <a class="card__btn" href="#tester" data-family="almanac" draggable="false" aria-label="Almanac, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(07)</span><span>Almanac</span></span>
+                <span class="card__glyph card__glyph--2 ff-almanac" style="font-weight:400">Th</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(07)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="fencepost">
+            <a class="card__btn" href="#tester" data-family="fencepost" draggable="false" aria-label="Fencepost, Black">
+              <span class="card__face">
+                <span class="card__row"><span>(08)</span><span>Fencepost</span></span>
+                <span class="card__glyph ff-fencepost" style="font-weight:900">M</span>
+                <span class="card__row"><span>Black</span><span>900</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(08)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="traverse">
+            <a class="card__btn" href="#tester" data-family="traverse" draggable="false" aria-label="Traverse, Condensed Thin">
+              <span class="card__face">
+                <span class="card__row"><span>(09)</span><span>Traverse</span></span>
+                <span class="card__glyph ff-traverse" style="font-stretch:62%;font-weight:100">&amp;</span>
+                <span class="card__row"><span>Condensed Thin</span><span>100</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(09)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="hedgerow">
+            <a class="card__btn" href="#tester" data-family="hedgerow" draggable="false" aria-label="Hedgerow, Soft Light">
+              <span class="card__face">
+                <span class="card__row"><span>(10)</span><span>Hedgerow</span></span>
+                <span class="card__glyph ff-hedgerow" style="font-weight:300;font-variation-settings:'SOFT' 50">g</span>
+                <span class="card__row"><span>Soft Light</span><span>300</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(10)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="backsight">
+            <a class="card__btn" href="#tester" data-family="backsight" draggable="false" aria-label="Backsight, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(11)</span><span>Backsight</span></span>
+                <span class="card__glyph card__glyph--2 ff-backsight" style="font-weight:400">fy</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(11)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="scholia">
+            <a class="card__btn" href="#tester" data-family="scholia" draggable="false" aria-label="Scholia, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(12)</span><span>Scholia</span></span>
+                <span class="card__glyph ff-scholia">Æ</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(12)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="offcut">
+            <a class="card__btn" href="#tester" data-family="offcut" draggable="false" aria-label="Offcut, ExtraLight">
+              <span class="card__face">
+                <span class="card__row"><span>(13)</span><span>Offcut</span></span>
+                <span class="card__glyph card__glyph--2 ff-offcut" style="font-weight:200">Ag</span>
+                <span class="card__row"><span>ExtraLight</span><span>200</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(13)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="chainline">
+            <a class="card__btn" href="#tester" data-family="chainline" draggable="false" aria-label="Chainline Mono, Wide Thin">
+              <span class="card__face">
+                <span class="card__row"><span>(14)</span><span>Chainline Mono</span></span>
+                <span class="card__glyph ff-chainline" style="font-stretch:112.5%;font-weight:100">0</span>
+                <span class="card__row"><span>Wide Thin</span><span>100</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(14)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="almanac">
+            <a class="card__btn" href="#tester" data-family="almanac" draggable="false" aria-label="Almanac, ExtraLight">
+              <span class="card__face">
+                <span class="card__row"><span>(15)</span><span>Almanac</span></span>
+                <span class="card__glyph ff-almanac" style="font-weight:200">k</span>
+                <span class="card__row"><span>ExtraLight</span><span>200</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(15)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="fencepost">
+            <a class="card__btn" href="#tester" data-family="fencepost" draggable="false" aria-label="Fencepost, Thin">
+              <span class="card__face">
+                <span class="card__row"><span>(16)</span><span>Fencepost</span></span>
+                <span class="card__glyph card__glyph--2 ff-fencepost" style="font-weight:100">17</span>
+                <span class="card__row"><span>Thin</span><span>100</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(16)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="traverse">
+            <a class="card__btn" href="#tester" data-family="traverse" draggable="false" aria-label="Traverse, SemiBold">
+              <span class="card__face">
+                <span class="card__row"><span>(17)</span><span>Traverse</span></span>
+                <span class="card__glyph ff-traverse" style="font-weight:600">Q</span>
+                <span class="card__row"><span>SemiBold</span><span>600</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(17)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="hedgerow">
+            <a class="card__btn" href="#tester" data-family="hedgerow" draggable="false" aria-label="Hedgerow, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(18)</span><span>Hedgerow</span></span>
+                <span class="card__glyph ff-hedgerow" style="font-weight:400">R</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(18)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="backsight">
+            <a class="card__btn" href="#tester" data-family="backsight" draggable="false" aria-label="Backsight, Light">
+              <span class="card__face">
+                <span class="card__row"><span>(19)</span><span>Backsight</span></span>
+                <span class="card__glyph ff-backsight" style="font-weight:300">3</span>
+                <span class="card__row"><span>Light</span><span>300</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(19)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="scholia">
+            <a class="card__btn" href="#tester" data-family="scholia" draggable="false" aria-label="Scholia, Regular">
+              <span class="card__face">
+                <span class="card__row"><span>(20)</span><span>Scholia</span></span>
+                <span class="card__glyph card__glyph--2 ff-scholia">Qu</span>
+                <span class="card__row"><span>Regular</span><span>400</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(20)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="offcut">
+            <a class="card__btn" href="#tester" data-family="offcut" draggable="false" aria-label="Offcut, Bold">
+              <span class="card__face">
+                <span class="card__row"><span>(21)</span><span>Offcut</span></span>
+                <span class="card__glyph ff-offcut" style="font-weight:700">?</span>
+                <span class="card__row"><span>Bold</span><span>700</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(21)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="chainline">
+            <a class="card__btn" href="#tester" data-family="chainline" draggable="false" aria-label="Chainline Mono, Condensed ExtraBold">
+              <span class="card__face">
+                <span class="card__row"><span>(22)</span><span>Chainline Mono</span></span>
+                <span class="card__glyph ff-chainline" style="font-stretch:75%;font-weight:800">#</span>
+                <span class="card__row"><span>Cond. ExtraBold</span><span>800</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(22)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="almanac">
+            <a class="card__btn" href="#tester" data-family="almanac" draggable="false" aria-label="Almanac, SemiBold">
+              <span class="card__face">
+                <span class="card__row"><span>(23)</span><span>Almanac</span></span>
+                <span class="card__glyph ff-almanac" style="font-weight:600">ß</span>
+                <span class="card__row"><span>SemiBold</span><span>600</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(23)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+          <li class="card" data-family="fencepost">
+            <a class="card__btn" href="#tester" data-family="fencepost" draggable="false" aria-label="Fencepost, Medium">
+              <span class="card__face">
+                <span class="card__row"><span>(24)</span><span>Fencepost</span></span>
+                <span class="card__glyph ff-fencepost" style="font-weight:500">W</span>
+                <span class="card__row"><span>Medium</span><span>500</span></span>
+              </span>
+              <span class="card__back" aria-hidden="true"><span>(24)</span><span>Fieldbook</span></span>
+            </a>
+          </li>
+        </ul>
+        <p class="stage__corner stage__corner--bl" aria-hidden="true"><span class="hint-fine">Drag to turn</span><span class="hint-touch">Swipe to turn</span> · pick a card to test it</p>
+        <p class="stage__corner stage__corner--br" aria-hidden="true">Fig. 1 <span class="stage__fig">Ring</span>, 24 / 24</p>
+      </div>
+    </section>
+
+    <!-- 02 Families ledger -->
+    <section class="section families" id="families" aria-labelledby="fam-title">
+      <div class="band">
+        <p class="band__title"><span class="band__no">(02)</span> Families</p>
+        <p class="band__meta">96 styles · 16 variable axes · priced per style</p>
+      </div>
+      <h2 class="mega" id="fam-title"><span class="mega__line"><span>Eight</span></span> <span class="mega__line mega__line--off"><span>families</span></span></h2>
+      <div class="ledger-wrap">
+        <table class="ledger">
+          <caption class="sr-only">Fieldbook families with their styles, variable axes and starting price per style</caption>
+          <colgroup><col class="c-no"><col class="c-fam"><col class="c-sample"><col class="c-styles"><col class="c-axes"><col class="c-from"><col class="c-act"></colgroup>
+          <thead>
+            <tr><th scope="col">No.</th><th scope="col">Family</th><th scope="col" class="ledger__sample-h">Sample</th><th scope="col">Styles</th><th scope="col" class="ledger__axes-h">Axes</th><th scope="col">From</th><th scope="col"><span class="sr-only">Tester</span></th></tr>
+          </thead>
+          <tbody>
+            <tr data-family="traverse">
+              <td>01</td>
+              <th scope="row"><span class="ledger__name ff-traverse">Traverse</span><span class="ledger__sub">Grotesk · 2019</span><span class="ledger__m-axes">wght 100–900 · wdth 62–125</span></th>
+              <td class="ledger__sample ff-traverse" aria-hidden="true">Survey 1:2500</td>
+              <td>18</td>
+              <td class="ledger__axes">wght 100–900<br>wdth 62–125</td>
+              <td>€40</td>
+              <td class="ledger__act"><a href="#tester" data-family="traverse" draggable="false">Test<span class="sr-only"> Traverse</span> →</a></td>
+            </tr>
+            <tr data-family="hedgerow">
+              <td>02</td>
+              <th scope="row"><span class="ledger__name ff-hedgerow">Hedgerow</span><span class="ledger__sub">Soft serif · 2020</span><span class="ledger__m-axes">wght 100–900 · opsz 9–144 · SOFT 0–100 · WONK 0–1</span></th>
+              <td class="ledger__sample ff-hedgerow" aria-hidden="true">Hawthorn &amp; sloe</td>
+              <td>18</td>
+              <td class="ledger__axes">wght 100–900<br>opsz 9–144<br>SOFT 0–100<br>WONK 0–1</td>
+              <td>€40</td>
+              <td class="ledger__act"><a href="#tester" data-family="hedgerow" draggable="false">Test<span class="sr-only"> Hedgerow</span> →</a></td>
+            </tr>
+            <tr data-family="backsight">
+              <td>03</td>
+              <th scope="row"><span class="ledger__name ff-backsight">Backsight</span><span class="ledger__sub">Geometric grotesk · 2021</span><span class="ledger__m-axes">wght 300–700</span></th>
+              <td class="ledger__sample ff-backsight" aria-hidden="true">Bearing 042°</td>
+              <td>5</td>
+              <td class="ledger__axes">wght 300–700</td>
+              <td>€35</td>
+              <td class="ledger__act"><a href="#tester" data-family="backsight" draggable="false">Test<span class="sr-only"> Backsight</span> →</a></td>
+            </tr>
+            <tr data-family="scholia">
+              <td>04</td>
+              <th scope="row"><span class="ledger__name ff-scholia">Scholia</span><span class="ledger__sub">Display serif · 2021</span><span class="ledger__m-axes">Static · roman and italic</span></th>
+              <td class="ledger__sample ff-scholia" aria-hidden="true">Marginalia, <i>in pencil</i></td>
+              <td>2</td>
+              <td class="ledger__axes">Static<br>roman, italic</td>
+              <td>€35</td>
+              <td class="ledger__act"><a href="#tester" data-family="scholia" draggable="false">Test<span class="sr-only"> Scholia</span> →</a></td>
+            </tr>
+            <tr data-family="offcut">
+              <td>05</td>
+              <th scope="row"><span class="ledger__name ff-offcut">Offcut</span><span class="ledger__sub">Grotesque · 2023</span><span class="ledger__m-axes">wght 200–800 · wdth 75–100 · opsz 12–96</span></th>
+              <td class="ledger__sample ff-offcut" aria-hidden="true">Odds &amp; ends</td>
+              <td>14</td>
+              <td class="ledger__axes">wght 200–800<br>wdth 75–100<br>opsz 12–96</td>
+              <td>€40</td>
+              <td class="ledger__act"><a href="#tester" data-family="offcut" draggable="false">Test<span class="sr-only"> Offcut</span> →</a></td>
+            </tr>
+            <tr data-family="chainline">
+              <td>06</td>
+              <th scope="row"><span class="ledger__name ff-chainline">Chainline Mono</span><span class="ledger__sub">Monospace · 2022</span><span class="ledger__m-axes">wght 100–800 · wdth 75–112.5</span></th>
+              <td class="ledger__sample ff-chainline" aria-hidden="true">1 chain = 22 yd</td>
+              <td>16</td>
+              <td class="ledger__axes">wght 100–800<br>wdth 75–112.5</td>
+              <td>€40</td>
+              <td class="ledger__act"><a href="#tester" data-family="chainline" draggable="false">Test<span class="sr-only"> Chainline Mono</span> →</a></td>
+            </tr>
+            <tr data-family="almanac">
+              <td>07</td>
+              <th scope="row"><span class="ledger__name ff-almanac">Almanac</span><span class="ledger__sub">Text serif · 2024</span><span class="ledger__m-axes">wght 200–800 · opsz 6–72</span></th>
+              <td class="ledger__sample ff-almanac" aria-hidden="true">Sunrise, 07:58</td>
+              <td>14</td>
+              <td class="ledger__axes">wght 200–800<br>opsz 6–72</td>
+              <td>€45</td>
+              <td class="ledger__act"><a href="#tester" data-family="almanac" draggable="false">Test<span class="sr-only"> Almanac</span> →</a></td>
+            </tr>
+            <tr data-family="fencepost">
+              <td>08</td>
+              <th scope="row"><span class="ledger__name ff-fencepost">Fencepost</span><span class="ledger__sub">Condensed sans · 2025</span><span class="ledger__m-axes">wght 100–900 · opsz 10–72</span></th>
+              <td class="ledger__sample ff-fencepost" aria-hidden="true">FENCE LINE 17</td>
+              <td>9</td>
+              <td class="ledger__axes">wght 100–900<br>opsz 10–72</td>
+              <td>€30</td>
+              <td class="ledger__act"><a href="#tester" data-family="fencepost" draggable="false">Test<span class="sr-only"> Fencepost</span> →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 Type tester -->
+    <section class="section tester" id="tester" aria-labelledby="tester-title">
+      <div class="band">
+        <p class="band__title"><span class="band__no">(03)</span> Tester</p>
+        <p class="band__meta">Type anything. Nothing leaves this page.</p>
+      </div>
+      <h2 class="mega" id="tester-title">Set it yourself</h2>
+      <div class="tester__controls">
+        <label class="field field--text" for="tt-text">
+          <span class="field__label">Text</span>
+          <input id="tt-text" type="text" value="Rain at 6:40, the heron came back" maxlength="140" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="field field--range" for="tt-size">
+          <span class="field__label">Specimen size <output id="tt-size-out" for="tt-size">180</output> px</span>
+          <input id="tt-size" type="range" min="12" max="260" step="1" value="180">
+        </label>
+        <label class="field field--range" for="tt-wght">
+          <span class="field__label">Weight <output id="tt-wght-out" for="tt-wght">400</output></span>
+          <input id="tt-wght" type="range" min="100" max="900" step="1" value="400">
+        </label>
+        <button type="button" class="tester__reset">[ Reset ]</button>
+      </div>
+      <p class="sr-only" role="status" id="tt-status"></p>
+      <ol class="tester__list">
+        <li class="tline is-featured" data-family="traverse" data-wmin="100" data-wmax="900">
+          <p class="tline__meta"><span class="tline__no">01</span><span class="tline__name">Traverse</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-traverse" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="hedgerow" data-wmin="100" data-wmax="900">
+          <p class="tline__meta"><span class="tline__no">02</span><span class="tline__name">Hedgerow</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-hedgerow" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="backsight" data-wmin="300" data-wmax="700">
+          <p class="tline__meta"><span class="tline__no">03</span><span class="tline__name">Backsight</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-backsight" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="scholia" data-wmin="400" data-wmax="400">
+          <p class="tline__meta"><span class="tline__no">04</span><span class="tline__name">Scholia</span><span class="tline__w">400 only</span></p>
+          <p class="tline__text ff-scholia" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="offcut" data-wmin="200" data-wmax="800">
+          <p class="tline__meta"><span class="tline__no">05</span><span class="tline__name">Offcut</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-offcut" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="chainline" data-wmin="100" data-wmax="800">
+          <p class="tline__meta"><span class="tline__no">06</span><span class="tline__name">Chainline Mono</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-chainline" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="almanac" data-wmin="200" data-wmax="800">
+          <p class="tline__meta"><span class="tline__no">07</span><span class="tline__name">Almanac</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-almanac" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+        <li class="tline" data-family="fencepost" data-wmin="100" data-wmax="900">
+          <p class="tline__meta"><span class="tline__no">08</span><span class="tline__name">Fencepost</span><span class="tline__w">wght 400</span></p>
+          <p class="tline__text ff-fencepost" aria-hidden="true">Rain at 6:40, the heron came back</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 04 Licensing -->
+    <section class="section licensing" id="licensing" aria-labelledby="lic-title">
+      <div class="band">
+        <p class="band__title"><span class="band__no">(04)</span> Licensing</p>
+        <p class="band__meta">Perpetual · per style · no subscriptions</p>
+      </div>
+      <h2 class="mega" id="lic-title"><span class="mega__line"><span>Plain</span></span> <span class="mega__line mega__line--off"><span>licences</span></span></h2>
+      <p class="licensing__hero"><span>One style.<br>A lifetime of use.</span><span class="licensing__number"><small>from</small> €30</span></p>
+      <div class="lic">
+        <div class="lic__labels" aria-hidden="true">
+          <span class="lic__corner">Licence</span>
+          <span>For</span>
+          <span>Included</span>
+          <span>Single style</span>
+          <span>Full family</span>
+          <span>Whole library</span>
+          <span>Going bigger</span>
+        </div>
+        <article class="lic__col" aria-labelledby="lic-desktop">
+          <h3 class="lic__name" id="lic-desktop">Desktop</h3>
+          <dl class="lic__list">
+            <div><dt>For</dt><dd>Installing on computers: print, packaging, logos, video and slides</dd></div>
+            <div><dt>Included</dt><dd>Up to 5 users</dd></div>
+            <div><dt>Single style</dt><dd class="lic__price">from €30</dd></div>
+            <div><dt>Full family</dt><dd class="lic__price">from €60</dd></div>
+            <div><dt>Whole library</dt><dd class="lic__price">€1,400</dd></div>
+            <div><dt>Going bigger</dt><dd>+€30 for every 5 users</dd></div>
+          </dl>
+        </article>
+        <article class="lic__col" aria-labelledby="lic-web">
+          <h3 class="lic__name" id="lic-web">Web</h3>
+          <dl class="lic__list">
+            <div><dt>For</dt><dd>Self-hosting with @font-face on one domain and its subdomains</dd></div>
+            <div><dt>Included</dt><dd>Up to 100,000 views a month</dd></div>
+            <div><dt>Single style</dt><dd class="lic__price">from €30</dd></div>
+            <div><dt>Full family</dt><dd class="lic__price">from €60</dd></div>
+            <div><dt>Whole library</dt><dd class="lic__price">€1,400</dd></div>
+            <div><dt>Going bigger</dt><dd>+€30 for every 100,000 views</dd></div>
+          </dl>
+        </article>
+        <article class="lic__col" aria-labelledby="lic-app">
+          <h3 class="lic__name" id="lic-app">App</h3>
+          <dl class="lic__list">
+            <div><dt>For</dt><dd>Embedding in one iOS, Android or desktop app, any number of installs</dd></div>
+            <div><dt>Included</dt><dd>1 app, every platform it ships on</dd></div>
+            <div><dt>Single style</dt><dd class="lic__price">from €90</dd></div>
+            <div><dt>Full family</dt><dd class="lic__price">from €180</dd></div>
+            <div><dt>Whole library</dt><dd class="lic__price">€3,900</dd></div>
+            <div><dt>Going bigger</dt><dd>+€90 for each further app</dd></div>
+          </dl>
+        </article>
+      </div>
+      <div class="lic__notes">
+        <ol class="notes">
+          <li><span class="notes__k">(a)</span> Licences are perpetual. Buy once, keep the files and every update to that version.</li>
+          <li><span class="notes__k">(b)</span> Trial fonts are free and complete, for pitches, comps and student work.</li>
+          <li><span class="notes__k">(c)</span> Students, teachers and non-profits pay half. Tell us what you are making.</li>
+          <li><span class="notes__k">(d)</span> Broadcast, games, ePub or fonts inside a product you sell: we write those licences by hand.</li>
+        </ol>
+        <p class="lic__contact">
+          <a class="tl" href="mailto:licensing@fieldbook.example">licensing@fieldbook.example</a>
+          <button type="button" class="copy" data-copy="licensing@fieldbook.example">[ Copy ]</button>
+          <span class="sr-only" role="status" id="copy-status"></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 05 Newsletter -->
+    <section class="section letters" id="letters" aria-labelledby="letters-title">
+      <div class="band">
+        <p class="band__title"><span class="band__no">(05)</span> Letters</p>
+        <p class="band__meta">By email · drafts, releases, the odd sketch</p>
+      </div>
+      <h2 class="mega" id="letters-title"><span class="mega__line"><span>Four</span></span> <span class="mega__line mega__line--off"><span>letters</span></span> <span class="mega__line mega__line--off2"><span>a year</span></span></h2>
+      <form class="news" novalidate>
+        <div class="news__fields">
+          <label class="news__label" for="nl-email">Email address</label>
+          <div class="news__row">
+            <input id="nl-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="name@studio.example" aria-describedby="nl-hint nl-msg">
+            <button type="submit">[ Subscribe ]</button>
+          </div>
+          <p class="news__hint" id="nl-hint">One letter per season. No tracking pixels, no sales, unsubscribe in one click.</p>
+        </div>
+        <p class="news__msg" id="nl-msg" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__row">
+      <span>© 2026 Fieldbook Type</span>
+      <span>A website concept by [Studio name]</span>
+      <span class="foot__grid">Press G for the grid</span>
+      <a class="tl" href="#top">Back to top ↑</a>
+    </div>
+    <p class="foot__note">Fieldbook Type is a fictional company created as a website concept by [Studio name]. Its families, prices, licences and seed store are invented: nothing on this page is for sale, and the newsletter form sends nothing.</p>
+    <div class="foot__credits">
+      <h2 class="foot__h">Fonts on this page</h2>
+      <p>The fictional families are set in real open-source fonts from Google Fonts, used under the SIL Open Font License 1.1. Thank you to their designers.</p>
+      <ul class="credits">
+        <li><span>Traverse</span><span>Archivo by Omnibus-Type</span></li>
+        <li><span>Hedgerow</span><span>Fraunces by Undercase Type (Phaedra Charles, Flavia Zimbardi)</span></li>
+        <li><span>Backsight</span><span>Space Grotesk by Florian Karsten</span></li>
+        <li><span>Scholia</span><span>Instrument Serif by Rodrigo Fuenzalida and Jordan Egstad</span></li>
+        <li><span>Offcut</span><span>Bricolage Grotesque by Mathieu Triay</span></li>
+        <li><span>Chainline Mono</span><span>Martian Mono by Roman Shamin and Evil Martians</span></li>
+        <li><span>Almanac</span><span>Newsreader by Production Type</span></li>
+        <li><span>Fencepost</span><span>Big Shoulders by Patric King</span></li>
+        <li><span>Interface</span><span>Inter Tight by Rasmus Andersson</span></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="gridlines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <script src="main.js?v=15" defer></script>
+</body>
+</html>

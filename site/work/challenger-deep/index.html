@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>10,935 m · A descent into the Challenger Deep</title>
+  <meta name="description" content="Scroll from the surface of the western Pacific to the bottom of the Mariana Trench, about 10,935 metres down, through five zones of ocean and the 1960 Trieste dive. An editorial 3D website concept.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="10,935 m · A descent into the Challenger Deep">
+  <meta property="og:description" content="A scroll-driven 3D descent to the deepest known point of the ocean. An editorial website concept.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="style.css?v=34">
+  <script>document.documentElement.classList.add('js', 'at-surface')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Scene layers: backdrop colour (depth), WebGL canvas, HUD frame, the cracked pane, the exposure dip -->
+  <div class="backdrop" aria-hidden="true"><i class="backdrop__rays"></i></div>
+  <canvas class="scene" aria-hidden="true"></canvas>
+  <div class="exposure" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg class="crack" aria-hidden="true"></svg>
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="ripple" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.06" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <header class="top">
+    <a class="mark" href="#top" aria-label="10,935 m, back to the surface">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M12 1.5v13"/><path d="M9.2 14.5h5.6L12 19.6z"/></svg>
+      <span>10,935&nbsp;m</span>
+    </a>
+    <div class="top__tools">
+      <a class="pill mode-link" href="?3d=off" data-mode hidden><span class="mode__switch" aria-hidden="true"></span><span class="mode__text">3D on</span></a>
+      <button class="pill index-btn" type="button" aria-expanded="false" aria-controls="index">Index</button>
+    </div>
+  </header>
+
+  <nav class="scrubber" aria-label="Depth chapters">
+    <ol>
+      <li data-at="0"><a href="#sunlight"><span class="scrubber__d">0 m</span><span class="scrubber__n">Sunlight</span></a></li>
+      <li data-at="200"><a href="#twilight"><span class="scrubber__d">200 m</span><span class="scrubber__n">Twilight</span></a></li>
+      <li data-at="1000"><a href="#midnight"><span class="scrubber__d">1,000 m</span><span class="scrubber__n">Midnight</span></a></li>
+      <li data-at="4000"><a href="#abyss"><span class="scrubber__d">4,000 m</span><span class="scrubber__n">Abyss</span></a></li>
+      <li data-at="6000"><a href="#hadal"><span class="scrubber__d">6,000 m</span><span class="scrubber__n">Hadal</span></a></li>
+      <li data-at="8200"><a href="#fish-line"><span class="scrubber__d">8,200 m</span><span class="scrubber__n">Fish line</span></a></li>
+      <li data-at="9000"><a href="#trieste"><span class="scrubber__d">9,000 m</span><span class="scrubber__n">1960 dive</span></a></li>
+      <li data-at="10935"><a href="#bottom"><span class="scrubber__d">10,935 m</span><span class="scrubber__n">Bottom</span></a></li>
+    </ol>
+    <div class="scrubber__marker" aria-hidden="true"></div>
+  </nav>
+
+  <aside class="gauge" aria-label="Depth gauge">
+    <div class="gauge__head">
+      <p class="gauge__zone" data-hud="zone">At the surface</p>
+      <p class="gauge__sci" data-hud="sci">Western Pacific</p>
+    </div>
+    <p class="gauge__depth"><span data-hud="m">0</span><span class="gauge__unit">m</span></p>
+    <p class="gauge__ft"><span data-hud="ft">0</span> ft</p>
+    <dl class="gauge__rows">
+      <div><dt>Pressure</dt><dd><span data-hud="atm">1 atm</span><span class="gauge__psi" data-hud="psi">14.7 psi</span></dd></div>
+      <div><dt>Water</dt><dd data-hud="temp">≈ 27–29 °C</dd></div>
+      <div><dt>Sunlight</dt><dd><span class="gauge__bar" aria-hidden="true"><i data-hud="light"></i></span><span data-hud="light-label">full</span></dd></div>
+    </dl>
+  </aside>
+  <p class="visually-hidden" aria-live="polite" data-hud="live"></p>
+
+  <div class="index" id="index" role="dialog" aria-modal="true" aria-labelledby="index-title">
+    <button class="pill index__close" type="button">Close</button>
+    <div class="index__inner">
+      <p class="index__eyebrow" id="index-title">Index · nine stops on the way down</p>
+      <ol class="index__list">
+        <li><a href="#top"><span class="index__d">0 m</span><span class="index__n">The surface</span></a></li>
+        <li><a href="#sunlight"><span class="index__d">0–200 m</span><span class="index__n">Sunlight zone</span></a></li>
+        <li><a href="#twilight"><span class="index__d">200–1,000 m</span><span class="index__n">Twilight zone</span></a></li>
+        <li><a href="#midnight"><span class="index__d">1,000–4,000 m</span><span class="index__n">Midnight zone</span></a></li>
+        <li><a href="#abyss"><span class="index__d">4,000–6,000 m</span><span class="index__n">Abyss</span></a></li>
+        <li><a href="#hadal"><span class="index__d">6,000 m +</span><span class="index__n">Hadal zone</span></a></li>
+        <li><a href="#fish-line"><span class="index__d">≈ 8,200 m</span><span class="index__n">Where fish give out</span></a></li>
+        <li><a href="#trieste"><span class="index__d">≈ 9,000 m</span><span class="index__n">23 January 1960</span></a></li>
+        <li><a href="#bottom"><span class="index__d">≈ 10,935 m</span><span class="index__n">The bottom</span></a></li>
+      </ol>
+      <div class="index__about">
+        <h2 class="index__h">About this page</h2>
+        <p>An editorial concept. Your scroll moves the camera down; nothing is locked or hijacked, and every fact is also plain text on the page. Depths are rounded, and where surveys disagree the page says “about”.</p>
+        <p class="index__links"><a href="#sources">Sources</a><a href="?3d=off" data-mode data-off="View without 3D" data-on="View with 3D" hidden>View without 3D</a></p>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="title">
+      <div class="hero__sky" aria-hidden="true"></div>
+      <div class="hero__water" aria-hidden="true"></div>
+      <span class="title__mirror" aria-hidden="true">DEEP</span>
+      <h1 class="title" id="title">
+        <span class="title__kicker"><span class="title__num">10,935&nbsp;m</span><span class="visually-hidden">:</span> <span class="title__sub">A descent into the Challenger</span></span>
+        <span class="title__word"><span class="visually-hidden">Deep</span><span class="title__letters" aria-hidden="true"><i>D</i><i>E</i><i>E</i><i>P</i></span></span>
+      </h1>
+      <div class="horizon" aria-hidden="true">
+        <span class="horizon__tick horizon__tick--l"><b data-hud="tick">0 m</b> · sea level</span>
+        <span class="horizon__tick horizon__tick--r">11°22′ N · 142°35′ E</span>
+      </div>
+      <p class="visually-hidden">Location: 11 degrees 22 minutes north, 142 degrees 35 minutes east, in the western Pacific.</p>
+      <p class="hero__lead">The deepest place we know of lies at the southern end of the Mariana Trench, southwest of Guam. It is about 10,935 metres down. Scroll to sink there, one zone at a time.</p>
+      <a class="sounding" href="#sunlight">
+        <span class="sounding__line" aria-hidden="true"><i class="sounding__bob"></i></span>
+        <span class="sounding__label">Scroll to descend</span>
+      </a>
+    </section>
+
+    <div class="descent">
+      <section class="chapter chapter--first" id="sunlight" style="--from: var(--z-0); --to: var(--z-200)" aria-labelledby="sunlight-title">
+        <div class="chapter__ceiling" aria-hidden="true"></div>
+        <div class="anchor" data-depth="0"></div>
+        <article class="card card--wide">
+          <p class="card__meta"><span>01</span><span>0–200 m · 0–656 ft</span></p>
+          <h2 class="card__title" id="sunlight-title">Sunlight zone</h2>
+          <p class="card__sci">Epipelagic</p>
+          <p class="card__body">Water swallows sunlight colour by colour. Reds fade within the first few tens of metres, then yellows and greens, and blue reaches deepest. Nearly all of the ocean’s plant life grows up here, because below about 200 metres there is rarely enough light left to drive photosynthesis.</p>
+          <dl class="card__stat"><dt>Useful sunlight ends at about</dt><dd>200 m</dd></dl>
+        </article>
+      </section>
+
+      <section class="chapter" id="twilight" style="--from: var(--z-200); --to: var(--z-1000)" aria-labelledby="twilight-title">
+        <article class="card card--right card--narrow" data-depth="200">
+          <p class="card__meta"><span>02</span><span>200–1,000 m</span></p>
+          <h2 class="card__title" id="twilight-title">The light disappears</h2>
+          <p class="card__sci">Twilight zone · Mesopelagic</p>
+          <p class="card__body">A dim blue glow still reaches the twilight zone, far too faint for plants. Instruments can detect sunlight down to about 1,000 metres; past that line it is gone for good. Many animals that live here rise toward the surface at night to feed and sink back down before dawn.</p>
+          <dl class="card__stat"><dt>Last trace of sunlight</dt><dd>≈ 1,000 m</dd></dl>
+        </article>
+        <aside class="landmark" data-lm="dsl" data-span="300,500" style="--span: 200" aria-labelledby="dsl-title">
+          <div class="lm-tag">
+            <span class="lm-tag__dot"></span><span class="lm-tag__leader"></span>
+            <div class="lm-tag__text">
+              <p class="lm-tag__depth">≈ 300–500 m</p>
+              <h3 class="lm-tag__title" id="dsl-title">Deep scattering layer</h3>
+              <p class="lm-tag__body">Fish, squid and jellies packed so densely that WWII sonar crews took the layer for a false seabed.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="chapter chapter--type" id="midnight" style="--from: var(--z-1000); --to: var(--z-4000)" aria-labelledby="midnight-title">
+        <p class="bignum" aria-hidden="true">76<span>%</span></p>
+        <article class="feature" data-depth="1000">
+          <p class="card__meta"><span>03</span><span>1,000–4,000 m · 3,281–13,123 ft</span></p>
+          <h2 class="feature__title" id="midnight-title">Light made by animals</h2>
+          <p class="card__sci">Midnight zone · Bathypelagic</p>
+          <p class="feature__body">From here down, the only light is made by living things. In 17 years of deep-sea video surveys off California, from the surface to 3,900 metres, about three in every four animals recorded could make their own light: to lure prey, to startle predators, to find each other in the dark.</p>
+          <p class="feature__stat"><b>76%</b> of the animals observed could glow</p>
+        </article>
+        <aside class="landmark" data-lm="titanic" data-span="3600,3900" style="--span: 300" aria-labelledby="titanic-title">
+          <div class="lm-tag">
+            <span class="lm-tag__dot"></span><span class="lm-tag__leader"></span>
+            <div class="lm-tag__text">
+              <p class="lm-tag__depth">≈ 3,800 m · drawn to scale</p>
+              <h3 class="lm-tag__title" id="titanic-title">RMS Titanic, 269 m long</h3>
+              <p class="lm-tag__body">Its wreck lies about 3,800 metres down in the North Atlantic. Here it hangs at that depth for scale.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="chapter" id="abyss" style="--from: var(--z-4000); --to: var(--z-6000)" aria-labelledby="abyss-title">
+        <article class="card card--right" data-depth="4000">
+          <p class="card__meta"><span>04</span><span>4,000–6,000 m · 13,123–19,685 ft</span></p>
+          <h2 class="card__title" id="abyss-title">Below the average</h2>
+          <p class="card__sci">Abyss · Abyssopelagic</p>
+          <p class="card__body">You have passed the ocean’s average depth, about 3,682 metres. Wide, flat plains of fine sediment lie at these depths across much of the world. The water sits just above freezing, the pressure is 400 to 600 times what it is at the surface, and most food arrives as marine snow: flakes of dead plankton and waste sinking slowly from above.</p>
+          <dl class="card__stat"><dt>Average depth of the ocean</dt><dd>≈ 3,682 m</dd></dl>
+        </article>
+      </section>
+
+      <section class="chapter" id="hadal" style="--from: var(--z-6000); --to: var(--z-8000)" aria-labelledby="hadal-title">
+        <article class="card card--wide" data-depth="6000">
+          <p class="card__meta"><span>05</span><span>6,000 m to the bottom · 19,685 ft +</span></p>
+          <h2 class="card__title" id="hadal-title">Into the trench</h2>
+          <p class="card__sci">Hadal zone · Hadopelagic</p>
+          <p class="card__body">Below 6,000 metres the ocean exists almost only inside trenches, where one tectonic plate dives beneath another. The zone takes its name from Hades, the Greek underworld. The Mariana Trench is more than 2,500 kilometres long and, on average, about 69 kilometres wide.</p>
+          <dl class="card__stat"><dt>Mean width of the trench</dt><dd>≈ 69 km</dd></dl>
+        </article>
+        <aside class="landmark landmark--desktop" data-lm="walls" aria-labelledby="walls-title">
+          <div class="lm-tag">
+            <span class="lm-tag__dot"></span><span class="lm-tag__leader"></span>
+            <div class="lm-tag__text">
+              <p class="lm-tag__depth">6,000 m +</p>
+              <h3 class="lm-tag__title" id="walls-title">Trench walls</h3>
+              <p class="lm-tag__body">The Challenger Deep is a steep-walled valley cut into the floor of the trench, at its southern end.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="chapter" id="fish-line" style="--from: var(--z-8000); --to: var(--z-9000)" aria-labelledby="fish-title">
+        <article class="card card--right card--narrow" data-depth="8200">
+          <p class="card__meta"><span>06</span><span>≈ 8,200 m · 26,900 ft</span></p>
+          <h2 class="card__title" id="fish-title">Where fish give out</h2>
+          <p class="card__sci">Hadal zone</p>
+          <p class="card__body">Snailfish, small and translucent, have been caught in the Mariana Trench at almost 8,000 metres. Fish seem to run out at around 8,200 to 8,400 metres: the molecule that shields their proteins from pressure would have to build up beyond what their cells can balance. Life carries on without them. Shrimp-like amphipods scavenge all the way to the bottom.</p>
+          <dl class="card__stat"><dt>Deepest snailfish caught here</dt><dd>7,966 m</dd></dl>
+        </article>
+      </section>
+
+      <section class="chapter chapter--long" id="trieste" style="--from: var(--z-9000); --to: var(--z-bottom)" aria-labelledby="trieste-title">
+        <article class="card card--wide" data-depth="9000">
+          <p class="card__meta"><span>07</span><span>≈ 9,000 m · 23 January 1960</span></p>
+          <h2 class="card__title" id="trieste-title">A crack at 9,000 metres</h2>
+          <p class="card__sci">Bathyscaphe Trieste</p>
+          <p class="card__body">On 23 January 1960 the bathyscaphe Trieste carried Jacques Piccard and U.S. Navy Lieutenant Don Walsh down into the Challenger Deep, two men in a steel sphere hung beneath a float of petrol. Somewhere past 9,000 metres an outer window pane cracked with a bang that shook the whole vessel. They kept going.</p>
+          <dl class="card__stat"><dt>Time from surface to seabed</dt><dd>4 h 47 min</dd></dl>
+        </article>
+      </section>
+    </div>
+
+    <section class="bottom" id="bottom" aria-labelledby="bottom-title">
+      <div class="bottom__stat">
+        <p class="bottom__eyebrow">08 · The bottom of the Challenger Deep</p>
+        <h2 class="bottom__num" id="bottom-title" data-depth="10935">10,935&nbsp;m</h2>
+        <p class="bottom__sub">± 6 m · about 35,876 ft · ≈ 1,090 atm · ≈ 1–4 °C · no sunlight</p>
+      </div>
+
+      <div class="bottom__grid">
+        <div class="bottom__text">
+          <p class="bottom__lead">Trieste settled onto the floor after 4 hours and 47 minutes. Piccard and Walsh stayed for about 20 minutes, under roughly a thousand times the pressure at the surface, then spent more than three hours rising back to daylight.</p>
+          <p>Their instruments read 37,800 feet; the figure was later corrected to 10,916 metres. Modern surveys put the deepest point at about 10,935 metres, give or take a few. Stand Mount Everest, 8,849 metres tall, on the floor here and its summit would still be about two kilometres under water.</p>
+          <p>Nobody went back for 52 years.</p>
+        </div>
+
+        <figure class="profile">
+          <svg viewBox="0 0 340 560" role="img" aria-labelledby="profile-title profile-desc">
+            <title id="profile-title">The descent drawn to scale</title>
+            <desc id="profile-desc">A vertical depth scale from the surface to 10,935 metres. The sunlight zone is a thin band at the top, the twilight zone ends at 1,000 metres, the midnight zone at 4,000, the abyss at 6,000, and the hadal zone runs to the bottom. Mount Everest, drawn standing on the floor, reaches up to about 2,086 metres below the surface.</desc>
+            <defs>
+              <linearGradient id="pf-sea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0d4c64"/>
+                <stop offset="0.02" stop-color="#0a3a52"/>
+                <stop offset="0.09" stop-color="#05182a"/>
+                <stop offset="0.37" stop-color="#020a14"/>
+                <stop offset="0.55" stop-color="#01050b"/>
+                <stop offset="1" stop-color="#000"/>
+              </linearGradient>
+            </defs>
+            <rect x="96" y="20" width="236" height="500" fill="url(#pf-sea)"/>
+            <g class="profile__zones">
+              <line x1="96" x2="332" y1="20" y2="20"/>
+              <line x1="96" x2="332" y1="29.1" y2="29.1"/>
+              <line x1="96" x2="332" y1="65.7" y2="65.7"/>
+              <line x1="96" x2="332" y1="202.9" y2="202.9"/>
+              <line x1="96" x2="332" y1="294.4" y2="294.4"/>
+            </g>
+            <line class="profile__avg" x1="96" x2="332" y1="188.4" y2="188.4"/>
+            <line class="profile__fish" x1="96" x2="332" y1="395" y2="395"/>
+            <path class="profile__everest" d="M170 520 L232 115.4 L244 132 L254 128 L316 520"/>
+            <line class="profile__floor" x1="96" x2="332" y1="520" y2="520"/>
+            <g class="profile__ticks">
+              <text x="88" y="22">0</text>
+              <text x="88" y="36">200</text>
+              <text x="88" y="69">1,000</text>
+              <text x="88" y="206">4,000</text>
+              <text x="88" y="298">6,000</text>
+              <text x="88" y="398">8,200</text>
+              <text x="88" y="523">10,935 m</text>
+            </g>
+            <g class="profile__labels">
+              <text x="104" y="48">Twilight</text>
+              <text x="104" y="135">Midnight</text>
+              <text x="104" y="250">Abyss</text>
+              <text x="104" y="340">Hadal</text>
+              <text x="328" y="184" text-anchor="end">avg 3,682</text>
+              <text x="104" y="391">fish limit</text>
+              <text x="237" y="108" text-anchor="middle">Everest summit</text>
+              <text x="104" y="542">Floor of the Challenger Deep</text>
+            </g>
+          </svg>
+          <figcaption>To scale: the sunlight zone is the thin top band. Mount Everest (8,849 m) stood on the floor would top out about 2,086 m below the surface.</figcaption>
+        </figure>
+      </div>
+
+      <div class="dives">
+        <h3 class="dives__h">Who has measured it, and who has been down</h3>
+        <ol class="dives__list">
+          <li><span class="dives__y">1875</span><span class="dives__w">HMS Challenger</span><span class="dives__t">A weighted sounding line finds 8,184 m near the southern end of the trench.</span></li>
+          <li><span class="dives__y">1951</span><span class="dives__w">HMS Challenger</span><span class="dives__t">A second survey ship of the same name finds the deep by echo sounding. It is named after both ships.</span></li>
+          <li><span class="dives__y">1960</span><span class="dives__w">Trieste</span><span class="dives__t">Jacques Piccard and Don Walsh make the first crewed descent.</span></li>
+          <li><span class="dives__y">2012</span><span class="dives__w">Deepsea Challenger</span><span class="dives__t">Filmmaker James Cameron makes the first solo dive.</span></li>
+          <li><span class="dives__y">2019</span><span class="dives__w">Limiting Factor</span><span class="dives__t">Victor Vescovo begins a series of repeat dives in a reusable submersible.</span></li>
+          <li><span class="dives__y">2020</span><span class="dives__w">Limiting Factor</span><span class="dives__t">Former astronaut Kathryn Sullivan becomes the first woman to reach the bottom.</span></li>
+          <li><span class="dives__y">2021</span><span class="dives__w">NOAA-led study</span><span class="dives__t">Pressure data from the 2020 dives revise the depth to 10,935 m, ± 6 m.</span></li>
+        </ol>
+      </div>
+
+      <p class="bottom__exit">
+        <a class="hud-link" href="#top">Back to the surface ↑</a>
+        <a class="hud-link" href="?3d=off" data-mode data-off="Read this page without 3D" data-on="Turn the 3D descent on" hidden>Read this page without 3D</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <section class="footer__sources" id="sources" aria-labelledby="sources-title">
+        <h2 class="footer__h" id="sources-title">Sources</h2>
+        <ol>
+          <li>NOAA National Ocean Service, <a href="https://oceanservice.noaa.gov/facts/oceandepth.html">“How deep is the ocean?”</a> Depth of the Challenger Deep, location.</li>
+          <li>Greenaway, S. et al. (2021), revised depth of the Challenger Deep from submersible transects, <i>Deep-Sea Research Part I</i>. 10,935 ± 6 m.</li>
+          <li>NOAA Ocean Exploration, <a href="https://oceanexplorer.noaa.gov/facts/ocean-depth.html">“How deep is the ocean?”</a> Average depth, 3,682 m.</li>
+          <li>Woods Hole Oceanographic Institution, <a href="https://www.whoi.edu/know-your-ocean/ocean-topics/how-the-ocean-works/ocean-zones/">“Ocean zones”</a>. Zone names and boundaries.</li>
+          <li>NOAA National Ocean Service, <a href="https://oceanservice.noaa.gov/facts/light_travel.html">“How far does light travel in the ocean?”</a></li>
+          <li>NOAA Ocean Exploration, <a href="https://oceanexplorer.noaa.gov/ocean-fact/dsl/">“What is the deep scattering layer?”</a> About 300–500 m; the WWII “false bottom”.</li>
+          <li>Martini, S. &amp; Haddock, S. H. D. (2017), <a href="https://www.nature.com/articles/srep45750">“Quantification of bioluminescence from the surface to the deep sea demonstrates its predominance as an ecological trait”</a>, <i>Scientific Reports</i> 7.</li>
+          <li>NOAA Ocean Exploration, <a href="https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210415/">“Titanic Bow”</a>, wreck depth about 3,800 m; Smithsonian, <a href="https://www.si.edu/spotlight/titanic">“The RMS Titanic”</a>, length overall 882.5 ft (about 269 m).</li>
+          <li>Gerringer, M. E. et al. (2017), <i>Pseudoliparis swirei</i> sp. nov., a hadal snailfish from the Mariana Trench, <i>Zootaxa</i>. Yancey, P. H. et al. (2014), <a href="https://www.pnas.org/doi/10.1073/pnas.1322003111">“Marine fish may be biochemically constrained from inhabiting the deepest ocean depths”</a>, <i>PNAS</i>.</li>
+          <li>Encyclopaedia Britannica, <a href="https://www.britannica.com/place/Mariana-Trench">“Mariana Trench”</a>. Trench size, the Challenger Deep as a steep-walled valley in its floor, 1875 sounding.</li>
+          <li>Naval History and Heritage Command, <a href="https://www.history.navy.mil/research/histories/ship-histories/danfs/t/trieste.html">“Trieste I (Bathyscaphe)”</a>. The 1960 dive.</li>
+          <li>Guinness World Records, <a href="https://www.guinnessworldrecords.com/world-records/613583-first-dive-to-the-challenger-deep-by-a-crewed-vessel-solo">first solo dive to the Challenger Deep</a>; AAAS, <a href="https://www.aaas.org/membership/member-spotlight/astronaut-kathryn-sullivan-reaches-space-and-deepest-parts-sea-inspire">Kathryn Sullivan</a>.</li>
+        </ol>
+      </section>
+      <section class="footer__notes" aria-labelledby="notes-title">
+        <h2 class="footer__h" id="notes-title">Notes on the numbers</h2>
+        <p>Pressure is estimated from depth (1 atm + ρgh, with seawater at about 1,030 kg/m³), so read it as approximate. Water temperatures are typical bands for the tropical western Pacific, rounded. The sunlight bar drops one step for every tenfold loss of light in clear ocean water. The scroll scale is stretched near the surface so each zone gets room, and it slows down where you pass the scattering layer and the Titanic so both drift by at true scale; the drawing above is to scale throughout.</p>
+        <h2 class="footer__h">Credits</h2>
+        <p>Words, design and code by [Studio name]. Scene drawn live with Three.js r170: a water shader, points and fog, no images. Type: Jost and IBM Plex Mono.</p>
+      </section>
+    </div>
+    <p class="footer__slab">10,935 m is an editorial website concept created by [Studio name]. It is not affiliated with NOAA, the U.S. Navy, the Smithsonian or any expedition named on this page. Facts were checked against the sources listed; figures are rounded.</p>
+  </footer>
+
+  <script type="module" src="main.js?v=35"></script>
+</body>
+</html>

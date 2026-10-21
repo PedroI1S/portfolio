@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undersun · Closed-loop geothermal heat and power</title>
+  <meta name="description" content="Undersun drills one sealed well and runs it for fifty years: closed-loop geothermal heat and power for factories and district heat networks. A fictional company, designed as a gradient-tech website concept.">
+  <meta name="theme-color" content="#4A71BB">
+  <meta property="og:title" content="Undersun · Closed-loop geothermal heat and power">
+  <meta property="og:description" content="A daylight gradient-tech website concept for a fictional geothermal company.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@200;300;400&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css?v=32">
+  <script>
+    (function () {
+      var d = document.documentElement, gl = false;
+      d.classList.add('js');
+      try {
+        var c = document.createElement('canvas');
+        var ctx = c.getContext('webgl2') || c.getContext('webgl');
+        gl = !!ctx;
+        var lose = ctx && ctx.getExtension('WEBGL_lose_context');
+        if (lose) lose.loseContext();
+      } catch (e) {}
+      d.classList.add(gl ? 'has-webgl' : 'no-webgl');
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduced');
+      // safety net: if the page script never runs, show the hero as drawn
+      setTimeout(function () {
+        var h = document.querySelector('.hero');
+        if (h && !h.classList.contains('is-in')) { d.classList.add('poster-on'); h.classList.add('is-in'); }
+      }, 4000);
+    })();
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" crossorigin>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="header" id="top">
+    <a class="header__logo" href="#top" aria-label="Undersun, back to top">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path class="mark__line" d="M1.5 9.25h21"/><path class="mark__sun" d="M5 11.75h14a7 7 0 0 1-14 0z"/></svg>
+      <span>Undersun</span>
+    </a>
+    <nav class="header__nav" aria-label="Primary">
+      <a href="#loop">The loop</a>
+      <a href="#sites">Sites</a>
+      <a href="#how">How it works</a>
+      <a href="#careers">Careers</a>
+    </nav>
+    <a class="btn btn--ice header__cta" href="#contact"><span class="roll"><span>Talk to us</span><span aria-hidden="true">Talk to us</span></span></a>
+    <button class="header__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="header__menu-label">Menu</span><span class="header__menu-icon" aria-hidden="true"><i></i><i></i></span></button>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a href="#loop">The loop</a>
+      <a href="#sites">Sites</a>
+      <a href="#how">How it works</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Talk to us</a>
+    </nav>
+    <p class="menu__note">Closed-loop geothermal<br>heat and power</p>
+  </div>
+
+  <main id="main">
+    <!-- 1 · Horizon hero: sky above the line, heat below it -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__sky" aria-hidden="true"></div>
+      <div class="hero__ground" aria-hidden="true">
+        <span class="hero__sun"></span>
+        <span class="gpipe gpipe--casing"></span>
+        <span class="gpipe gpipe--cold"><i></i></span>
+        <span class="gpipe gpipe--warm"><i></i></span>
+      </div>
+
+      <div class="hero__stage" aria-hidden="true">
+        <div class="hero__obj">
+          <svg class="hero__poster" viewBox="0 0 400 380" focusable="false">
+            <defs>
+              <linearGradient id="pc-pipe" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#4b5871"/><stop offset=".16" stop-color="#e9eef7"/><stop offset=".34" stop-color="#9eacc4"/>
+                <stop offset=".5" stop-color="#2c3342"/><stop offset=".64" stop-color="#d9e1ee"/><stop offset=".78" stop-color="#ffffff"/><stop offset="1" stop-color="#7d8aa2"/>
+              </linearGradient>
+              <linearGradient id="pc-ring" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#f6f8fc"/><stop offset=".35" stop-color="#8fa2c4"/><stop offset=".55" stop-color="#2f3646"/>
+                <stop offset=".72" stop-color="#c9d2e2"/><stop offset="1" stop-color="#ffe9d6"/>
+              </linearGradient>
+              <linearGradient id="pc-brass" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#9c7a5a"/><stop offset=".3" stop-color="#f6dcc0"/><stop offset=".55" stop-color="#b8916b"/><stop offset=".8" stop-color="#ffeedd"/><stop offset="1" stop-color="#a5825f"/>
+              </linearGradient>
+            </defs>
+            <!-- legs leave the underside of the ring and run into the ground beside the casing -->
+            <path d="M332 186 C 330 214 318 236 270 262 C 254 272 251 292 251 312 V380" fill="none" stroke="url(#pc-pipe)" stroke-width="15"/>
+            <path d="M68 186 C 70 214 82 236 130 262 C 146 272 149 292 149 312 V380" fill="none" stroke="url(#pc-pipe)" stroke-width="15"/>
+            <rect x="176" y="96" width="48" height="284" fill="url(#pc-pipe)"/>
+            <ellipse cx="200" cy="303" rx="38" ry="8" fill="url(#pc-brass)"/>
+            <ellipse cx="200" cy="181" rx="148" ry="36" fill="none" stroke="url(#pc-ring)" stroke-width="40"/>
+            <ellipse cx="200" cy="181" rx="148" ry="36" fill="none" stroke="#ffffff" stroke-opacity=".7" stroke-width="42" stroke-dasharray="1.6 4.4"/>
+            <ellipse cx="200" cy="181" rx="148" ry="36" fill="none" stroke="#2c3342" stroke-opacity=".3" stroke-width="42" stroke-dasharray="1.2 4.8" stroke-dashoffset="3"/>
+            <ellipse cx="200" cy="122" rx="42" ry="9" fill="url(#pc-brass)"/>
+            <rect x="185" y="70" width="30" height="50" fill="url(#pc-pipe)"/>
+            <rect x="196" y="40" width="8" height="32" fill="url(#pc-pipe)"/>
+            <ellipse cx="200" cy="38" rx="36" ry="8" fill="none" stroke="url(#pc-brass)" stroke-width="5"/>
+            <path d="M164 38 H236" stroke="url(#pc-brass)" stroke-width="3"/>
+          </svg>
+        </div>
+      </div>
+
+      <canvas class="hero__canvas" aria-hidden="true"></canvas>
+      <span class="hero__horizon" aria-hidden="true"></span>
+
+      <h1 class="hero__title" id="hero-title">
+        <span class="hw hw--1"><span class="hw__in">Deep</span></span>
+        <span class="hw hw--2"><span class="hw__in">steady</span></span>
+        <span class="hw hw--3"><span class="hw__in">heat.</span></span>
+      </h1>
+
+      <div class="hero__callout" aria-hidden="true">
+        <svg class="hero__leader"><polyline points="0,0 0,0 0,0"/><circle r="3.5" cx="0" cy="0"/></svg>
+        <p class="hero__fig"><span>Fig. 01 — Wellhead W-4</span><span>Coil exchanger · rendered live</span></p>
+      </div>
+
+      <div class="hero__ruler" aria-hidden="true"><span>0 m<b> — surface</b></span><span>500 m</span></div>
+      <div class="hero__copy">
+        <p class="hero__sub">Closed-loop geothermal heat and power for factories and district networks.</p>
+        <a class="textlink" href="#how"><span class="roll"><span>How the loop works</span><span aria-hidden="true">How the loop works</span></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"/></svg></a>
+      </div>
+    </section>
+
+    <!-- 2 · The loop: statement and spec strip -->
+    <section class="section loop" id="loop" aria-labelledby="loop-title">
+      <p class="eyebrow" data-reveal><span>01</span> The loop</p>
+      <h2 class="statement" id="loop-title" data-split>One sealed well. A town’s worth of heat, for fifty&nbsp;years.</h2>
+      <p class="lede" data-reveal>We drill a single closed loop into hot rock and run water through it. No fracking, no groundwater drawn, nothing burned. The ground does the work, day and night, in every season.</p>
+
+      <dl class="specs">
+        <div class="spec" data-reveal>
+          <dt>Output temperature</dt>
+          <dd><span class="spec__val" data-roll>128</span><span class="spec__unit">°C</span></dd>
+          <dd class="spec__note">At the wellhead, all year round</dd>
+        </div>
+        <div class="spec" data-reveal>
+          <dt>Surface footprint</dt>
+          <dd><span class="spec__val" data-roll>2,400</span><span class="spec__unit">m²</span></dd>
+          <dd class="spec__note">About a third of a football pitch</dd>
+        </div>
+        <div class="spec" data-reveal>
+          <dt>Uptime</dt>
+          <dd><span class="spec__val" data-roll>99.2</span><span class="spec__unit">%</span></dd>
+          <dd class="spec__note">Pilot fleet, trailing twelve months</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 3 · Pilot sites -->
+    <section class="section sites" id="sites" aria-labelledby="sites-title">
+      <p class="eyebrow" data-reveal><span>02</span> Pilot sites</p>
+      <div class="sites__head">
+        <h2 class="statement" id="sites-title" data-split>Five loops, five neighbours.</h2>
+        <div class="sites__ctrl" data-reveal>
+          <p class="sites__count" aria-hidden="true"><span class="sites__now">01</span> / 05</p>
+          <button class="round" type="button" data-dir="-1" aria-label="Previous site" aria-controls="sites-track"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7.5 3.5 3 8l4.5 4.5"/></svg></button>
+          <button class="round" type="button" data-dir="1" aria-label="Next site" aria-controls="sites-track"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8.5 3.5 13 8l-4.5 4.5"/></svg></button>
+        </div>
+      </div>
+
+      <div class="sites__track" id="sites-track" role="region" aria-label="Pilot sites, scrolls sideways" tabindex="0">
+        <ul class="sites__list">
+          <li class="site" data-seed="11" data-kind="network">
+            <div class="site__map" aria-hidden="true"></div>
+            <div class="site__body">
+              <p class="chip">District heat</p>
+              <h3 class="site__title">Kelderwick Heat Network</h3>
+              <p class="site__desc">Two loops under the old bus depot now heat 3,100 homes, two schools and the leisure centre.</p>
+              <dl class="site__meta">
+                <div><dt>Output</dt><dd>9 MWth</dd></div>
+                <div><dt>Depth</dt><dd>4,600 m</dd></div>
+                <div><dt>Status</dt><dd><span class="status status--on"></span>Running since 2024</dd></div>
+              </dl>
+            </div>
+          </li>
+          <li class="site" data-seed="27" data-kind="factory">
+            <div class="site__map" aria-hidden="true"></div>
+            <div class="site__body">
+              <p class="chip">Process heat</p>
+              <h3 class="site__title">Marrowby Paper Mill</h3>
+              <p class="site__desc">Pre-heats boiler feedwater for three drying lines, cutting the mill’s gas use by a little over half.</p>
+              <dl class="site__meta">
+                <div><dt>Output</dt><dd>14 MWth</dd></div>
+                <div><dt>Depth</dt><dd>5,100 m</dd></div>
+                <div><dt>Status</dt><dd><span class="status status--on"></span>Running since 2023</dd></div>
+              </dl>
+            </div>
+          </li>
+          <li class="site" data-seed="43" data-kind="field">
+            <div class="site__map" aria-hidden="true"></div>
+            <div class="site__body">
+              <p class="chip">Agriculture</p>
+              <h3 class="site__title">Saltmere Glasshouses</h3>
+              <p class="site__desc">Eleven hectares of tomatoes kept at 19&nbsp;°C through the winter, with no boiler house on site.</p>
+              <dl class="site__meta">
+                <div><dt>Output</dt><dd>6 MWth</dd></div>
+                <div><dt>Depth</dt><dd>3,900 m</dd></div>
+                <div><dt>Status</dt><dd><span class="status status--on"></span>Running since 2025</dd></div>
+              </dl>
+            </div>
+          </li>
+          <li class="site" data-seed="58" data-kind="factory">
+            <div class="site__map" aria-hidden="true"></div>
+            <div class="site__body">
+              <p class="chip">Heat and power</p>
+              <h3 class="site__title">Fennick Maltings</h3>
+              <p class="site__desc">Kiln heat for the maltings by day, and a small turbine that sends 1.2&nbsp;MW to the grid overnight.</p>
+              <dl class="site__meta">
+                <div><dt>Output</dt><dd>7 MWth + 1.2 MWe</dd></div>
+                <div><dt>Depth</dt><dd>4,800 m</dd></div>
+                <div><dt>Status</dt><dd><span class="status status--soon"></span>Commissioning 2026</dd></div>
+              </dl>
+            </div>
+          </li>
+          <li class="site" data-seed="74" data-kind="campus">
+            <div class="site__map" aria-hidden="true"></div>
+            <div class="site__body">
+              <p class="chip">Campus</p>
+              <h3 class="site__title">Larchmere Hospital</h3>
+              <p class="site__desc">Heating, hot water and, through an absorption chiller, cooling for the operating theatres.</p>
+              <dl class="site__meta">
+                <div><dt>Output</dt><dd>4 MWth</dd></div>
+                <div><dt>Depth</dt><dd>4,200 m</dd></div>
+                <div><dt>Status</dt><dd><span class="status status--drill"></span>Drilling 2026</dd></div>
+              </dl>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="sites__bar" aria-hidden="true"><i></i></div>
+    </section>
+
+    <!-- 4 · How it works: the descent (built by main.js); the static cross-section and steps are the no-JS and reduced-motion version -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="how__head">
+        <p class="eyebrow" data-reveal><span>03</span> How it works</p>
+        <h2 class="statement" id="how-title" data-split>Water goes down cold and comes up hot. Nothing else leaves the&nbsp;ground.</h2>
+      </div>
+
+      <div class="how__body">
+        <figure class="section-fig" data-step="0">
+          <svg class="xsec" viewBox="0 0 680 940" preserveAspectRatio="xMinYMin meet" role="img" aria-labelledby="xsec-title xsec-desc">
+            <title id="xsec-title">Cross-section of an Undersun closed loop</title>
+            <desc id="xsec-desc">A surface plant sits on a small pad. Two sealed legs run 4,800 metres down through rock that warms by about 30 degrees per kilometre, joined at the bottom by a horizontal lateral. Cold water flows down one leg, picks up heat along the lateral and rises up the other leg to the plant, which feeds a factory and a district heat network.</desc>
+            <defs>
+              <linearGradient id="xs-sky" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#9DB2DA"/><stop offset="1" stop-color="#FFF0E2"/>
+              </linearGradient>
+              <linearGradient id="xs-lat" gradientUnits="userSpaceOnUse" x1="300" x2="640" y1="0" y2="0">
+                <stop offset="0" stop-color="#3D5E86"/><stop offset="1" stop-color="#C8643A"/>
+              </linearGradient>
+              <pattern id="xs-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+                <path d="M0 0v9" stroke="#1B1B1B" stroke-opacity=".07" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <rect x="0" y="0" width="680" height="150" fill="url(#xs-sky)"/>
+
+            <!-- strata, warming with depth -->
+            <g>
+              <path d="M0 150 H680 V940 H0Z" fill="#EFE9E6"/>
+              <path d="M0 268 C 130 256 240 284 370 270 S 580 252 680 264 V940 H0Z" fill="#F3E4D8"/>
+              <path d="M0 430 C 150 446 280 418 410 436 S 600 448 680 428 V940 H0Z" fill="#F4D9C6"/>
+              <path d="M0 592 C 120 578 270 606 390 588 S 580 576 680 596 V940 H0Z" fill="#F1CBB1"/>
+              <path d="M0 742 C 140 756 260 730 400 748 S 590 760 680 738 V940 H0Z" fill="#EDBB9A"/>
+              <path d="M0 150 H680 V940 H0Z" fill="url(#xs-hatch)"/>
+              <path d="M0 150 H680" stroke="#1B1B1B" stroke-width="1.5"/>
+            </g>
+
+            <!-- depth and temperature scales -->
+            <g class="xs-scale" aria-hidden="true">
+              <path class="xs-axis" d="M30 150 V870"/>
+              <path class="xs-axis" d="M24 150h12M24 300h12M24 450h12M24 600h12M24 750h12M24 870h12"/>
+              <text x="44" y="172">0 m</text>
+              <text x="44" y="307">1,000</text>
+              <text x="44" y="457">2,000</text>
+              <text x="44" y="607">3,000</text>
+              <text x="44" y="757">4,000</text>
+              <text x="44" y="877">4,800</text>
+              <text class="xs-temp" x="664" y="172" text-anchor="end">12 °C</text>
+              <text class="xs-temp" x="664" y="307" text-anchor="end">42 °C</text>
+              <text class="xs-temp" x="664" y="457" text-anchor="end">72 °C</text>
+              <text class="xs-temp" x="664" y="607" text-anchor="end">102 °C</text>
+              <text class="xs-temp" x="664" y="737" text-anchor="end">132 °C</text>
+              <text class="xs-temp" x="664" y="926" text-anchor="end">156 °C</text>
+            </g>
+
+            <!-- 04 · surface plant, factory, homes -->
+            <g class="xs-part" data-part="4">
+              <path class="xs-line" d="M238 150 V112 H362 V150"/>
+              <path class="xs-line" d="M238 112 L262 94 H338 L362 112"/>
+              <circle class="xs-line" cx="300" cy="128" r="11"/>
+              <path class="xs-line" d="M293 128h14M300 121v14"/>
+              <path class="xs-line" d="M56 150 V110 L80 96 V110 L104 96 V110 L128 96 V150"/>
+              <path class="xs-line" d="M144 150 V78 H156 V150"/>
+              <path class="xs-line" d="M456 150 V124 L472 110 L488 124 V150 M502 150 V124 L518 110 L534 124 V150 M548 150 V124 L564 110 L580 124 V150 M594 150 V124 L610 110 L626 124 V150"/>
+              <path class="xs-pipe xs-pipe--warm" d="M238 140 H156"/>
+              <path class="xs-pipe xs-pipe--warm" d="M362 140 H456"/>
+              <path class="flow flow--warm" d="M238 140 H156"/>
+              <path class="flow flow--warm" d="M362 140 H456"/>
+            </g>
+
+            <!-- 01 · two legs from one pad -->
+            <g class="xs-part" data-part="1">
+              <path class="xs-casing" d="M272 150 V790"/>
+              <path class="xs-casing" d="M328 150 V760"/>
+              <path class="xs-pipe xs-pipe--cold" d="M272 150 V790"/>
+              <path class="flow flow--cold" d="M272 150 V790"/>
+            </g>
+
+            <!-- 02 · sealed lateral through hot rock -->
+            <g class="xs-part" data-part="2">
+              <path class="xs-casing" d="M272 790 C 272 830 292 846 330 846 H600 C 640 846 652 832 652 818 C 652 802 640 790 608 790 H360 C 340 790 328 780 328 760"/>
+              <path class="xs-pipe" stroke="url(#xs-lat)" d="M272 790 C 272 830 292 846 330 846 H600 C 640 846 652 832 652 818 C 652 802 640 790 608 790 H360 C 340 790 328 780 328 760"/>
+              <path class="flow" stroke="url(#xs-lat)" d="M272 790 C 272 830 292 846 330 846 H600 C 640 846 652 832 652 818 C 652 802 640 790 608 790 H360 C 340 790 328 780 328 760"/>
+              <g class="xs-heat">
+                <path d="M380 892 q6 -8 0 -16 t0 -16"/><path d="M450 896 q6 -8 0 -16 t0 -16"/><path d="M520 892 q6 -8 0 -16 t0 -16"/><path d="M590 896 q6 -8 0 -16 t0 -16"/>
+                <path d="M420 744 q6 8 0 16 t0 16"/><path d="M500 740 q6 8 0 16 t0 16"/><path d="M580 744 q6 8 0 16 t0 16"/>
+              </g>
+            </g>
+
+            <!-- 03 · hot water rises -->
+            <g class="xs-part" data-part="3">
+              <path class="xs-pipe xs-pipe--warm" d="M328 760 V150"/>
+              <path class="flow flow--warm" d="M328 760 V150"/>
+            </g>
+
+            <!-- callout tags -->
+            <g class="xs-tags" aria-hidden="true">
+              <g class="xs-tag" data-tag="1"><path d="M272 340 H196"/><circle cx="272" cy="340" r="3.5"/><text x="188" y="347" text-anchor="end">01 Two legs</text></g>
+              <g class="xs-tag" data-tag="2"><path d="M470 846 V900"/><circle cx="470" cy="846" r="3.5"/><text x="470" y="926" text-anchor="middle">02 Sealed lateral</text></g>
+              <g class="xs-tag" data-tag="3"><path d="M328 520 H392"/><circle cx="328" cy="520" r="3.5"/><text x="400" y="527">03 Rises on its own</text></g>
+              <g class="xs-tag" data-tag="4"><path d="M300 94 V62"/><circle cx="300" cy="94" r="3.5"/><text x="300" y="48" text-anchor="middle">04 Surface exchanger</text></g>
+            </g>
+          </svg>
+          <figcaption class="section-fig__cap">Fig. 02 — Cross-section, not to scale horizontally. Rock warms about 30&nbsp;°C per kilometre.</figcaption>
+        </figure>
+
+        <ol class="steps">
+          <li class="step" data-step="1">
+            <h3 class="step__h"><span class="step__no">01</span><span class="step__title">Drill once</span></h3>
+            <p>Two legs go down from a single pad and meet 4,800 metres below, joined by sealed laterals that run through rock at around 150&nbsp;°C.</p>
+          </li>
+          <li class="step" data-step="2">
+            <h3 class="step__h"><span class="step__no">02</span><span class="step__title">Close the loop</span></h3>
+            <p>Water with a corrosion inhibitor circulates inside steel-lined pipe. It never touches the rock: no fracking, no groundwater drawn, nothing vented.</p>
+          </li>
+          <li class="step" data-step="3">
+            <h3 class="step__h"><span class="step__no">03</span><span class="step__title">Let it rise</span></h3>
+            <p>Hot water is lighter than cold. That difference keeps the loop turning by itself, so the circulation pumps idle at a fraction of their rating.</p>
+          </li>
+          <li class="step" data-step="4">
+            <h3 class="step__h"><span class="step__no">04</span><span class="step__title">Hand off the heat</span></h3>
+            <p>A surface exchanger feeds a district network, a factory’s process line or a small turbine for power. The water cools, goes back down, and the loop starts again.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5 · Careers: in the descent build it slides up over the dive's last frame -->
+    <section class="careers" id="careers" aria-labelledby="careers-title">
+      <div class="careers__sky" aria-hidden="true"><span class="careers__sun"></span><span class="careers__horizon"></span></div>
+      <div class="careers__panel glass" data-reveal>
+        <p class="eyebrow"><span>04</span> Careers</p>
+        <h2 class="careers__title" id="careers-title">Most of our work happens five kilometres down. The rest happens with&nbsp;you.</h2>
+        <p class="careers__lede">We’re a team of 140 drillers, engineers and planners. We hire people who like hard problems, finish what they start, and go home on time.</p>
+        <ul class="roles">
+          <li class="role"><span class="role__name">Drilling Superintendent</span><span class="role__team">Field operations</span><span class="role__where">Kelderwick</span></li>
+          <li class="role"><span class="role__name">Reservoir Thermal Engineer</span><span class="role__team">Subsurface</span><span class="role__where">Hybrid</span></li>
+          <li class="role"><span class="role__name">Controls Engineer, Surface Plant</span><span class="role__team">Plant</span><span class="role__where">Fennick</span></li>
+          <li class="role"><span class="role__name">Site Partnerships Lead</span><span class="role__team">Commercial</span><span class="role__where">Remote</span></li>
+        </ul>
+        <div class="careers__cta">
+          <a class="btn btn--steel" href="mailto:careers@undersun.example"><span class="roll"><span>Apply for a role</span><span aria-hidden="true">Apply for a role</span></span></a>
+          <a class="btn btn--glass" href="mailto:careers@undersun.example?subject=Open%20application"><span class="roll"><span>Send an open application</span><span aria-hidden="true">Send an open application</span></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <p class="footer__line"><span class="footer__text" data-split>Heat that never sets.</span><span class="footer__sun" aria-hidden="true"></span></p>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--wide">
+        <h2 class="footer__h">Talk to us</h2>
+        <p>Own a factory, a heat network or a campus that burns gas all year? Send us your heat load and we’ll tell you within a month whether a loop fits.</p>
+        <a class="textlink textlink--lg" href="mailto:hello@undersun.example"><span class="roll"><span>hello@undersun.example</span><span aria-hidden="true">hello@undersun.example</span></span></a>
+      </div>
+      <nav class="footer__col" aria-label="Footer">
+        <h2 class="footer__h">Pages</h2>
+        <a href="#loop">The loop</a>
+        <a href="#sites">Pilot sites</a>
+        <a href="#how">How it works</a>
+        <a href="#careers">Careers</a>
+      </nav>
+      <div class="footer__col">
+        <h2 class="footer__h">Press</h2>
+        <a href="mailto:press@undersun.example">press@undersun.example</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <p class="footer__brand">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path class="mark__line" d="M1.5 9.25h21"/><path class="mark__sun" d="M5 11.75h14a7 7 0 0 1-14 0z"/></svg>
+        © 2026 Undersun
+      </p>
+      <p>Undersun is a fictional company created as a website concept by [Studio name]. It does not drill wells, sell heat or power, or offer investments. All sites, figures, people and roles are illustrative.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js?v=33"></script>
+</body>
+</html>

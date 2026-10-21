@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidewright · Steady eyes on open water</title>
+  <meta name="description" content="Tidewright builds uncrewed surface drones that inspect offshore wind foundations, subsea cables and port structures. A fictional marine robotics company, designed as a corporate clean premium website concept.">
+  <meta name="theme-color" content="#fbfcfc">
+  <meta property="og:title" content="Tidewright · Steady eyes on open water">
+  <meta property="og:description" content="A corporate clean premium website concept for a fictional maker of uncrewed inspection drones for offshore wind and ports.">
+  <meta property="og:image" content="img/tidewright-hero.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="preload" as="image" href="img/tidewright-hero.jpg">
+  <link rel="stylesheet" href="style.css?v=11">
+  <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('tw-index')==='closed')document.documentElement.classList.add('index-closed')}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ Mobile top bar ============ -->
+  <header class="topbar">
+    <a class="logo" href="#overview" aria-label="Tidewright, back to top">
+      <svg class="logo__mark" viewBox="0 0 28 28" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="logo__word">Tidewright</span>
+    </a>
+    <span class="topbar__now" aria-hidden="true"><span data-now-no>01</span> <span data-now-label>Overview</span></span>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="index">Index</button>
+    <span class="topbar__progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+  </header>
+
+  <div class="shell">
+    <!-- ============ Side index ============ -->
+    <nav class="index" id="index" aria-label="Sections">
+      <div class="index__group index__group--brand">
+        <a class="logo" href="#overview" aria-label="Tidewright, back to top">
+          <svg class="logo__mark" viewBox="0 0 28 28" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="logo__word">Tidewright</span>
+        </a>
+        <p class="index__tag">Uncrewed surface drones for offshore and port inspection</p>
+      </div>
+
+      <div class="index__group" data-tint="2">
+        <p class="index__head">Platform</p>
+        <a class="index__link" href="#overview" data-section="overview"><span class="index__no">01</span><span class="index__label">Overview</span><i class="index__bar" aria-hidden="true"></i></a>
+        <a class="index__link" href="#capabilities" data-section="capabilities"><span class="index__no">02</span><span class="index__label">Capabilities</span><i class="index__bar" aria-hidden="true"></i></a>
+      </div>
+
+      <div class="index__group" data-tint="3">
+        <p class="index__head">Fleet</p>
+        <a class="index__link" href="#fleet" data-section="fleet"><span class="index__no">03</span><span class="index__label">Compare</span><i class="index__bar" aria-hidden="true"></i></a>
+        <a class="index__sub" href="#tern"><span class="index__no">TW-1</span><span class="index__label">Tern</span></a>
+        <a class="index__sub" href="#fulmar"><span class="index__no">TW-2</span><span class="index__label">Fulmar</span></a>
+        <a class="index__sub" href="#gannet"><span class="index__no">TW-4</span><span class="index__label">Gannet</span></a>
+      </div>
+
+      <div class="index__group" data-tint="4">
+        <p class="index__head">Operations</p>
+        <a class="index__link" href="#missions" data-section="missions"><span class="index__no">04</span><span class="index__label">Missions</span><i class="index__bar" aria-hidden="true"></i></a>
+        <a class="index__link" href="#leadership" data-section="leadership"><span class="index__no">05</span><span class="index__label">Leadership</span><i class="index__bar" aria-hidden="true"></i></a>
+      </div>
+
+      <div class="index__group" data-tint="5">
+        <p class="index__head">Company</p>
+        <a class="index__link" href="#press" data-section="press"><span class="index__no">06</span><span class="index__label">Press</span><i class="index__bar" aria-hidden="true"></i></a>
+        <a class="index__link" href="#contact" data-section="contact"><span class="index__no">07</span><span class="index__label">Contact</span><i class="index__bar" aria-hidden="true"></i></a>
+      </div>
+
+      <div class="index__group index__group--foot">
+        <a class="index__cta" href="#contact"><span class="index__label">Book a survey window</span><span class="chip" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span></a>
+        <p class="index__utc"><span class="index__label">North Sea ops</span> <time data-utc>--:-- UTC</time></p>
+        <button class="index__toggle" type="button" aria-expanded="true" aria-controls="index"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg><span class="index__label">Hide index</span></button>
+      </div>
+    </nav>
+
+    <main id="main" class="main">
+      <!-- ============ 01 Hero ============ -->
+      <section class="hero" id="overview" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <div class="hero__plane">
+            <img src="img/tidewright-hero.jpg" width="1376" height="768" alt="A small grey Tidewright catamaran drone with a camera mast crossing a glassy sea at dawn, a row of offshore wind turbines faint on the horizon." fetchpriority="high">
+            <div class="reticle" aria-hidden="true">
+              <i class="reticle__c reticle__c--tl"></i><i class="reticle__c reticle__c--tr"></i><i class="reticle__c reticle__c--bl"></i><i class="reticle__c reticle__c--br"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow" data-reveal>Uncrewed offshore inspection</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="line"><span>Steady eyes</span></span>
+            <span class="line"><span>on open water.</span></span>
+          </h1>
+          <p class="hero__lede" data-reveal>Tidewright drones inspect offshore wind foundations, subsea cables and port structures, in the weather that keeps crews ashore.</p>
+        </div>
+
+        <div class="hero__foot">
+          <div class="hero__telemetry mono" aria-hidden="true">
+            <span class="reticle__tag"><b>TW-2 Fulmar</b> <span data-kn>4.2</span> kn · hdg <span data-hdg>072</span>°</span>
+            <p>54.21° N · 2.87° E<br>Sea state 2 · Water <span data-water>11.4</span> °C</p>
+          </div>
+          <a class="btn-hero" href="#fleet">
+            <span class="roll" data-text="Explore the fleet">Explore the fleet</span>
+            <span class="chip" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v9M4.5 8.5 8 12l3.5-3.5"/></svg></span>
+          </a>
+          <p class="hero__count mono">2,140 foundations<br>inspected since 2021</p>
+        </div>
+      </section>
+
+      <!-- ============ 02 Capabilities ============ -->
+      <section class="section caps" id="capabilities" aria-labelledby="caps-title">
+        <header class="statement">
+          <p class="eyebrow" data-reveal><span class="eyebrow__no">02</span> Capabilities</p>
+          <h2 class="statement__title split" id="caps-title" data-reveal-lines>
+            <span class="line"><span>Fewer boats.</span></span>
+            <span class="line"><span>Closer looks.</span></span>
+          </h2>
+          <p class="lead" data-reveal>A Tidewright drone leaves the quay on a planned route, works the site with a pilot supervising from shore, and comes home with data your engineers can sign off. It does three things, and does them properly.</p>
+        </header>
+
+        <ol class="caps__list" role="list">
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M9 13h30l-3.5 5h-23z"/><path d="M24 13V8M21 8h6"/>
+              <path class="cap__wave" d="M15 25a12 9 0 0 0 18 0M11 30a17 13 0 0 0 26 0M7 35a22 16 0 0 0 34 0" opacity=".9"/>
+              <path d="M4 42c4-2 7 1 11-1s7-2 11 0 8 1 11-1 5 0 7 1" stroke-dasharray="2 2.5"/>
+            </svg>
+            <p class="cap__no mono">01</p>
+            <h3 class="cap__title">Survey</h3>
+            <p>Multibeam sonar maps scour, cable burial and seabed change around every structure, to the centimetre.</p>
+            <ul class="cap__bullets mono" role="list"><li>Scour and seabed change</li><li>Cable depth of burial</li><li>Quay wall and toe</li></ul>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M33 4v40M41 4v40M33 14h8M33 30h8"/>
+              <path d="M4 26c3-1.5 5 1.5 8 0s5-1.5 8 0 5 1.5 8 0"/>
+              <circle cx="10" cy="20" r="3.5"/><path d="M10 23.5v4"/>
+              <path class="cap__cone" d="M13 18.5 31 9M13 21.5 31 31" stroke-dasharray="2 2.5"/>
+            </svg>
+            <p class="cap__no mono">02</p>
+            <h3 class="cap__title">Inspect</h3>
+            <p>Stabilised cameras and lidar read the splash zone, J-tubes, ladders and anodes from a metre away, without a rope access team.</p>
+            <ul class="cap__bullets mono" role="list"><li>4K visual and thermal</li><li>Lidar to 120 m</li><li>Cathodic protection probe</li></ul>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M11 5h20l7 7v31H11z"/><path d="M31 5v7h7"/>
+              <path d="M16 20h17M16 25h17M16 30h10"/>
+              <path class="cap__chart" d="M16 38l5-4 4 2 7-6"/>
+            </svg>
+            <p class="cap__no mono">03</p>
+            <h3 class="cap__title">Report</h3>
+            <p>Findings arrive georeferenced and graded by severity, in your asset system on the same day the drone gets back.</p>
+            <ul class="cap__bullets mono" role="list"><li>Graded anomaly list</li><li>Change since last visit</li><li>Exports to your asset system</li></ul>
+          </li>
+        </ol>
+
+        <dl class="kpis" aria-label="Tidewright in numbers">
+          <div class="kpi" data-reveal><dt class="mono">Foundations inspected</dt><dd><span data-count="2140">2,140</span></dd></div>
+          <div class="kpi" data-reveal><dt class="mono">Hours at sea</dt><dd><span data-count="38600">38,600</span><small>h</small></dd></div>
+          <div class="kpi" data-reveal><dt class="mono">Crew transfers avoided</dt><dd><span data-count="1260">1,260</span></dd></div>
+          <div class="kpi" data-reveal><dt class="mono">Quay to first data</dt><dd><span data-count="5.5" data-decimals="1">5.5</span><small>h</small></dd></div>
+        </dl>
+
+        <figure class="mast" data-reveal>
+          <div class="mast__media">
+            <img src="img/tidewright-mast.jpg" width="1200" height="896" alt="Close-up of a drone's sensor mast at sea: a white camera dome, a small lidar unit, antennas and a radar puck, with spray in the air." loading="lazy" decoding="async">
+            <svg class="mast__lines" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true"><!--@mastlines--><g data-callout="1"><path class="ml" d="M48.9 35.8L38 42H26"/><circle class="mr" cx="50" cy="35.2" r="1.1"/></g><g data-callout="2"><path class="ml" d="M52.9 24.5L44 17H30"/><circle class="mr" cx="53.9" cy="25.1" r="1.1"/></g><g data-callout="3"><path class="ml" d="M62.8 18.4V7H67"/><circle class="mr" cx="62.8" cy="19.5" r="1.1"/></g><g data-callout="4"><path class="ml" d="M77.6 14.3L84 22H90"/><circle class="mr" cx="76.8" cy="13.4" r="1.1"/></g><!--/@mastlines--></svg>
+            <span class="mast__tag mast__tag--l" data-callout="1" style="left:26%;top:56.00%" aria-hidden="true">01</span><span class="mast__tag mast__tag--l" data-callout="2" style="left:30%;top:22.67%" aria-hidden="true">02</span><span class="mast__tag mast__tag--r" data-callout="3" style="left:67%;top:9.33%" aria-hidden="true">03</span><span class="mast__tag mast__tag--r" data-callout="4" style="left:90%;top:29.33%" aria-hidden="true">04</span>
+          </div>
+          <figcaption class="mast__copy">
+            <p class="eyebrow">The mast</p>
+            <h3 class="mast__title">Everything looks out from one mast.</h3>
+            <ol class="mast__callouts" role="list">
+              <li data-callout="1"><span class="mono">01</span><b>Camera dome</b> 4K visual and radiometric thermal, 30× zoom, gyro-stabilised</li>
+              <li data-callout="2"><span class="mono">02</span><b>Lidar</b> 120 m range for structure and splash-zone geometry</li>
+              <li data-callout="3"><span class="mono">03</span><b>Radar</b> Collision avoidance and small-craft tracking</li>
+              <li data-callout="4"><span class="mono">04</span><b>Comms</b> AIS, 5G and satellite link back to the shore pilot</li>
+            </ol>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ Masked expand ============ -->
+      <section class="expand" aria-labelledby="expand-title">
+        <div class="expand__stick">
+          <div class="expand__frame">
+            <div class="expand__plane">
+            <img src="img/tidewright-aerial.jpg" width="1200" height="896" alt="Seen from above, a Tidewright catamaran drone holds station beside the yellow foundation and ladder of an offshore wind turbine in teal water." loading="lazy" decoding="async">
+            <svg class="expand__geometry" viewBox="0 0 1200 896" aria-hidden="true">
+              <circle class="expand__guide" cx="955" cy="230" r="345" pathLength="1"/>
+              <circle class="expand__radius" cx="600" cy="500" r="58" pathLength="1"/>
+              <path class="expand__leader" d="M600 500h-58l-94 92H280M600 490v20M590 500h20" pathLength="1"/>
+            </svg>
+            <span class="expand__tag mono">±0.5 m<br><small>Holding envelope</small></span>
+            </div>
+          </div>
+          <div class="expand__copy">
+            <p class="eyebrow eyebrow--light">Station keeping</p>
+            <h2 class="expand__title" id="expand-title">Half a metre. Held.</h2>
+            <p class="expand__description">A steady position beside the steel, while the sensors do their work.</p>
+            <p class="expand__meta mono">±0.5 m dynamic positioning · sea state 4 · 36 h on station</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 03 Fleet ============ -->
+      <section class="section fleet" id="fleet" aria-labelledby="fleet-title">
+        <header class="statement">
+          <p class="eyebrow" data-reveal><span class="eyebrow__no">03</span> Fleet</p>
+          <h2 class="statement__title" id="fleet-title" data-reveal-lines>
+            <span class="line"><span>Three hulls.</span></span>
+            <span class="line"><span>One way of working.</span></span>
+          </h2>
+          <p class="lead" data-reveal>Every drone runs the same autonomy, sensors and shore software, so a crew trained on one can run all three. Pick the hull for the water.</p>
+        </header>
+
+        <div class="fleet__bar">
+          <p class="mono fleet__note">Drawn to the same scale · grid 1 m</p>
+          <div class="units" role="group" aria-label="Unit order">
+            <button type="button" class="units__btn" aria-pressed="true" data-units="m">Metric first</button>
+            <button type="button" class="units__btn" aria-pressed="false" data-units="i">Imperial first</button>
+          </div>
+        </div>
+
+        <div class="fleet__cards">
+          <article class="vessel" id="tern" aria-labelledby="tern-name">
+            <div class="vessel__draw">
+              <svg viewBox="0 28 800 246" role="img" aria-label="Side elevation of the Tern, 1.4 metres long, drawn to scale">
+                <use href="#grid" x="0" y="0" width="800" height="270"/>
+                <path class="hull" d="M330 186h140l-7 18q-5 8-20 8H348q-12 0-16-10z"/>
+                <path class="deck" d="M346 186v-8h88v8"/>
+                <path class="mast-l" d="M372 178v-26"/><circle class="dome" cx="372" cy="147" r="6"/>
+                <path class="dim" d="M330 238h140M330 230v16M470 230v16"/>
+                <text x="400" y="262" class="dim-t" text-anchor="middle">1.4 m</text>
+              </svg>
+            </div>
+            <p class="vessel__code mono">TW-1</p>
+            <h3 class="vessel__name" id="tern-name">Tern</h3>
+            <ul class="vessel__words" role="list"><li>Portable</li><li>Quiet</li><li>Shallow</li><li>Quick</li></ul>
+            <p class="vessel__role">Harbours, locks and quay walls. Two people launch it from a pontoon or the back of a RIB.</p>
+            <dl class="specs">
+              <div data-row="len"><dt>Length</dt><dd data-m="1.4 m" data-i="4.6 ft">1.4 m (4.6 ft)</dd></div>
+              <div data-row="beam"><dt>Beam</dt><dd data-m="0.7 m" data-i="2.3 ft">0.7 m (2.3 ft)</dd></div>
+              <div data-row="mass"><dt>Mass</dt><dd data-m="38 kg" data-i="84 lb">38 kg (84 lb)</dd></div>
+              <div data-row="speed"><dt>Top speed</dt><dd data-pre="5 kn · " data-m="9 km/h" data-i="6 mph">5 kn · 9 km/h (6 mph)</dd></div>
+              <div data-row="end"><dt>Endurance</dt><dd>8 h</dd></div>
+              <div data-row="range"><dt>Range</dt><dd data-pre="28 nmi · " data-m="52 km" data-i="32 mi">28 nmi · 52 km (32 mi)</dd></div>
+              <div data-row="pay"><dt>Payload</dt><dd data-m="6 kg" data-i="13 lb">6 kg (13 lb)</dd></div>
+              <div data-row="sea"><dt>Sea state</dt><dd>Up to 3</dd></div>
+              <div data-row="launch"><dt>Launch</dt><dd>By hand, two people</dd></div>
+            </dl>
+            <button type="button" class="btn-spec" aria-disabled="true" aria-describedby="concept-tip">Download spec sheet <span class="btn-spec__tip" role="tooltip">Concept</span></button>
+          </article>
+
+          <article class="vessel" id="fulmar" aria-labelledby="fulmar-name">
+            <div class="vessel__draw">
+              <svg viewBox="0 28 800 246" role="img" aria-label="Side elevation of the Fulmar catamaran, 3.2 metres long, drawn to scale">
+                <use href="#grid" x="0" y="0" width="800" height="270"/>
+                <path class="hull" d="M240 182h304q16 2 16 12l-8 14q-4 6-16 6H254q-12 0-14-8z"/>
+                <path class="deck" d="M262 182v-12h262v12"/>
+                <path class="panel" d="M300 168h196"/>
+                <path class="mast-l" d="M330 170v-58"/><circle class="dome" cx="330" cy="104" r="9"/>
+                <path class="mast-l" d="M318 124h24M322 124v-12M338 124v-8"/>
+                <ellipse class="dome" cx="472" cy="162" rx="15" ry="6"/>
+                <path class="dim" d="M240 238h320M240 230v16M560 230v16"/>
+                <text x="400" y="262" class="dim-t" text-anchor="middle">3.2 m</text>
+              </svg>
+            </div>
+            <p class="vessel__code mono">TW-2</p>
+            <h3 class="vessel__name" id="fulmar-name">Fulmar</h3>
+            <ul class="vessel__words" role="list"><li>Stable</li><li>Patient</li><li>Precise</li><li>Proven</li></ul>
+            <p class="vessel__role">Offshore wind foundations and nearshore cables. Our most deployed drone, launched from a slipway or a crew transfer vessel.</p>
+            <dl class="specs">
+              <div data-row="len"><dt>Length</dt><dd data-m="3.2 m" data-i="10.5 ft">3.2 m (10.5 ft)</dd></div>
+              <div data-row="beam"><dt>Beam</dt><dd data-m="1.6 m" data-i="5.2 ft">1.6 m (5.2 ft)</dd></div>
+              <div data-row="mass"><dt>Mass</dt><dd data-m="310 kg" data-i="683 lb">310 kg (683 lb)</dd></div>
+              <div data-row="speed"><dt>Top speed</dt><dd data-pre="7 kn · " data-m="13 km/h" data-i="8 mph">7 kn · 13 km/h (8 mph)</dd></div>
+              <div data-row="end"><dt>Endurance</dt><dd>36 h</dd></div>
+              <div data-row="range"><dt>Range</dt><dd data-pre="160 nmi · " data-m="296 km" data-i="184 mi">160 nmi · 296 km (184 mi)</dd></div>
+              <div data-row="pay"><dt>Payload</dt><dd data-m="45 kg" data-i="99 lb">45 kg (99 lb)</dd></div>
+              <div data-row="sea"><dt>Sea state</dt><dd>Up to 4</dd></div>
+              <div data-row="launch"><dt>Launch</dt><dd>Slipway or davit</dd></div>
+            </dl>
+            <button type="button" class="btn-spec" aria-disabled="true" aria-describedby="concept-tip">Download spec sheet <span class="btn-spec__tip" role="tooltip">Concept</span></button>
+          </article>
+
+          <article class="vessel" id="gannet" aria-labelledby="gannet-name">
+            <div class="vessel__draw">
+              <svg viewBox="0 28 800 246" role="img" aria-label="Side elevation of the Gannet, 7.6 metres long, drawn to scale">
+                <use href="#grid" x="0" y="0" width="800" height="270"/>
+                <path class="hull" d="M20 160h680q60 2 80 10l-20 42q-8 14-34 14H60q-28 0-34-20z"/>
+                <path class="deck" d="M300 160v-38h214l40 38"/>
+                <path class="panel" d="M318 132h178"/>
+                <path class="mast-l" d="M470 122V58M444 74h52M452 74v-10M488 74v-8"/><circle class="dome" cx="470" cy="50" r="10"/>
+                <path class="mast-l" d="M44 160l-8-52h64l-8 52M68 108v14"/>
+                <path class="dim" d="M20 248h760M20 240v16M780 240v16"/>
+                <text x="400" y="268" class="dim-t" text-anchor="middle">7.6 m</text>
+              </svg>
+            </div>
+            <p class="vessel__code mono">TW-4</p>
+            <h3 class="vessel__name" id="gannet-name">Gannet</h3>
+            <ul class="vessel__words" role="list"><li>Long-range</li><li>Hybrid</li><li>Rugged</li><li>Self-sufficient</li></ul>
+            <p class="vessel__role">Far-shore arrays and long cable routes. Leaves port on its own and stays out for up to twelve days.</p>
+            <dl class="specs">
+              <div data-row="len"><dt>Length</dt><dd data-m="7.6 m" data-i="24.9 ft">7.6 m (24.9 ft)</dd></div>
+              <div data-row="beam"><dt>Beam</dt><dd data-m="2.4 m" data-i="7.9 ft">2.4 m (7.9 ft)</dd></div>
+              <div data-row="mass"><dt>Mass</dt><dd data-m="2,900 kg" data-i="6,393 lb">2,900 kg (6,393 lb)</dd></div>
+              <div data-row="speed"><dt>Top speed</dt><dd data-pre="9 kn · " data-m="17 km/h" data-i="10 mph">9 kn · 17 km/h (10 mph)</dd></div>
+              <div data-row="end"><dt>Endurance</dt><dd>12 days</dd></div>
+              <div data-row="range"><dt>Range</dt><dd data-pre="2,000 nmi · " data-m="3,704 km" data-i="2,302 mi">2,000 nmi · 3,704 km (2,302 mi)</dd></div>
+              <div data-row="pay"><dt>Payload</dt><dd data-m="400 kg" data-i="882 lb">400 kg (882 lb)</dd></div>
+              <div data-row="sea"><dt>Sea state</dt><dd>Up to 5</dd></div>
+              <div data-row="launch"><dt>Launch</dt><dd>From port, under its own power</dd></div>
+            </dl>
+            <button type="button" class="btn-spec" aria-disabled="true" aria-describedby="concept-tip">Download spec sheet <span class="btn-spec__tip" role="tooltip">Concept</span></button>
+          </article>
+        </div>
+        <p class="sr-only" id="concept-tip">Unavailable: this is a concept site and there is no spec sheet.</p>
+      </section>
+
+      <!-- ============ 04 Missions ============ -->
+      <section class="section missions" id="missions" aria-labelledby="missions-title">
+        <header class="statement">
+          <p class="eyebrow" data-reveal><span class="eyebrow__no">04</span> Missions</p>
+          <h2 class="statement__title" id="missions-title" data-reveal-lines>
+            <span class="line"><span>Where the fleet</span></span>
+            <span class="line"><span>has been working.</span></span>
+          </h2>
+          <p class="lead" data-reveal>Eight recent jobs on the Harrow coast. Select a mission, then follow the vessel from approach to survey to findings.</p>
+        </header>
+
+        <div class="chart" data-reveal>
+          <div class="chart__filters" role="group" aria-label="Filter missions by sector">
+            <button type="button" class="filter" aria-pressed="true" data-filter="all">All <span class="mono">8</span></button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="wind">Offshore wind <span class="mono">3</span></button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="port">Ports <span class="mono">2</span></button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="subsea">Cables &amp; pipelines <span class="mono">2</span></button>
+            <button type="button" class="filter" aria-pressed="false" data-filter="science">Science <span class="mono">1</span></button>
+          </div>
+
+          <div class="survey" hidden>
+            <div class="survey__heading"><p class="mono" data-survey-label>Mission 01 · survey replay</p><p>Schematic route · vessel and structure to local scale</p></div>
+            <div class="survey__actions">
+              <button type="button" class="survey__play" aria-controls="survey-view">Play survey <span aria-hidden="true">↗</span></button>
+              <button type="button" class="survey__coast" aria-controls="survey-view" disabled>Coast view</button>
+            </div>
+          </div>
+          <div class="chart__scroll" tabindex="0" role="region" aria-label="Missions chart, scrolls sideways">
+          <div class="chart__map">
+            <svg class="chart__svg" viewBox="0 0 1200 900" aria-hidden="true" focusable="false"><!--@map--><rect class="c-sea" width="1200" height="900"/>
+<path class="c-iso" d="M-0.2 0L364 0L361.3 15L362.1 25L356.3 65L354.3 95L355.2 100L359 105L360 110L361.2 120L360.8 130L370.4 160L371.9 190L370.1 195L370 215L368.2 220L364.7 225L361.1 235L359.9 240L360.5 255L355.4 275L349.9 285L351.2 295L356.5 315L377.7 340L391.4 350L430 372.9L445 378.6L460 387.3L475 392.5L485 397.7L504.7 410L511.3 420L512.1 425L508 435L497.7 450L490 457.9L464.7 470L445 474.1L430 480.7L395 493.6L380 503.1L370 505.3L350 513.8L339.7 520L329.6 530L323.2 550L320.3 575L312.8 590L309.7 600L302.6 615L293.6 630L284 650L284.4 670L282.9 680L283.7 685L289.2 695L295 709.2L306.7 730L308.2 735L308.7 745L310.3 750L313.6 755L314 765L318.1 780L317.1 790L318 805L314.9 825L314.3 840L310 868.5L307.5 875L303.7 900L-0.2 900L-0.2 0ZM817.8 695L830 691.9L835 694.7L850 695.5L865 699.2L875 696.1L885 700.4L895 707.9L913 715L920.3 720L923.7 725L928.5 745L928.9 755L931.2 765L936.8 780L936.2 790L933.8 800L927 815L915 822.5L907.7 825L901.7 830L895 833.2L885 842.9L880 845.9L865 849.8L860 849.7L850 853.3L835 853.9L825 851.6L810 851.6L790 844.9L785 845.6L780 844.3L771.4 835L760 828.4L754.3 820L752.3 815L743.7 805L736.4 790L735.1 785L735.5 775L739.4 755L745 745L748.7 735L752.5 730L762 725L770 717.7L780 706.3L790 700.6L800 700.9L817.8 695ZM-0.2 0L448.7 0L447.5 10L436 35L435.9 40L438.3 50L435 70.5L430.3 80L425 86L421.4 95L419.8 105L411.7 130L414.1 135L415 145L419.2 160L419.3 180L415.4 190L417.4 195L416.4 210L405.9 235L405.1 240L405.3 295L406.3 300L413 315L421.2 325L428.3 340L432.9 345L465 364.6L480 368.7L490 374.4L500 378.1L515 385.9L518.6 415L517 460L515 471.5L500 476.4L475 487.6L465 493.3L440 499.2L425 508.2L420 512.6L409.9 525L405 538.9L401.1 545L395 548.8L389.5 555L386.6 565L380 568.2L374 575L366.8 580L355 591.9L346.8 610L340 635.8L324.5 660L323.9 665L325 673.7L330 684.3L340 696.4L345 699.3L353 710L364.2 720L370 730.4L376.7 735L380.6 750L382.9 780L386.6 795L384.8 810L385.5 825L380.9 840L381.5 855L375.7 870L374 885L374.2 900L-0.2 900L-0.2 0ZM790.4 640L800 637.2L815 635.9L830 637L840 640L865 636.4L880 636.6L885 637.5L900 644.2L912.5 655L930 664.1L935 665.5L945 664.8L955 668.3L960 672.2L965.6 680L967.5 685L975 694.7L980.9 705L983 715L992.9 730L994.9 735L995.4 745L998.8 755L997.5 760L997.5 770L993.9 780L993.1 790L989.6 795L987.9 800L980.1 830L973.1 840L965 854.8L955.5 865L935.5 880L925 886.2L915 889.9L900 899.9L704 900L700.5 895L693.1 875L686.1 860L675.8 845L672 820L671.7 810L674.4 800L671.7 780L672.5 765L675.1 755L675.8 740L680.1 725L692 700L695 695.5L700 690.9L710 684.9L715 680L728.9 670L740 657.5L775 645.8L785 640.7L790.4 640ZM-0.3 0L514.1 0L513.8 5L514.9 10L520 19.8L527.3 25L529.7 30L536.2 35L537.2 40L536.1 45L530 56.4L519.6 60L515 68.8L509 75L504.8 85L500 90.9L496.5 100L495.2 135L489.4 140L486.3 145L485 150.3L480 157.8L477.2 165L471.3 195L472.2 205L470 228.8L463.4 250L455.6 265L454.9 285L460 299.1L471.5 315L498.2 340L515 353.3L520 370.6L540 389L550 404L565 419.4L567.4 425L567.8 435L566.3 440L562.7 445L545 465.5L533.2 475L520 482.7L515 501.1L500 508.6L490 511.2L475 520.6L464.3 530L460 535.9L455.7 545L454.5 555L449.7 565L444.2 585L422.7 620L410 634L396.9 645L394 655L398.9 675L404.8 685L415 696.8L422.2 715L430 729.4L436.4 750L439.1 755L438.6 765L440.5 770L440.5 785L439 800L438.7 845L445.3 865L447.5 885L447.4 890L444.3 900L-0.2 900L-0.3 0ZM919.5 550L930 553.3L945 555.9L955 556L970 563.7L975 564.2L980 562.6L985 563.3L995 566.7L1004.8 575L1008.5 580L1020.9 605L1021.8 615L1020 625L1020.4 630L1024.1 640L1031 650L1035 659.2L1059.4 690L1070 696.1L1080 697.9L1087.8 705L1088.2 710L1085.6 715L1089.3 725L1088.8 740L1090.6 745L1087.8 750L1090.1 755L1095 758.2L1095.9 760L1095.6 765L1092.5 770L1090.5 780L1082.6 790L1077.2 800L1072.7 820L1065 840.4L1054.9 860L1047 880L1045 882.5L1040 885.6L1035 892.1L1030 895.4L1025.8 900L641.7 900L632.5 885L631.5 880L625.3 865L623.6 855L619.2 840L610.4 820L609.6 815L603.3 800L602.5 790L605 773.9L606.4 770L610.1 765L615.1 745L614.9 735L615.9 730L620 721.7L624.4 705L629.4 695L636.8 685L642.3 670L650 654.4L655 647.3L675 628.1L680 626L695 616.4L705 611.9L715 604.6L720 602.9L735 594.2L755 586.4L770 584L780 584.1L790 586.2L795 584.3L810 582.5L820 585.5L830 583.5L855 584.6L865 581.5L873.7 575L880 571.8L885 571.4L895 567L905 558.4L919.5 550ZM-0.3 0L663.6 0L650 17.3L637.4 30L630 40L627.6 45L622.7 65L622.7 75L615 88.4L612.4 100L610 103.9L579.3 140L570 148L555 156.4L540 172.1L524.8 205L515 217.5L507.3 235L505.4 245L504.7 270L512.6 295L525 314L536.5 335L558.3 360L570 369.4L594.1 380L610 389.1L620 391.4L625 393.8L643.7 405L648.3 410L649.2 415L653.3 420L655.3 425L655 430.1L651.2 435L644.9 440L640 450.2L631.9 460L620 464.8L605 483.1L601.5 490L585 502.7L570 506.7L565.6 510L561.2 515L563.4 520L560 520.9L554.5 525L546.9 550L540 565.2L530 575.5L515 587.2L505.8 600L485 613.9L475 624.6L467.5 630L462.3 640L459.5 655L459.3 665L462 675L475.8 705L484.3 715L495.1 725L504.5 745L504.5 760L507.6 785L506.3 795L512.7 810L512.8 815L511.7 825L510 829.2L504.4 835L499.4 845L498.8 855L494.9 870L497.9 885L503 900L-0.3 900L-0.3 0ZM923.1 470L945 465.3L965 465.5L980 468.2L995 474.5L1002.7 480L1006.7 485L1010.3 495L1015 498.4L1025 501.1L1030 504.8L1035 510.5L1050 520.3L1055 522.4L1080 528.2L1095 530.2L1104.7 535L1110.1 540L1130 573.2L1135 583.6L1139.1 595L1139.5 610L1148.8 625L1155 641.1L1158.9 645L1177.2 655L1190 658.3L1200 662.9L1200 843.1L1185 842.6L1180 845.9L1175 851.9L1170 854.8L1164.8 855L1150 867.6L1147.5 870L1139.6 885L1137.6 890L1136.1 900L597.1 900L590 890.4L584.4 885L575.3 870L567.6 860L550 839.7L545 825L542.1 820L543.8 805L542.1 780L542.5 770L545 755.1L548.2 745L552.9 735L566.4 715L573.7 685L580.8 670L583.6 660L583.7 655L590 641.5L598.5 610L606.5 595L616.7 580L630 565L645 551.2L655 547.7L670 546L680 542.9L695 535.1L700 534.5L710 529L715 528L725 523L745 508L750 506L765 502.4L775 498.6L790 498.3L795 500.9L805 499.5L810 501L815 500.6L830 503.1L855 499.1L865 496.3L870 493.8L890 481.3L900 479L923.1 470ZM-0.4 0L747.3 0L748 25L752.1 35L760 46.7L762.9 65L759.1 80L753.3 95L736.2 130L728.2 140L710 155.4L695.6 160L685 162L665 169.1L653.4 175L630 182.3L605 185.2L595 190.7L580 205.4L568.2 220L560 227.5L556.5 235L554.5 245L554.6 250L559.9 260L563.9 265L570.8 280L573.8 295L582.7 310L590 316.3L605 325.9L610 325.4L625 327L635 325.9L655 327.4L660 327.3L670 325L680 326L690 321.6L696.9 320L710 313.2L715 312.7L730 316.4L740 313L745 312.5L750 315.4L752.6 320L760 328.3L765 329.8L770 329L775 330.3L780 333.6L785.3 340L794.6 345L800.8 350L802.8 355L802.5 365L803.7 370L809.7 380L810 382.6L812.8 385L820 388.1L825 383.7L830 382.4L835 383.9L840 382.2L845 376.5L850 375.6L855 372.9L860 372.5L870 374.5L880 373.7L915 361.1L920 361.3L930 365.3L940 364.8L945 367L955 367.1L965 364.6L975 365.7L980 364.6L985 366.9L988.2 370L994.7 380L1005 388.4L1010 394.8L1015 396.1L1020.2 400L1035 406.2L1055 412.2L1065 412.1L1075 416.3L1080 419.4L1084.9 425L1084.5 435L1090 438.1L1100 447.1L1105 450.1L1115 450.1L1135 462L1140 463.1L1148 470L1155 473.7L1185 494.8L1188.5 500L1190 505L1200 510.9L1200 900L0 900.3L-0.4 0Z"/>
+<path class="c-iso c-iso--deep" d="M-0.4 0L873.6 0L872.2 15L865.2 30L862 60L862.6 65L865 71.1L888.3 95L890.4 100L890.3 105L894.7 120L895.6 130L897.5 135L897.2 150L898.8 165L897.6 180L893.1 200L892.9 210L897.8 225L897 235L898.8 260L915 261.7L930 268.6L945 267.5L953.9 265L960 264.7L975 269.4L985 276.6L990.5 285L1000 290.9L1020 298L1030 304.5L1040 308.5L1055 320.4L1065 326.3L1070 335.1L1075 337.3L1085 339L1092.4 345L1096.5 350L1100 352L1111.1 355L1120 356.1L1130 355.8L1150 359.5L1165 360.7L1200 379.2L1200.1 900L0 900.4L-0.4 0Z"/>
+<path class="c-cable" d="M884 300C800 360 712 468 640 470S530 440 470 432"/>
+<path class="c-pipe" d="M1210 742L1000 640 846 600 640 610"/>
+<path class="c-break" d="M262 598Q370 566 452 528"/>
+<path class="c-break" d="M268 712Q330 700 372 676"/>
+<path class="c-land" d="M-0.2 0L326.3 0L325.2 5L316.2 25L309.2 45L306.5 60L289.9 90L294.6 100L294.8 105L299.2 115L300.3 120L310 128.1L315 136.6L316.1 145L314.9 155L315.7 160L321.2 170L321.3 175L312.8 185L311.2 190L311.4 195L313.1 200L315 203.4L317.5 205L319.1 210L322.6 215L323.1 220L322.8 225L319.4 230L318.7 235L318.5 255L319.7 270L318.1 285L324 320L322.4 325L323.4 330L325 331.8L330 333.3L330.7 335L348.3 350L365 358.6L380.7 370L404.1 390L410 391.9L425 393.9L437.9 400L450 410.2L455 413.1L473 420L478.8 425L482.6 435L482.8 440L480 445L475.9 450L470 452.7L465 456.8L455 459.1L450 462.1L430 465.8L410 471.6L390 472.6L376.3 475L365 480.6L350 485.8L335 493.5L315 509.4L304.9 515L295 525.7L289.6 535L290 541.9L293.9 550L300 557.6L303 565L302.7 570L298.8 575L297.7 580L284.8 595L282.3 600L277 605L274.3 610L270 613.6L250 614.6L240 623.1L228.9 630L223.2 645L221.4 655L222 660L232.2 685L245 702.7L248.6 715L249.4 740L244.5 765L247.1 780L254.3 800L255.4 815L258.1 830L253.8 850L248.2 865L245 877.8L241.4 885L240.5 890L234.6 900L-0.1 900L-0.2 0ZM819.3 755L830 752.6L850 753.7L855 754.9L860 758.5L865.4 760L874.6 765L878.9 780L880 782.4L883.4 785L883.6 790L878.9 800L870 807.3L865 808.6L855 813.8L845 814.9L840 819.2L830 818.2L825 814.1L815 809.9L805 807.4L800 803.7L792.2 795L787.8 785L788.8 780L800 767.4L810 763.4L815 760L819.3 755Z"/>
+<path class="c-topo" d="M-0.1 0L285.8 0L285 25L282.9 35L280 40.8L272.7 50L269.6 60L259 75L250 97.8L236.2 110L233.3 115L234.9 120L235 130L231 135L228.7 145L232.5 150L235.5 165L240 169L245 170.6L250 169.8L255 167.4L260 169.5L256.8 180L253.6 205L251.5 210L252.5 215L255.4 220L270 239.2L275.7 245L277.4 250L276.5 270L277.7 280L274.9 295L272.8 300L273.7 305L285 323.9L285.4 330L288.5 340L291.5 345L300 353.7L305 357.9L325 367.6L340 382.8L345 386.2L360 393L370 401.2L377.8 410L385 414.5L397.6 420L404.6 425L407.4 430L405 435.4L390 444.4L370 450.4L365 455.5L355 462L340 470.1L320 478L300 491.3L281.6 500L275 501.8L269.7 505L254.3 525L240 535L232 545L212.3 560L206.6 570L204.8 580L205.2 595L203.9 600L201.1 605L180 620.1L175 627.5L172.2 635L173.4 650L180.4 670L183.7 690L190 705L190.5 710L205 723.2L209.8 730L211.4 735L210 740L199.7 755L197.9 760L197.9 765L206.2 790L207.1 795L205.2 805L207.7 815L216.8 825L218.4 830L220.9 855L219.8 870L215 877.4L210 881.7L195 890.4L190 894.4L186.7 900L-0.1 900L-0.1 0ZM-0.1 0L240.3 0L239 20L234.1 35L232.6 45L230 53.2L225 59.4L214.7 80L210.2 85L195 93.1L190 97.3L187.2 105L174.7 125L171.7 135L183.8 175L186.6 180L188.4 195L192.4 205L191.7 220L189.4 230L187.9 245L189.5 250L196.4 260L198.5 265L198.6 270L196.3 280L190 286.7L185 286.6L175 283.9L172.9 290L173.6 295L176.4 305L180 309.6L192.6 320L194.7 325L200 329.5L205 336.5L210 340.7L215 341.2L220 339.4L235 340.3L243.2 345L247.8 350L255 362.5L260 367.7L272.6 375L285 385.2L305 398L312.6 410L322.6 420L326.5 430L325 435.1L318.8 445L310 452.4L295 459.1L285 466.8L260 477.4L230 496.2L217.9 505L195 516.2L185 528L170 558.4L165.1 565L163.7 570L164.2 585L162 590L155 597.9L135 614.4L123.5 630L118.5 655L119.1 665L121 670L123.1 685L125.3 690L135 700.8L140.1 710L141.7 740L145.3 745L155.6 755L159.1 760L160.3 765L153.6 785L148.7 795L148.3 815L142 825L135 832.8L134.4 835L134.3 840L135.6 845L141.5 855L140.5 865L136.9 870L140 875L136.2 880L128.1 885L126 890L124.4 900L-0.1 900L-0.1 0Z"/>
+<g class="c-turbines"><circle cx="700" cy="92" r="3.2"/><circle cx="744" cy="92" r="3.2"/><circle cx="788" cy="92" r="3.2"/><circle cx="832" cy="92" r="3.2"/><circle cx="722" cy="128" r="3.2"/><circle cx="766" cy="128" r="3.2"/><circle cx="810" cy="128" r="3.2"/><circle cx="854" cy="128" r="3.2"/><circle cx="700" cy="164" r="3.2"/><circle cx="744" cy="164" r="3.2"/><circle cx="788" cy="164" r="3.2"/><circle cx="832" cy="164" r="3.2"/><circle cx="722" cy="200" r="3.2"/><circle cx="766" cy="200" r="3.2"/><circle cx="810" cy="200" r="3.2"/><circle cx="854" cy="200" r="3.2"/><circle cx="800" cy="222" r="3.2"/><circle cx="844" cy="222" r="3.2"/><circle cx="888" cy="222" r="3.2"/><circle cx="932" cy="222" r="3.2"/><circle cx="822" cy="258" r="3.2"/><circle cx="866" cy="258" r="3.2"/><circle cx="910" cy="258" r="3.2"/><circle cx="954" cy="258" r="3.2"/><circle cx="800" cy="294" r="3.2"/><circle cx="844" cy="294" r="3.2"/><circle cx="888" cy="294" r="3.2"/><circle cx="932" cy="294" r="3.2"/><circle cx="950" cy="336" r="3.2"/><circle cx="994" cy="336" r="3.2"/><circle cx="1038" cy="336" r="3.2"/><circle cx="1082" cy="336" r="3.2"/><circle cx="1126" cy="336" r="3.2"/><circle cx="972" cy="372" r="3.2"/><circle cx="1016" cy="372" r="3.2"/><circle cx="1060" cy="372" r="3.2"/><circle cx="1104" cy="372" r="3.2"/><circle cx="950" cy="408" r="3.2"/><circle cx="994" cy="408" r="3.2"/><circle cx="1038" cy="408" r="3.2"/><circle cx="1082" cy="408" r="3.2"/><circle cx="1126" cy="408" r="3.2"/><circle cx="972" cy="444" r="3.2"/><circle cx="1016" cy="444" r="3.2"/><circle cx="1060" cy="444" r="3.2"/><circle cx="1104" cy="444" r="3.2"/></g>
+<g class="c-arrays"><text x="672" y="102">A</text><text x="772" y="232">C</text><text x="1144" y="346">B</text></g>
+<g class="c-labels">
+<text x="842" y="70" class="c-l-caps">HARROW BANK WIND</text>
+<text x="600" y="214" class="c-l-serif" text-anchor="middle">Sallow Deep</text>
+<text x="66" y="652" class="c-l-caps c-l-land">VENNICK</text>
+<text x="96" y="400" class="c-l-serif c-l-land">Cobble Head</text>
+<text x="842" y="846" class="c-l-serif" text-anchor="middle">Skerry Holm</text>
+<text x="720" y="532" class="c-l-small" transform="rotate(-11 720 532)">EXPORT CABLE</text>
+<text x="862" y="586" class="c-l-small" transform="rotate(14.6 862 586)">EASTGATE PIPELINE</text>
+<text x="80" y="160" class="c-l-caps c-l-land">HARROW COAST</text>
+</g>
+<path class="c-tick" d="M150 0v10M150 900v-10M300 0v10M300 900v-10M450 0v10M450 900v-10M600 0v10M600 900v-10M750 0v10M750 900v-10M900 0v10M900 900v-10M1050 0v10M1050 900v-10M0 150h10M1200 150h-10M0 300h10M1200 300h-10M0 450h10M1200 450h-10M0 600h10M1200 600h-10M0 750h10M1200 750h-10"/>
+<g class="c-grat"><text x="150" y="26" text-anchor="middle">2°30′E</text><text x="300" y="26" text-anchor="middle">2°40′E</text><text x="450" y="26" text-anchor="middle">2°50′E</text><text x="600" y="26" text-anchor="middle">3°00′E</text><text x="750" y="26" text-anchor="middle">3°10′E</text><text x="900" y="26" text-anchor="middle">3°20′E</text><text x="1050" y="26" text-anchor="middle">3°30′E</text><text x="1186" y="154" text-anchor="end">54°30′N</text><text x="1186" y="304" text-anchor="end">54°25′N</text><text x="1186" y="454" text-anchor="end">54°20′N</text><text x="1186" y="604" text-anchor="end">54°15′N</text><text x="1186" y="754" text-anchor="end">54°10′N</text></g>
+<g class="c-scale" transform="translate(940 842)"><path d="M0 0h180M0-6v12M90-4v8M180-6v12"/><text x="0" y="-12">0</text><text x="90" y="-12" text-anchor="middle">5</text><text x="180" y="-12" text-anchor="end">10 nmi</text></g>
+<g class="c-north" transform="translate(1130 92)"><path d="M0-26L9 12 0 5-9 12Z"/><text y="34" text-anchor="middle">N</text></g><!--/@map--></svg>
+            <svg class="survey__svg" id="survey-view" viewBox="0 0 1200 900" role="img" aria-label="Illustrative survey route" hidden></svg>
+            <div class="chart__points"><!-- filled by main.js from the mission list --></div>
+            <div class="mcard" id="mcard" hidden>
+              <p class="mcard__top mono"><span data-k="no"></span><span data-k="date"></span></p>
+              <h3 class="mcard__title" data-k="title"></h3>
+              <dl class="mcard__meta">
+                <div><dt class="mono">Client</dt><dd data-k="client"></dd></div>
+                <div><dt class="mono">Drone</dt><dd data-k="drone"></dd></div>
+              </dl>
+              <p class="mcard__outcome" data-k="outcome"></p>
+            </div>
+            <p class="chart__note mono">Schematic chart · places and clients invented</p>
+          </div>
+          </div>
+
+          <div class="survey__readout" hidden>
+            <ol class="survey__steps mono" aria-label="Survey sequence"><li data-phase="approach">01 Approach</li><li data-phase="survey">02 Survey</li><li data-phase="result">03 Result</li></ol>
+            <div class="survey__progress" aria-hidden="true"><span></span></div>
+            <p class="survey__status" role="status" aria-live="polite">Select Play survey to follow this mission.</p>
+          </div>
+          <div class="chart__carddock"></div>
+          <noscript><p class="chart__static">Each mission follows three steps: approach the asset, survey under shore supervision, then report the findings. Dates, vessels and outcomes are listed below.</p></noscript>
+
+          <ol class="mlist" role="list">
+            <li class="mrow" data-sector="wind" data-x="878" data-y="262">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">01</span><span class="mrow__title">Monopile foundation inspection, Harrow Bank array C</span><span class="mono mrow__date"><time datetime="2026-08">Aug 2026</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Offshore wind operator</p><p class="mrow__drone">TW-2 Fulmar × 2</p>
+                <p class="mrow__outcome">64 foundations in nine days. Scour found at three; all reported within 48 hours and no crew transfers needed.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="port" data-x="318" data-y="650">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">02</span><span class="mrow__title">Quay wall survey, Port of Vennick</span><span class="mono mrow__date"><time datetime="2026-06">Jun 2026</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Port authority</p><p class="mrow__drone">TW-1 Tern</p>
+                <p class="mrow__outcome">1.8 km of quay wall mapped below the waterline between ship calls. Two voids flagged for grouting.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="subsea" data-x="640" data-y="470">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">03</span><span class="mrow__title">Export cable route survey, Harrow Bank to Cobble Head</span><span class="mono mrow__date"><time datetime="2026-05">May 2026</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Cable owner</p><p class="mrow__drone">TW-4 Gannet</p>
+                <p class="mrow__outcome">42 km surveyed in one run. Exposure found at two points; depth of burial logged every 5 m.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="wind" data-x="1012" data-y="384">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">04</span><span class="mrow__title">Night J-tube and cable seal check, array B</span><span class="mono mrow__date"><time datetime="2026-03">Mar 2026</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Offshore wind operator</p><p class="mrow__drone">TW-2 Fulmar</p>
+                <p class="mrow__outcome">28 J-tubes read with thermal and lidar overnight. One damaged seal found and fixed before it let water in.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="port" data-x="452" data-y="528">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">05</span><span class="mrow__title">Breakwater check after a storm, Vennick outer harbour</span><span class="mono mrow__date"><time datetime="2025-11">Nov 2025</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Port authority</p><p class="mrow__drone">TW-1 Tern</p>
+                <p class="mrow__outcome">On the water six hours after the storm passed. Displaced armour units mapped before divers were cleared to go in.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="science" data-x="566" data-y="296">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">06</span><span class="mrow__title">Seabed habitat baseline, Sallow Deep</span><span class="mono mrow__date"><time datetime="2025-09">Sep 2025</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Marine research institute</p><p class="mrow__drone">TW-2 Fulmar</p>
+                <p class="mrow__outcome">A 1,200 ha sonar mosaic and habitat map delivered straight into the institute's GIS.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="wind" data-x="778" data-y="150">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">07</span><span class="mrow__title">Cathodic protection readings, array A</span><span class="mono mrow__date"><time datetime="2025-07">Jul 2025</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Offshore wind operator</p><p class="mrow__drone">TW-4 Gannet</p>
+                <p class="mrow__outcome">CP readings at 40 foundations over nine days on station, with nobody aboard and nobody on the turbines.</p>
+              </div>
+            </li>
+            <li class="mrow" data-sector="subsea" data-x="1000" data-y="640">
+              <button type="button" class="mrow__btn" aria-expanded="false">
+                <span class="mono mrow__no">08</span><span class="mrow__title">Free-span check, Eastgate gas pipeline</span><span class="mono mrow__date"><time datetime="2025-04">Apr 2025</time></span>
+              </button>
+              <div class="mrow__body">
+                <p class="mrow__client">Pipeline operator</p><p class="mrow__drone">TW-4 Gannet</p>
+                <p class="mrow__outcome">Three free spans measured along 18 km. All within limits, so no intervention was needed this year.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ 05 Leadership ============ -->
+      <section class="section people" id="leadership" aria-labelledby="people-title">
+        <header class="statement">
+          <p class="eyebrow" data-reveal><span class="eyebrow__no">05</span> Leadership</p>
+          <h2 class="statement__title" id="people-title" data-reveal-lines>
+            <span class="line"><span>The people</span></span>
+            <span class="line"><span>on watch.</span></span>
+          </h2>
+          <p class="lead" data-reveal>Surveyors, naval architects and autonomy engineers who spent years offshore before they built something to go out instead.</p>
+        </header>
+        <ul class="people__grid" role="list">
+          <li class="person" data-reveal><div class="person__tile" data-tint="1" aria-hidden="true">IH</div><h3 class="person__name">Ingrid Hallvard</h3><p class="person__role">Chief executive</p><p class="person__prev mono">Ex offshore survey manager</p></li>
+          <li class="person" data-reveal><div class="person__tile" data-tint="2" aria-hidden="true">TR</div><h3 class="person__name">Tomasz Rydel</h3><p class="person__role">Chief technology officer</p><p class="person__prev mono">Autonomy, 14 years</p></li>
+          <li class="person" data-reveal><div class="person__tile" data-tint="3" aria-hidden="true">AB</div><h3 class="person__name">Aoife Brannagh</h3><p class="person__role">Chief operating officer</p><p class="person__prev mono">Ex port harbour master</p></li>
+          <li class="person" data-reveal><div class="person__tile" data-tint="4" aria-hidden="true">DO</div><h3 class="person__name">Daniel Okonjo-Reyes</h3><p class="person__role">VP, Hull and systems</p><p class="person__prev mono">Naval architect</p></li>
+          <li class="person" data-reveal><div class="person__tile" data-tint="5" aria-hidden="true">ML</div><h3 class="person__name">Mei Lindqvist</h3><p class="person__role">Head of data products</p><p class="person__prev mono">Hydrographer</p></li>
+          <li class="person" data-reveal><div class="person__tile" data-tint="6" aria-hidden="true">RD</div><h3 class="person__name">Rafael Duarte Moss</h3><p class="person__role">Chief financial officer</p><p class="person__prev mono">Energy infrastructure finance</p></li>
+        </ul>
+      </section>
+
+      <!-- ============ 06 Press ============ -->
+      <section class="section press" id="press" aria-labelledby="press-title">
+        <div class="press__head">
+          <p class="eyebrow" data-reveal><span class="eyebrow__no">06</span> Press</p>
+          <h2 class="press__title" id="press-title" data-reveal>In the press</h2>
+          <p class="press__contact" data-reveal>Press enquiries: <a class="arrow-link" href="mailto:press@tidewright.example"><span class="arrow-link__in" aria-hidden="true">→</span>press@tidewright.example<span class="arrow-link__out" aria-hidden="true">→</span></a></p>
+        </div>
+        <ol class="press__list" role="list">
+          <li class="prow" data-reveal><time class="mono" datetime="2026-09-18">18 Sep 2026</time><span class="prow__outlet">The Tideline</span><span class="prow__headline">Tidewright passes 2,000 foundation inspections without a crew transfer</span></li>
+          <li class="prow" data-reveal><time class="mono" datetime="2026-07-02">2 Jul 2026</time><span class="prow__outlet">Foundation Weekly</span><span class="prow__headline">Gannet completes a twelve-day cable survey with no one aboard</span></li>
+          <li class="prow" data-reveal><time class="mono" datetime="2026-04-15">15 Apr 2026</time><span class="prow__outlet">Port Engineer Review</span><span class="prow__headline">How Vennick checks its quay walls between ship calls</span></li>
+          <li class="prow" data-reveal><time class="mono" datetime="2026-01-27">27 Jan 2026</time><span class="prow__outlet">Sea Level Journal</span><span class="prow__headline">Tidewright opens a second operations base on the east coast</span></li>
+          <li class="prow" data-reveal><time class="mono" datetime="2025-10-09">9 Oct 2025</time><span class="prow__outlet">The Tideline</span><span class="prow__headline">Interview: Ingrid Hallvard on taking people out of the splash zone</span></li>
+        </ol>
+      </section>
+
+      <!-- ============ 07 Contact + footer ============ -->
+      <section class="closing" id="contact" aria-labelledby="closing-title">
+        <div class="closing__media">
+          <img src="img/tidewright-harbour.jpg" width="1200" height="896" alt="A Tidewright drone moored at a pontoon in an industrial harbour at blue hour, harbour lights reflected in still water." loading="lazy" decoding="async">
+        </div>
+        <div class="closing__copy">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__no">07</span> Contact</p>
+          <h2 class="closing__title" id="closing-title" data-reveal-lines>
+            <span class="line"><span>Book a drone</span></span>
+            <span class="line"><span>for your next</span></span>
+            <span class="line"><span>survey window.</span></span>
+          </h2>
+          <a class="btn-hero btn-hero--light" href="mailto:surveys@tidewright.example">
+            <span class="roll" data-text="Talk to operations">Talk to operations</span>
+            <span class="chip" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer__cols">
+          <div class="footer__about">
+            <a class="logo" href="#overview" aria-label="Tidewright, back to top">
+              <svg class="logo__mark" viewBox="0 0 28 28" aria-hidden="true"><use href="#mark"/></svg>
+              <span class="logo__word">Tidewright</span>
+            </a>
+            <p>Tidewright designs, builds and operates uncrewed surface drones for offshore wind, ports and subsea infrastructure. We sell inspections, not just hardware: our pilots supervise every mission from shore.</p>
+          </div>
+          <nav class="footer__nav" aria-label="Footer">
+            <p class="mono footer__h">Sections</p>
+            <a href="#capabilities">Capabilities</a><a href="#fleet">Fleet</a><a href="#missions">Missions</a><a href="#leadership">Leadership</a><a href="#press">Press</a>
+          </nav>
+          <div class="footer__bases">
+            <p class="mono footer__h">Bases</p>
+            <p>Vennick, harbour ops<br>Cobble Head, east coast<br>Rotterdam, engineering</p>
+          </div>
+          <div class="footer__contact">
+            <p class="mono footer__h">Contact</p>
+            <p><a href="mailto:surveys@tidewright.example">surveys@tidewright.example</a><br><a href="mailto:press@tidewright.example">press@tidewright.example</a></p>
+          </div>
+          <div class="tide" aria-live="off">
+            <p class="mono footer__h">Vennick tide, simulated</p>
+            <svg class="tide__curve" viewBox="0 0 240 64" aria-hidden="true"><path class="tide__path" d=""/><line class="tide__now" x1="120" x2="120" y1="0" y2="64"/><circle class="tide__dot" r="3.5" cx="120" cy="32"/></svg>
+            <p class="tide__read"><span data-tide-h>3.1</span> m, <span data-tide-dir>falling</span> · <span data-tide-next>low water 14:22</span></p>
+          </div>
+        </div>
+        <div class="footer__legal">
+          <p>© 2026 Tidewright. A website concept.</p>
+          <p class="footer__disclosure">Tidewright is a fictional company created as a website concept by [Studio name]. Its drones, specifications, missions, clients, people, places and press coverage are invented, the email addresses do not work and nothing here is for sale. The chart is schematic, the tide is simulated, and the photographs were generated with AI.</p>
+          <a class="footer__top" href="#overview">Back to top ↑</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- shared symbols -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="mark" viewBox="0 0 28 28"><path d="M2 17c3-2.6 6-2.6 9 0s6 2.6 9 0 4.6-2.2 6-1.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 23c3-2.6 6-2.6 9 0s6 2.6 9 0 4.6-2.2 6-1.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".45"/><path d="M14 3v9M9.5 12h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="grid" viewBox="0 0 800 270"><path d="M100 0v226M200 0v226M300 0v226M400 0v226M500 0v226M600 0v226M700 0v226M0 100h800" fill="none" stroke="#0F1A20" stroke-opacity=".07" stroke-width="1.5"/><rect x="0" y="200" width="800" height="26" fill="#DCE7E5"/><path d="M0 200h800" fill="none" stroke="#7D99A2" stroke-width="1.5" stroke-dasharray="6 6"/></symbol>
+  </svg>
+
+  <script src="main.js?v=11" defer></script>
+</body>
+</html>

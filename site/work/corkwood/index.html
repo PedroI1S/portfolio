@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corkwood Public · Furniture for the places we share</title>
+  <meta name="description" content="Corkwood Public is a fictional Portuguese maker of benches, planters, bike racks and bins in cork, pine and recycled steel. Scroll to watch a bench assemble itself. An organic / nature website concept.">
+  <meta name="theme-color" content="#F2EFEA">
+  <meta property="og:title" content="Corkwood Public · Furniture for the places we share">
+  <meta property="og:description" content="An organic / nature website concept for a fictional public-furniture maker.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&display=swap">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" crossorigin>
+  <link rel="stylesheet" href="style.css?v=28">
+  <script>
+    // Decide the page mode before first paint: 3D when WebGL works, the scroll build only with motion.
+    (function (d) {
+      var c = d.documentElement, gl = false;
+      c.classList.add('js');
+      var motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      try {
+        var k = d.createElement('canvas'), x = k.getContext('webgl2') || k.getContext('webgl');
+        gl = !!x;
+        if (x && x.getExtension('WEBGL_lose_context')) x.getExtension('WEBGL_lose_context').loseContext();
+      } catch (e) {}
+      if (motion) c.classList.add('has-motion');
+      if (gl) c.classList.add('has-3d');
+      if (gl && motion) c.classList.add('has-build', 'intro-wait');
+    })(document);
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a class="nav__logo" href="#top" aria-label="Corkwood Public, back to top">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="13.1" cy="11.1" r="6.5"/><circle cx="13.9" cy="10.5" r="2.9"/></svg>
+      <span>Corkwood Public</span>
+    </a>
+    <nav class="nav__pills" aria-label="Primary">
+      <a class="pill" href="#collections">Collections</a>
+      <a class="pill" href="#materials">Materials</a>
+      <a class="pill" href="#places">Places</a>
+      <a class="pill" href="#impact">Impact</a>
+      <a class="pill pill--accent" href="#configure">Configure</a>
+    </nav>
+    <button class="pill nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="nav__menu-label">Menu</span><span class="nav__menu-icon" aria-hidden="true"></span></button>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a href="#collections"><span>Collections</span><span class="menu__no">01</span></a>
+      <a href="#materials"><span>Materials</span><span class="menu__no">02</span></a>
+      <a href="#places"><span>Places</span><span class="menu__no">03</span></a>
+      <a href="#impact"><span>Impact</span><span class="menu__no">04</span></a>
+      <a href="#configure"><span>Configure a bench</span><span class="menu__no">05</span></a>
+    </nav>
+    <p class="menu__note">Benches, planters, bike racks and bins in cork, pine and recycled steel. Made in Santa Maria da Feira, Portugal.</p>
+  </div>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main id="main">
+    <section class="build" id="build" aria-labelledby="hero-title" data-scene="linen">
+      <div class="build__stage">
+        <div class="build__copy">
+          <p class="build__eyebrow">Cork · Pine · Recycled steel</p>
+          <h1 class="build__title" id="hero-title" data-words>Grown slowly,<br> built for<br> everyone.</h1>
+        </div>
+        <div class="build__canvas" aria-hidden="true">
+          <img class="build__photo" src="img/bench-cork-cut.webp" alt="" width="1080" height="1080" decoding="async" fetchpriority="high">
+        </div>
+        <p class="build__lead">Benches, planters, bike racks and bins for parks, schools and squares. Bolted, never welded, so every part comes apart again. Made in Santa Maria da Feira, Portugal.</p>
+        <p class="build__count" aria-hidden="true"><span class="build__count-label">Parts placed</span> <span class="build__count-n">00</span><span class="build__count-of"> / 09</span></p>
+        <p class="build__cue" aria-hidden="true">Scroll to build <span>↓</span></p>
+        <p class="sr">As you scroll, the Sobreiro bench assembles itself from nine parts: two pressed-cork blocks and seven pine slats, fixed with eight bolts and one hex key.</p>
+      </div>
+    </section>
+
+    <section class="strip" aria-labelledby="strip-title">
+      <h2 class="strip__title" id="strip-title">One bench, nine parts, one key.</h2>
+      <ol class="strip__panels">
+        <li>
+          <img src="img/build-1.jpg" alt="The parts of a Sobreiro bench floating apart: two cork blocks, seven pine slats and eight bolts." width="900" height="675" loading="lazy" decoding="async">
+          <p><span>01</span> Loose parts</p>
+        </li>
+        <li>
+          <img src="img/build-2.jpg" alt="Half built: the cork blocks stand in place under the seat slats, the back slats still floating." width="900" height="675" loading="lazy" decoding="async">
+          <p><span>02</span> Blocks and seat</p>
+        </li>
+        <li>
+          <img src="img/build-3.jpg" alt="The finished bench: pine seat and backrest bolted onto two cork blocks." width="900" height="675" loading="lazy" decoding="async">
+          <p><span>03</span> Bolted and finished</p>
+        </li>
+      </ol>
+      <p class="strip__parts">2 pressed-cork blocks · 7 maritime-pine slats · 8 stainless bolts · 1 hex key</p>
+    </section>
+
+    <section class="section collections" id="collections" aria-labelledby="collections-title">
+      <div class="intro" data-scene="linen">
+        <p class="eyebrow">Collections <span>(04)</span></p>
+        <h2 class="statement" id="collections-title" data-words>Four families of furniture, one kit of parts.</h2>
+        <div class="intro__side" data-reveal>
+          <p>Every piece is put together from the same slats, blocks and bolts. Mix them across a park, then repair any of them with a single key.</p>
+          <a class="tlink" href="#configure">Configure a bench <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="rooms" data-scene="rooms">
+        <div class="rooms__stage">
+          <div class="cards">
+            <article class="card" data-reveal data-room="0" style="--tint:var(--room-sand)">
+              <div class="card__tile">
+                <img src="img/bench-cork-cut.webp" alt="Sobreiro bench: pale pine seat and backrest slats resting on two solid blocks of brown cork." width="1080" height="1080" loading="lazy" decoding="async">
+              </div>
+              <div class="card__meta">
+                <p class="card__cat">Seating</p>
+                <h3 class="card__name">Sobreiro bench</h3>
+                <p class="card__line">Seven pine slats on two cork blocks or a recycled-steel frame.</p>
+                <ul class="swatches" aria-label="Finishes: natural cork, graphite, clay, and 2 more">
+                  <li style="--c:var(--sw-cork)"></li><li style="--c:var(--sw-graphite)"></li><li style="--c:var(--sw-clay)"></li><li class="swatches__more" aria-hidden="true">+2</li>
+                </ul>
+                <button class="card__more" type="button" aria-expanded="false" aria-controls="spec-sobreiro"><span>Details</span><span class="plus" aria-hidden="true"></span><span class="sr"> for the Sobreiro bench</span></button>
+                <div class="card__specs" id="spec-sobreiro">
+                  <dl>
+                    <div><dt>Length</dt><dd>1.6, 2.0 or 2.4 m</dd></div>
+                    <div><dt>Base</dt><dd>Cork blocks or steel frame</dd></div>
+                    <div><dt>Weight</dt><dd>46 to 84 kg</dd></div>
+                    <div><dt>Fixing</dt><dd>Freestanding or anchored</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" data-reveal data-room="1" style="--tint:var(--room-sage)">
+              <div class="card__tile">
+                <img src="img/planter-cut.webp" alt="Montado planter: a low, round drum of brown cork holding a young olive tree." width="1080" height="1080" loading="lazy" decoding="async">
+              </div>
+              <div class="card__meta">
+                <p class="card__cat">Planting</p>
+                <h3 class="card__name">Montado planter</h3>
+                <p class="card__line">A drum of pressed cork that holds a small tree and 400 litres of soil.</p>
+                <ul class="swatches" aria-label="Finishes: natural cork, toasted cork, and 1 more">
+                  <li style="--c:var(--sw-cork)"></li><li style="--c:var(--sw-toasted)"></li><li class="swatches__more" aria-hidden="true">+1</li>
+                </ul>
+                <button class="card__more" type="button" aria-expanded="false" aria-controls="spec-montado"><span>Details</span><span class="plus" aria-hidden="true"></span><span class="sr"> for the Montado planter</span></button>
+                <div class="card__specs" id="spec-montado">
+                  <dl>
+                    <div><dt>Diameter</dt><dd>90 or 120 cm</dd></div>
+                    <div><dt>Soil</dt><dd>Up to 400 litres</dd></div>
+                    <div><dt>Body</dt><dd>Pressed cork drum</dd></div>
+                    <div><dt>Drainage</dt><dd>Steel base tray</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" data-reveal data-room="2" style="--tint:var(--room-clay)">
+              <div class="card__tile">
+                <img src="img/bikerack-cut.webp" alt="Aro bike rack: three rounded clay-orange steel hoops on a low base rail." width="1080" height="1080" loading="lazy" decoding="async">
+              </div>
+              <div class="card__meta">
+                <p class="card__cat">Cycling</p>
+                <h3 class="card__name">Aro bike rack</h3>
+                <p class="card__line">Three to nine hoops on one rail, bent from recycled steel tube.</p>
+                <ul class="swatches" aria-label="Finishes: clay, graphite, sage, and 4 more">
+                  <li style="--c:var(--sw-clay)"></li><li style="--c:var(--sw-graphite)"></li><li style="--c:var(--sw-sage)"></li><li class="swatches__more" aria-hidden="true">+4</li>
+                </ul>
+                <button class="card__more" type="button" aria-expanded="false" aria-controls="spec-aro"><span>Details</span><span class="plus" aria-hidden="true"></span><span class="sr"> for the Aro bike rack</span></button>
+                <div class="card__specs" id="spec-aro">
+                  <dl>
+                    <div><dt>Hoops</dt><dd>3 to 9 per rail</dd></div>
+                    <div><dt>Bikes</dt><dd>Two per hoop</dd></div>
+                    <div><dt>Frame</dt><dd>Recycled steel tube</dd></div>
+                    <div><dt>Fixing</dt><dd>Bolted or cast in</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" data-reveal data-room="3" style="--tint:var(--room-sky)">
+              <div class="card__tile">
+                <img src="img/bin-cut.webp" alt="Cesto bin: a round litter bin clad in vertical pine slats with a cork lid." width="1080" height="1080" loading="lazy" decoding="async">
+              </div>
+              <div class="card__meta">
+                <p class="card__cat">Waste</p>
+                <h3 class="card__name">Cesto bin</h3>
+                <p class="card__line">Slatted pine around a lockable liner, with a lid of pressed cork.</p>
+                <ul class="swatches" aria-label="Finishes: oiled pine, natural cork, and 2 more">
+                  <li style="--c:var(--sw-pine)"></li><li style="--c:var(--sw-cork)"></li><li class="swatches__more" aria-hidden="true">+2</li>
+                </ul>
+                <button class="card__more" type="button" aria-expanded="false" aria-controls="spec-cesto"><span>Details</span><span class="plus" aria-hidden="true"></span><span class="sr"> for the Cesto bin</span></button>
+                <div class="card__specs" id="spec-cesto">
+                  <dl>
+                    <div><dt>Capacity</dt><dd>90 litres, or 2 × 45</dd></div>
+                    <div><dt>Body</dt><dd>Oiled pine slats</dd></div>
+                    <div><dt>Lid</dt><dd>Pressed cork, hinged</dd></div>
+                    <div><dt>Liner</dt><dd>Galvanised, lockable</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </article>
+          </div>
+          <ol class="rooms__dots" aria-hidden="true"><li></li><li></li><li></li><li></li></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="materials" id="materials" aria-labelledby="materials-title" data-scene="dark">
+      <div class="materials__intro">
+        <p class="eyebrow">Materials <span>(03)</span></p>
+        <h2 class="statement" id="materials-title" data-words>Three materials, all within a day’s drive of the workshop.</h2>
+      </div>
+
+      <article class="chapter" aria-labelledby="ch-cork">
+        <div class="chapter__stage">
+          <figure class="chapter__media">
+            <img src="img/mat-cork.jpg" alt="Curved slabs of freshly harvested cork bark stacked to dry in the open air, cork oaks behind." width="1672" height="941" loading="lazy" decoding="async">
+          </figure>
+          <div class="chapter__over">
+            <h3 class="chapter__title" id="ch-cork"><span class="chapter__no">01</span> Cork</h3>
+            <div class="chapter__copy">
+              <p class="chapter__line">Stripped by hand from the cork oak every nine years. The tree is never cut down.</p>
+              <dl class="chapter__meta">
+                <div><dt>From</dt><dd>Montado oak country, Alentejo</dd></div>
+                <div><dt>Used for</dt><dd>Bench blocks, planters, lids</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter" aria-labelledby="ch-pine">
+        <div class="chapter__stage">
+          <figure class="chapter__media">
+            <img src="img/mat-pine.jpg" alt="Freshly planed pale pine boards stacked with spacers in a daylit workshop." width="1672" height="941" loading="lazy" decoding="async">
+          </figure>
+          <div class="chapter__over">
+            <h3 class="chapter__title" id="ch-pine"><span class="chapter__no">02</span> Pine</h3>
+            <div class="chapter__copy">
+              <p class="chapter__line">Maritime pine from managed forests in central Portugal, planed pale and oiled, never painted.</p>
+              <dl class="chapter__meta">
+                <div><dt>From</dt><dd>Certified forests, Leiria district</dd></div>
+                <div><dt>Used for</dt><dd>Seats, backrests, bin slats</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter" aria-labelledby="ch-steel">
+        <div class="chapter__stage">
+          <figure class="chapter__media">
+            <img src="img/mat-steel.jpg" alt="Bundled recycled steel tubes and offcuts on a workbench, a few powder-coated clay orange." width="1672" height="941" loading="lazy" decoding="async">
+          </figure>
+          <div class="chapter__over">
+            <h3 class="chapter__title" id="ch-steel"><span class="chapter__no">03</span> Recycled steel</h3>
+            <div class="chapter__copy">
+              <p class="chapter__line">Frames bent from recycled tube and bolted rather than welded, so every part can come apart again.</p>
+              <dl class="chapter__meta">
+                <div><dt>Recycled content</dt><dd>92 per cent</dd></div>
+                <div><dt>Used for</dt><dd>Bench frames, bike racks, liners</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section places" id="places" aria-labelledby="places-title" data-scene="linen">
+      <div class="intro">
+        <p class="eyebrow">Places <span>(101)</span></p>
+        <h2 class="statement" id="places-title" data-words>Wherever people wait, meet or slow down.</h2>
+      </div>
+
+      <svg class="plan-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <g id="pl-bench"><rect pathLength="1" x="-18" y="-3" width="36" height="7.5" rx="1.5"/><path pathLength="1" d="M-17 -6H17"/></g>
+          <g id="pl-planter"><circle pathLength="1" r="12"/><circle pathLength="1" r="8.5"/><circle class="pl-dot" r="1.6"/></g>
+          <g id="pl-bin"><circle pathLength="1" r="5"/><circle pathLength="1" r="2.2"/></g>
+          <g id="pl-rack"><path pathLength="1" d="M-13 -7V7M0 -7V7M13 -7V7M-16 0H16"/></g>
+        </defs>
+      </svg>
+
+      <div class="places__body">
+        <ul class="rows">
+          <li class="row" data-reveal>
+            <h3 class="row__name"><button class="row__btn" type="button" aria-expanded="false" aria-controls="plan-parks">Parks</button></h3>
+            <p class="row__desc">Long benches under the trees, planters as soft edges, a bin at every gate.</p>
+            <ul class="row__parts" aria-label="Parts in a typical park">
+              <li><img src="img/bench-cork-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bench <b>×6</b></span></li>
+              <li><img src="img/planter-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>planter <b>×4</b></span></li>
+              <li><img src="img/bin-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bin <b>×3</b></span></li>
+            </ul>
+            <p class="row__count">(38)<span class="sr"> projects</span></p>
+            <figure class="plan" id="plan-parks">
+              <svg viewBox="0 0 400 300" role="img" aria-label="Plan of a park: a winding path under six trees, with six benches along it, four planters and three bins.">
+                <rect class="pl-frame" pathLength="1" x="1" y="1" width="398" height="298" rx="10"/>
+                <g class="pl-ground">
+                  <path pathLength="1" d="M0 196C70 180 120 118 200 128S320 202 400 150"/>
+                  <path pathLength="1" d="M0 222C74 206 128 144 204 154S318 228 400 176"/>
+                </g>
+                <g class="pl-trees">
+                  <circle pathLength="1" cx="58" cy="82" r="32"/><circle pathLength="1" cx="150" cy="54" r="24"/><circle pathLength="1" cx="292" cy="62" r="36"/>
+                  <circle pathLength="1" cx="352" cy="246" r="26"/><circle pathLength="1" cx="96" cy="262" r="22"/><circle pathLength="1" cx="252" cy="254" r="18"/>
+                  <circle class="pl-dot" cx="58" cy="82" r="2"/><circle class="pl-dot" cx="150" cy="54" r="2"/><circle class="pl-dot" cx="292" cy="62" r="2"/><circle class="pl-dot" cx="352" cy="246" r="2"/><circle class="pl-dot" cx="96" cy="262" r="2"/><circle class="pl-dot" cx="252" cy="254" r="2"/>
+                </g>
+                <g class="pl-kit">
+                  <use href="#pl-bench" transform="translate(44.6 167.5) rotate(-26.6)"/>
+                  <use href="#pl-bench" transform="translate(91.2 142.5) rotate(-27.5)"/>
+                  <use href="#pl-bench" transform="translate(152.9 118.9) rotate(-11.3)"/>
+                  <use href="#pl-bench" transform="translate(247.6 128.8) rotate(20.3)"/>
+                  <use href="#pl-bench" transform="translate(303.7 151.9) rotate(19.7)"/>
+                  <use href="#pl-bench" transform="translate(363.2 155.6) rotate(-16.8)"/>
+                  <use href="#pl-planter" transform="translate(206 92)"/><use href="#pl-planter" transform="translate(338 116)"/>
+                  <use href="#pl-planter" transform="translate(26 142)"/><use href="#pl-planter" transform="translate(150 214)"/>
+                  <use href="#pl-bin" transform="translate(22 240)"/><use href="#pl-bin" transform="translate(386 198)"/><use href="#pl-bin" transform="translate(212 178)"/>
+                </g>
+                <g class="pl-scale"><path pathLength="1" d="M20 286H60M20 282V290M60 282V290"/><text x="66" y="289">2 m</text></g>
+              </svg>
+              <figcaption>Plan · a riverside park, Aveiro district</figcaption>
+            </figure>
+          </li>
+
+          <li class="row" data-reveal>
+            <h3 class="row__name"><button class="row__btn" type="button" aria-expanded="false" aria-controls="plan-schools">Schools</button></h3>
+            <p class="row__desc">Low benches for small legs, racks by the gate, and nothing that splinters.</p>
+            <ul class="row__parts" aria-label="Parts in a typical school yard">
+              <li><img src="img/bikerack-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bike rack <b>×5</b></span></li>
+              <li><img src="img/bench-clay-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bench <b>×4</b></span></li>
+              <li><img src="img/bin-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bin <b>×2</b></span></li>
+            </ul>
+            <p class="row__count">(24)<span class="sr"> projects</span></p>
+            <figure class="plan" id="plan-schools">
+              <svg viewBox="0 0 400 300" role="img" aria-label="Plan of a school yard: the school building along the top, a ball court, a tree, four benches along the wall and five bike racks by the gate.">
+                <defs><clipPath id="pl-clip-school"><rect x="16" y="16" width="368" height="54"/></clipPath></defs>
+                <rect class="pl-frame" pathLength="1" x="1" y="1" width="398" height="298" rx="10"/>
+                <g class="pl-ground">
+                  <rect pathLength="1" x="16" y="16" width="368" height="54"/>
+                  <path class="pl-hatch" pathLength="1" clip-path="url(#pl-clip-school)" d="M6 70L60 16M26 70L80 16M46 70L100 16M66 70L120 16M86 70L140 16M106 70L160 16M126 70L180 16M146 70L200 16M166 70L220 16M186 70L240 16M206 70L260 16M226 70L280 16M246 70L300 16M266 70L320 16M286 70L340 16M306 70L360 16M326 70L380 16M346 70L400 16M366 70L420 16"/>
+                  <path pathLength="1" d="M16 70V284H176M224 284H384V70"/>
+                  <rect pathLength="1" x="214" y="104" width="150" height="116" rx="2"/>
+                  <path pathLength="1" d="M289 104V220"/>
+                  <circle pathLength="1" cx="289" cy="162" r="18"/>
+                  <path pathLength="1" d="M128 214h16v16h-16zM144 214h16v16h-16zM136 198h16v16h-16zM136 182h16v16h-16z"/>
+                </g>
+                <g class="pl-trees"><circle pathLength="1" cx="104" cy="150" r="30"/><circle class="pl-dot" cx="104" cy="150" r="2"/></g>
+                <g class="pl-kit">
+                  <use href="#pl-bench" transform="translate(30 104) rotate(-90)"/><use href="#pl-bench" transform="translate(30 146) rotate(-90)"/>
+                  <use href="#pl-bench" transform="translate(30 188) rotate(-90)"/><use href="#pl-bench" transform="translate(30 230) rotate(-90)"/>
+                  <use href="#pl-rack" transform="translate(64 268)"/><use href="#pl-rack" transform="translate(100 268)"/><use href="#pl-rack" transform="translate(136 268)"/>
+                  <use href="#pl-rack" transform="translate(264 268)"/><use href="#pl-rack" transform="translate(300 268)"/>
+                  <use href="#pl-bin" transform="translate(166 268)"/><use href="#pl-bin" transform="translate(200 84)"/>
+                </g>
+                <g class="pl-scale"><text x="189" y="295">gate</text></g>
+              </svg>
+              <figcaption>Plan · a primary school yard, Coimbra</figcaption>
+            </figure>
+          </li>
+
+          <li class="row" data-reveal>
+            <h3 class="row__name"><button class="row__btn" type="button" aria-expanded="false" aria-controls="plan-squares">Squares</button></h3>
+            <p class="row__desc">Seating that turns a crossing into a place to stay for the afternoon.</p>
+            <ul class="row__parts" aria-label="Parts in a typical town square">
+              <li><img src="img/bench-steel-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bench <b>×8</b></span></li>
+              <li><img src="img/planter-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>planter <b>×6</b></span></li>
+            </ul>
+            <p class="row__count">(19)<span class="sr"> projects</span></p>
+            <figure class="plan" id="plan-squares">
+              <svg viewBox="0 0 400 300" role="img" aria-label="Plan of a town square: eight benches in a ring facing an olive tree in the middle, and six planters around the edges.">
+                <rect class="pl-frame" pathLength="1" x="1" y="1" width="398" height="298" rx="10"/>
+                <g class="pl-ground">
+                  <rect pathLength="1" x="32" y="22" width="336" height="256" rx="4"/>
+                  <rect pathLength="1" x="42" y="32" width="316" height="236"/>
+                  <path class="pl-faint" pathLength="1" d="M82 32V268M122 32V268M162 32V268M202 32V268M242 32V268M282 32V268M322 32V268M42 72H358M42 112H358M42 152H358M42 192H358M42 232H358"/>
+                  <circle pathLength="1" cx="200" cy="150" r="34"/>
+                </g>
+                <g class="pl-trees"><circle pathLength="1" cx="200" cy="150" r="22"/><circle class="pl-dot" cx="200" cy="150" r="2"/></g>
+                <g class="pl-kit">
+                  <use href="#pl-bench" transform="translate(200 80)"/><use href="#pl-bench" transform="translate(249.5 100.5) rotate(45)"/>
+                  <use href="#pl-bench" transform="translate(270 150) rotate(90)"/><use href="#pl-bench" transform="translate(249.5 199.5) rotate(135)"/>
+                  <use href="#pl-bench" transform="translate(200 220) rotate(180)"/><use href="#pl-bench" transform="translate(150.5 199.5) rotate(225)"/>
+                  <use href="#pl-bench" transform="translate(130 150) rotate(270)"/><use href="#pl-bench" transform="translate(150.5 100.5) rotate(315)"/>
+                  <use href="#pl-planter" transform="translate(66 56)"/><use href="#pl-planter" transform="translate(334 56)"/>
+                  <use href="#pl-planter" transform="translate(66 244)"/><use href="#pl-planter" transform="translate(334 244)"/>
+                  <use href="#pl-planter" transform="translate(200 46)"/><use href="#pl-planter" transform="translate(200 254)"/>
+                </g>
+              </svg>
+              <figcaption>Plan · a market square, Viseu</figcaption>
+            </figure>
+          </li>
+
+          <li class="row" data-reveal>
+            <h3 class="row__name"><button class="row__btn" type="button" aria-expanded="false" aria-controls="plan-water">Waterfronts</button></h3>
+            <p class="row__desc">Graphite frames and oiled pine that shrug off salt air and winter storms.</p>
+            <ul class="row__parts" aria-label="Parts on a typical waterfront">
+              <li><img src="img/bench-steel-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bench <b>×10</b></span></li>
+              <li><img src="img/bin-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bin <b>×4</b></span></li>
+              <li><img src="img/bikerack-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bike rack <b>×2</b></span></li>
+            </ul>
+            <p class="row__count">(11)<span class="sr"> projects</span></p>
+            <figure class="plan" id="plan-water">
+              <svg viewBox="0 0 400 300" role="img" aria-label="Plan of a waterfront promenade: ten benches in a row facing the water, four bins between them, a row of trees behind and two bike racks by the road.">
+                <rect class="pl-frame" pathLength="1" x="1" y="1" width="398" height="298" rx="10"/>
+                <g class="pl-ground">
+                  <path pathLength="1" d="M1 110H399"/>
+                  <path pathLength="1" d="M1 226H399"/>
+                  <path class="pl-faint" pathLength="1" d="M10 218v8M30 218v8M50 218v8M70 218v8M90 218v8M110 218v8M130 218v8M150 218v8M170 218v8M190 218v8M210 218v8M230 218v8M250 218v8M270 218v8M290 218v8M310 218v8M330 218v8M350 218v8M370 218v8M390 218v8"/>
+                  <path pathLength="1" d="M1 244q12.5-5 25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t23 0"/>
+                  <path pathLength="1" d="M13 262q12.5-5 25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0"/>
+                  <path pathLength="1" d="M1 280q12.5-5 25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t25 0t23 0"/>
+                  <path pathLength="1" d="M33 128h14v14h-14zM133 128h14v14h-14zM233 128h14v14h-14zM333 128h14v14h-14z"/>
+                </g>
+                <g class="pl-trees">
+                  <circle pathLength="1" cx="40" cy="135" r="18"/><circle pathLength="1" cx="140" cy="135" r="18"/><circle pathLength="1" cx="240" cy="135" r="18"/><circle pathLength="1" cx="340" cy="135" r="18"/>
+                </g>
+                <g class="pl-kit">
+                  <use href="#pl-bench" transform="translate(26 202) scale(.84)"/><use href="#pl-bench" transform="translate(64 202) scale(.84)"/><use href="#pl-bench" transform="translate(102 202) scale(.84)"/>
+                  <use href="#pl-bench" transform="translate(140 202) scale(.84)"/><use href="#pl-bench" transform="translate(178 202) scale(.84)"/><use href="#pl-bench" transform="translate(222 202) scale(.84)"/>
+                  <use href="#pl-bench" transform="translate(260 202) scale(.84)"/><use href="#pl-bench" transform="translate(298 202) scale(.84)"/><use href="#pl-bench" transform="translate(336 202) scale(.84)"/>
+                  <use href="#pl-bench" transform="translate(374 202) scale(.84)"/>
+                  <use href="#pl-bin" transform="translate(83 180)"/><use href="#pl-bin" transform="translate(159 180)"/><use href="#pl-bin" transform="translate(241 180)"/><use href="#pl-bin" transform="translate(317 180)"/>
+                  <use href="#pl-rack" transform="translate(72 88)"/><use href="#pl-rack" transform="translate(110 88)"/>
+                </g>
+              </svg>
+              <figcaption>Plan · a harbour promenade, Viana do Castelo</figcaption>
+            </figure>
+          </li>
+
+          <li class="row" data-reveal>
+            <h3 class="row__name"><button class="row__btn" type="button" aria-expanded="false" aria-controls="plan-hospitals">Hospitals</button></h3>
+            <p class="row__desc">Quiet corners in the garden for lunch breaks and long waits.</p>
+            <ul class="row__parts" aria-label="Parts in a typical hospital garden">
+              <li><img src="img/bench-clay-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>bench <b>×5</b></span></li>
+              <li><img src="img/planter-sm.jpg" alt="" width="480" height="480" loading="lazy"><span>planter <b>×3</b></span></li>
+            </ul>
+            <p class="row__count">(9)<span class="sr"> projects</span></p>
+            <figure class="plan" id="plan-hospitals">
+              <svg viewBox="0 0 400 300" role="img" aria-label="Plan of a hospital garden: two building wings around a courtyard with a looping path, five benches set into its edges, three planters and three trees.">
+                <defs><clipPath id="pl-clip-hosp"><path d="M16 16H384V86H96V284H16Z"/></clipPath></defs>
+                <rect class="pl-frame" pathLength="1" x="1" y="1" width="398" height="298" rx="10"/>
+                <g class="pl-ground">
+                  <path pathLength="1" d="M16 16H384V86H96V284H16Z"/>
+                  <path class="pl-hatch" pathLength="1" clip-path="url(#pl-clip-hosp)" d="M-40 86L30 16M-20 86L50 16M0 86L70 16M20 86L90 16M40 86L110 16M60 86L130 16M80 86L150 16M100 86L170 16M120 86L190 16M140 86L210 16M160 86L230 16M180 86L250 16M200 86L270 16M220 86L290 16M240 86L310 16M260 86L330 16M280 86L350 16M300 86L370 16M320 86L390 16M340 86L410 16M-50 150L46 54M-50 180L76 54M-50 210L96 64M-50 240L96 94M-50 270L96 124M-36 284L96 152M-6 284L96 182M24 284L96 212M54 284L96 242"/>
+                  <ellipse pathLength="1" cx="245" cy="180" rx="95" ry="60"/>
+                  <ellipse pathLength="1" cx="245" cy="180" rx="81" ry="47"/>
+                </g>
+                <g class="pl-trees">
+                  <circle pathLength="1" cx="245" cy="180" r="28"/><circle pathLength="1" cx="362" cy="258" r="22"/><circle pathLength="1" cx="130" cy="262" r="18"/>
+                  <circle class="pl-dot" cx="245" cy="180" r="2"/><circle class="pl-dot" cx="362" cy="258" r="2"/><circle class="pl-dot" cx="130" cy="262" r="2"/>
+                </g>
+                <g class="pl-kit">
+                  <use href="#pl-bench" transform="translate(245 108)"/><use href="#pl-bench" transform="translate(350.4 167.5) rotate(74.4)"/>
+                  <use href="#pl-bench" transform="translate(298.5 242.4) rotate(160)"/><use href="#pl-bench" transform="translate(163 226.3) rotate(-143)"/>
+                  <use href="#pl-bench" transform="translate(144.5 155.4) rotate(-60)"/>
+                  <use href="#pl-planter" transform="translate(122 110)"/><use href="#pl-planter" transform="translate(368 110)"/><use href="#pl-planter" transform="translate(232 272)"/>
+                </g>
+              </svg>
+              <figcaption>Plan · a hospital courtyard, Porto</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section impact" id="impact" aria-labelledby="impact-title" data-scene="linen">
+      <div class="intro">
+        <p class="eyebrow">Impact</p>
+        <h2 class="statement" id="impact-title" data-words>Built to stay outside for a generation.</h2>
+      </div>
+      <div class="impact__body">
+        <div class="impact__ring">
+          <svg class="rings" viewBox="0 0 600 600" aria-hidden="true">
+            <ellipse class="ring" pathLength="1" cx="320" cy="282" rx="62" ry="58"/>
+            <ellipse class="ring" pathLength="1" cx="316" cy="285" rx="114" ry="108"/>
+            <ellipse class="ring" pathLength="1" cx="311" cy="289" rx="166" ry="158"/>
+            <ellipse class="ring" pathLength="1" cx="306" cy="294" rx="218" ry="209"/>
+            <ellipse class="ring" pathLength="1" cx="300" cy="300" rx="270" ry="261"/>
+            <circle class="ring-pith" cx="322" cy="280" r="3"/>
+            <g class="ring-labels">
+              <text x="425" y="348">10</text><text x="472" y="380">15</text><text x="518" y="412">20</text><text x="555" y="452">25 yrs</text>
+            </g>
+          </svg>
+          <p class="impact__big" aria-hidden="true">25</p>
+        </div>
+        <div class="impact__side">
+          <p class="impact__lead"><span class="sr">25 </span>Years of guarantee on every frame. One ring for every five. Slats and blocks unbolt with one key, so a worn part never retires a bench.</p>
+          <ul class="impact__lines">
+            <li><span class="impact__fig">0</span> trees felled for our cork. The bark grows back, and the oak goes on standing for two centuries.</li>
+            <li><span class="impact__fig"><span data-count="92">92</span>%</span> recycled steel in every frame, melted from Portuguese scrap and powder-coated without solvents.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section config" id="configure" aria-labelledby="config-title" data-scene="linen">
+      <div class="config__stage" style="--tint:var(--t-bench)">
+        <img class="is-active" data-base="cork" src="img/bench-cork.jpg" alt="Sobreiro bench with a natural cork base." width="1200" height="1200" loading="lazy" decoding="async">
+        <img data-base="graphite" src="img/bench-steel.jpg" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
+        <img data-base="clay" src="img/bench-clay.jpg" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
+        <div class="config__canvas" aria-hidden="true"></div>
+        <p class="config__caption" aria-hidden="true"><span data-out="name">Natural cork</span> · <span data-out="len">1.6 m</span> · <span data-out="seats-cap">3 seats</span></p>
+      </div>
+
+      <div class="config__panel">
+        <p class="eyebrow">Configure</p>
+        <h2 class="config__title" id="config-title" data-words>Build your Sobreiro bench.</h2>
+        <p class="config__lead" data-reveal>Pick a base and a length. We send back drawings, a quote and a sample block of cork, usually within a week.</p>
+
+        <form class="config__form" data-reveal>
+          <fieldset class="opts">
+            <legend>Base</legend>
+            <div class="opts__row">
+              <label class="swatch"><input type="radio" name="base" value="cork" checked><span class="swatch__dot" style="--c:var(--sw-cork)"></span><span>Natural cork</span></label>
+              <label class="swatch"><input type="radio" name="base" value="graphite"><span class="swatch__dot" style="--c:var(--sw-graphite)"></span><span>Graphite steel</span></label>
+              <label class="swatch"><input type="radio" name="base" value="clay"><span class="swatch__dot" style="--c:var(--sw-clay)"></span><span>Clay steel</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="opts">
+            <legend>Length</legend>
+            <div class="opts__row">
+              <label class="seg"><input type="radio" name="len" value="1.6" checked><span>1.6 m</span></label>
+              <label class="seg"><input type="radio" name="len" value="2.0"><span>2.0 m</span></label>
+              <label class="seg"><input type="radio" name="len" value="2.4"><span>2.4 m</span></label>
+            </div>
+          </fieldset>
+        </form>
+
+        <dl class="spec" data-reveal>
+          <div><dt>Seats</dt><dd data-out="seats">3</dd></div>
+          <div><dt>Parts</dt><dd data-out="parts">2 blocks, 7 slats</dd></div>
+          <div><dt>Weight</dt><dd data-out="weight">46 kg</dd></div>
+          <div><dt>Lead time</dt><dd data-out="lead">6 weeks</dd></div>
+        </dl>
+        <p class="sr" role="status" data-out="status"></p>
+
+        <a class="btn" data-reveal href="mailto:studio@corkwood.example?subject=Sobreiro%20bench%2C%20natural%20cork%2C%201.6%20m" data-out="mail">
+          <span>Ask for drawings</span>
+          <span class="btn__chip" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__sign">
+      <h2 class="footer__line" data-words>Make room to stay a while.</h2>
+      <form class="letter" method="dialog" novalidate>
+        <label class="letter__label" for="letter-email">The workshop letter: new pieces and open days, four times a year.</label>
+        <div class="letter__row">
+          <input class="letter__input" id="letter-email" type="email" name="email" autocomplete="email" placeholder="Your email address" required aria-describedby="letter-status">
+          <button class="letter__btn" type="submit">Subscribe</button>
+        </div>
+        <p class="letter__status" id="letter-status" role="status"></p>
+      </form>
+    </div>
+
+    <div class="drawings" aria-hidden="true">
+      <svg class="draw draw--bench" style="--vb:116" viewBox="0 0 240 116">
+        <path pathLength="1" d="M4 108h232"/>
+        <path pathLength="1" d="M52 53V18M206 53V18"/>
+        <path class="solid" pathLength="1" d="M34 16h190v9H34zM34 29h190v9H34zM34 42h190v8H34z"/>
+        <path class="solid" pathLength="1" d="M30 72h36v34H30zM66 72l16-9v34l-16 9M150 72h36v34h-36zM186 72l16-9v34l-16 9"/>
+        <path class="solid" pathLength="1" d="M14 63l16-9h194l-16 9zM14 63h194v9H14zM208 63l16-9v9l-16 9"/>
+        <path pathLength="1" d="M19.3 60h194M24.7 57h194"/>
+        <path class="dots" pathLength="1" d="M37 80h.01M49 77h.01M59 84h.01M43 92h.01M55 98h.01M62 92h.01M38 101h.01M157 80h.01M169 77h.01M180 85h.01M162 93h.01M175 99h.01M182 93h.01M158 102h.01"/>
+      </svg>
+      <svg class="draw draw--planter" style="--vb:150" viewBox="0 0 130 150">
+        <path pathLength="1" d="M4 142h122"/>
+        <ellipse pathLength="1" cx="65" cy="96" rx="46" ry="9"/>
+        <path pathLength="1" d="M19 96c0 18 2 33 6 42 12 4 68 4 80 0 4-9 6-24 6-42"/>
+        <path pathLength="1" d="M65 96c1-14-3-24-1-36s6-18 4-30M64 64c-8-6-14-10-24-12M66 56c8-5 16-8 26-8M67 40c-6-6-9-12-10-20"/>
+        <path pathLength="1" d="M40 52c-4-4-10-4-14-2 4 3 10 4 14 2zM28 46c-3-5-8-6-12-5 3 4 8 6 12 5zM92 48c4-4 10-4 14-2-4 3-10 4-14 2zM104 40c3-5 8-6 12-5-3 4-8 6-12 5zM57 20c-2-6 0-11 3-14 2 5 1 10-3 14zM70 18c1-6 5-9 9-10-1 5-4 8-9 10zM78 36c4-4 9-5 13-4-3 4-8 5-13 4zM46 34c-4-3-9-3-13-1 4 3 9 3 13 1zM62 30c-3-5-8-7-12-6 2 4 7 6 12 6zM74 28c3-5 8-6 12-5-2 4-7 6-12 5zM52 46c-3-4-8-5-12-4 3 4 8 5 12 4zM84 52c4-2 9-1 12 1-4 2-9 2-12-1z"/>
+      </svg>
+      <svg class="draw draw--rack" style="--vb:112" viewBox="0 0 220 112">
+        <path pathLength="1" d="M4 104h212"/>
+        <path pathLength="1" d="M18 98h184"/>
+        <path pathLength="1" d="M34 98V44a20 20 0 0 1 40 0v54"/>
+        <path pathLength="1" d="M90 98V44a20 20 0 0 1 40 0v54"/>
+        <path pathLength="1" d="M146 98V44a20 20 0 0 1 40 0v54"/>
+      </svg>
+      <svg class="draw draw--bin" style="--vb:150" viewBox="0 0 100 150">
+        <path pathLength="1" d="M4 142h92"/>
+        <ellipse pathLength="1" cx="50" cy="30" rx="34" ry="7"/>
+        <path pathLength="1" d="M16 30v6c0 3 15 6 34 6s34-3 34-6v-6"/>
+        <path pathLength="1" d="M20 42v96M30 44v96M40 45v96M50 45v96M60 45v96M70 44v96M80 42v96"/>
+        <path pathLength="1" d="M42 26c3-2 13-2 16 0"/>
+      </svg>
+    </div>
+
+    <div class="footer__cols">
+      <div>
+        <h3>Workshop</h3>
+        <p>Santa Maria da Feira<br>Aveiro district, Portugal</p>
+      </div>
+      <div>
+        <h3>Studio</h3>
+        <p>Lisbon, Portugal<br>Visits by appointment</p>
+      </div>
+      <div>
+        <h3>Write</h3>
+        <p><a href="mailto:studio@corkwood.example">studio@corkwood.example</a><br><a href="mailto:press@corkwood.example">press@corkwood.example</a></p>
+      </div>
+      <div>
+        <h3>Index</h3>
+        <ul class="footer__links">
+          <li><a href="#collections">collections</a></li>
+          <li><a href="#materials">materials</a></li>
+          <li><a href="#places">places</a></li>
+          <li><a href="#impact">impact</a></li>
+          <li><a href="#configure">configure</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span class="footer__brand"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="13.1" cy="11.1" r="6.5"/><circle cx="13.9" cy="10.5" r="2.9"/></svg>© 2026 Corkwood Public</span>
+      <span>A website concept by [Studio name]</span>
+      <a class="tlink" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+    <p class="footer__legal">Corkwood Public is a fictional company created as a website concept by [Studio name]. Its products, projects, figures and guarantees are invented, nothing on this page is for sale, and the email addresses do not work. Product and material photographs were generated with AI; the 3D bench, the plans and the drawings are made in code.</p>
+  </footer>
+
+  <script src="main.js?v=28" defer></script>
+</body>
+</html>

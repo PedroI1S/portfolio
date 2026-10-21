@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cal &amp; Sombra · Architecture and interiors, Porto</title>
+  <meta name="description" content="Cal &amp; Sombra is an eighteen-person architecture and interiors practice in Porto, working in lime and shadow. A fictional practice, designed as a Swiss / minimal website concept.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Cal &amp; Sombra · Architecture and interiors, Porto">
+  <meta property="og:description" content="A Swiss / minimal website concept for a fictional architecture practice: one wall, one sun.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Host+Grotesk:wght@400;500&display=swap">
+  <link rel="modulepreload" href="sun.js?v=15">
+  <link rel="stylesheet" href="style.css?v=20">
+  <script>
+    document.documentElement.classList.add('js');
+    // the sunrise intro plays once, from the top, when motion is allowed
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash) {
+      history.scrollRestoration = 'manual';
+      document.documentElement.classList.add('is-intro');
+    }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="dawn" aria-hidden="true"><span class="dawn__clock">06:00</span></div>
+
+  <!-- Corner controls: sun-dial menu and a live sun readout top-left, project chooser top-right -->
+  <header class="controls">
+    <div class="controls__left">
+      <button class="ctl ctl--menu" type="button" aria-expanded="false" aria-controls="menu">
+        <svg class="dial" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path class="dial__ray" d="M12 12V2.5"/><path class="dial__x" d="M6 6l12 12M18 6L6 18"/></svg>
+        <span class="sr">Menu</span>
+      </button>
+      <a class="ctl ctl--clock" href="#top" aria-label="Cal &amp; Sombra, back to top"><span class="clock" aria-hidden="true">10:30 · SUN 47°</span></a>
+    </div>
+    <button class="ctl ctl--cta" type="button" aria-expanded="false" aria-controls="chooser" aria-label="Choose a project">
+      <span class="cta__long">Choose a project</span><span class="cta__short" aria-hidden="true">Projects</span><span class="ctl__glyph" aria-hidden="true">↗</span>
+    </button>
+    <noscript><a class="ctl ctl--cta ctl--static" href="#work"><span>Selected work</span><span aria-hidden="true">↓</span></a></noscript>
+  </header>
+
+  <div class="chooser" id="chooser" hidden>
+    <p class="chooser__label">Selected work · 4 projects</p>
+    <ul>
+      <li><a href="#project-1"><img src="img/project-1-s.jpg" alt="" width="96" height="72" loading="lazy"><span class="chooser__name">Casa da Janela Longa</span><span class="chooser__meta">Arouca · 2024</span></a></li>
+      <li><a href="#project-2"><img src="img/project-2-s.jpg" alt="" width="96" height="72" loading="lazy"><span class="chooser__name">Galeria do Poço</span><span class="chooser__meta">Porto · 2023</span></a></li>
+      <li><a href="#project-3"><img src="img/project-3-s.jpg" alt="" width="96" height="72" loading="lazy"><span class="chooser__name">Casa Miragaia</span><span class="chooser__meta">Porto · 2025</span></a></li>
+      <li><a href="#project-4"><img src="img/project-4-s.jpg" alt="" width="96" height="72" loading="lazy"><span class="chooser__name">Sete Fontes Library</span><span class="chooser__meta">Braga · 2026</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Menu: a ruled index of the day -->
+  <div class="menu" id="menu" hidden>
+    <p class="menu__label">Index · one day at the workshop</p>
+    <nav class="menu__nav" aria-label="Primary">
+      <a href="#top"><span class="menu__hour">07:00</span><span class="menu__name">The model</span><span class="menu__meta">Sun study, 1:200</span></a>
+      <a href="#work"><span class="menu__hour">16:00</span><span class="menu__name">Selected work</span><span class="menu__meta">Four projects</span></a>
+      <a href="#practice"><span class="menu__hour">17:00</span><span class="menu__name">Practice</span><span class="menu__meta">Since 2009</span></a>
+      <a href="#services"><span class="menu__hour">18:00</span><span class="menu__name">Services</span><span class="menu__meta">Four ways of working</span></a>
+      <a href="#people"><span class="menu__hour">19:00</span><span class="menu__name">People</span><span class="menu__meta">Eighteen of us</span></a>
+      <a href="#contact"><span class="menu__hour">20:00</span><span class="menu__name">Contact</span><span class="menu__meta">Miragaia, Porto</span></a>
+    </nav>
+    <p class="menu__foot"><a class="link" href="mailto:studio@calsombra.example">studio@calsombra.example</a><span>Rua dos Caleiros 18, 4050 Porto · Tuesday to Friday, by appointment</span></p>
+  </div>
+
+  <main id="main">
+    <!-- Hero: a sticky stage inside a tall wrapper; scroll runs the sun from 07:00 to the afternoon -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__stage">
+        <picture><source media="(max-width: 680px)" srcset="img/plan-1030-m.svg"><img class="hero__poster" src="img/plan-1030.svg" alt="" width="1064" height="864" aria-hidden="true"></picture>
+        <canvas class="hero__canvas" aria-hidden="true"></canvas>
+        <svg class="hero__dims" aria-hidden="true"></svg>
+        <div class="hero__type">
+          <div class="wordmark wordmark--shade" aria-hidden="true">
+            <span class="wm-line"><span>Cal</span></span>
+            <span class="wm-line wm-line--2"><span>&amp; Sombra</span></span>
+          </div>
+          <h1 class="wordmark" id="hero-title">
+            <span class="wm-line"><span>Cal</span></span>
+            <span class="wm-line wm-line--2"><span>&amp; Sombra</span></span>
+          </h1>
+        </div>
+        <p class="hero__meta" aria-hidden="true">Sun study · 21 June · 1:200<br><span class="hero__cue">Scroll to run the day</span></p>
+        <div class="hero__lead">
+          <p>Architecture and interiors in lime and shadow, from a workshop of eighteen in Porto.</p>
+          <a class="link" href="#work">See the work</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <p class="label"><span class="hour">16:00</span> — Selected work</p>
+      <h2 class="statement shade" id="work-title" data-reveal>
+        <span class="line" data-text="Fewer materials, longer walls,">Fewer materials, longer walls,</span>
+        <span class="line" data-text="more light.">more light.</span>
+      </h2>
+
+      <div class="work__grid">
+        <article class="card" id="project-1" aria-labelledby="p1-title">
+          <figure class="card__media" data-reveal-media>
+            <img src="img/project-1.jpg" alt="A long, low board-marked concrete house set into a grassy hillside, with one ribbon window running almost its full length." width="1448" height="1086" loading="lazy" decoding="async">
+          </figure>
+          <div class="card__head">
+            <span class="card__no">01</span>
+            <h3 class="card__title" id="p1-title">Casa da<br>Janela Longa</h3>
+          </div>
+          <p class="card__desc">A concrete house set into a granite slope, with one window twenty-one metres long that holds the valley like a horizon line.</p>
+          <dl class="spec">
+            <div><dt>Location</dt><dd>Serra da Freita, Arouca</dd></div>
+            <div><dt>Year</dt><dd>2024</dd></div>
+            <div><dt>Area</dt><dd>214 m²</dd></div>
+            <div><dt>Status</dt><dd>Completed</dd></div>
+          </dl>
+        </article>
+
+        <p class="work__note" data-reveal>We publish four projects a year. Each one began as a card model on the long table, lit by a desk lamp standing in for the sun.</p>
+
+        <article class="card card--bleed" id="project-2" aria-labelledby="p2-title">
+          <figure class="bleed__media" data-reveal-media>
+            <img src="img/project-2.jpg" alt="An empty white gallery room where a square skylight throws a soft rectangle of daylight onto a polished concrete floor." width="1448" height="1086" loading="lazy" decoding="async">
+            <figcaption class="bleed__stamp" aria-hidden="true"><span>Fig. 02</span><span>Bonfim, Porto · 16:20, sun 49°</span></figcaption>
+          </figure>
+          <div class="bleed__body">
+            <div class="card__head">
+              <span class="card__no">02</span>
+              <h3 class="card__title" id="p2-title">Galeria<br>do Poço</h3>
+            </div>
+            <p class="card__desc">A former bottling store turned into one white room, lit by a single square skylight that walks across the floor all day.</p>
+            <dl class="spec">
+              <div><dt>Location</dt><dd>Bonfim, Porto</dd></div>
+              <div><dt>Year</dt><dd>2023</dd></div>
+              <div><dt>Area</dt><dd>380 m²</dd></div>
+              <div><dt>Status</dt><dd>Completed</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card" id="project-3" aria-labelledby="p3-title">
+          <figure class="card__media" data-reveal-media>
+            <img src="img/project-3.jpg" alt="The symmetrical granite facade of a narrow three-storey townhouse, its tall windows fitted with slim new steel frames." width="1448" height="1086" loading="lazy" decoding="async">
+          </figure>
+          <div class="card__head">
+            <span class="card__no">03</span>
+            <h3 class="card__title" id="p3-title">Casa<br>Miragaia</h3>
+          </div>
+          <p class="card__desc">A granite townhouse from the 1880s, repaired stone by stone, with steel windows slim enough that the street still sees the original.</p>
+          <dl class="spec">
+            <div><dt>Location</dt><dd>Miragaia, Porto</dd></div>
+            <div><dt>Year</dt><dd>2025</dd></div>
+            <div><dt>Area</dt><dd>296 m²</dd></div>
+            <div><dt>Status</dt><dd>Completed</dd></div>
+          </dl>
+        </article>
+
+        <article class="card" id="project-4" aria-labelledby="p4-title">
+          <figure class="card__media" data-reveal-media>
+            <img src="img/project-4.jpg" alt="A curved pale timber staircase spiralling up through a tall white atrium, seen from below toward a rooflight." width="1448" height="1086" loading="lazy" decoding="async">
+          </figure>
+          <div class="card__head">
+            <span class="card__no">04</span>
+            <h3 class="card__title" id="p4-title">Sete Fontes<br>Library</h3>
+          </div>
+          <p class="card__desc">An ash stair that winds up four storeys through the atrium of a new school library, wide enough to sit on and read.</p>
+          <dl class="spec">
+            <div><dt>Location</dt><dd>Sete Fontes, Braga</dd></div>
+            <div><dt>Year</dt><dd>2026</dd></div>
+            <div><dt>Area</dt><dd>1,860 m²</dd></div>
+            <div><dt>Status</dt><dd>Under construction</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section practice" id="practice" aria-labelledby="practice-title">
+      <p class="label"><span class="hour">17:00</span> — Practice</p>
+      <h2 class="practice__title shade" id="practice-title" data-reveal>
+        <span class="line" data-text="We draw slowly,">We draw slowly,</span>
+        <span class="line line--2" data-text="build exactly">build exactly</span>
+        <span class="line line--3" data-text="and leave the rest">and leave the rest</span>
+        <span class="line line--4" data-text="to the light.">to the light.</span>
+      </h2>
+      <div class="practice__text" data-reveal>
+        <p>Cal &amp; Sombra was founded in 2009 by two architects who met while repairing a lime-washed village school in Trás-os-Montes. The name is still the brief we give ourselves: lime for the surfaces, shadow for everything else.</p>
+        <p>Eighteen of us work from a former rope workshop in Miragaia: architects, interior designers, a restoration specialist, and a model maker whose study models line every wall.</p>
+      </div>
+      <dl class="stats">
+        <div class="stat stat--mega" data-reveal>
+          <dt>Square metres built since 2009</dt>
+          <dd><span data-count="38261">38,261</span><span class="stat__unit">m²</span></dd>
+        </div>
+        <div class="stat" data-reveal>
+          <dt>Projects completed</dt>
+          <dd data-count="64">64</dd>
+        </div>
+        <div class="stat" data-reveal>
+          <dt>Years in practice</dt>
+          <dd data-count="17">17</dd>
+        </div>
+        <div class="stat" data-reveal>
+          <dt>Study models kept</dt>
+          <dd data-count="212">212</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <p class="label"><span class="hour">18:00</span> — Services</p>
+      <h2 class="statement shade" id="services-title" data-reveal>
+        <span class="line" data-text="Four ways of working,">Four ways of working,</span>
+        <span class="line" data-text="one drawing table.">one drawing table.</span>
+      </h2>
+      <ol class="svc">
+        <li class="svc__row">
+          <span class="svc__no">01</span>
+          <h3 class="svc__name">Architecture</h3>
+          <img class="svc__plan" src="img/drawing-1.svg" alt="" width="320" height="240" loading="lazy">
+          <div class="svc__body">
+            <p class="svc__desc">New houses, small public buildings and workplaces, from the first site visit to the last snag list.</p>
+            <p class="svc__scale"><span class="sr">Typical scale: </span>90 <span class="range" aria-hidden="true">⟷</span><span class="sr">to</span> 2,500 m²</p>
+          </div>
+        </li>
+        <li class="svc__row">
+          <span class="svc__no">02</span>
+          <h3 class="svc__name">Interiors</h3>
+          <img class="svc__plan" src="img/drawing-2.svg" alt="" width="320" height="240" loading="lazy">
+          <div class="svc__body">
+            <p class="svc__desc">Rooms, joinery and lighting, drawn at 1:20 and built with the same four workshops every time.</p>
+            <p class="svc__scale"><span class="sr">Typical scale: </span>20 <span class="range" aria-hidden="true">⟷</span><span class="sr">to</span> 600 m²</p>
+          </div>
+        </li>
+        <li class="svc__row">
+          <span class="svc__no">03</span>
+          <h3 class="svc__name">Masterplanning</h3>
+          <img class="svc__plan" src="img/drawing-3.svg" alt="" width="320" height="240" loading="lazy">
+          <div class="svc__body">
+            <p class="svc__desc">Village and campus plans that begin with what is already there: walls, paths, trees and shade.</p>
+            <p class="svc__scale"><span class="sr">Typical scale: </span>1 <span class="range" aria-hidden="true">⟷</span><span class="sr">to</span> 40 ha</p>
+          </div>
+        </li>
+        <li class="svc__row">
+          <span class="svc__no">04</span>
+          <h3 class="svc__name">Restoration</h3>
+          <img class="svc__plan" src="img/drawing-4.svg" alt="" width="320" height="240" loading="lazy">
+          <div class="svc__body">
+            <p class="svc__desc">Granite, lime and timber repaired by their original methods, with new parts that are honest about being new.</p>
+            <p class="svc__scale"><span class="sr">Typical scale: </span>40 <span class="range" aria-hidden="true">⟷</span><span class="sr">to</span> 3,000 m²</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section people" id="people" aria-labelledby="people-title">
+      <p class="label"><span class="hour">19:00</span> — People</p>
+      <h2 class="statement shade" id="people-title" data-reveal>
+        <span class="line" data-text="Eighteen people,">Eighteen people,</span>
+        <span class="line" data-text="one long table.">one long table.</span>
+      </h2>
+      <div class="people__bar">
+        <p class="people__hint">Drag, swipe or use the arrow keys</p>
+        <div class="people__ctrl">
+          <p class="people__count" aria-hidden="true"><span class="people__now">01–05</span> / 18</p>
+          <button class="sq" type="button" data-dir="-1" aria-label="Scroll people back">←</button>
+          <button class="sq" type="button" data-dir="1" aria-label="Scroll people forward">→</button>
+        </div>
+      </div>
+      <div class="track" tabindex="0" role="region" aria-label="People at Cal &amp; Sombra, scrollable list">
+        <ul class="track__list">
+<!--@people-->
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="57.1" y="69.7" width="85.8" height="14"/><path class="pl-thin" d="M22 125.4H42.3M57.3 125.4H178M22 166.4H73M88 166.4H178M98.4 125.4V138.6M98.4 153.6V166.4"/><path class="pl-hatch" d="M57.3 125.4A15 15 0 0 1 42.3 110.4M88 166.4A15 15 0 0 1 73 151.4M98.4 138.6A15 15 0 0 1 113.4 153.6M109.8 129.4V162.4M121.1 129.4V162.4M132.5 129.4V162.4M143.9 129.4V162.4M155.3 129.4V162.4M166.6 129.4V162.4M104.4 145.9H170M50 135.7l20.5 20.5M70.5 135.7l-20.5 20.5"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-sky" x="50" y="135.7" width="20.5" height="20.5"/><path class="pl-win" d="M46 28h18"/><path class="pl-win" d="M178 113.9v18"/></svg><span class="person__initials" aria-hidden="true">MS</span></div><p class="person__role">Founding partner</p><p class="person__name">Marta Seixas</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="144.8" y="68.2" width="23.6" height="14"/><path class="pl-thin" d="M22 122.4H36.5M51.5 122.4H178M80.3 28V74.8M80.3 89.8V122.4M22 66.5H43.6M58.6 66.5H80.3M135.1 28V41.1M135.1 56.1V122.4"/><path class="pl-hatch" d="M51.5 122.4A15 15 0 0 1 36.5 107.4M80.3 74.8A15 15 0 0 1 95.3 89.8M58.6 66.5A15 15 0 0 1 43.6 51.5M135.1 41.1A15 15 0 0 1 150.1 56.1M84.3 38.5H131.1M84.3 49H131.1M84.3 59.5H131.1M84.3 70H131.1M84.3 80.4H131.1M84.3 90.9H131.1M84.3 101.4H131.1M84.3 111.9H131.1M107.7 116.4V36M79.6 142.8l40.8 40.8M120.4 142.8l-40.8 40.8"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-sky" x="79.6" y="142.8" width="40.8" height="40.8"/><path class="pl-win" d="M109.5 28h18"/><path class="pl-win" d="M112.1 28h18"/><path class="pl-win" d="M59.4 204h18"/></svg><span class="person__initials" aria-hidden="true">TA</span></div><p class="person__role">Founding partner</p><p class="person__name">Tomás Aragão</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><path class="pl-thin" d="M82.5 78.7H178M114.2 78.7V128.4M114.2 143.4V204M63.7 78.7V108.7M63.7 123.7V204M63.7 154.10000000000002H73.6M88.6 154.10000000000002H114.2M114.2 138H138.8M153.8 138H178M114.2 104.80000000000001H126.7M141.7 104.80000000000001H178M114.2 161.9H153.1M168.1 161.9H178"/><path class="pl-hatch" d="M114.2 128.4A15 15 0 0 1 129.2 143.4M63.7 108.7A15 15 0 0 1 78.7 123.7M88.6 154.10000000000002A15 15 0 0 1 73.6 139.1M153.8 138A15 15 0 0 1 138.8 123M141.7 104.80000000000001A15 15 0 0 1 126.7 89.8M168.1 161.9A15 15 0 0 1 153.1 146.9M120 142V157.9M125.8 142V157.9M131.6 142V157.9M137.4 142V157.9M143.2 142V157.9M149 142V157.9M154.8 142V157.9M160.6 142V157.9M166.4 142V157.9M172.2 142V157.9M120.2 150H170M76.5 166.6l24.9 24.9M101.4 166.6l-24.9 24.9"/><path class="pl-wall" d="M82.5 28H178V204H22V78.7H82.5Z"/><rect class="pl-sky" x="76.5" y="166.6" width="24.9" height="24.9"/><path class="pl-win" d="M22 94.5v18"/><path class="pl-win" d="M22 104.9v18"/><path class="pl-win" d="M178 146.8v18"/></svg><span class="person__initials" aria-hidden="true">JF</span></div><p class="person__role">Associate, interiors</p><p class="person__name">Joana Freixo</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="29.1" y="57.6" width="17.3" height="14"/><path class="pl-thin" d="M22 101.1H49.3M64.3 101.1H178M91.6 28V49.6M91.6 64.6V101.1M53.5 28V42M53.5 57V101.1M91.6 67.1H143M158 67.1H178M99.4 101.1V176.5M99.4 191.5V204M99.4 148.5H153.5M168.5 148.5H178"/><path class="pl-hatch" d="M64.3 101.1A15 15 0 0 1 49.3 86.1M91.6 49.6A15 15 0 0 1 106.6 64.6M53.5 42A15 15 0 0 1 68.5 57M158 67.1A15 15 0 0 1 143 52.1M99.4 176.5A15 15 0 0 1 114.4 191.5M168.5 148.5A15 15 0 0 1 153.5 133.5M99.5 32V63.1M107.3 32V63.1M115.2 32V63.1M123 32V63.1M130.9 32V63.1M138.7 32V63.1M146.6 32V63.1M154.4 32V63.1M162.3 32V63.1M170.1 32V63.1M97.6 47.6H170M41.4 133.2l38.7 38.7M80.1 133.2l-38.7 38.7"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-sky" x="41.4" y="133.2" width="38.7" height="38.7"/><path class="pl-win" d="M178 63.1v18"/><path class="pl-win" d="M56.8 204h18"/><path class="pl-win" d="M22 65v18"/></svg><span class="person__initials" aria-hidden="true">HT</span></div><p class="person__role">Associate, architecture</p><p class="person__name">Henrique Taveira</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="116.6" y="171.4" width="43.6" height="14"/><path class="pl-thin" d="M22 100H120.2M22 152.7H88.6M103.6 152.7H178M106 100V123.1M106 138.1V152.7M140.4 100V116.5M140.4 131.5V152.7M98.7 152.7V168.1M98.7 183.1V204M57.2 152.7V174.6M57.2 189.6V204"/><path class="pl-hatch" d="M103.6 152.7A15 15 0 0 1 88.6 137.7M106 123.1A15 15 0 0 1 121 138.1M140.4 116.5A15 15 0 0 1 155.4 131.5M98.7 168.1A15 15 0 0 1 113.7 183.1M57.2 174.6A15 15 0 0 1 72.2 189.6M26 157.8H53.2M26 163H53.2M26 168.1H53.2M26 173.2H53.2M26 178.4H53.2M26 183.5H53.2M26 188.6H53.2M26 193.7H53.2M26 198.9H53.2M39.6 198V160.7M67.6 168l20.8 20.8M88.4 168l-20.8 20.8"/><path class="pl-wall" d="M22 28H120.2V100H178V204H22Z"/><rect class="pl-sky" x="67.6" y="168" width="20.8" height="20.8"/><path class="pl-win" d="M48.7 204h18"/><path class="pl-win" d="M22 118v18"/></svg><span class="person__initials" aria-hidden="true">CW</span></div><p class="person__role">Restoration lead</p><p class="person__name">Clara Weiss</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="122.1" y="136.9" width="39.7" height="14"/><path class="pl-thin" d="M22 83.8H107.7M105.8 83.8V172.4M105.8 187.4V204M22 139H38.1M53.1 139H105.8M73.4 139V182.5M73.4 197.5V204"/><path class="pl-hatch" d="M105.8 172.4A15 15 0 0 1 120.8 187.4M53.1 139A15 15 0 0 1 38.1 124M73.4 182.5A15 15 0 0 1 88.4 197.5M29.6 87.8V135M37.2 87.8V135M44.9 87.8V135M52.5 87.8V135M60.1 87.8V135M67.7 87.8V135M75.3 87.8V135M82.9 87.8V135M90.6 87.8V135M98.2 87.8V135M28 111.4H97.8"/><path class="pl-wall" d="M22 28H107.7V83.8H178V204H22Z"/><rect class="pl-col" x="81.7" y="158.2" width="5" height="5"/><rect class="pl-col" x="81.7" y="179.8" width="5" height="5"/><rect class="pl-col" x="92.5" y="158.2" width="5" height="5"/><rect class="pl-col" x="92.5" y="179.8" width="5" height="5"/><path class="pl-win" d="M128.1 204h18"/><path class="pl-win" d="M178 131.7v18"/><path class="pl-win" d="M82.3 204h18"/></svg><span class="person__initials" aria-hidden="true">TB</span></div><p class="person__role">Model maker</p><p class="person__name">Tiago Brandão</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="57.1" y="75.3" width="85.8" height="14"/><path class="pl-thin" d="M22 136.6H93.5M108.5 136.6H178"/><path class="pl-hatch" d="M108.5 136.6A15 15 0 0 1 93.5 121.6M83.2 153.5l33.7 33.7M116.9 153.5l-33.7 33.7"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-sky" x="83.2" y="153.5" width="33.7" height="33.7"/><path class="pl-win" d="M178 156.6v18"/><path class="pl-win" d="M22 152.7v18"/><path class="pl-win" d="M22 61.8v18"/><path class="pl-win" d="M59.4 204h18"/></svg><span class="person__initials" aria-hidden="true">LM</span></div><p class="person__role">Project architect</p><p class="person__name">Leonor Maia</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="38.9" y="65.5" width="41.4" height="14"/><path class="pl-thin" d="M22 116.9H49.8M64.8 116.9H178M97.2 28V70.4M97.2 85.4V116.9M97.2 65.1H133.2M148.2 65.1H178"/><path class="pl-hatch" d="M64.8 116.9A15 15 0 0 1 49.8 101.9M97.2 70.4A15 15 0 0 1 112.2 85.4M148.2 65.1A15 15 0 0 1 133.2 50.1M36.2 120.9V200M50.4 120.9V200M64.5 120.9V200M78.7 120.9V200M92.9 120.9V200M107.1 120.9V200M121.3 120.9V200M135.5 120.9V200M149.6 120.9V200M163.8 120.9V200M28 160.5H170"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-col" x="121.6" y="79.9" width="5" height="5"/><rect class="pl-col" x="121.6" y="97.1" width="5" height="5"/><rect class="pl-col" x="148.6" y="79.9" width="5" height="5"/><rect class="pl-col" x="148.6" y="97.1" width="5" height="5"/><path class="pl-win" d="M109.1 204h18"/><path class="pl-win" d="M122.3 28h18"/><path class="pl-win" d="M22 102.5v18"/></svg><span class="person__initials" aria-hidden="true">AO</span></div><p class="person__role">Project architect</p><p class="person__name">Ama Owusu</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="35.1" y="41.7" width="31.8" height="11.7"/><path class="pl-thin" d="M22 121.1H139.2M154.2 121.1H178M79.9 28V75.1M79.9 90.1V121.1M22 67H29M44 67H79.9M118.30000000000001 28V99.4M118.30000000000001 114.4V121.1M120.8 121.1V154.1M120.8 169.1V204M62.1 121.1V155.2M62.1 170.2V204"/><path class="pl-hatch" d="M154.2 121.1A15 15 0 0 1 139.2 106.1M79.9 75.1A15 15 0 0 1 94.9 90.1M44 67A15 15 0 0 1 29 52M118.30000000000001 99.4A15 15 0 0 1 133.3 114.4M120.8 154.1A15 15 0 0 1 135.8 169.1M62.1 155.2A15 15 0 0 1 77.1 170.2M83.9 38.3H114.3M83.9 48.7H114.3M83.9 59H114.3M83.9 69.4H114.3M83.9 79.7H114.3M83.9 90.1H114.3M83.9 100.4H114.3M83.9 110.8H114.3M99.1 115.1V36M37.4 80.5l27.1 27.1M64.5 80.5l-27.1 27.1"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-sky" x="37.4" y="80.5" width="27.1" height="27.1"/><path class="pl-win" d="M137.7 204h18"/><path class="pl-win" d="M134 28h18"/></svg><span class="person__initials" aria-hidden="true">RG</span></div><p class="person__role">Architect</p><p class="person__name">Rita Gaspar</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="108.3" y="109" width="49.5" height="14"/><path class="pl-thin" d="M22 92.3H113.3M88 92.3V131M88 146V204M64 92.3V125M64 140V204M64 152.6H67.9M82.9 152.6H88M88 139.6H128M143 139.6H178M135 139.6V169.7M135 184.7V204"/><path class="pl-hatch" d="M88 131A15 15 0 0 1 103 146M64 125A15 15 0 0 1 79 140M82.9 152.6A15 15 0 0 1 67.9 137.6M143 139.6A15 15 0 0 1 128 124.6M135 169.7A15 15 0 0 1 150 184.7M92 146H131M92 152.5H131M92 158.9H131M92 165.4H131M92 171.8H131M92 178.2H131M92 184.7H131M92 191.1H131M92 197.6H131M111.5 198V147.6M32.5 137.7l21 21M53.5 137.7l-21 21"/><path class="pl-wall" d="M22 28H113.3V92.3H178V204H22Z"/><rect class="pl-sky" x="32.5" y="137.7" width="21" height="21"/><path class="pl-win" d="M76.5 204h18"/><path class="pl-win" d="M123.1 204h18"/></svg><span class="person__initials" aria-hidden="true">ML</span></div><p class="person__role">Architect, competitions</p><p class="person__name">Miguel Lacerda</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="57.1" y="172.7" width="85.8" height="14"/><path class="pl-thin" d="M85.8 79.2H178M22 155.4H148.2M163.2 155.4H178"/><path class="pl-hatch" d="M163.2 155.4A15 15 0 0 1 148.2 140.4M99 32V75.2M112.1 32V75.2M125.3 32V75.2M138.5 32V75.2M151.7 32V75.2M164.8 32V75.2M91.8 53.6H170"/><path class="pl-wall" d="M85.8 28H178V204H22V79.2H85.8Z"/><rect class="pl-col" x="71.5" y="102.1" width="5" height="5"/><rect class="pl-col" x="71.5" y="127.5" width="5" height="5"/><rect class="pl-col" x="123.5" y="102.1" width="5" height="5"/><rect class="pl-col" x="123.5" y="127.5" width="5" height="5"/><path class="pl-win" d="M120 204h18"/><path class="pl-win" d="M50.2 204h18"/></svg><span class="person__initials" aria-hidden="true">SA</span></div><p class="person__role">Interior designer</p><p class="person__name">Sofia Antunes</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="151.4" y="165.4" width="18.9" height="14"/><path class="pl-thin" d="M22 98.1H107.6M93.4 98.1V162M93.4 177V204M93.4 140.8H109M124 140.8H178M143.7 140.8V158.2M143.7 173.2V204"/><path class="pl-hatch" d="M93.4 162A15 15 0 0 1 108.4 177M124 140.8A15 15 0 0 1 109 125.8M143.7 158.2A15 15 0 0 1 158.7 173.2M34.2 32V94.1M46.5 32V94.1M58.7 32V94.1M70.9 32V94.1M83.1 32V94.1M95.4 32V94.1M28 63.1H99.6"/><path class="pl-wall" d="M22 28H107.6V98.1H178V204H22Z"/><rect class="pl-col" x="119.1" y="109.8" width="5" height="5"/><rect class="pl-col" x="119.1" y="124.1" width="5" height="5"/><rect class="pl-col" x="147.3" y="109.8" width="5" height="5"/><rect class="pl-col" x="147.3" y="124.1" width="5" height="5"/><path class="pl-win" d="M178 131.7v18"/></svg><span class="person__initials" aria-hidden="true">IV</span></div><p class="person__role">Interior designer</p><p class="person__name">Inês Valadares</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="57.1" y="160.2" width="85.8" height="14"/><path class="pl-thin" d="M78.8 77.9H178M22 130.3H96.3M111.3 130.3H178M101.2 77.9V86.9M101.2 101.9V130.3M59.7 77.9V98.8M59.7 113.8V130.3M133.3 77.9V93.4M133.3 108.4V130.3"/><path class="pl-hatch" d="M111.3 130.3A15 15 0 0 1 96.3 115.3M101.2 86.9A15 15 0 0 1 116.2 101.9M59.7 98.8A15 15 0 0 1 74.7 113.8M133.3 93.4A15 15 0 0 1 148.3 108.4M88.7 32V73.9M98.6 32V73.9M108.6 32V73.9M118.5 32V73.9M128.4 32V73.9M138.3 32V73.9M148.2 32V73.9M158.2 32V73.9M168.1 32V73.9M84.8 53H170M31.4 94.7l18.9 18.9M50.3 94.7l-18.9 18.9"/><path class="pl-wall" d="M78.8 28H178V204H22V77.9H78.8Z"/><rect class="pl-sky" x="31.4" y="94.7" width="18.9" height="18.9"/><path class="pl-win" d="M125.9 204h18"/></svg><span class="person__initials" aria-hidden="true">HK</span></div><p class="person__role">Lighting design</p><p class="person__name">Hana Kovač</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="65.5" y="55.5" width="19" height="14"/><path class="pl-thin" d="M22 97H118.5M133.5 97H178M92.2 28V66.6M92.2 81.6V97M57.7 28V71.5M57.7 86.5V97M127.5 28V60.6M127.5 75.6V97"/><path class="pl-hatch" d="M133.5 97A15 15 0 0 1 118.5 82M92.2 66.6A15 15 0 0 1 107.2 81.6M57.7 71.5A15 15 0 0 1 72.7 86.5M127.5 60.6A15 15 0 0 1 142.5 75.6M44.3 101V200M66.6 101V200M88.9 101V200M111.1 101V200M133.4 101V200M155.7 101V200M28 150.5H170"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-col" x="31.4" y="48.5" width="5" height="5"/><rect class="pl-col" x="31.4" y="71.5" width="5" height="5"/><rect class="pl-col" x="43.3" y="48.5" width="5" height="5"/><rect class="pl-col" x="43.3" y="71.5" width="5" height="5"/><path class="pl-win" d="M178 92.7v18"/><path class="pl-win" d="M97.4 204h18"/></svg><span class="person__initials" aria-hidden="true">KA</span></div><p class="person__role">Drawings and visualisation</p><p class="person__name">Kenji Arai</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="130" y="61.2" width="34.1" height="14"/><path class="pl-thin" d="M22 108.4H128.5M143.5 108.4H178M116 28V38.8M116 53.8V108.4M22 144H126.5M141.5 144H178M101.3 108.4V120.4M101.3 135.4V144M103 144V164.3M103 179.3V204"/><path class="pl-hatch" d="M143.5 108.4A15 15 0 0 1 128.5 93.4M116 38.8A15 15 0 0 1 131 53.8M141.5 144A15 15 0 0 1 126.5 129M101.3 120.4A15 15 0 0 1 116.3 135.4M103 164.3A15 15 0 0 1 118 179.3M30.1 148V200M38.2 148V200M46.3 148V200M54.4 148V200M62.5 148V200M70.6 148V200M78.7 148V200M86.8 148V200M94.9 148V200M28 174H95"/><path class="pl-wall" d="M22 28h156v176h-156Z"/><rect class="pl-col" x="125.5" y="161.5" width="5" height="5"/><rect class="pl-col" x="125.5" y="181.5" width="5" height="5"/><rect class="pl-col" x="150.5" y="161.5" width="5" height="5"/><rect class="pl-col" x="150.5" y="181.5" width="5" height="5"/><path class="pl-win" d="M100.2 28h18"/><path class="pl-win" d="M22 94.3v18"/><path class="pl-win" d="M178 74.3v18"/></svg><span class="person__initials" aria-hidden="true">NR</span></div><p class="person__role">Site architect</p><p class="person__name">Nuno Rebelo</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="57.1" y="124.1" width="85.8" height="14"/><path class="pl-thin" d="M22 101H128M22 161.1H95.5M110.5 161.1H178M88.5 161.1V169.9M88.5 184.9V204M47.3 161.1V171.5M47.3 186.5V204M145.4 161.1V170.4M145.4 185.4V204"/><path class="pl-hatch" d="M110.5 161.1A15 15 0 0 1 95.5 146.1M88.5 169.9A15 15 0 0 1 103.5 184.9M47.3 171.5A15 15 0 0 1 62.3 186.5M145.4 170.4A15 15 0 0 1 160.4 185.4M26 165.4H43.3M26 169.7H43.3M26 174H43.3M26 178.3H43.3M26 182.5H43.3M26 186.8H43.3M26 191.1H43.3M26 195.4H43.3M26 199.7H43.3M34.7 198V169.1"/><path class="pl-wall" d="M22 28H128V101H178V204H22Z"/><rect class="pl-col" x="54.8" y="49.8" width="5" height="5"/><rect class="pl-col" x="54.8" y="74.2" width="5" height="5"/><rect class="pl-col" x="90.2" y="49.8" width="5" height="5"/><rect class="pl-col" x="90.2" y="74.2" width="5" height="5"/><path class="pl-win" d="M22 143.8v18"/><path class="pl-win" d="M50.8 204h18"/><path class="pl-win" d="M178 144.1v18"/></svg><span class="person__initials" aria-hidden="true">PF</span></div><p class="person__role">Joinery and workshop</p><p class="person__name">Paulo Fontes</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="40.6" y="103.4" width="45.5" height="14"/><path class="pl-thin" d="M22 85.2H118.2M104.7 85.2V133.1M104.7 148.1V204M22 135.5H50.3M65.3 135.5H104.7M22 175.4H68.7M83.7 175.4H104.7M146.8 85.2V94.7M146.8 109.7V204M146.8 128.7H155.4M170.4 128.7H178"/><path class="pl-hatch" d="M104.7 133.1A15 15 0 0 1 119.7 148.1M65.3 135.5A15 15 0 0 1 50.3 120.5M83.7 175.4A15 15 0 0 1 68.7 160.4M146.8 94.7A15 15 0 0 1 161.8 109.7M170.4 128.7A15 15 0 0 1 155.4 113.7M33.8 139.5V171.4M45.6 139.5V171.4M57.4 139.5V171.4M69.3 139.5V171.4M81.1 139.5V171.4M92.9 139.5V171.4M28 155.5H96.7"/><path class="pl-wall" d="M22 28H118.2V85.2H178V204H22Z"/><rect class="pl-col" x="47.1" y="182.4" width="5" height="5"/><rect class="pl-col" x="47.1" y="192" width="5" height="5"/><rect class="pl-col" x="74.6" y="182.4" width="5" height="5"/><rect class="pl-col" x="74.6" y="192" width="5" height="5"/><path class="pl-win" d="M126.4 204h18"/><path class="pl-win" d="M64.1 204h18"/><path class="pl-win" d="M131 204h18"/></svg><span class="person__initials" aria-hidden="true">DM</span></div><p class="person__role">Archive and models</p><p class="person__name">Diogo Mota</p></li>
+          <li class="person"><div class="person__tile"><svg class="person__plan" viewBox="0 0 200 250" aria-hidden="true" focusable="false"><rect class="pl-fill" x="44.2" y="108.9" width="54.2" height="14"/><path class="pl-thin" d="M22 91.8H120M120.5 91.8V178.1M120.5 193.1V204M22 140H51.5M66.5 140H120.5M60.7 140V174.8M60.7 189.8V204"/><path class="pl-hatch" d="M120.5 178.1A15 15 0 0 1 135.5 193.1M66.5 140A15 15 0 0 1 51.5 125M60.7 174.8A15 15 0 0 1 75.7 189.8M31.8 32V87.8M41.6 32V87.8M51.4 32V87.8M61.2 32V87.8M71 32V87.8M80.8 32V87.8M90.6 32V87.8M100.4 32V87.8M110.2 32V87.8M28 59.9H112M134.9 133.5l28.8 28.8M163.7 133.5l-28.8 28.8"/><path class="pl-wall" d="M22 28H120V91.8H178V204H22Z"/><rect class="pl-sky" x="134.9" y="133.5" width="28.8" height="28.8"/><path class="pl-win" d="M22 130.1v18"/><path class="pl-win" d="M22 127.5v18"/></svg><span class="person__initials" aria-hidden="true">BC</span></div><p class="person__role">Studio manager</p><p class="person__name">Beatriz Couto</p></li>
+<!--/@people-->
+        </ul>
+      </div>
+      <div class="track__progress" aria-hidden="true"><span></span></div>
+      <p class="people__hiring">We are hiring a project architect for 2027. <a class="link" href="mailto:studio@calsombra.example?subject=Project%20architect">Write to us</a></p>
+      <div class="cursor" aria-hidden="true">Drag</div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <p class="label"><span class="hour">20:00</span> — Contact</p>
+      <h2 class="contact__title shade" id="contact-title" data-reveal>
+        <span class="line" data-text="Bring us a site,">Bring us a site,</span>
+        <span class="line" data-text="a ruin or a room.">a ruin or a room.</span>
+      </h2>
+      <a class="link contact__mail" href="mailto:studio@calsombra.example">studio@calsombra.example</a>
+      <div class="contact__cols">
+        <div data-reveal>
+          <h3>Workshop</h3>
+          <p>Rua dos Caleiros 18<br>4050 Porto, Portugal</p>
+        </div>
+        <div data-reveal>
+          <h3>Visits</h3>
+          <p>Tuesday to Friday<br>by appointment</p>
+        </div>
+        <div data-reveal>
+          <h3>Press and archive</h3>
+          <p><a class="link" href="mailto:press@calsombra.example">press@calsombra.example</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <span>© 2026 Cal &amp; Sombra</span>
+      <span>A website concept by [Studio name]</span>
+      <a class="link" href="#top">Back to top ↑</a>
+    </div>
+    <p class="footer__slab">Cal &amp; Sombra is a fictional company created as a website concept by [Studio name]. It is not an architecture practice, is not registered with the Ordem dos Arquitectos and offers no professional services. Projects, people, figures and addresses are invented. Project photographs were generated with AI and show no real buildings.</p>
+    <p class="footer__mark" aria-hidden="true">Cal &amp; Sombra</p>
+  </footer>
+
+  <script type="module" src="main.js?v=17"></script>
+</body>
+</html>

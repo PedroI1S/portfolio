@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>House of Vey · Four rooms to walk through</title>
+  <meta name="description" content="House of Vey shows its first four bags in a house of four rooms. A fictional accessories house, designed as a scroll-storytelling website concept.">
+  <meta name="theme-color" content="#0f3327">
+  <meta property="og:title" content="House of Vey · Four rooms to walk through">
+  <meta property="og:description" content="A scroll-storytelling website concept for a fictional accessories house: four bags, four rooms, one walk.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Work+Sans:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=31">
+  <script>document.documentElement.classList.add('js', 'is-gated')</script>
+</head>
+<body>
+  <a class="skip" href="#collection">Skip to the collection</a>
+
+  <!-- The gate's arch is the front door: same 1.7 × 2.8 proportions, same green. On Enter its leaves
+       open onto the hall and the camera steps toward the house around it. -->
+  <section class="gate" id="gate" aria-labelledby="gate-title">
+    <div class="gate__inner">
+      <p class="gate__brand">House of Vey <span>Collection one · 2026</span></p>
+      <div class="gate__arch" data-gate-arch>
+        <div class="gate__leaves" aria-hidden="true"><span class="gate__leaf gate__leaf--l"></span><span class="gate__leaf gate__leaf--r"></span></div>
+        <svg class="gate__outline" viewBox="0 0 170 280" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M.6 280V85A84.4 84.4 0 0 1 169.4 85V280"/></svg>
+        <div class="gate__card">
+          <h1 class="lock" id="gate-title">
+            <span class="sr">House of Vey: a house for bags</span>
+            <span class="lock__line" aria-hidden="true"><span>A</span><span>house</span></span>
+            <span class="lock__line" aria-hidden="true"><span>for</span><span><em>bags.</em></span></span>
+          </h1>
+          <p class="gate__intro">Four bags, one to a room.<br>Let yourself in.</p>
+          <a class="btn btn--light gate__enter" href="#house" data-enter>
+            <span class="roll"><span>Enter</span><span aria-hidden="true">Enter</span></span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="gate__sound">
+        <p>A quiet house.<br>A little music, if you like.</p>
+        <button class="switch" type="button" data-sound aria-pressed="false">
+          <span class="switch__track" aria-hidden="true"><span class="switch__knob"></span></span>
+          <span class="switch__label">Sound <span data-sound-state>off</span></span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <header class="header" id="top">
+    <a class="header__logo" href="#house" aria-label="House of Vey, back to the front door">
+      <svg class="mark" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 24V10a8 8 0 0 1 16 0v14"/><path d="M6.5 24V11a3.5 3.5 0 0 1 7 0v13"/></svg>
+      <span>House of Vey</span>
+    </a>
+    <div class="header__tools">
+      <button class="sound-btn" type="button" data-sound aria-pressed="false" aria-label="Sound">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </button>
+      <a class="btn btn--light btn--sm header__cta" href="#visit"><span class="roll"><span>Book a visit</span><span aria-hidden="true">Book a visit</span></span></a>
+      <button class="btn btn--line btn--sm header__menu" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="roll"><span data-menu-label>Menu</span><span aria-hidden="true" data-menu-label>Menu</span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Rooms and sections">
+      <ol class="menu__list">
+        <li><a href="#house" data-stop="0"><span class="menu__no">00</span>Outside</a></li>
+        <li><a href="#room-1" data-stop="1"><span class="menu__no">01</span>The Hall</a></li>
+        <li><a href="#room-2" data-stop="2"><span class="menu__no">02</span>The Salon</a></li>
+        <li><a href="#room-3" data-stop="3"><span class="menu__no">03</span>The Study</a></li>
+        <li><a href="#room-4" data-stop="4"><span class="menu__no">04</span>The Bedroom</a></li>
+        <li><a href="#collection"><span class="menu__no">05</span>The collection</a></li>
+        <li><a href="#visit"><span class="menu__no">06</span>Visit the house</a></li>
+      </ol>
+    </nav>
+    <p class="menu__note">Collection one · Autumn&nbsp;2026<br>Lyon, by appointment</p>
+  </div>
+
+  <main id="main">
+    <!-- Blender-baked enfilade. Room articles also provide the no-WebGL / no-JS list. -->
+    <section class="house" id="house" aria-labelledby="house-title">
+      <div class="house__sticky">
+        <div class="stage" aria-hidden="true"></div>
+        <div class="house__shade" aria-hidden="true"></div>
+
+        <div class="house__intro room-cap" data-cap="0">
+          <p class="eyebrow">Collection one · Autumn 2026</p>
+          <h2 class="house__title" id="house-title">Four rooms,<br>four <em>bags</em>.</h2>
+          <p class="house__lead">Walk in. Every room keeps one piece, lit the way we would light it at home.</p>
+          <p class="cue" aria-hidden="true"><span class="cue__line"></span>Scroll to walk in</p>
+        </div>
+
+        <ol class="rooms">
+          <li class="room room-cap" id="room-1" data-cap="1" style="--room:#bcd0be; --room-ink:#16251d">
+            <p class="eyebrow"><span class="room__no">Room 01</span> The Hall</p>
+            <h3 class="room__name"><em>The Latch</em></h3>
+            <p class="room__line">A small top-handle in glazed cherry calf, closed with a twist of polished brass. The first thing you pick up on the way out.</p>
+            <img class="room__img" src="img/bag-latch.webp" width="1024" height="1024" alt="The Latch: a small top-handle bag in glossy cherry-red leather with a rounded handle and a gold twist clasp." loading="lazy" decoding="async" data-bag>
+            <button class="btn btn--light btn--sm room__open" type="button" data-open="0"><span class="roll"><span>Look closer</span><span aria-hidden="true">Look closer</span></span></button>
+            <div class="details">
+              <dl class="spec">
+                <div><dt>Material</dt><dd>Glazed calfskin, lambskin lining, polished brass twist clasp</dd></div>
+                <div><dt>Dimensions</dt><dd>22 × 15 × 9 cm</dd></div>
+                <div><dt>Handle drop</dt><dd>9 cm</dd></div>
+                <div><dt>Made in</dt><dd>Lyon, in a workshop of six</dd></div>
+                <div><dt>Price</dt><dd>€1,480</dd></div>
+              </dl>
+              <ul class="swatches" aria-label="Colourways">
+                <li style="--c:#a3141c">Cherry</li>
+                <li style="--c:#1d2230">Ink</li>
+                <li style="--c:#e9e1d1">Bone</li>
+              </ul>
+            </div>
+          </li>
+          <li class="room room-cap" id="room-2" data-cap="2" data-metal="none" style="--room:#b5583d; --room-ink:#fff">
+            <p class="eyebrow"><span class="room__no">Room 02</span> The Salon</p>
+            <h3 class="room__name"><em>The Cushion</em></h3>
+            <p class="room__line">Brushed suede that folds where you hold it. Made for the arm of a chair and an afternoon that runs long.</p>
+            <img class="room__img" src="img/bag-cushion.webp" width="1024" height="1024" alt="The Cushion: a soft, slouchy shoulder bag in cream suede with gathered folds and a thin strap." loading="lazy" decoding="async" data-bag>
+            <button class="btn btn--light btn--sm room__open" type="button" data-open="1"><span class="roll"><span>Look closer</span><span aria-hidden="true">Look closer</span></span></button>
+            <div class="details">
+              <dl class="spec">
+                <div><dt>Material</dt><dd>Brushed goat suede, unlined, calfskin strap</dd></div>
+                <div><dt>Dimensions</dt><dd>34 × 26 × 12 cm</dd></div>
+                <div><dt>Strap drop</dt><dd>24 cm</dd></div>
+                <div><dt>Made in</dt><dd>Lyon, in a workshop of six</dd></div>
+                <div><dt>Price</dt><dd>€1,260</dd></div>
+              </dl>
+              <ul class="swatches" aria-label="Colourways">
+                <li style="--c:#e8dfcd">Cream</li>
+                <li style="--c:#7a5232">Tobacco</li>
+                <li style="--c:#9aa0a3">Fog</li>
+              </ul>
+            </div>
+          </li>
+          <li class="room room-cap" id="room-3" data-cap="3" style="--room:#c79a35; --room-ink:#1f1708">
+            <p class="eyebrow"><span class="room__no">Room 03</span> The Study</p>
+            <h3 class="room__name"><em>The Bureau</em></h3>
+            <p class="room__line">A box with a handle and a brass push-lock, as square as a desk drawer. Keeps letters, keys and one good pen.</p>
+            <img class="room__img" src="img/bag-bureau.webp" width="1024" height="1024" alt="The Bureau: a structured box bag in deep green croc-embossed leather with a short handle and a brass push-lock." loading="lazy" decoding="async" data-bag>
+            <button class="btn btn--light btn--sm room__open" type="button" data-open="2"><span class="roll"><span>Look closer</span><span aria-hidden="true">Look closer</span></span></button>
+            <div class="details">
+              <dl class="spec">
+                <div><dt>Material</dt><dd>Croc-embossed calfskin on a rigid frame, brass push-lock, suede lining</dd></div>
+                <div><dt>Dimensions</dt><dd>18 × 16 × 15 cm</dd></div>
+                <div><dt>Handle drop</dt><dd>7 cm</dd></div>
+                <div><dt>Made in</dt><dd>Lyon, in a workshop of six</dd></div>
+                <div><dt>Price</dt><dd>€1,950</dd></div>
+              </dl>
+              <ul class="swatches" aria-label="Colourways">
+                <li style="--c:#163a2a">Bottle</li>
+                <li style="--c:#5c1a1f">Oxblood</li>
+                <li style="--c:#141414">Black</li>
+              </ul>
+            </div>
+          </li>
+          <li class="room room-cap" id="room-4" data-cap="4" style="--room:#4a2a4e; --room-ink:#fff">
+            <p class="eyebrow"><span class="room__no">Room 04</span> The Bedroom</p>
+            <h3 class="room__name"><em>The Turndown</em></h3>
+            <p class="room__line">Powder-blue satin, a bow you tie yourself and a chain as fine as a necklace. For the last room of the night.</p>
+            <img class="room__img" src="img/bag-turndown.webp" width="1024" height="1024" alt="The Turndown: a tiny evening bag in pale-blue satin with a large bow across the front and a fine gold chain." loading="lazy" decoding="async" data-bag>
+            <button class="btn btn--light btn--sm room__open" type="button" data-open="3"><span class="roll"><span>Look closer</span><span aria-hidden="true">Look closer</span></span></button>
+            <div class="details">
+              <dl class="spec">
+                <div><dt>Material</dt><dd>Duchess satin over a soft frame, silk bow, gold-plated chain</dd></div>
+                <div><dt>Dimensions</dt><dd>16 × 11 × 6 cm</dd></div>
+                <div><dt>Chain drop</dt><dd>52 cm, detachable</dd></div>
+                <div><dt>Made in</dt><dd>Lyon, in a workshop of six</dd></div>
+                <div><dt>Price</dt><dd>€980</dd></div>
+              </dl>
+              <ul class="swatches" aria-label="Colourways">
+                <li style="--c:#b9cde4">Powder</li>
+                <li style="--c:#e8c3c9">Blush</li>
+                <li style="--c:#f1ebdd">Ivory</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+
+        <p class="house__count" aria-hidden="true"><span data-count>00</span> / 04 <span class="house__count-name" data-count-name>Outside</span></p>
+      </div>
+    </section>
+
+    <!-- In 3D the bedroom window opens onto this section: it rises out of the window's arch. -->
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <svg class="seam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40a30 30 0 0 1 60 0h40v30z"/></svg>
+      <div class="collection__head">
+        <p class="eyebrow">The collection</p>
+        <h2 class="collection__title" id="collection-title" data-reveal>All four, <em>side by side</em>.</h2>
+        <p class="collection__lead" data-reveal>If you would rather not walk through the house, here they are in one place. Each bag is made to order in three colourways.</p>
+      </div>
+      <ul class="tiles">
+        <li data-reveal><a class="tile" href="#room-1" data-open="0" style="--room:#bcd0be">
+          <span class="tile__img"><img src="img/bag-latch.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async"></span>
+          <span class="tile__meta"><span class="tile__no">01</span><span class="tile__name">The Latch</span><span class="tile__price">€1,480</span></span>
+          <span class="tile__cta roll"><span>View details</span><span aria-hidden="true">View details</span></span>
+        </a></li>
+        <li data-reveal><a class="tile" href="#room-2" data-open="1" style="--room:#b5583d">
+          <span class="tile__img"><img src="img/bag-cushion.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async"></span>
+          <span class="tile__meta"><span class="tile__no">02</span><span class="tile__name">The Cushion</span><span class="tile__price">€1,260</span></span>
+          <span class="tile__cta roll"><span>View details</span><span aria-hidden="true">View details</span></span>
+        </a></li>
+        <li data-reveal><a class="tile" href="#room-3" data-open="2" style="--room:#c79a35">
+          <span class="tile__img"><img src="img/bag-bureau.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async"></span>
+          <span class="tile__meta"><span class="tile__no">03</span><span class="tile__name">The Bureau</span><span class="tile__price">€1,950</span></span>
+          <span class="tile__cta roll"><span>View details</span><span aria-hidden="true">View details</span></span>
+        </a></li>
+        <li data-reveal><a class="tile" href="#room-4" data-open="3" style="--room:#4a2a4e">
+          <span class="tile__img"><img src="img/bag-turndown.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async"></span>
+          <span class="tile__meta"><span class="tile__no">04</span><span class="tile__name">The Turndown</span><span class="tile__price">€980</span></span>
+          <span class="tile__cta roll"><span>View details</span><span aria-hidden="true">View details</span></span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <p class="eyebrow">By appointment · from 12 November</p>
+      <h2 class="lock lock--visit" id="visit-title">
+        <span class="sr">Come in and hold one</span>
+        <span class="lock__line" aria-hidden="true"><span>Come</span><span>in</span></span>
+        <span class="lock__line" aria-hidden="true"><span>and</span><span>hold</span></span>
+        <span class="lock__line lock__line--spread" aria-hidden="true"><span>O</span><span>N</span><span>E</span></span>
+      </h2>
+      <p class="visit__lead" data-reveal>A screen can only show you so much of a bag. Our house in Lyon opens the same four rooms to visitors, one appointment at a time, with an hour to try everything and nobody hurrying you out.</p>
+      <div class="visit__actions" data-reveal>
+        <a class="btn btn--light" href="mailto:visit@houseofvey.example?subject=A%20visit%20to%20the%20house"><span class="roll"><span>Request a visit</span><span aria-hidden="true">Request a visit</span></span></a>
+        <a class="link" href="mailto:hello@houseofvey.example">hello@houseofvey.example</a>
+      </div>
+      <dl class="visit__facts" data-reveal>
+        <div><dt>Where</dt><dd>The house, Lyon 2e<br>Address sent with your booking</dd></div>
+        <div><dt>When</dt><dd>Tuesday to Saturday<br>11:00 to 19:00</dd></div>
+        <div><dt>How long</dt><dd>One hour, one guest<br>(bring a friend if you like)</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <span class="footer__brand">
+        <svg class="mark" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 24V10a8 8 0 0 1 16 0v14"/><path d="M6.5 24V11a3.5 3.5 0 0 1 7 0v13"/></svg>
+        © 2026 House of Vey
+      </span>
+      <span>A website concept by [Studio name]</span>
+      <a class="link" href="#house">Back to the front door</a>
+    </div>
+    <p class="footer__slab">House of Vey is a fictional company created as a website concept by [Studio name]. The bags are AI-generated renders of products that do not exist, nothing on this page is for sale, and all prices, dates and addresses are illustrative. Sound is generated live in your browser and stays off unless you turn it on.</p>
+  </footer>
+
+  <dialog class="panel" id="panel" aria-labelledby="panel-title">
+    <div class="panel__inner">
+      <button class="panel__close" type="button" data-close>[ <span class="sr">Close</span><span aria-hidden="true">×</span> ]</button>
+      <p class="eyebrow" data-p-room></p>
+      <h2 class="panel__title" id="panel-title"><em data-p-name></em></h2>
+      <figure class="panel__figure"><img data-p-img alt="" width="1024" height="1024"></figure>
+      <fieldset class="panel__colours">
+        <legend>Colourway: <span data-p-colour></span></legend>
+        <div class="panel__swatches" data-p-swatches></div>
+        <p class="panel__note" data-p-note></p>
+      </fieldset>
+      <div data-p-spec></div>
+      <div class="panel__actions">
+        <a class="btn btn--dark" href="#visit" data-close-to><span class="roll"><span>Try it at the house</span><span aria-hidden="true">Try it at the house</span></span></a>
+        <a class="link" href="#house" data-p-walk>Walk to its room</a>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
+
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }</script>
+  <script src="audio.js?v=2" defer></script>
+  <script src="bags.js?v=3" defer></script>
+  <script src="main.js?v=31" defer></script>
+  <script type="module" src="house.js?v=32" onerror="window.dispatchEvent(new CustomEvent('vey:house', { detail: null }))"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke="#111" stroke-width="1"><rect width="320" height="240" fill="#fff" stroke="none"/>
+<path d="M96 22 H224 L230 30 H90 Z" stroke-width="1.2"/>
+<rect x="96" y="30" width="128" height="190" stroke-width="1.4"/>
+<path d="M20 220 H300" stroke-width="1.4"/>
+<g stroke="#b5b5b5" stroke-width="0.6"><path d="M96 46 H224 M96 62 H224 M96 78 H224 M96 94 H224 M96 110 H224 M96 126 H224 M96 142 H224 M96 158 H224 M96 174 H224 M96 190 H224 M96 206 H224"/></g>
+<g fill="#fff" stroke-width="1.2"><rect x="110" y="42" width="22" height="44"/><rect x="149" y="42" width="22" height="44"/><rect x="188" y="42" width="22" height="44"/><rect x="110" y="104" width="22" height="44"/><rect x="149" y="104" width="22" height="44"/><rect x="188" y="104" width="22" height="44"/><rect x="110" y="166" width="22" height="44"/><rect x="188" y="166" width="22" height="44"/></g>
+<rect x="149" y="166" width="22" height="54" fill="#111" stroke="none"/>
+<g stroke-width="0.6"><path d="M121 42 v44 M160 42 v44 M199 42 v44 M121 104 v44 M160 104 v44 M199 104 v44 M121 166 v44 M199 166 v44"/><path d="M110 70 h22 M149 70 h22 M188 70 h22 M110 132 h22 M149 132 h22 M188 132 h22"/></g>
+<g stroke="#9a9a9a" stroke-width="0.7"><path d="M60 30 V220 M90 30 H60" /><path d="M260 30 V220 M224 30 H260" stroke-dasharray="3 3"/></g>
+<path d="M30 92 H60 V128 H30" stroke="#9a9a9a" stroke-width="0.7"/>
+</svg>

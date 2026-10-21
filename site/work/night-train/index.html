@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Night Train to Porto · Linha Atlântica</title>
+  <meta name="description" content="Night Train to Porto: a painted, five-stop journey on Linha Atlântica's sleeper down the Atlantic coast from Bilbao to Porto. A fictional rail operator, designed as a scroll-storytelling website concept.">
+  <meta name="theme-color" content="#0E1A26">
+  <meta property="og:title" content="Night Train to Porto · Linha Atlântica">
+  <meta property="og:description" content="A scroll-storytelling website concept for a fictional sleeper train down the Atlantic coast.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap">
+  <link rel="stylesheet" href="style.css?v=15">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Painted-paper grain shared by the whole page -->
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+    </filter>
+    <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="3" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.55" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in" result="inked"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="11" result="n2"/>
+      <feDisplacementMap in="inked" in2="n2" scale="2.4"/>
+    </filter>
+  </svg>
+
+  <header class="header" id="top">
+    <a class="header__logo" href="#top" aria-label="Linha Atlântica, back to the title card">
+      <svg class="mark" viewBox="0 0 32 20" aria-hidden="true"><path d="M2 14c6-9 22-9 28 0"/><path d="M1 18h30"/><circle cx="16" cy="9" r="2.2"/></svg>
+      <span>Linha Atlântica</span>
+    </a>
+    <div class="route" aria-hidden="true">
+      <span class="route__end">Bilbao</span>
+      <span class="route__line">
+        <span class="route__fill"></span>
+        <span class="route__dot" style="--at:0"></span><span class="route__dot" style="--at:.25"></span><span class="route__dot" style="--at:.5"></span><span class="route__dot" style="--at:.75"></span><span class="route__dot" style="--at:1"></span>
+        <svg class="route__train" viewBox="0 0 28 10"><path d="M1 8V4c0-2 1-3 3-3h18c3 0 5 3 5 7z"/><path class="w" d="M5 3h3v2H5zm5 0h3v2h-3zm5 0h3v2h-3z"/></svg>
+      </span>
+      <span class="route__end">Porto</span>
+    </div>
+    <button class="sound" type="button" aria-pressed="false" aria-label="Turn train sound on">
+      <svg class="sound__speaker" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z"/><path class="sound__waves" d="M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+      <span class="sound__label">Sound off</span>
+      <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <a class="btn btn--small header__cta" href="#fares"><span class="roll"><span>Book a berth</span><span aria-hidden="true">Book a berth</span></span></a>
+    <button class="header__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="header__menu-label">Menu</span></button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Stops on the journey">
+      <ol class="menu__list">
+        <li><a href="#prologue"><span class="menu__time">19:30</span><span class="menu__name">Boarding</span></a></li>
+        <li><a href="#bilbao"><span class="menu__time">19:40</span><span class="menu__name">Bilbao</span></a></li>
+        <li><a href="#santander"><span class="menu__time">22:05</span><span class="menu__name">Santander</span></a></li>
+        <li><a href="#ribadeo"><span class="menu__time">00:52</span><span class="menu__name">Ribadeo</span></a></li>
+        <li><a href="#minho"><span class="menu__time">06:35</span><span class="menu__name">Minho valley</span></a></li>
+        <li><a href="#porto"><span class="menu__time">08:10</span><span class="menu__name">Porto</span></a></li>
+        <li><a href="#upgrade"><span class="menu__time">★</span><span class="menu__name">Your upgrade</span></a></li>
+        <li><a href="#fares"><span class="menu__time">€</span><span class="menu__name">Fares &amp; dates</span></a></li>
+      </ol>
+    </nav>
+    <div class="menu__aside">
+      <p>Sleeper No. 7 · Thursdays &amp; Sundays<br>6 May – 26 September 2027</p>
+      <p><a href="mailto:berths@linhaatlantica.example">berths@linhaatlantica.example</a></p>
+    </div>
+  </div>
+
+  <!-- Stamp card: one stamp per stop -->
+  <aside class="passport" aria-labelledby="passport-title" inert>
+    <p class="passport__route">Bilbao → Porto <span>Car 4 · Berth 07</span></p>
+    <button class="passport__toggle" type="button" aria-expanded="false" aria-controls="passport-body">
+      <span class="passport__title" id="passport-title">Stamp card</span>
+      <span class="passport__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="passport__count"><span class="passport__n">0</span>/5</span>
+    </button>
+    <div class="passport__body" id="passport-body">
+      <ol class="passport__slots">
+        <li class="slot" data-stop="bilbao"><span class="slot__label">Bilbao</span></li>
+        <li class="slot" data-stop="santander"><span class="slot__label">Santander</span></li>
+        <li class="slot" data-stop="ribadeo"><span class="slot__label">Ribadeo</span></li>
+        <li class="slot" data-stop="minho"><span class="slot__label">Minho</span></li>
+        <li class="slot" data-stop="porto"><span class="slot__label">Porto</span></li>
+      </ol>
+      <p class="passport__hint">Each stop you reach stamps the card. Five stamps unlock a first-class upgrade.</p>
+    </div>
+    <p class="sr-only" aria-live="polite" id="stamp-live"></p>
+  </aside>
+
+  <main id="main">
+
+    <!-- ===== Title card ===== -->
+    <section class="title" aria-labelledby="title-heading">
+      <div class="title__scene" aria-hidden="true">
+        <img class="title__img" fetchpriority="high" src="img/train-hero.jpg" srcset="img/train-hero-960.jpg 960w, img/train-hero.jpg 1672w" sizes="100vw" width="1672" height="941" alt="">
+      </div>
+      <div class="ticket">
+        <div class="ticket__face">
+          <div class="ticket__main">
+            <p class="ticket__kicker">Linha Atlântica · Sleeper No. 7</p>
+            <h1 class="ticket__title" id="title-heading" aria-label="Night Train to Porto">
+              <span class="ticket__line" data-print="Night">Night</span>
+              <span class="ticket__line" data-print="Train">Train</span>
+              <span class="ticket__line"><span class="ticket__to">to</span> <span class="ticket__porto" data-print="Porto">Porto</span></span>
+            </h1>
+            <p class="ticket__sub">Thirteen and a half hours down the Atlantic coast, one berth, five stops. Sleep through two countries and wake up to breakfast in the vineyards.</p>
+          </div>
+          <div class="ticket__stub" id="journey-stub">
+            <dl class="ticket__fields">
+              <div><dt>From</dt><dd>Bilbao 19:40</dd></div>
+              <div><dt>To</dt><dd>Porto 08:10</dd></div>
+              <div><dt>Car</dt><dd>4</dd></div>
+              <div><dt>Berth</dt><dd>07 · lower</dd></div>
+            </dl>
+            <p class="ticket__note">Thursdays &amp; Sundays<br>6 May – 26 Sep 2027</p>
+            <a class="btn btn--amber ticket__start" href="#bilbao"><span class="roll"><span>Start the journey</span><span aria-hidden="true">Start the journey</span></span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v13M4 10l6 6 6-6"/></svg></a>
+            <span class="ticket__punch" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+      <p class="title__edition">A passage along the Atlantic · Summer 2027</p>
+    </section>
+
+    <!-- ===== Prologue ===== -->
+    <section class="prologue" id="prologue" aria-labelledby="prologue-heading">
+      <div class="seam seam--top" aria-hidden="true"></div>
+      <p class="eyebrow">prologue · platform 3, 19:30</p>
+      <h2 class="prologue__text" id="prologue-heading" data-words>Board in Bilbao as the light goes, eat late while the sea runs beside the window, sleep through the long dark middle of the coast, and wake to coffee in the vineyards an hour <em>younger</em> than you left.</h2>
+      <div class="prologue__how">
+        <p>Five stops, five stamps. Your card in the corner fills as the journey goes; collect all five and the end of the line has a first-class upgrade waiting.</p>
+        <ol class="how" aria-label="The five stops">
+          <li><span>19:40</span>Bilbao</li>
+          <li><span>22:05</span>Santander</li>
+          <li><span>00:52</span>Ribadeo</li>
+          <li><span>06:35</span>Minho valley</li>
+          <li><span>08:10</span>Porto</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 01 Bilbao: the viaduct ===== -->
+    <article class="stop stop--scene stop--viaduct" id="bilbao" data-stop="bilbao" data-sound="run" aria-labelledby="bilbao-title">
+      <div class="stop__track">
+        <div class="stage">
+          <div class="scene" data-scene>
+            <div class="scene__planes" style="--fx: .5">
+              <img class="plane plane--far" data-depth="far" src="img/train-viaduct.jpg" srcset="img/train-viaduct-960.jpg 960w, img/train-viaduct.jpg 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="A painted stone viaduct with tall arches crosses a green estuary at dusk, the sky glowing terracotta into deep blue, village windows lit on the hillside.">
+              <svg class="viaduct-train" viewBox="0 0 600 40" aria-hidden="true" preserveAspectRatio="none">
+                <g class="viaduct-train__body"></g>
+              </svg>
+              <img class="plane plane--near" data-depth="near" src="img/train-viaduct-near.webp" srcset="img/train-viaduct-near-960.webp 960w, img/train-viaduct-near.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
+            </div>
+            <span class="scene__frame" aria-hidden="true"></span>
+          </div>
+          <header class="stop__head">
+            <p class="stamp-line"><span class="stamp-line__n">01</span><span>Bilbao-Abando</span><span>dep. 19:40</span></p>
+            <h2 class="stop__title" id="bilbao-title"><span class="line"><span>leaving on the</span></span><span class="line"><span><em>Last</em> light</span></span></h2>
+          </header>
+          <p class="scene__caption" data-at=".55">Nine arches over the estuary. The driver eases to thirty here so the dining car can see it.</p>
+        </div>
+      </div>
+      <div class="stop__body">
+        <p class="diary">The doors close at 19:38 and the city slides off backwards: shipyards, cranes, a last tram. Twenty minutes later the line steps out over the water and the whole train leans toward the windows.</p>
+        <dl class="band">
+          <div><dt>Journey</dt><dd><span class="num" data-count="13">13</span><small>h 30</small></dd></div>
+          <div><dt>Carriages</dt><dd><span class="num" data-count="9">9</span></dd></div>
+          <div><dt>Berths</dt><dd><span class="num" data-count="64">64</span></dd></div>
+          <div><dt>Dining car</dt><dd>1</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- ===== 02 Santander: the compartment ===== -->
+    <article class="stop stop--scene stop--compartment" id="santander" data-stop="santander" data-sound="run" aria-labelledby="santander-title">
+      <div class="stop__track">
+        <div class="stage">
+          <div class="scene" data-scene>
+            <div class="scene__planes" style="--fx: .66">
+              <img class="plane plane--far" data-depth="far" src="img/train-compartment.jpg?v=2" srcset="img/train-compartment-960.jpg?v=2 960w, img/train-compartment.jpg?v=2 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="A painted sleeper compartment at night: a made-up berth with white linen and a navy blanket, a brass lamp glowing on a small table, and a moonlit sea through the window.">
+              <img class="plane plane--near" data-depth="near" src="img/train-compartment-near.webp?v=2" srcset="img/train-compartment-near-960.webp?v=2 960w, img/train-compartment-near.webp?v=2 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
+              <span class="scene__dark" aria-hidden="true"></span>
+              <span class="scene__glow" aria-hidden="true"></span>
+            </div>
+            <span class="scene__frame" aria-hidden="true"></span>
+          </div>
+          <div class="card card--compartment">
+            <div class="card__heading">
+            <p class="stamp-line"><span class="stamp-line__n">02</span><span>Santander</span><span>dep. 22:05</span></p>
+            <h2 class="stop__title stop__title--sm" id="santander-title"><span class="line"><span>a room the size</span></span><span class="line"><span>of a <em>Window</em></span></span></h2>
+            </div>
+            <p>Somewhere past Santander the attendant turns the beds down. Switch the lamp off and the sea comes in.</p>
+            <button class="lamp" type="button" aria-pressed="false">
+              <span class="lamp__icon" aria-hidden="true"></span>
+              <span class="lamp__label">Switch off the lamp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="stop__body stop__body--fares">
+        <h3 class="sub">Three ways to sleep</h3>
+        <ul class="berths">
+          <li><span class="berths__name">Couchette</span><span class="berths__what">four berths, shared, fresh linen</span><span class="berths__price">from €79</span></li>
+          <li><span class="berths__name">Sleeper</span><span class="berths__what">two berths, washbasin, wool blankets</span><span class="berths__price">from €189</span></li>
+          <li><span class="berths__name">Grand</span><span class="berths__what">one double bed, shower, breakfast in bed</span><span class="berths__price">from €340</span></li>
+        </ul>
+        <p class="note">Prices per berth, one way, breakfast included. The upgrade at the end of this page moves a Sleeper ticket up to Grand.</p>
+      </div>
+    </article>
+
+    <!-- ===== 03 Ribadeo: the midnight halt (typographic) ===== -->
+    <article class="stop stop--halt" id="ribadeo" data-stop="ribadeo" data-sound="halt" aria-labelledby="ribadeo-title">
+      <div class="seam seam--top" aria-hidden="true"></div>
+      <div class="halt">
+        <div class="halt__text">
+          <p class="stamp-line"><span class="stamp-line__n">03</span><span>Ribadeo</span><span>arr. 00:52 · dep. 01:00</span></p>
+          <div class="board" aria-hidden="true">
+            <p class="board__row" data-flap="RIBADEO">RIBADEO</p>
+            <p class="board__row board__row--small" data-flap="00:52  HALT 8 MIN">00:52 · HALT 8 MIN</p>
+          </div>
+          <h2 class="stop__title stop__title--ink" id="ribadeo-title"><span class="line"><span>eight minutes</span></span><span class="line"><span>of <em>Quiet</em></span></span></h2>
+          <p class="diary diary--ink">The only stop the whole night. The engine ticks as it cools, a moth finds the lantern, someone in car 6 steps down in socks to look at the stars. Then a door, a whistle, and the coast again.</p>
+          <p class="note note--ink">Stretch your legs if you're awake. The attendant knocks once for anyone who asked to see the halt.</p>
+        </div>
+        <figure class="halt__window">
+          <div class="halt__frame">
+            <img src="img/train-platform.jpg" srcset="img/train-platform-960.jpg 960w, img/train-platform.jpg 1672w" sizes="(max-width: 767px) 100vw, 45vw" width="1672" height="941" loading="lazy" decoding="async" alt="A painted station platform at midnight: blue-and-white tiled wall, a lantern with moths, an empty bench, and the lit windows of the sleeper standing in the mist.">
+          </div>
+          <figcaption>Platform 1, 00:54. Painted for Linha Atlântica.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- ===== 04 Minho valley: breakfast ===== -->
+    <article class="stop stop--scene stop--breakfast" id="minho" data-stop="minho" data-sound="run" aria-labelledby="minho-title">
+      <div class="seam seam--top seam--to-dark" aria-hidden="true"></div>
+      <div class="stop__track">
+        <div class="stage">
+          <div class="scene" data-scene>
+            <div class="scene__planes" style="--fx: .44">
+              <img class="plane plane--far" data-depth="far" src="img/train-breakfast.jpg?v=2" srcset="img/train-breakfast-960.jpg?v=2 960w, img/train-breakfast.jpg?v=2 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="A painted breakfast tray by a train window at sunrise: coffee, custard tarts, cornbread, butter and half an orange, with misty terraced vineyards and a low sun outside.">
+              <img class="plane plane--near" data-depth="near" src="img/train-breakfast-near.webp?v=2" srcset="img/train-breakfast-near-960.webp?v=2 960w, img/train-breakfast-near.webp?v=2 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
+              <svg class="steam" viewBox="0 0 60 120" aria-hidden="true"><path d="M30 118c-10-18 10-26 0-44s10-26 0-44"/><path d="M42 118c-8-16 8-22 0-38s8-22 0-36"/></svg>
+            </div>
+            <span class="scene__frame" aria-hidden="true"></span>
+          </div>
+          <header class="stop__head">
+            <p class="stamp-line"><span class="stamp-line__n">04</span><span>Minho valley</span><span>06:35 · Portugal</span></p>
+            <h2 class="stop__title" id="minho-title"><span class="line"><span>breakfast, an hour</span></span><span class="line"><span><em>Earlier</em></span></span></h2>
+          </header>
+        </div>
+      </div>
+      <div class="stop__body stop__body--menu">
+        <p class="diary">At Valença the train crosses the river Minho into Portugal and every watch on board goes back an hour. You wake at the same time and somehow it's earlier. The tray arrives with the sun.</p>
+        <div class="menu-card">
+          <p class="menu-card__title">Pequeno-almoço · served in your berth</p>
+          <ul>
+            <li>Coffee, as strong as you ask</li>
+            <li>Two custard tarts, still warm</li>
+            <li>Broa cornbread, salted butter</li>
+            <li>Half an orange, cut at the window</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== 05 Porto: arrival ===== -->
+    <article class="stop stop--scene stop--arrival" id="porto" data-stop="porto" data-sound="slow" aria-labelledby="porto-title">
+      <div class="stop__track">
+        <div class="stage">
+          <div class="scene" data-scene>
+            <div class="scene__planes" style="--fx: .5">
+              <img class="plane plane--far" data-depth="far" src="img/train-arrival.jpg" srcset="img/train-arrival-960.jpg 960w, img/train-arrival.jpg 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="A painted river city in morning haze, seen from beneath a riveted iron railway bridge: terracotta roofs and pastel houses stacked up steep banks, small boats on the river.">
+              <p class="arrive-word" aria-hidden="true">Porto</p>
+              <img class="plane plane--near" data-depth="near" src="img/train-arrival-near.webp" srcset="img/train-arrival-near-960.webp 960w, img/train-arrival-near.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
+            </div>
+            <span class="scene__frame" aria-hidden="true"></span>
+          </div>
+          <header class="stop__head stop__head--low">
+            <p class="stamp-line"><span class="stamp-line__n">05</span><span>Porto-Campanhã</span><span>arr. 08:10</span></p>
+            <h2 class="stop__title" id="porto-title"><span class="line"><span>the river comes up</span></span><span class="line"><span>to <em>Meet</em> you</span></span></h2>
+          </header>
+        </div>
+      </div>
+      <div class="stop__body">
+        <p class="diary">The line drops toward the river under its iron bridges, and the city stacks itself up both banks in ochre and pink. You step down at 08:10 rested, fed, and a little sorry it's over.</p>
+      </div>
+    </article>
+
+    <!-- ===== Reward ===== -->
+    <section class="upgrade" id="upgrade" aria-labelledby="upgrade-title">
+      <img class="upgrade__painting" src="img/train-arrival.jpg" srcset="img/train-arrival-960.jpg 960w, img/train-arrival.jpg 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="The river city and iron bridge in the gold light of arrival.">
+      <div class="upgrade__inner">
+        <p class="eyebrow eyebrow--amber">end of the line</p>
+        <h2 class="upgrade__title" id="upgrade-title">Five stamps, one <em>Grand</em> berth.</h2>
+        <p class="upgrade__lede">Collect every stop on the card and we'll print you a code that moves one Sleeper ticket up to a Grand berth, shower and breakfast in bed included.</p>
+        <div class="upgrade__status" aria-live="polite">
+          <p class="upgrade__missing">You have <strong class="upgrade__have">0</strong> of 5 stamps. Still to visit: <span class="upgrade__list"></span></p>
+        </div>
+        <p class="upgrade__nojs">The stamp card and the upgrade printer need JavaScript switched on.</p>
+        <form class="upgrade__form" novalidate>
+          <div class="field">
+            <label for="up-name">Name on the ticket</label>
+            <input id="up-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="up-email">Email</label>
+            <input id="up-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <button class="btn btn--amber upgrade__submit" type="submit"><span class="roll"><span>Print my upgrade</span><span aria-hidden="true">Print my upgrade</span></span></button>
+          <p class="field__error" id="up-error" role="alert"></p>
+          <p class="upgrade__small">Nothing is sent anywhere. This is a design concept; the code is for show.</p>
+        </form>
+        <div class="slot-out" aria-hidden="true"><span>Your upgrade prints here</span></div>
+        <div class="printed" id="printed" hidden tabindex="-1" aria-label="Reissued gold ticket, Grand upgrade">
+          <div class="printed__topline">Linha Atlântica · Reissued ticket <span>No. 0007 / 2027</span></div>
+          <div class="printed__main">
+            <p class="printed__kicker">Night Train to Porto</p>
+            <p class="printed__grand">GRAND</p>
+            <p class="printed__name"></p>
+            <p class="printed__code-label">Upgrade code</p>
+            <p class="printed__code"></p>
+            <p class="printed__terms">Valid on any Thursday or Sunday departure, 6 May – 26 September 2027, Sleeper to Grand, subject to availability.</p>
+          </div>
+          <div class="printed__stub">
+            <dl class="ticket__fields"><div><dt>From</dt><dd>Bilbao 19:40</dd></div><div><dt>To</dt><dd>Porto 08:10</dd></div><div><dt>Car</dt><dd>4 · Grand</dd></div><div><dt>Berth</dt><dd>07 · double</dd></div></dl>
+            <button class="printed__copy" type="button">Copy code</button>
+          </div>
+          <div class="printed__stamps" aria-hidden="true"></div>
+        </div>
+        <div class="fares" id="fares" aria-labelledby="fares-title">
+          <p class="eyebrow">your next passage</p>
+          <h3 class="fares__title" id="fares-title">The coast is <em>Waiting</em>.</h3>
+          <dl class="fares__band">
+            <div><dt>Runs</dt><dd>Thu &amp; Sun</dd></div>
+            <div><dt>Season</dt><dd>6 May – 26 Sep 2027</dd></div>
+            <div><dt>From</dt><dd>€79</dd></div>
+            <div><dt>Bookings open</dt><dd>1 Feb 2027</dd></div>
+          </dl>
+          <p class="fares__cta"><a class="btn btn--amber" href="mailto:berths@linhaatlantica.example">Ask for a berth</a><a class="fares__phone" href="tel:+351220000000">+351 22 000 0000</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="seam seam--top seam--to-paper" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <h2 class="footer__heading">Timetable · Sleeper No. 7 · southbound</h2>
+      <table class="timetable">
+        <caption class="sr-only">Southbound timetable, Bilbao to Porto. Times are local: Spain until Valença, Portugal after.</caption>
+        <thead><tr><th scope="col">Station</th><th scope="col">Arr.</th><th scope="col">Dep.</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Bilbao-Abando</th><td>—</td><td>19:40</td></tr>
+          <tr><th scope="row">Santander</th><td>21:58</td><td>22:05</td></tr>
+          <tr><th scope="row">Llanes</th><td>23:21</td><td>23:23</td></tr>
+          <tr class="is-halt"><th scope="row">Ribadeo</th><td>00:52</td><td>01:00</td></tr>
+          <tr><th scope="row">Ferrol</th><td>02:38</td><td>02:45</td></tr>
+          <tr><th scope="row">A Coruña</th><td>03:24</td><td>03:30</td></tr>
+          <tr><th scope="row">Vigo-Guixar</th><td>05:31</td><td>05:36</td></tr>
+          <tr class="is-border"><th scope="row">Valença <small>· clocks back 1 h</small></th><td>05:18</td><td>05:22</td></tr>
+          <tr><th scope="row">Barcelos</th><td>06:58</td><td>07:00</td></tr>
+          <tr><th scope="row">Porto-Campanhã</th><td>08:10</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="footer__cols">
+        <p class="footer__mark">Linha Atlântica</p>
+        <p>Night Train to Porto<br>a summer 2027 campaign</p>
+        <p><a href="#top">Back to the title card</a></p>
+      </div>
+      <p class="footer__legal">Linha Atlântica is a fictional company created as a website concept by Pedro. The operator, Sleeper No. 7, its timetable, fares, upgrade codes and contact details are invented; nothing here can be booked, and no such through service runs on this coast. The painted scenes are AI-generated illustrations made for this concept. One real fact: mainland Portugal keeps clock time one hour behind Spain, so the clocks do go back at the border.</p>
+    </div>
+  </footer>
+
+  <script src="main.js?v=7" defer></script>
+</body>
+</html>

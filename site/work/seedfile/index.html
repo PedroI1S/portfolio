@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seedfile · Creative-coding studio, Porto and Berlin</title>
+  <meta name="description" content="Seedfile is a three-person creative-coding studio between Porto and Berlin making generative identities, installations and data tools. A fictional studio, designed as a brutalist website concept.">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Seedfile · Creative-coding studio, Porto and Berlin">
+  <meta property="og:description" content="A brutalist / raw website concept for a fictional creative-coding studio.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script>
+    document.documentElement.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="header g" id="top">
+    <a class="header__mark ctl ctl--hit" href="#top" aria-label="Seedfile, back to top"><span>Seedfile</span></a>
+    <p class="header__prop">A studio writing programs that draw.</p>
+    <p class="clock" data-tz="Europe/Lisbon"><abbr title="Porto">OPO</abbr> <time>--:--</time></p>
+    <p class="job" aria-hidden="true"><span class="job__k">Job</span> <span class="job__id" data-job-id>0x--------</span><span class="job__sep"> · </span><span class="job__pct" data-job-pct>Idle</span></p>
+    <nav class="header__nav" aria-label="Primary">
+      <a class="ctl ctl--hit" href="#work"><span>Work</span></a>
+      <a class="ctl ctl--hit" href="#services"><span>Services</span></a>
+      <a class="ctl ctl--hit" href="#about"><span>About</span></a>
+      <a class="ctl ctl--hit" href="#contact"><span>Contact</span></a>
+    </nav>
+    <button class="header__menu ctl" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span>[ Menu ]</span></button>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a href="#work"><span>(01)</span>Work</a>
+      <a href="#services"><span>(02)</span>Services</a>
+      <a href="#recognition"><span>(03)</span>Recognition</a>
+      <a href="#about"><span>(04)</span>About</a>
+      <a href="#contact"><span>(05)</span>Contact</a>
+    </nav>
+    <p class="menu__note">Programs that draw.<br>Porto / Berlin, since 2019.</p>
+  </div>
+
+  <main id="main">
+    <section class="stage" aria-labelledby="stage-title">
+      <h1 class="sr" id="stage-title">Seedfile, a creative-coding studio in Porto and Berlin</h1>
+      <div class="well" data-hero>
+        <div class="well__sheet">
+          <canvas class="well__plot" role="img" aria-label="A generative flow-field drawing that a pen plotter draws line by line in your browser."></canvas>
+          <canvas class="well__travel" aria-hidden="true"></canvas>
+        </div>
+        <p class="well__count" aria-hidden="true">000</p>
+        <div class="well__gantry" aria-hidden="true"></div>
+        <div class="well__pen" aria-hidden="true"></div>
+        <p class="well__label well__label--tl" aria-hidden="true"><span class="well__fig">Fig. 00 — </span><span data-mode>Flow field</span></p>
+        <p class="well__label well__label--tr">Seed <span class="hex" data-seed>----------</span></p>
+        <div class="well__label well__label--bl" aria-hidden="true">
+          <p class="well__xy" data-xy>X 000.0 Y 000.0 mm</p>
+          <p data-readout>Plotter idle</p>
+        </div>
+        <div class="well__ctrls">
+          <button class="ctl ctl--hit" type="button" data-skip hidden aria-label="Skip to the finished drawing"><span>[ Skip ]</span></button>
+          <button class="ctl ctl--hit" type="button" data-next hidden aria-label="Plot the next seed"><span>[ Next seed ]</span></button>
+        </div>
+        <span class="well__progress" aria-hidden="true"></span>
+        <p class="sr" role="status" data-plot-status></p>
+        <noscript><p class="well__noscript">This drawing plots itself with JavaScript. Turn it on to watch the pen.</p></noscript>
+      </div>
+      <p class="stage__prop">A creative-coding studio writing programs that draw: identities, installations, data tools.</p>
+    </section>
+
+    <section class="reel" id="reel" aria-labelledby="reel-title">
+      <div class="sec-head reel__band g">
+        <h2 class="sec-head__label reel__title" id="reel-title">Plot reel: eight projects, re-plotted as you scroll</h2>
+        <p class="sec-head__no">(00)</p>
+        <p class="sec-head__meta reel__hint">Scroll to plot ↓</p>
+      </div>
+      <div class="reel__track">
+        <div class="reel__pin" aria-hidden="true">
+          <div class="well reel__well">
+            <div class="well__sheet">
+              <canvas class="reel__plot"></canvas>
+              <canvas class="well__travel"></canvas>
+            </div>
+            <div class="well__gantry"></div>
+            <div class="well__pen"></div>
+            <p class="well__label well__label--tl"><span data-reel-fig>Fig. 01</span> — <span data-reel-kind>Tide rings</span></p>
+            <p class="well__label well__label--tr"><span data-reel-name>Harbour Index</span><span class="reel__meta"> · <span data-reel-meta>Porto Tide Observatory · 2026</span></span></p>
+            <div class="well__label well__label--bl">
+              <p class="well__xy" data-reel-xy>X 000.0 Y 000.0 mm</p>
+              <p data-reel-readout>Sheet 01 loaded</p>
+            </div>
+            <ol class="reel__ticks">
+              <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+            </ol>
+            <span class="well__progress"></span>
+          </div>
+        </div>
+        <ol class="reel__sheets">
+          <li data-plot="rings" data-seed="1926" data-name="Harbour Index" data-meta="Porto Tide Observatory · 2026">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-01.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 01 — Tide rings</span><span>Harbour Index, Porto Tide Observatory, 2026</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="ridges" data-seed="312" data-name="Kiln Variant" data-meta="Faiança Rosa · 2026">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-02.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 02 — Firing curves</span><span>Kiln Variant, Faiança Rosa, 2026</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="harmonograph" data-seed="41" data-name="Low Frequency Atlas" data-meta="Kurzwelle Archive · 2025">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-03.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 03 — Harmonograph</span><span>Low Frequency Atlas, Kurzwelle Archive, 2025</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="truchet" data-seed="2021" data-name="Census Weave" data-meta="Atlas Civic Lab · 2025">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-04.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 04 — Weave tiles</span><span>Census Weave, Atlas Civic Lab, 2025</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="stipple" data-seed="366" data-name="Seed Bank" data-meta="Self-initiated · 2024">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-05.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 05 — Stipple</span><span>Seed Bank, Self-initiated, 2024</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="hatch" data-seed="88" data-name="Granite Type" data-meta="Pedreira do Norte · 2023">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-06.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 06 — Fracture hatch</span><span>Granite Type, Pedreira do Norte, 2023</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="streams" data-seed="7" data-name="Commuter Field" data-meta="Linha Verde Transit · 2023">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-07.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 07 — Trip streams</span><span>Commuter Field, Linha Verde Transit, 2023</span></figcaption>
+            </figure>
+          </li>
+          <li data-plot="circles" data-seed="1100" data-name="Murmur Wall" data-meta="Festival Ruído Branco · 2022">
+            <figure>
+              <div class="reel__thumb"><canvas aria-hidden="true"></canvas><noscript><img src="plots/fig-08.svg" alt="" width="384" height="256" loading="lazy"></noscript></div>
+              <figcaption><span>Fig. 08 — Listening grid</span><span>Murmur Wall, Festival Ruído Branco, 2022</span></figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="sec-head g">
+        <h2 class="mega" id="work-title" style="--n:4"><span>Work</span></h2>
+        <p class="sec-head__no">(01)</p>
+        <p class="sec-head__label">Selected projects, 2022–2026</p>
+        <p class="sec-head__meta">08 entries · open a row</p>
+      </div>
+
+      <div class="ledger__head g" aria-hidden="true">
+        <span class="c-no">No.</span>
+        <span class="c-name">Project</span>
+        <span class="c-client">Client</span>
+        <span class="c-type">Type</span>
+        <span class="c-year">Year</span>
+      </div>
+      <ol class="ledger reveal-rows">
+        <li class="row" data-plot="rings" data-seed="1926">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(01)</span>
+              <span class="cell c-name">Harbour Index</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Porto Tide Observatory</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Data tool</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2026</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-01.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">Forty years of tide-gauge readings drawn as rings, one per year. Researchers scrub decades in a second; the public version runs on a screen in the harbour master’s old office.</p>
+              <dl class="row__spec">
+                <div><dt>Stack</dt><dd>WebGL, DuckDB-Wasm</dd></div>
+                <div><dt>Output</dt><dd>Web app, wall screen</dd></div>
+                <div><dt>Duration</dt><dd>7 months</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="ridges" data-seed="312">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(02)</span>
+              <span class="cell c-name">Kiln Variant</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Faiança Rosa</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Generative identity</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2026</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-02.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">A ceramics brand whose logotype is redrawn from the temperature log of every firing. 312 firings so far: 312 marks, one silhouette you can still recognise across a shop.</p>
+              <dl class="row__spec">
+                <div><dt>Stack</dt><dd>Rust to Wasm, Figma plugin</dd></div>
+                <div><dt>Output</dt><dd>Identity generator, packaging</dd></div>
+                <div><dt>Duration</dt><dd>5 months</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="harmonograph" data-seed="41">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(03)</span>
+              <span class="cell c-name">Low Frequency Atlas</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Kurzwelle Archive</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Installation</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2025</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-03.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">Six pen plotters in a former transmitter hall drew the archive’s broadcasts as harmonograph traces, live, for the length of the show: 41 days and 2,300 sheets.</p>
+              <dl class="row__spec">
+                <div><dt>Hardware</dt><dd>6 pen plotters, 6 single-board computers</dd></div>
+                <div><dt>Output</dt><dd>Installation, print edition</dd></div>
+                <div><dt>Duration</dt><dd>41 days on site</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="truchet" data-seed="2021">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(04)</span>
+              <span class="cell c-name">Census Weave</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Atlas Civic Lab</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Data tool</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2025</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-04.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">A tiled explorer for a national census where every tile is a parish and every curve a commuting flow. Built so a journalist on deadline finds a story in under a minute.</p>
+              <dl class="row__spec">
+                <div><dt>Stack</dt><dd>TypeScript, SVG, a lot of SQL</dd></div>
+                <div><dt>Output</dt><dd>Public explorer, embed kit</dd></div>
+                <div><dt>Duration</dt><dd>4 months</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="stipple" data-seed="366">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(05)</span>
+              <span class="cell c-name">Seed Bank</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Self-initiated</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Plotter edition</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2024</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-05.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">One stipple drawing a day for a leap year, each seeded by its date. 366 sheets of ink on cotton paper, and the whole archive can be plotted again from one line of code.</p>
+              <dl class="row__spec">
+                <div><dt>Medium</dt><dd>Pigment ink on 300 g cotton</dd></div>
+                <div><dt>Format</dt><dd>A4, 366 sheets</dd></div>
+                <div><dt>Edition</dt><dd>1 of 1 per seed</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="hatch" data-seed="88">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(06)</span>
+              <span class="cell c-name">Granite Type</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Pedreira do Norte</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Generative identity</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2023</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-06.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">A quarry’s identity built from the fracture lines of its own stone: a hatched display face, and a system that gives every block shipped its own mark.</p>
+              <dl class="row__spec">
+                <div><dt>Stack</dt><dd>Python, OpenType, Processing</dd></div>
+                <div><dt>Output</dt><dd>Typeface, marking system</dd></div>
+                <div><dt>Duration</dt><dd>6 months</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="streams" data-seed="7">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(07)</span>
+              <span class="cell c-name">Commuter Field</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Linha Verde Transit</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Data tool</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2023</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-07.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">Two million trips a day rendered as a flow field, so planners can see where the network bends under load. It is now part of the operator’s Monday review.</p>
+              <dl class="row__spec">
+                <div><dt>Stack</dt><dd>Canvas 2D, Web Workers</dd></div>
+                <div><dt>Output</dt><dd>Internal tool, monthly prints</dd></div>
+                <div><dt>Duration</dt><dd>8 months</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+        <li class="row" data-plot="circles" data-seed="1100">
+          <details name="work">
+            <summary class="row__sum g">
+              <span class="cell c-no">(08)</span>
+              <span class="cell c-name">Murmur Wall</span>
+              <span class="cell c-client"><span class="sr">Client: </span>Festival Ruído Branco</span>
+              <span class="cell c-type"><span class="sr">Type: </span>Installation</span>
+              <span class="cell c-year"><span class="sr">Year: </span>2022</span>
+              <span class="cell c-tog" aria-hidden="true"></span>
+            </summary>
+            <div class="row__panel g">
+              <div class="row__fig">
+                <canvas class="row__plot" aria-hidden="true"></canvas>
+                <div class="row__pen" aria-hidden="true"></div>
+                <noscript><img class="row__img" src="plots/fig-08.svg" alt="" width="384" height="256" loading="lazy"></noscript>
+              </div>
+              <p class="row__desc">A 14-metre LED wall that listens to the room and answers in circles. Three nights, 11,000 visitors, no reboots.</p>
+              <dl class="row__spec">
+                <div><dt>Hardware</dt><dd>LED wall, 4 microphones</dd></div>
+                <div><dt>Output</dt><dd>Installation, live set</dd></div>
+                <div><dt>Duration</dt><dd>3 nights</dd></div>
+              </dl>
+            </div>
+          </details>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="sec-head g">
+        <h2 class="mega" id="services-title" style="--n:8"><span>Services</span></h2>
+        <p class="sec-head__no">(02)</p>
+        <p class="sec-head__label">What we are hired for</p>
+        <p class="sec-head__meta">05 disciplines</p>
+      </div>
+      <ol class="svc-list reveal-rows">
+        <li class="svc g">
+          <span class="svc__no">(01)</span>
+          <div class="svc__head">
+            <h3 class="svc__name">Generative identities</h3>
+            <button class="svc__plot" type="button" aria-label="Re-seed the generative identities sketch"><canvas aria-hidden="true"></canvas><span class="svc__seed hex" aria-hidden="true"></span></button>
+          </div>
+          <p class="svc__desc">Logos that are programs. We design the rules, write the generator and hand over a tool your team can run without us.</p>
+          <p class="svc__out">Generator · brand toolkit · motion rules</p>
+        </li>
+        <li class="svc g">
+          <span class="svc__no">(02)</span>
+          <div class="svc__head">
+            <h3 class="svc__name">Installations</h3>
+            <button class="svc__plot" type="button" aria-label="Re-seed the installations sketch"><canvas aria-hidden="true"></canvas><span class="svc__seed hex" aria-hidden="true"></span></button>
+          </div>
+          <p class="svc__desc">Plotters, LED walls and projection for lobbies, festivals and museums. Built to run unattended for years, not just for opening night.</p>
+          <p class="svc__out">Concept · hardware spec · show control · upkeep</p>
+        </li>
+        <li class="svc g">
+          <span class="svc__no">(03)</span>
+          <div class="svc__head">
+            <h3 class="svc__name">Data tools</h3>
+            <button class="svc__plot" type="button" aria-label="Re-seed the data tools sketch"><canvas aria-hidden="true"></canvas><span class="svc__seed hex" aria-hidden="true"></span></button>
+          </div>
+          <p class="svc__desc">Explorable dashboards and explainers for research teams, newsrooms and archives. Accurate first, readable second, fast always.</p>
+          <p class="svc__out">Prototype · production build · documentation</p>
+        </li>
+        <li class="svc g">
+          <span class="svc__no">(04)</span>
+          <div class="svc__head">
+            <h3 class="svc__name">Plotter editions</h3>
+            <button class="svc__plot" type="button" aria-label="Re-seed the plotter editions sketch"><canvas aria-hidden="true"></canvas><span class="svc__seed hex" aria-hidden="true"></span></button>
+          </div>
+          <p class="svc__desc">Pen-on-paper runs of 10 to 200 from any generator we have built, each sheet signed with the seed that made it.</p>
+          <p class="svc__out">Edition design · plotting · certificates</p>
+        </li>
+        <li class="svc g">
+          <span class="svc__no">(05)</span>
+          <div class="svc__head">
+            <h3 class="svc__name">Workshops</h3>
+            <button class="svc__plot" type="button" aria-label="Re-seed the workshops sketch"><canvas aria-hidden="true"></canvas><span class="svc__seed hex" aria-hidden="true"></span></button>
+          </div>
+          <p class="svc__desc">Two-day intensives for design teams learning to think in systems. Bring laptops; leave with a working tool.</p>
+          <p class="svc__out">In person · Porto or Berlin · up to 12 people</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="paper" id="paper">
+    <section class="section recognition" id="recognition" aria-labelledby="recognition-title">
+      <div class="sec-head g">
+        <h2 class="mega" id="recognition-title" style="--n:11"><span>Recognition</span></h2>
+        <p class="sec-head__no">(03)</p>
+        <p class="sec-head__label">Awards and selections</p>
+        <p class="sec-head__meta">06 entries · 2023–2026</p>
+      </div>
+      <table class="awards" role="table">
+        <thead role="rowgroup">
+          <tr class="g" role="row">
+            <th class="a-award" role="columnheader" scope="col">Award</th>
+            <th class="a-proj" role="columnheader" scope="col">Project</th>
+            <th class="a-org" role="columnheader" scope="col">Organisation</th>
+            <th class="a-year" role="columnheader" scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody class="reveal-rows" role="rowgroup">
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Best generative system</td>
+            <td class="cell a-proj" role="cell">Kiln Variant</td>
+            <td class="cell a-org" role="cell">Code &amp; Form Biennale</td>
+            <td class="cell a-year" role="cell">2026</td>
+          </tr>
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Shortlist, public data</td>
+            <td class="cell a-proj" role="cell">Harbour Index</td>
+            <td class="cell a-org" role="cell">Open Harbour Data Prize</td>
+            <td class="cell a-year" role="cell">2026</td>
+          </tr>
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Installation of the year</td>
+            <td class="cell a-proj" role="cell">Low Frequency Atlas</td>
+            <td class="cell a-org" role="cell">Nordlicht Media Art Awards</td>
+            <td class="cell a-year" role="cell">2025</td>
+          </tr>
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Edition of the year</td>
+            <td class="cell a-proj" role="cell">Seed Bank</td>
+            <td class="cell a-org" role="cell">Plotter Salon Leipzig</td>
+            <td class="cell a-year" role="cell">2024</td>
+          </tr>
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Selected</td>
+            <td class="cell a-proj" role="cell">Granite Type</td>
+            <td class="cell a-org" role="cell">Annual of Systematic Type</td>
+            <td class="cell a-year" role="cell">2023</td>
+          </tr>
+          <tr class="g" role="row">
+            <td class="cell a-award" role="cell">Honourable mention</td>
+            <td class="cell a-proj" role="cell">Commuter Field</td>
+            <td class="cell a-org" role="cell">European Dataviz Circle</td>
+            <td class="cell a-year" role="cell">2023</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="sec-head g">
+        <h2 class="mega" id="about-title" style="--n:5"><span>About</span></h2>
+        <p class="sec-head__no">(04)</p>
+        <p class="sec-head__label">The studio</p>
+        <p class="sec-head__meta">Porto / Berlin</p>
+      </div>
+      <div class="about__body g">
+        <p class="about__text">Seedfile is three people, two cities and one six-pen plotter older than all of us. One designer who codes, one engineer who draws, one producer who does both. We start every job by writing the program, not the picture, so nothing we hand over is finished: change the seed and it draws again.</p>
+        <figure class="about__fig">
+          <div class="about__sheet">
+            <canvas aria-hidden="true"></canvas>
+            <div class="about__pen" aria-hidden="true"></div>
+            <noscript><img src="plots/portrait.svg" alt="" width="480" height="360" loading="lazy"></noscript>
+          </div>
+          <figcaption><span>Fig. 09 — Self-portrait: three people, one line each</span><span>Blue pen, one pass · seed <span class="hex">0x000007E3</span></span></figcaption>
+        </figure>
+        <dl class="about__facts reveal-rows">
+          <div><dt>Established</dt><dd>2019</dd></div>
+          <div><dt>People</dt><dd>03</dd></div>
+          <div><dt>Cities</dt><dd>02</dd></div>
+          <div><dt>Plotters</dt><dd>01</dd></div>
+          <div><dt>Seeds archived</dt><dd><span data-count="41208" aria-hidden="true">41,208</span><span class="sr">41,208</span></dd></div>
+        </dl>
+        <div class="about__grid">
+          <p>Press <kbd>G</kbd> to show the grid.</p>
+          <button class="ctl ctl--hit" type="button" data-grid-toggle aria-pressed="false" aria-label="Grid overlay"><span>[ Grid ]</span></button>
+          <div class="switch" role="group" aria-label="G key shortcut">
+            <span aria-hidden="true">Shortcut:</span>
+            <button class="ctl ctl--hit" type="button" data-shortcut="on" aria-pressed="true"><span>On</span></button>
+            <span aria-hidden="true">/</span>
+            <button class="ctl ctl--hit" type="button" data-shortcut="off" aria-pressed="false"><span>Off</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="sec-head g">
+        <h2 class="mega" id="contact-title" style="--n:7"><span>Contact</span></h2>
+        <p class="sec-head__no">(05)</p>
+        <p class="sec-head__label">New commissions</p>
+        <p class="sec-head__meta">From January 2027</p>
+      </div>
+      <div class="contact__body g">
+        <p class="contact__intro">Send a brief, a budget or just a seed. We answer within two working days.</p>
+        <div class="mail">
+          <a class="mail__link ctl" href="mailto:studio@seedfile.example" data-copy="studio@seedfile.example" aria-describedby="mail-hint"><span>studio@seedfile.example</span></a>
+          <p class="mail__hint" id="mail-hint">Opens your mail app</p>
+        </div>
+        <table class="hours" role="table">
+          <thead role="rowgroup">
+            <tr class="g" role="row">
+              <th class="h-city" role="columnheader" scope="col">Studio</th>
+              <th class="h-area" role="columnheader" scope="col">Area</th>
+              <th class="h-time" role="columnheader" scope="col">Local time</th>
+              <th class="h-open" role="columnheader" scope="col">Now</th>
+              <th class="h-hours" role="columnheader" scope="col">Hours</th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr class="g" role="row" data-tz="Europe/Lisbon">
+              <td class="cell h-city" role="cell">Porto</td>
+              <td class="cell h-area" role="cell">Bonfim</td>
+              <td class="cell h-time" role="cell"><time>--:--</time></td>
+              <td class="cell h-open" role="cell" data-open>--</td>
+              <td class="cell h-hours" role="cell">Mon–Fri 09:30–18:30</td>
+            </tr>
+            <tr class="g" role="row" data-tz="Europe/Berlin">
+              <td class="cell h-city" role="cell">Berlin</td>
+              <td class="cell h-area" role="cell">Wedding</td>
+              <td class="cell h-time" role="cell"><time>--:--</time></td>
+              <td class="cell h-open" role="cell" data-open>--</td>
+              <td class="cell h-hours" role="cell">Mon–Fri 09:30–18:30</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="contact__note">Visits by appointment in both studios. <a class="ctl ctl--hit" href="mailto:studio@seedfile.example"><span>Open a new message</span></a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__colophon g">
+      <p class="footer__label">Colophon</p>
+      <p class="footer__text">Projects, clients, awards and addresses on this page are invented; any resemblance to real organisations is coincidental. The clocks show real local time in Porto and Berlin. Set in Geist Mono. Every drawing here is generated in your browser and plotted by the same pen engine; the static figures shown without JavaScript are exports of that code.</p>
+    </div>
+    <div class="footer__bar g">
+      <span class="footer__copy">© 2026</span>
+      <p class="footer__note">Seedfile is a fictional company created as a website concept by [Studio name].</p>
+      <button class="footer__grid ctl ctl--hit" type="button" data-grid-toggle aria-pressed="false" aria-label="Grid overlay"><span>[ Grid ]</span></button>
+      <a class="footer__top ctl ctl--hit" href="#top" aria-label="Back to top"><span>↑ Top</span></a>
+    </div>
+  </footer>
+
+  <div class="thumb" aria-hidden="true"><canvas></canvas><span class="thumb__cap"></span></div>
+  <div class="gridlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span class="gridlay__tag"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="toast" role="status"></div>
+
+  <script type="module" src="main.js?v=14"></script>
+</body>
+</html>

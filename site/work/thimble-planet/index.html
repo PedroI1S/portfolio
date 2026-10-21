@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thimble Planet · A playable portfolio</title>
+  <meta name="description" content="Thimble Planet is the playable portfolio of a one-person 3D studio: a tiny low-poly planet at dusk where every landmark is a project. A fictional studio, designed as a 3D / WebGL website concept.">
+  <meta name="theme-color" content="#0B0B0B">
+  <meta property="og:title" content="Thimble Planet · A playable portfolio">
+  <meta property="og:description" content="A 3D / WebGL website concept: a tiny planet at dusk where every landmark is a project.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
+  <link rel="stylesheet" href="style.css?v=23">
+  <script>
+    (function () {
+      var d = document.documentElement, gl = false;
+      d.classList.add('js');
+      try {
+        var c = document.createElement('canvas');
+        var ctx = c.getContext('webgl2') || c.getContext('webgl');
+        gl = !!ctx;
+        var lose = ctx && ctx.getExtension('WEBGL_lose_context');
+        if (lose) lose.loseContext();
+      } catch (e) {}
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!gl) d.classList.add('no-webgl');
+      if (reduce) d.classList.add('reduced');
+      d.classList.add(gl && !reduce && !/[?&]list\b/.test(location.search) ? 'mode-3d' : 'mode-list');
+    })();
+  </script>
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js" crossorigin>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Illustrations: used by the list view -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="art-clip"><circle cx="100" cy="100" r="96"/></clipPath>
+      <linearGradient id="sky-dusk" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2C2F58"/><stop offset=".38" stop-color="#5D5287"/><stop offset=".62" stop-color="#887297"/><stop offset=".8" stop-color="#BE9D94"/><stop offset="1" stop-color="#F2D4B4"/>
+      </linearGradient>
+      <linearGradient id="sky-night" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#15142A"/><stop offset=".5" stop-color="#2C2F58"/><stop offset="1" stop-color="#5D5287"/>
+      </linearGradient>
+      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5D5A95"/><stop offset="1" stop-color="#2C2F5A"/>
+      </linearGradient>
+      <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#FFE9C2" stop-opacity=".7"/><stop offset="1" stop-color="#FFE9C2" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="beam-l" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0" stop-color="#FFE9C2" stop-opacity=".7"/><stop offset="1" stop-color="#FFE9C2" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="lamp"><stop offset="0" stop-color="#FFE6B8"/><stop offset=".35" stop-color="#F2A65A" stop-opacity=".55"/><stop offset="1" stop-color="#F2A65A" stop-opacity="0"/></radialGradient>
+      <clipPath id="planet-clip"><circle cx="100" cy="100" r="70"/></clipPath>
+      <radialGradient id="planet-glow"><stop offset=".66" stop-color="#F6C9A0" stop-opacity=".3"/><stop offset="1" stop-color="#F6C9A0" stop-opacity="0"/></radialGradient>
+      <linearGradient id="planet-shade" x1="1" y1=".3" x2="0" y2=".7"><stop offset=".35" stop-color="#15142A" stop-opacity="0"/><stop offset="1" stop-color="#15142A" stop-opacity=".72"/></linearGradient>
+      <radialGradient id="sun"><stop offset="0" stop-color="#FFFFFD"/><stop offset=".25" stop-color="#F2D4B4" stop-opacity=".9"/><stop offset="1" stop-color="#F2D4B4" stop-opacity="0"/></radialGradient>
+      <g id="blade"><rect x="98.6" y="44" width="2.8" height="42" fill="#6B4A55"/><rect x="101.4" y="49" width="11" height="33" fill="#F3E8DD"/><path d="M101.4 60h11M101.4 71h11" stroke="#C9B8AE" stroke-width="1"/></g>
+    </defs>
+
+    <symbol id="art-cottage" viewBox="0 0 200 200">
+      <g clip-path="url(#art-clip)">
+        <rect width="200" height="200" fill="url(#sky-dusk)"/>
+        <circle cx="156" cy="150" r="46" fill="url(#sun)"/>
+        <g fill="#FFF3EA"><circle cx="42" cy="38" r="1"/><circle cx="70" cy="22" r=".8"/><circle cx="128" cy="30" r="1.1"/><circle cx="158" cy="52" r=".8"/></g>
+        <circle cx="100" cy="332" r="192" fill="#6F8B58"/>
+        <path d="M0 160 Q100 132 200 160 V200 H0Z" fill="#5E7D52"/>
+        <path d="M120 64c-6-8 4-12 0-20 9 2 13 9 8 16M114 84c-4-5 2-9 1-13 6 2 8 7 5 12" fill="#B9ACC4" opacity=".8"/>
+        <rect x="111" y="86" width="8" height="22" fill="#7D5E6E"/>
+        <rect x="68" y="110" width="58" height="34" fill="#E3B4A5"/>
+        <rect x="97" y="110" width="29" height="34" fill="#D19E92"/>
+        <path d="M62 112 97 84l35 28Z" fill="#884D6D"/>
+        <path d="M97 84l35 28H97Z" fill="#6E3A58"/>
+        <rect x="91" y="124" width="12" height="20" fill="#572145"/>
+        <rect x="74" y="120" width="11" height="9" fill="#F2A65A"/>
+        <rect x="109" y="120" width="11" height="9" fill="#F2A65A"/>
+        <circle cx="79.5" cy="124.5" r="13" fill="url(#lamp)"/>
+        <circle cx="114.5" cy="124.5" r="13" fill="url(#lamp)"/>
+        <path d="M140 146 151 104l11 42Z" fill="#3B6B4E"/><path d="M151 104l11 42h-11Z" fill="#2F5C46"/>
+        <path d="M36 150 46 116l10 34Z" fill="#2F5C46"/><path d="M46 116l10 34H46Z" fill="#28503D"/>
+        <circle cx="62" cy="146" r="6" fill="#5C8152"/><circle cx="134" cy="147" r="5" fill="#A5677D"/>
+        <path d="M58 150h22M114 150h26" stroke="#D9C2B8" stroke-width="2"/>
+      </g>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#F2F2F7" stroke-opacity=".35"/>
+    </symbol>
+
+    <symbol id="art-windmill" viewBox="0 0 200 200">
+      <g clip-path="url(#art-clip)">
+        <rect width="200" height="200" fill="url(#sky-dusk)"/>
+        <circle cx="40" cy="146" r="50" fill="url(#sun)"/>
+        <g fill="#FFF3EA"><circle cx="60" cy="30" r="1"/><circle cx="150" cy="24" r="1.1"/><circle cx="170" cy="60" r=".8"/></g>
+        <circle cx="100" cy="332" r="192" fill="#B8844C"/>
+        <path d="M-10 160 Q100 128 210 160" stroke="#D9A55E" stroke-width="7" fill="none"/>
+        <path d="M-10 174 Q100 142 210 174" stroke="#D9A55E" stroke-width="7" fill="none"/>
+        <path d="M-10 188 Q100 156 210 188" stroke="#D9A55E" stroke-width="7" fill="none"/>
+        <path d="M88 142 93 92h14l5 50Z" fill="#EBDCCF"/><path d="M100 92h7l5 50h-12Z" fill="#D6C2B5"/>
+        <path d="M89 93 100 76l11 17Z" fill="#884D6D"/>
+        <rect x="96" y="128" width="8" height="14" fill="#572145"/>
+        <rect x="97.5" y="104" width="5" height="6" fill="#F2A65A"/>
+        <g transform="rotate(22 100 86)">
+          <use href="#blade"/><use href="#blade" transform="rotate(90 100 86)"/><use href="#blade" transform="rotate(180 100 86)"/><use href="#blade" transform="rotate(270 100 86)"/>
+        </g>
+        <circle cx="100" cy="86" r="3.5" fill="#572145"/>
+        <rect x="140" y="136" width="10" height="9" rx="4" fill="#E0B26C"/><rect x="48" y="140" width="10" height="9" rx="4" fill="#E0B26C"/>
+      </g>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#F2F2F7" stroke-opacity=".35"/>
+    </symbol>
+
+    <symbol id="art-dock" viewBox="0 0 200 200">
+      <g clip-path="url(#art-clip)">
+        <rect width="200" height="200" fill="url(#sky-dusk)"/>
+        <circle cx="150" cy="118" r="44" fill="url(#sun)"/>
+        <g fill="#FFF3EA"><circle cx="38" cy="50" r="1"/><circle cx="84" cy="26" r="1.1"/><circle cx="132" cy="40" r=".8"/></g>
+        <rect y="122" width="200" height="78" fill="url(#sea)"/>
+        <path d="M118 130h50M128 140h40M112 152h34" stroke="#F2D4B4" stroke-opacity=".5" stroke-width="1.5"/>
+        <path d="M-6 132 Q30 118 64 126 L78 200H-6Z" fill="#DDB79E"/>
+        <path d="M-6 120 Q20 110 46 118 L50 128 Q20 124 -6 134Z" fill="#6F8B58"/>
+        <path d="M40 132h110v-5H44Z" fill="#A27E70"/>
+        <path d="M44 132h4v22h-4zM80 132h4v26h-4zM116 132h4v28h-4zM144 132h4v26h-4z" fill="#5A3A44"/>
+        <rect x="140" y="104" width="2.5" height="24" fill="#3A2A3D"/><rect x="137.5" y="100" width="7.5" height="7" fill="#FFD8A0"/>
+        <circle cx="141" cy="103" r="14" fill="url(#lamp)"/>
+        <rect x="58" y="117" width="10" height="10" fill="#B68A6A"/>
+        <path d="M86 160h44l-6 9H92Z" fill="#6A2A52"/><rect x="88" y="158" width="40" height="3" fill="#E3B4A5"/>
+        <rect x="106.5" y="118" width="2" height="40" fill="#3A2A3D"/>
+        <path d="M109 120v34h20Z" fill="#F3E8DD"/><path d="M106 124v30H92Z" fill="#E9D9C6"/>
+      </g>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#F2F2F7" stroke-opacity=".35"/>
+    </symbol>
+
+    <symbol id="art-lighthouse" viewBox="0 0 200 200">
+      <g clip-path="url(#art-clip)">
+        <rect width="200" height="200" fill="url(#sky-night)"/>
+        <g fill="#FFF3EA"><circle cx="30" cy="70" r="1"/><circle cx="52" cy="34" r="1.2"/><circle cx="160" cy="36" r="1"/><circle cx="174" cy="92" r=".8"/><circle cx="140" cy="20" r=".8"/><circle cx="76" cy="18" r=".9"/></g>
+        <path d="M100 66 210 40v52Z" fill="url(#beam)"/>
+        <path d="M100 66-10 54v30Z" fill="url(#beam-l)" opacity=".55"/>
+        <rect y="136" width="200" height="64" fill="url(#sea)"/>
+        <path d="M30 150h36M140 160h40M18 172h30" stroke="#BE9D94" stroke-opacity=".45" stroke-width="1.5"/>
+        <path d="M58 146 72 124l24-6 30 4 18 24Z" fill="#7C6F86"/><path d="M110 120l16 2 18 24h-40Z" fill="#6A5E78"/>
+        <path d="M88 124 91 68h18l3 56Z" fill="#F0E6DC"/>
+        <path d="M89.5 96h21l.7 14h-22.4ZM90.7 72h18.6l.6 12H90.1Z" fill="#B44C5E"/>
+        <rect x="85" y="64" width="30" height="4" fill="#3A2A3D"/>
+        <rect x="92" y="52" width="16" height="12" fill="#FFF1D0"/>
+        <circle cx="100" cy="58" r="22" fill="url(#lamp)"/>
+        <path d="M89 52 100 40l11 12Z" fill="#572145"/>
+        <rect x="96.5" y="112" width="7" height="12" fill="#3A2A3D"/>
+      </g>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#F2F2F7" stroke-opacity=".35"/>
+    </symbol>
+
+    <symbol id="art-grove" viewBox="0 0 200 200">
+      <g clip-path="url(#art-clip)">
+        <rect width="200" height="200" fill="url(#sky-night)"/>
+        <g fill="#FFF3EA"><circle cx="40" cy="40" r="1.2"/><circle cx="96" cy="22" r=".9"/><circle cx="150" cy="34" r="1.1"/><circle cx="170" cy="70" r=".8"/><circle cx="64" cy="62" r=".7"/><circle cx="124" cy="56" r=".8"/></g>
+        <circle cx="100" cy="332" r="192" fill="#4F6148"/>
+        <path d="M14 152 30 96l16 56Z" fill="#2F5C46"/><path d="M30 96l16 56H30Z" fill="#28503D"/>
+        <path d="M150 150 166 92l16 58Z" fill="#3B6B4E"/><path d="M166 92l16 58h-16Z" fill="#2F5C46"/>
+        <path d="M128 146 140 108l12 38Z" fill="#5A557A"/>
+        <path d="M44 146 54 118l10 28Z" fill="#36604B"/>
+        <path d="M58 148 80 116l22 32Z" fill="#E9D9C6"/><path d="M80 116l22 32H80Z" fill="#D6C3AE"/><path d="M74 148l6-12 6 12Z" fill="#3A2A3D"/>
+        <circle cx="122" cy="140" r="34" fill="url(#lamp)"/>
+        <path d="M110 148h24M112 146l20 4" stroke="#5A3A44" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M114 146c2-10 6-12 8-22 3 8 8 12 8 22Z" fill="#F2A65A"/><path d="M118 146c1-6 3-7 4-12 2 5 4 7 4 12Z" fill="#FFE2A8"/>
+        <g fill="#E8D27A"><circle cx="60" cy="104" r="1.6"/><circle cx="142" cy="96" r="1.4"/><circle cx="104" cy="88" r="1.2"/><circle cx="160" cy="124" r="1.3"/><circle cx="36" cy="128" r="1.2"/></g>
+      </g>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#F2F2F7" stroke-opacity=".35"/>
+    </symbol>
+
+    <symbol id="mark" viewBox="0 0 32 32">
+      <circle cx="16" cy="18" r="10" fill="#6F8B58"/><path d="M7.3 22.9a10 10 0 0 0 17.4 0c-2.6-2.2-5.6-2.4-7.4-1.4-2.4 1.2-4.6.4-6.4-.6-1.4-.8-2.8.2-3.6 2Z" fill="#424A88"/><rect x="13" y="6.4" width="6" height="3.4" fill="#E3B4A5"/><path d="M12 6.8 16 3l4 3.8Z" fill="#884D6D"/><circle cx="23.6" cy="11.6" r="1.6" fill="#F2A65A"/>
+    </symbol>
+
+    <symbol id="art-planet" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="99" fill="url(#planet-glow)"/>
+      <g clip-path="url(#planet-clip)">
+        <rect x="30" y="30" width="140" height="140" fill="#7E9A5E"/>
+        <path d="M112 34c14 2 30 12 36 26-10 6-26 4-34-6s-12-16-2-20Z" fill="#A3B36E"/>
+        <path d="M128 46c8 0 18 6 18 14-6 4-16 2-20-4s-4-10 2-10Z" fill="#D2AA6E"/>
+        <path d="M30 120c14-6 26 4 34 16s20 18 36 14 30-2 40 8c-10 22-36 34-62 32-26-2-44-30-48-70Z" fill="#585A8E"/>
+        <path d="M150 112c10-2 18 2 22 10-2 10-6 18-12 24-8-6-14-18-10-34Z" fill="#585A8E"/>
+        <path d="M62 52c8-10 22-12 30-4 6 6 2 16-8 18-10 2-26-4-22-14Z" fill="#B8A2B4"/><path d="M72 48c4-4 10-4 14 0-4 2-10 2-14 0Z" fill="#E8D3CB"/>
+        <path d="M100 92c12-4 24 4 24 14s-14 14-24 10-12-20 0-24Z" fill="#647F51"/>
+        <rect x="30" y="30" width="140" height="140" fill="url(#planet-shade)"/>
+      </g>
+      <path d="M100 30a70 70 0 0 1 0 140" fill="none" stroke="#F6C9A0" stroke-opacity=".55" stroke-width="1.5"/>
+      <g transform="rotate(-14 100 100)"><rect x="92" y="21" width="16" height="10" fill="#E3B4A5"/><path d="M89 22 100 12l11 10Z" fill="#884D6D"/><rect x="95" y="24" width="3.5" height="3.5" fill="#F2A65A"/><rect x="102" y="24" width="3.5" height="3.5" fill="#F2A65A"/></g>
+      <g transform="rotate(34 100 100)"><path d="M96 31 98 17h4l2 14Z" fill="#EBDCCF"/><path d="M97 18l3-4 3 4Z" fill="#884D6D"/><path d="M91 8l18 14M109 8 91 22" stroke="#F3E8DD" stroke-width="2.2"/></g>
+      <g transform="rotate(108 100 100)"><rect x="86" y="28" width="26" height="2.6" fill="#A27E70"/><path d="M92 24h15l-3 4h-9Z" fill="#6A2A52"/><path d="M100 23V11l7 12Z" fill="#F3E8DD"/></g>
+      <g transform="rotate(212 100 100)"><circle cx="100" cy="11" r="8" fill="#FFE6B8" opacity=".3"/><path d="M97 31 98.5 13h3L103 31Z" fill="#F0E6DC"/><path d="M98.1 18h3.8l.2 3h-4.2ZM97.6 24h4.8l.2 3h-5.2Z" fill="#B44C5E"/><circle cx="100" cy="11" r="2.2" fill="#FFF1D0"/><path d="M97 10l3-4 3 4Z" fill="#572145"/></g>
+      <g transform="rotate(288 100 100)"><path d="M85 31l5-15 5 15Z" fill="#2F5C46"/><path d="M104 31l5-12 5 12Z" fill="#3B6B4E"/><circle cx="99" cy="28" r="7" fill="#F2A65A" opacity=".35"/><path d="M96.5 30c.5-3 1.5-4 2.5-7 1 3 2 4 2.5 7Z" fill="#F2A65A"/></g>
+    </symbol>
+  </svg>
+
+  <!-- ============ 3D layer ============ -->
+  <div class="scene" aria-hidden="true">
+    <canvas class="scene__canvas"></canvas>
+    <div class="scene__vignette"></div>
+  </div>
+
+  <div class="gate" id="gate" data-state="loading">
+    <div class="loader" role="status">
+      <p class="loader__count"><span class="loader__num">0</span><span class="loader__pct">%</span></p>
+      <p class="loader__step">Raising the hills</p>
+      <span class="loader__bar" aria-hidden="true"><i></i></span>
+    </div>
+    <p class="gate__kicker">A playable portfolio</p>
+    <h1 class="sr-only">Thimble Planet</h1>
+    <!-- layout twin of the title: drawn into the scene behind the planet, shown here only if that fails -->
+    <p class="gate__title" aria-hidden="true"><span class="gate__t1">Thimble</span><span class="gate__t2">Planet</span></p>
+    <div class="gate__planet" aria-hidden="true"></div>
+    <div class="gate__cta">
+      <button class="enter" type="button" data-act="enter">
+        <svg class="enter__ring" viewBox="0 0 96 96" aria-hidden="true">
+          <circle class="enter__dots enter__dots--a" cx="48" cy="48" r="45"/>
+          <circle class="enter__dots enter__dots--b" cx="48" cy="48" r="40"/>
+          <circle class="enter__dots enter__dots--c" cx="48" cy="48" r="35"/>
+        </svg>
+        <span class="enter__core" aria-hidden="true"></span>
+        <span class="enter__label">Enter<span class="sr-only"> the planet</span></span>
+      </button>
+      <p class="gate__hint"><span class="t-mouse">Drag · Click · M · Sound off</span><span class="t-touch">Drag · Tap · Menu · Sound off</span></p>
+    </div>
+    <a class="gate__list" href="?list" data-act="list">Read it as a list</a>
+    <p class="gate__fine">A fictional studio, made as a website concept.</p>
+  </div>
+
+  <header class="hud" id="hud">
+    <div class="hud__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="hud__tl">
+      <button class="ring" type="button" data-act="menu" aria-expanded="false" aria-controls="menu" aria-keyshortcuts="M">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 5.5h9M3.5 8h9M3.5 10.5h9"/></svg>
+        <span class="sr-only">Menu</span>
+      </button>
+      <button class="ring" type="button" data-act="sound" aria-pressed="false">
+        <svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 6.1h2.3l3.4-2.8v9.4L4.9 9.9H2.6z"/><path d="M10.6 5.9a3 3 0 0 1 0 4.2M12.4 4.2a5.4 5.4 0 0 1 0 7.6"/></svg>
+        <svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 6.1h2.3l3.4-2.8v9.4L4.9 9.9H2.6z"/><path d="m10.6 6.3 3.2 3.4m0-3.4-3.2 3.4"/></svg>
+        <span class="sr-only">Sound</span>
+      </button>
+      <button class="ring" type="button" data-act="reset" aria-keyshortcuts="R">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 9.4A4.8 4.8 0 1 1 11.4 4.4"/><path d="M11.8 1.8v2.9H8.9"/></svg>
+        <span class="sr-only">Reset view</span>
+      </button>
+      <span class="hud__key" aria-hidden="true"><span class="kbd">M</span>Menu</span>
+    </div>
+    <p class="hud__mark">Thimble <em>Planet</em></p>
+    <a class="hud__contact" href="mailto:hello@thimbleplanet.example"><span class="hud__contact-k">Commissions open</span><span class="hud__contact-v">Write to me</span></a>
+    <button class="hud__about" type="button" data-act="about"><span>Concept site · fictional studio</span></button>
+    <p class="hud__hint" aria-hidden="true">Drag to orbit · Scroll to zoom · Press 1–5 to visit</p>
+    <p class="hud__coords" aria-hidden="true"><span data-coord="lat">22° N</span> <span data-coord="lon">084° E</span> · <span data-light>Dusk</span></p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <nav class="spots" aria-label="Places on the planet">
+      <button class="spot" type="button" data-place="cottage"><span class="spot__dot" aria-hidden="true"></span><span class="spot__label"><span class="spot__no">01</span> The Cottage</span><span class="spot__proj">Slow Mornings</span></button>
+      <button class="spot" type="button" data-place="windmill"><span class="spot__dot" aria-hidden="true"></span><span class="spot__label"><span class="spot__no">02</span> The Windmill</span><span class="spot__proj">Stone-ground</span></button>
+      <button class="spot" type="button" data-place="dock"><span class="spot__dot" aria-hidden="true"></span><span class="spot__label"><span class="spot__no">03</span> The Dock</span><span class="spot__proj">Low Tide Regatta</span></button>
+      <button class="spot" type="button" data-place="lighthouse"><span class="spot__dot" aria-hidden="true"></span><span class="spot__label"><span class="spot__no">04</span> The Lighthouse</span><span class="spot__proj">Keeper’s Log</span></button>
+      <button class="spot" type="button" data-place="grove"><span class="spot__dot" aria-hidden="true"></span><span class="spot__label"><span class="spot__no">05</span> The Grove</span><span class="spot__proj">Thirty Small Forests</span></button>
+    </nav>
+
+    <!-- logbook entries the lighthouse beam reveals over the sea (the panel announces them) -->
+    <div class="logs" aria-hidden="true">
+      <span class="log"><i class="log__pin"></i><span class="log__t">02 JAN 1922 · W 5 · SLEET</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">19 MAR 1934 · SW 8 · GALE</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">07 AUG 1947 · CALM · FOG</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">14 NOV 1953 · NW 7 · RAIN</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">30 JUN 1968 · E 2 · CLEAR</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">11 DEC 1981 · N 6 · SNOW</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">23 SEP 1999 · S 4 · SQUALLS</span></span>
+      <span class="log"><i class="log__pin"></i><span class="log__t">05 APR 2021 · SE 3 · HAZE</span></span>
+    </div>
+
+    <aside class="panel" id="panel" aria-labelledby="panel-title" hidden>
+      <p class="panel__kicker"><span class="panel__no">01</span><span class="panel__of">/ 05</span><span class="panel__place">The Cottage</span></p>
+      <h2 class="panel__title" id="panel-title" tabindex="-1">Slow Mornings</h2>
+      <button class="panel__more" type="button" aria-expanded="false" aria-controls="panel-about">About the project</button>
+      <div class="panel__about" id="panel-about">
+        <dl class="panel__meta"></dl>
+        <p class="panel__desc"></p>
+      </div>
+
+      <div class="plays">
+        <section class="play" data-play="cottage" aria-labelledby="pk-cottage" hidden>
+          <div class="play__head">
+            <h3 class="play__k" id="pk-cottage">Scrub the year</h3>
+            <p class="play__read"><span class="play__big" data-out="month">October</span><span class="play__small" data-out="ident">Ident 10 / 12</span></p>
+          </div>
+          <div class="scale" style="--n: 12">
+            <span class="scale__rule" aria-hidden="true"></span>
+            <input class="scale__input" type="range" min="0" max="11" step="1" value="9" data-ctl="month" aria-labelledby="pk-cottage">
+          </div>
+          <ol class="scale__labels scale__labels--even" aria-hidden="true"><li>J</li><li>F</li><li>M</li><li>A</li><li>M</li><li>J</li><li>J</li><li>A</li><li>S</li><li>O</li><li>N</li><li>D</li></ol>
+          <p class="play__hint">Sun, windows, smoke and snow follow the month.</p>
+        </section>
+
+        <section class="play" data-play="windmill" aria-labelledby="pk-windmill" hidden>
+          <div class="play__head">
+            <h3 class="play__k" id="pk-windmill">Grind</h3>
+            <p class="play__read"><span class="play__big" data-out="rpm">9 rpm</span><span class="play__small" data-out="mill">Stones idling</span></p>
+          </div>
+          <button class="hold" type="button" data-ctl="grind" aria-pressed="false" aria-describedby="ph-windmill"><span class="hold__fill" aria-hidden="true"></span><span class="hold__label">Hold to grind</span></button>
+          <p class="play__hint" id="ph-windmill">Press and hold, or hold Space. The sails spin up to four times and flour runs down the chute.</p>
+        </section>
+
+        <section class="play" data-play="dock" aria-labelledby="pk-dock" hidden>
+          <div class="play__head">
+            <h3 class="play__k" id="pk-dock">Set the tide</h3>
+            <p class="play__read"><span class="play__big" data-out="tide">±0.0 m</span><span class="play__small" data-out="tideword">Mid tide</span></p>
+          </div>
+          <div class="scale" style="--n: 21">
+            <span class="scale__rule scale__rule--fine" aria-hidden="true"></span>
+            <input class="scale__input" type="range" min="-10" max="10" step="1" value="0" data-ctl="tide" aria-labelledby="pk-dock">
+          </div>
+          <ol class="scale__labels" aria-hidden="true"><li>Low</li><li>Mid</li><li>High</li></ol>
+          <p class="play__hint">The boat rides the water. The regatta only starts below the lowest mark on the post.</p>
+        </section>
+
+        <section class="play" data-play="lighthouse" aria-labelledby="pk-lighthouse" hidden>
+          <div class="play__head">
+            <h3 class="play__k" id="pk-lighthouse">Turn the lamp</h3>
+            <p class="play__read"><span class="play__big" data-out="bearing">245°</span><span class="play__small" data-out="found">0 / 8 entries</span></p>
+          </div>
+          <div class="scale scale--lamp" style="--n: 11">
+            <span class="scale__rule" aria-hidden="true"></span>
+            <span class="scale__marks" aria-hidden="true"></span>
+            <input class="scale__input" type="range" min="-150" max="150" step="1" value="0" data-ctl="lamp" aria-labelledby="pk-lighthouse">
+          </div>
+          <ol class="scale__labels" aria-hidden="true"><li>Shore</li><li>Open sea</li><li>Shore</li></ol>
+          <p class="play__log" data-out="log">Sweep the beam across the sea to read the keeper’s log.</p>
+        </section>
+
+        <section class="play" data-play="grove" aria-labelledby="pk-grove" hidden>
+          <div class="play__head">
+            <h3 class="play__k" id="pk-grove">Count the days</h3>
+            <p class="play__read"><span class="play__big" data-out="day">Day 30</span><span class="play__small" data-out="forests">30 forests</span></p>
+          </div>
+          <div class="scale" style="--n: 30">
+            <span class="scale__rule scale__rule--fine" aria-hidden="true"></span>
+            <input class="scale__input" type="range" min="1" max="30" step="1" value="30" data-ctl="day" aria-labelledby="pk-grove">
+          </div>
+          <ol class="scale__labels" aria-hidden="true"><li>1</li><li>10</li><li>20</li><li>30</li></ol>
+          <p class="play__hint">One small forest a day, for a month. They ring the fire in the order they were made.</p>
+        </section>
+      </div>
+
+      <div class="panel__actions">
+        <button class="pill pill--sm" type="button" data-act="next"><span>Next place</span><span aria-hidden="true">→</span></button>
+        <button class="ring" type="button" data-act="close">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 4.5 7 7m0-7-7 7"/></svg>
+          <span class="sr-only">Close and return to orbit</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ List view: shown without WebGL, with reduced motion, or on request ============ -->
+    <div class="book">
+      <header class="book__top">
+        <a class="book__brand" href="#main">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#mark"/></svg>
+          <span>Thimble <em>Planet</em></span>
+        </a>
+        <a class="book__contact" href="mailto:hello@thimbleplanet.example"><span class="book__contact-k">Commissions open · </span>Write to me</a>
+      </header>
+
+      <section class="book__hero" aria-labelledby="book-title">
+        <svg class="book__planet" viewBox="0 0 200 200" role="img" aria-label="Illustration of a tiny planet with a cottage, a windmill, a dock, a lighthouse and a campfire around its edge"><use href="#art-planet"/></svg>
+        <p class="lockup__kicker">A playable portfolio</p>
+        <h1 class="book__title" id="book-title">Thimble <em>Planet</em></h1>
+        <p class="book__lead">I build small, warm worlds for brands, museums and festivals: idents, product films, browser games and real-time pieces. This site is usually a tiny planet you can orbit. Here it is laid flat, one place per project.</p>
+        <p class="book__note book__note--reduced">Your device asks for reduced motion, so the planet is shown as a list.</p>
+        <p class="book__note book__note--nowebgl">This browser can’t draw the 3D planet, so here it is as a list.</p>
+        <p class="book__note book__note--chosen">You’re reading the list version.</p>
+        <button class="pill book__open" type="button" data-act="planet"><span>Open the 3D planet</span><span class="book__open-note">camera moves are kept to a minimum</span></button>
+      </section>
+
+      <ol class="places" aria-label="Projects">
+        <li>
+          <article class="place" data-place="cottage" aria-labelledby="t-cottage">
+            <svg class="place__art" viewBox="0 0 200 200" role="img" aria-label="Illustration: a pink cottage with lit windows and a smoking chimney at dusk"><use href="#art-cottage"/></svg>
+            <div class="place__text">
+              <p class="place__no"><span>01</span> The Cottage</p>
+              <h2 class="place__title" id="t-cottage">Slow Mornings</h2>
+              <dl class="place__meta">
+                <div><dt>Year</dt><dd>2025</dd></div>
+                <div><dt>Role</dt><dd>Modelling, lighting, animation</dd></div>
+                <div><dt>For</dt><dd>An independent tea blender</dd></div>
+              </dl>
+              <p class="place__desc">Twelve ten-second idents, one for each month, all set in the same small kitchen while the light outside changes. Every curl of steam was simulated, then trimmed by hand.</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="place" data-place="windmill" aria-labelledby="t-windmill">
+            <svg class="place__art" viewBox="0 0 200 200" role="img" aria-label="Illustration: a white windmill turning above striped fields of stubble"><use href="#art-windmill"/></svg>
+            <div class="place__text">
+              <p class="place__no"><span>02</span> The Windmill</p>
+              <h2 class="place__title" id="t-windmill">Stone-ground</h2>
+              <dl class="place__meta">
+                <div><dt>Year</dt><dd>2024</dd></div>
+                <div><dt>Role</dt><dd>Art direction, product film</dd></div>
+                <div><dt>For</dt><dd>An organic flour mill</dd></div>
+              </dl>
+              <p class="place__desc">A ninety-second film that follows a single grain from the field to a loaf, all at toy scale. The millstones have forty faces each and turn at the real mill’s speed.</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="place" data-place="dock" aria-labelledby="t-dock">
+            <svg class="place__art" viewBox="0 0 200 200" role="img" aria-label="Illustration: a wooden jetty with a lantern and a small sailing boat on a violet sea"><use href="#art-dock"/></svg>
+            <div class="place__text">
+              <p class="place__no"><span>03</span> The Dock</p>
+              <h2 class="place__title" id="t-dock">Low Tide Regatta</h2>
+              <dl class="place__meta">
+                <div><dt>Year</dt><dd>2023</dd></div>
+                <div><dt>Role</dt><dd>Game design, 3D, code</dd></div>
+                <div><dt>For</dt><dd>A small-boat sailing festival</dd></div>
+              </dl>
+              <p class="place__desc">A one-thumb boat race that lived on the festival’s ticket page. Visitors sailed forty thousand races over the opening weekend, and the record still stands at 41 seconds.</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="place" data-place="lighthouse" aria-labelledby="t-lighthouse">
+            <svg class="place__art" viewBox="0 0 200 200" role="img" aria-label="Illustration: a striped lighthouse on a rocky headland sweeping its beam across a night sky"><use href="#art-lighthouse"/></svg>
+            <div class="place__text">
+              <p class="place__no"><span>04</span> The Lighthouse</p>
+              <h2 class="place__title" id="t-lighthouse">Keeper’s Log</h2>
+              <dl class="place__meta">
+                <div><dt>Year</dt><dd>2022</dd></div>
+                <div><dt>Role</dt><dd>Real-time 3D, WebGL build</dd></div>
+                <div><dt>For</dt><dd>A harbour museum’s centenary</dd></div>
+              </dl>
+              <p class="place__desc">Visitors turn the lamp by hand, and each sweep of the beam lights up one entry from a keeper’s logbook: a hundred years of weather in a browser tab.</p>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="place" data-place="grove" aria-labelledby="t-grove">
+            <svg class="place__art" viewBox="0 0 200 200" role="img" aria-label="Illustration: a campfire and a small tent in a clearing ringed by pine trees, with fireflies"><use href="#art-grove"/></svg>
+            <div class="place__text">
+              <p class="place__no"><span>05</span> The Grove</p>
+              <h2 class="place__title" id="t-grove">Thirty Small Forests</h2>
+              <dl class="place__meta">
+                <div><dt>Year</dt><dd>2021</dd></div>
+                <div><dt>Role</dt><dd>Everything (a personal project)</dd></div>
+                <div><dt>For</dt><dd>Myself, one evening at a time</dd></div>
+              </dl>
+              <p class="place__desc">A new miniature forest every day for a month, each one built in under two hours with fewer than a thousand triangles. This planet grew out of it.</p>
+            </div>
+          </article>
+        </li>
+      </ol>
+
+      <section class="book__about" aria-labelledby="book-about-title">
+        <h2 class="book__h2" id="book-about-title">About this site</h2>
+        <p>Thimble Planet is a one-person 3D studio. Commissions are open for spring 2027: write to <a href="mailto:hello@thimbleplanet.example">hello@thimbleplanet.example</a>.</p>
+        <p>The planet is drawn live with Three.js r170 and plain JavaScript. Every model, the sky and the sound are made in the browser; there are no image or audio files. Type is set in Playfair Display, Lato and IBM Plex Mono.</p>
+      </section>
+
+      <footer class="book__foot">
+        <p>Thimble Planet is a fictional company created as a website concept by [Studio name]. The artist, clients, projects and figures on this page are invented.</p>
+        <p>© 2026 · A website concept by [Studio name]</p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- ============ Menu ============ -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title" hidden>
+    <div class="menu__inner">
+      <div class="menu__col">
+        <h2 class="menu__kicker" id="menu-title">Places</h2>
+        <ol class="menu__places">
+          <li><button type="button" data-place="cottage"><span class="menu__no">01</span><span class="menu__name">Slow Mornings</span><span class="menu__where">The Cottage · 2025</span></button></li>
+          <li><button type="button" data-place="windmill"><span class="menu__no">02</span><span class="menu__name">Stone-ground</span><span class="menu__where">The Windmill · 2024</span></button></li>
+          <li><button type="button" data-place="dock"><span class="menu__no">03</span><span class="menu__name">Low Tide Regatta</span><span class="menu__where">The Dock · 2023</span></button></li>
+          <li><button type="button" data-place="lighthouse"><span class="menu__no">04</span><span class="menu__name">Keeper’s Log</span><span class="menu__where">The Lighthouse · 2022</span></button></li>
+          <li><button type="button" data-place="grove"><span class="menu__no">05</span><span class="menu__name">Thirty Small Forests</span><span class="menu__where">The Grove · 2021</span></button></li>
+        </ol>
+      </div>
+      <div class="menu__col menu__col--side">
+        <section class="menu__about" id="about" aria-labelledby="about-title" tabindex="-1">
+          <h2 class="menu__kicker" id="about-title">About this site</h2>
+          <p>Thimble Planet is a one-person 3D studio making small, warm worlds for brands, museums and festivals. Commissions are open for spring 2027.</p>
+          <p><a class="menu__mail" href="mailto:hello@thimbleplanet.example">hello@thimbleplanet.example</a></p>
+          <p class="menu__credits">Drawn live with Three.js r170. Every model, the sky and the sound are generated in the browser, with no image or audio files. Type: Playfair Display, Lato, IBM Plex Mono. Concept, design and build by [Studio name].</p>
+          <p class="menu__fine">Thimble Planet is a fictional company created as a website concept by [Studio name]. The artist, clients, projects and figures are invented.</p>
+        </section>
+        <dl class="menu__keys" aria-label="Keyboard shortcuts">
+          <div><dt><span class="kbd">M</span></dt><dd>Menu</dd></div>
+          <div><dt><span class="kbd">1</span>–<span class="kbd">5</span></dt><dd>Visit a place</dd></div>
+          <div><dt><span class="kbd">←</span><span class="kbd">→</span><span class="kbd">↑</span><span class="kbd">↓</span></dt><dd>Orbit</dd></div>
+          <div><dt><span class="kbd">+</span><span class="kbd">−</span></dt><dd>Zoom</dd></div>
+          <div><dt><span class="kbd">R</span></dt><dd>Reset view</dd></div>
+          <div><dt><span class="kbd">Esc</span></dt><dd>Close</dd></div>
+        </dl>
+        <a class="menu__list" href="?list" data-act="list">View every project as a list</a>
+      </div>
+    </div>
+    <button class="ring menu__close" type="button" data-act="menu-close">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4.5 4.5 7 7m0-7-7 7"/></svg>
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+
+  <p class="sr-only" id="announce" aria-live="polite"></p>
+
+  <script type="module" src="main.js?v=30"></script>
+</body>
+</html>

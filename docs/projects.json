@@ -1,0 +1,197 @@
+{
+  "projects": [
+    {
+      "number": 1,
+      "name": "Brisure Capital",
+      "slug": "brisure-capital",
+      "style": "Swiss / Minimal",
+      "path": "/work/brisure-capital/"
+    },
+    {
+      "number": 2,
+      "name": "Cal & Sombra",
+      "slug": "cal-sombra",
+      "style": "Swiss / Minimal",
+      "path": "/work/cal-sombra/"
+    },
+    {
+      "number": 3,
+      "name": "Seedfile",
+      "slug": "seedfile",
+      "style": "Brutalist / Raw",
+      "path": "/work/seedfile/"
+    },
+    {
+      "number": 4,
+      "name": "Fieldbook Type",
+      "slug": "fieldbook",
+      "style": "Brutalist / Raw",
+      "path": "/work/fieldbook/"
+    },
+    {
+      "number": 5,
+      "name": "Side Street Quarterly",
+      "slug": "side-street",
+      "style": "Editorial / Magazine",
+      "path": "/work/side-street/"
+    },
+    {
+      "number": 6,
+      "name": "Nice & Specific",
+      "slug": "nice-specific",
+      "style": "Editorial / Magazine",
+      "path": "/work/nice-specific/"
+    },
+    {
+      "number": 7,
+      "name": "Corkwood Public",
+      "slug": "corkwood",
+      "style": "Organic / Nature",
+      "path": "/work/corkwood/"
+    },
+    {
+      "number": 8,
+      "name": "Mossline",
+      "slug": "mossline",
+      "style": "Organic / Nature",
+      "path": "/work/mossline/"
+    },
+    {
+      "number": 9,
+      "name": "Noct & Vale",
+      "slug": "noct-vale",
+      "style": "Dark Luxury",
+      "path": "/work/noct-vale/"
+    },
+    {
+      "number": 10,
+      "name": "Silver Hour",
+      "slug": "silver-hour",
+      "style": "Dark Luxury",
+      "path": "/work/silver-hour/"
+    },
+    {
+      "number": 11,
+      "name": "Thimble Planet",
+      "slug": "thimble-planet",
+      "style": "3D / WebGL",
+      "path": "/work/thimble-planet/"
+    },
+    {
+      "number": 12,
+      "name": "10,935 m: A Descent into the Challenger Deep",
+      "slug": "challenger-deep",
+      "style": "3D / WebGL",
+      "path": "/work/challenger-deep/"
+    },
+    {
+      "number": 13,
+      "name": "Vectorhaus",
+      "slug": "vectorhaus",
+      "style": "Gradient Tech",
+      "path": "/work/vectorhaus/"
+    },
+    {
+      "number": 14,
+      "name": "Undersun",
+      "slug": "undersun",
+      "style": "Gradient Tech",
+      "path": "/work/undersun/"
+    },
+    {
+      "number": 15,
+      "name": "Kamen Lodge",
+      "slug": "kamen-lodge",
+      "style": "Scroll Storytelling",
+      "path": "/work/kamen-lodge/"
+    },
+    {
+      "number": 16,
+      "name": "House of Vey",
+      "slug": "house-of-vey",
+      "style": "Scroll Storytelling",
+      "path": "/work/house-of-vey/"
+    },
+    {
+      "number": 17,
+      "name": "Night Train to Porto",
+      "slug": "night-train",
+      "style": "Scroll Storytelling",
+      "path": "/work/night-train/"
+    },
+    {
+      "number": 18,
+      "name": "SORT®",
+      "slug": "sort",
+      "style": "Kinetic Typography",
+      "path": "/work/sort/"
+    },
+    {
+      "number": 19,
+      "name": "Loud Hours",
+      "slug": "loud-hours",
+      "style": "Kinetic Typography",
+      "path": "/work/loud-hours/"
+    },
+    {
+      "number": 20,
+      "name": "Throwback Pace Co.",
+      "slug": "throwback-pace",
+      "style": "Retro / Y2K",
+      "path": "/work/throwback-pace/"
+    },
+    {
+      "number": 21,
+      "name": "hello.exe",
+      "slug": "hello-exe",
+      "style": "Retro / Y2K",
+      "path": "/work/hello-exe/"
+    },
+    {
+      "number": 22,
+      "name": "Snack Atlas",
+      "slug": "snack-atlas",
+      "style": "Playful / Illustrative",
+      "path": "/work/snack-atlas/"
+    },
+    {
+      "number": 23,
+      "name": "Sowsheet",
+      "slug": "sowsheet",
+      "style": "Playful / Illustrative",
+      "path": "/work/sowsheet/"
+    },
+    {
+      "number": 24,
+      "name": "Grevholt Group",
+      "slug": "grevholt",
+      "style": "Corporate Premium",
+      "path": "/work/grevholt/"
+    },
+    {
+      "number": 25,
+      "name": "Tidewright",
+      "slug": "tidewright",
+      "style": "Corporate Premium",
+      "path": "/work/tidewright/"
+    }
+  ],
+  "sequences": [
+    {
+      "directory": "work/mossline/seq/hero",
+      "count": 96
+    },
+    {
+      "directory": "work/mossline/seq/hero-m",
+      "count": 96
+    },
+    {
+      "directory": "work/mossline/seq/cut",
+      "count": 160
+    },
+    {
+      "directory": "work/mossline/seq/cut-m",
+      "count": 160
+    }
+  ]
+}
