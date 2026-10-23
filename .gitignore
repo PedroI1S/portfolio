@@ -1,6 +1,10 @@
 # Local history and reference material must never be published.
 /legacy/
 
+# Runtime-only deployment exports and reproducible browser capture evidence
+/dist/
+/docs/media-qa/
+
 # Machine settings, credentials and caches
 .DS_Store
 .env
@@ -12,6 +16,7 @@ __pycache__/
 *.py[cod]
 *.log
 *.blend[1-9]
+.playwright-mcp/
 
 # Reproducible rendering intermediates
 /site/work/*/_src/renders/

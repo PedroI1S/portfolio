@@ -62,6 +62,30 @@ def main():
         for name in ("index.html", "style.css", "main.js", "favicon.svg"):
             if not (SITE / "work" / slug / name).is_file():
                 errors.add("Missing required page file: %s/%s" % (slug, name))
+    for route in ['index.html','work/index.html','_studio/style.css','_studio/main.js','_studio/fog.js','_studio/social.jpg']:
+        if not (SITE / route).is_file():
+            errors.add('Missing portfolio file: '+route)
+    actual_stories=sorted(p.name for p in (SITE / 'projects').iterdir() if p.is_dir()) if (SITE / 'projects').exists() else []
+    if sorted(slugs)!=actual_stories:
+        errors.add('Project stories do not match the catalog')
+    for project in catalog['projects']:
+        slug=project['slug']
+        for field in ['premise','signature','brief','interactions','decisions','tags','palette','credits','media']:
+            if not project.get(field):
+                errors.add('%s: missing story field %s' % (slug,field))
+        if len(project.get('interactions',[])) not in range(2,5) or len(project.get('decisions',[])) not in range(2,4):
+            errors.add(slug+': incomplete interaction or decision content')
+        for field in ['desktop','phone','blur','desktopClip','phoneClip']:
+            value=project.get('media',{}).get(field)
+            if value:
+                reference(ROOT / 'docs/projects.json',value)
+            else:
+                errors.add('%s: missing %s media' % (slug,field))
+        if not (SITE / 'projects' / slug / 'index.html').is_file():
+            errors.add('Missing story: '+slug)
+    generated=subprocess.run([sys.executable,str(ROOT/'scripts/build_portfolio.py'),'--check'],text=True,capture_output=True)
+    if generated.returncode:
+        errors.add(generated.stdout+generated.stderr)
     for sequence in catalog.get("sequences", []):
         folder = SITE / sequence["directory"]
         expected = {"%04d.webp" % n for n in range(sequence["count"])}
@@ -100,7 +124,7 @@ def main():
     if errors:
         print("\n".join(sorted(errors)), file=sys.stderr)
         return 1
-    print("OK: %d pages, %d local asset targets, %d JavaScript files, %d frame sequences." %
+    print("OK: %d concepts + 27 portfolio pages, %d local asset targets, %d JavaScript files, %d frame sequences." %
           (len(slugs), len(references), js_count, len(catalog.get("sequences", []))))
     return 0
 

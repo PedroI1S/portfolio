@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>otherweather° — landing storyboard, draft 02</title>
+<style>
+  :root {
+    --bg: #0c0e11; --ink: #eceee9; --dim: #8a9097; --rule: #23272d;
+    --blue: #315cff;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); padding: 56px 64px 120px; min-width: 1480px; }
+  .mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; }
+  .dim { color: var(--dim); }
+
+  /* ---------- document chrome ---------- */
+  .doc-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; }
+  .doc-head h1 { font-size: 88px; line-height: .92; letter-spacing: -.045em; font-weight: 600; }
+  .doc-head h1 sup { font-size: .5em; vertical-align: .62em; color: var(--blue); }
+  .doc-head p { max-width: 640px; font-size: 19px; line-height: 1.4; margin-top: 22px; color: #c9cdd1; }
+  .doc-head .meta { text-align: right; }
+
+  .ribbon { margin-top: 56px; }
+  .ribbon__bar { display: flex; height: 64px; gap: 3px; }
+  .ribbon__seg { position: relative; border-radius: 3px; padding: 10px 12px; font-size: 13px; line-height: 1.2; color: #0c0e11; overflow: hidden; }
+  .ribbon__seg small { display: block; font: 10.5px var(--mono); opacity: .7; margin-top: 4px; letter-spacing: .04em; }
+  .ribbon__seg.pin::after { content: ""; position: absolute; inset: auto 0 0 0; height: 6px; background: repeating-linear-gradient(-45deg, rgba(0,0,0,.45) 0 3px, transparent 3px 7px); }
+  .ribbon__seg.dark { color: var(--ink); }
+  .ribbon__key { display: flex; gap: 28px; margin-top: 14px; }
+  .ribbon__key span::before { content: ""; display: inline-block; width: 22px; height: 6px; margin-right: 8px; vertical-align: middle; background: repeating-linear-gradient(-45deg, #aaa 0 3px, transparent 3px 7px); }
+  .ribbon__key span.sky::before { background: linear-gradient(90deg, #e3e7e8, #f0f1ed, #061016, #132316, #eae3db, #0f3327, #0a0c22, #ff5a36, #ecebe4, #2a3346, #10151f, #07090c); }
+
+  .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); }
+  .principles b { display: block; font-size: 17px; margin-bottom: 6px; }
+  .principles p { color: #b9bec3; font-size: 14px; }
+
+  .scene { display: grid; grid-template-columns: 880px 1fr; gap: 56px; padding: 64px 0; border-top: 1px solid var(--rule); margin-top: 64px; }
+  .scene + .scene { margin-top: 0; }
+  .scene__no { font: 600 13px var(--mono); color: var(--blue); letter-spacing: .08em; }
+  .scene h2 { font-size: 40px; line-height: 1; letter-spacing: -.03em; font-weight: 600; margin: 10px 0 8px; }
+  .scene .lede { font-size: 17px; color: #c9cdd1; margin-bottom: 22px; }
+  .notes { display: grid; gap: 14px; }
+  .notes div { display: grid; grid-template-columns: 112px 1fr; gap: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 14px; color: #c9cdd1; }
+  .notes dt, .notes .k { font: 11px var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .07em; padding-top: 3px; }
+
+  /* ---------- frames: a 1440x900 "screen" scaled into place ---------- */
+  .frame { position: relative; width: 880px; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 8px; background: #000; box-shadow: 0 0 0 1px #2a2f36; --k: .611111; }
+  .frame.mini { width: 280px; --k: .194444; border-radius: 5px; }
+  .screen { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; transform-origin: 0 0; transform: scale(var(--k)); overflow: hidden; font-family: var(--sans); }
+  .phone { position: relative; width: 234px; height: 506px; border-radius: 28px; overflow: hidden; box-shadow: 0 0 0 7px #1b1f25, 0 0 0 8px #3a4049; --k: .6; }
+  .phone .screen { width: 390px; height: 844px; }
+  .minis { display: grid; grid-template-columns: repeat(3, 280px); gap: 20px; }
+  .minis figcaption { font-size: 13px; color: #b9bec3; margin-top: 10px; line-height: 1.4; }
+  .minis figcaption b { color: var(--ink); font-weight: 600; }
+  .minis + .minis { margin-top: 28px; }
+
+  /* shared in-screen components */
+  .hd { position: absolute; left: 48px; right: 48px; top: 30px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; font-size: 16px; z-index: 5; }
+  .wm { font-weight: 700; font-size: 22px; letter-spacing: -.03em; }
+  .wm sup { font-size: .62em; vertical-align: .5em; margin-left: 1px; color: var(--blue); }
+  .hd .cond { font: 13px var(--mono); letter-spacing: .04em; opacity: .75; }
+  .hd nav { justify-self: end; display: flex; gap: 26px; }
+  .hd nav .on::before { content: "°"; color: var(--blue); margin-right: 3px; }
+  .hd nav .cta { border-bottom: 1.5px solid currentColor; }
+  .cur { position: absolute; z-index: 20; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 2.5px solid var(--blue); pointer-events: none; }
+  .cur.lbl { width: 96px; height: 96px; margin: -48px 0 0 -48px; border: 0; background: var(--blue); color: #fff; display: grid; place-items: center; font: 600 16px var(--sans); }
+  .cur.lbl.glass { background: rgba(255,255,255,.18); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+  .tag { font: 12.5px var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+
+  /* ---------- 01 hero: fogged window ---------- */
+  .hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .wipe-path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: wipe 8s cubic-bezier(.5,0,.3,1) infinite; }
+  .wipe-mask { animation: refog 8s linear infinite; }
+  @keyframes wipe { 0% { stroke-dashoffset: 1; } 34%, 100% { stroke-dashoffset: 0; } }
+  @keyframes refog { 0%, 62% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  .hero .cur { offset-path: path("M150 520 C 380 400 560 660 800 490 S 1150 350 1330 490"); offset-rotate: 0deg; margin: 0; animation: ride 8s cubic-bezier(.5,0,.3,1) infinite; }
+  @keyframes ride { 0% { offset-distance: 0%; opacity: 0; } 3% { opacity: 1; } 34% { offset-distance: 100%; } 80% { opacity: 1; } 90%, 100% { offset-distance: 100%; opacity: 0; } }
+  .hero__copy { position: absolute; right: 64px; bottom: 120px; width: 400px; font-size: 21px; line-height: 1.35; color: #121518; }
+  .btns { display: flex; gap: 12px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 26px; border-radius: 40px; font-size: 17px; font-weight: 600; }
+  .btn.solid { background: #121518; color: #f0f1ed; }
+  .btn.line { box-shadow: inset 0 0 0 1.5px #121518; }
+  .hero__glass { position: absolute; left: 48px; bottom: 40px; display: flex; align-items: center; gap: 16px; color: #121518; }
+  .ticks { display: flex; gap: 4px; }
+  .ticks i { width: 3px; height: 14px; background: currentColor; opacity: .25; }
+  .ticks i.on { opacity: 1; height: 20px; margin-top: -6px; background: var(--blue); }
+  .hero__hint { position: absolute; right: 48px; bottom: 40px; color: #121518; }
+
+  /* ---------- 03 statement ---------- */
+  .stmt { background: #f0f1ed; color: #101317; }
+  .stmt__text { position: absolute; left: 96px; top: 190px; width: 1250px; font-size: 76px; line-height: 1.04; letter-spacing: -.035em; font-weight: 600; }
+  .stmt__text .w { color: #c3c7c8; transition: color .25s; }
+  .stmt__text .w.on { color: #101317; }
+  .chip { display: inline-block; width: 150px; height: 72px; border-radius: 40px; vertical-align: -10px; background-size: cover; background-position: center; margin: 0 6px; transition: width .4s; }
+  .chip.big { width: 260px; }
+  .stmt .cur { left: 1052px; top: 516px; }
+  .stmt__foot { position: absolute; left: 96px; bottom: 48px; right: 48px; display: flex; justify-content: space-between; color: #5f666c; }
+
+  /* ---------- 04 forecast ---------- */
+  .fc .layer { position: absolute; inset: 0; clip-path: inset(0 0 0 100%); transition: clip-path 1.05s cubic-bezier(.7,0,.2,1); }
+  .fc .layer.in { clip-path: inset(0 0 0 0); }
+  .fc .front { position: absolute; top: 0; bottom: 0; width: 140px; left: 100%; z-index: 30; backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.12) 40%, rgba(255,255,255,0)); opacity: 0; }
+  .fc .front.go { animation: front 1.05s cubic-bezier(.7,0,.2,1); }
+  @keyframes front { 0% { left: 100%; opacity: 1; } 100% { left: -140px; opacity: 1; } }
+  .fc__meta { position: absolute; left: 56px; top: 150px; width: 430px; }
+  .fc__name { font-size: 104px; line-height: .9; letter-spacing: -.05em; font-weight: 600; margin: 22px 0 28px; }
+  .fc__cast { font-size: 21px; line-height: 1.35; max-width: 400px; }
+  .fc__cast em { display: block; font: 12px var(--mono); font-style: normal; letter-spacing: .08em; text-transform: uppercase; opacity: .6; margin-bottom: 8px; }
+  .fc__tags { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .fc__tags span { padding: 7px 12px; border-radius: 30px; box-shadow: inset 0 0 0 1px currentColor; opacity: .8; }
+  .fc__label { position: absolute; left: 56px; bottom: 48px; }
+  .fc__media { position: absolute; left: 540px; top: 160px; width: 840px; height: 525px; border-radius: 6px; background-size: cover; background-position: center; transform: perspective(1800px) rotateY(-7deg) rotateX(3deg); box-shadow: 0 40px 90px rgba(0,0,0,.35); }
+  .lens { position: absolute; width: 200px; height: 200px; border-radius: 50%; left: 560px; top: 250px; background-repeat: no-repeat; background-size: 1512px 945px; box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 20px 40px rgba(0,0,0,.35); }
+  .fc__prog { position: absolute; right: 56px; bottom: 48px; display: flex; gap: 6px; align-items: center; }
+  .fc__prog i { width: 34px; height: 3px; background: currentColor; opacity: .25; }
+  .fc__prog i.on { opacity: 1; }
+  .fc__prog b { font: 13px var(--mono); margin-left: 12px; }
+
+  .fc__sig { margin-top: 24px; font-size: 17px; line-height: 1.4; max-width: 410px; opacity: .85; }
+  .fc__sig em { display: block; font: 12px var(--mono); font-style: normal; letter-spacing: .08em; text-transform: uppercase; opacity: .6; margin-bottom: 6px; }
+  .fc__phone { position: absolute; left: 1196px; top: 430px; width: 190px; height: 411px; border-radius: 26px; background-size: cover; background-position: top center; box-shadow: 0 0 0 6px #15181d, 0 0 0 7px rgba(255,255,255,.25), 0 30px 60px rgba(0,0,0,.45); }
+  .ol__card div { position: relative; }
+  .ol__card div i { position: absolute; right: 10px; bottom: 10px; width: 70px; height: 151px; border-radius: 10px; background-size: cover; background-position: top center; box-shadow: 0 0 0 3px #15181d, 0 10px 24px rgba(0,0,0,.3); }
+  .ol__card small { display: block; font-size: 14px; color: #4b5157; margin-top: 2px; }
+  /* ---------- 05 outlook strip ---------- */
+  .ol { background: #ecebe4; color: #121518; }
+  .ol__title { position: absolute; left: 56px; top: 130px; font-size: 96px; line-height: .92; letter-spacing: -.05em; font-weight: 600; }
+  .ol__count { position: absolute; right: 56px; top: 150px; text-align: right; font-size: 18px; }
+  .ol__count b { display: block; font-size: 64px; letter-spacing: -.04em; font-weight: 600; }
+  .ol__strip { position: absolute; left: 56px; top: 420px; display: flex; gap: 22px; animation: strip 9s ease-in-out infinite; }
+  .ol__card { flex: none; width: 340px; transform-origin: 50% 100%; animation: skew 9s ease-in-out infinite; }
+  .ol__card div { height: 212px; border-radius: 5px; background-size: cover; background-position: center; }
+  .ol__card p { display: flex; justify-content: space-between; margin-top: 10px; font-size: 16px; font-weight: 600; }
+  .ol__card p span { font: 12px var(--mono); color: #6b7177; text-transform: uppercase; letter-spacing: .05em; font-weight: 400; }
+  @keyframes strip { 0%, 6% { transform: translateX(0); } 50%, 56% { transform: translateX(-2400px); } 100% { transform: translateX(0); } }
+  @keyframes skew { 0%, 6% { transform: skewX(0); } 22% { transform: skewX(-7deg); } 44%, 62% { transform: skewX(0); } 78% { transform: skewX(7deg); } 100% { transform: skewX(0); } }
+  .ol .cur { left: 760px; top: 525px; }
+  .ol__foot { position: absolute; left: 56px; right: 56px; bottom: 48px; display: flex; justify-content: space-between; align-items: center; }
+
+  /* ---------- 06 studio ---------- */
+  .st { background: linear-gradient(170deg, #34405a 0%, #222a3b 55%, #1a2030 100%); color: #eceee9; }
+  .st__left { position: absolute; left: 56px; top: 140px; width: 460px; }
+  .st__left h3 { font-size: 64px; line-height: .95; letter-spacing: -.045em; font-weight: 600; margin: 18px 0 30px; }
+  .st__photo { width: 220px; height: 270px; border-radius: 4px; background: repeating-linear-gradient(135deg, #3c475f 0 10px, #36405a 10px 20px); display: grid; place-items: end start; padding: 12px; color: #aab3c4; }
+  .st__bio { margin-top: 18px; font-size: 17px; line-height: 1.4; color: #c6ccd7; max-width: 400px; }
+  .st__caps { position: absolute; left: 600px; top: 140px; right: 56px; }
+  .st__row { display: grid; grid-template-columns: 54px 1fr; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.16); font-size: 30px; letter-spacing: -.02em; font-weight: 600; color: rgba(236,238,233,.32); }
+  .st__row span { font: 13px var(--mono); padding-top: 12px; }
+  .st__row.on { color: #eceee9; }
+  .st__row p { grid-column: 2; font-size: 17px; font-weight: 400; letter-spacing: 0; color: #c6ccd7; margin-top: 8px; max-width: 560px; }
+  .st__toy { position: relative; margin: 14px 0 0 54px; height: 300px; border-radius: 6px; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); overflow: hidden; }
+  .st__toy svg { width: 100%; height: 100%; }
+  .st__toy .cur { border-color: #fff; }
+  .st__toy .tag { position: absolute; left: 16px; bottom: 12px; color: #aab3c4; }
+
+  /* ---------- 07 process ---------- */
+  .pr { background: #10151f; color: #eceee9; }
+  .pr h3 { position: absolute; left: 56px; top: 120px; font-size: 76px; letter-spacing: -.045em; line-height: .95; font-weight: 600; }
+  .pr__read { position: absolute; right: 56px; top: 132px; width: 420px; }
+  .pr__read b { display: block; font-size: 40px; letter-spacing: -.03em; margin: 8px 0 10px; }
+  .pr__read p { color: #c3c9d4; font-size: 17px; }
+  .pr svg { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; }
+  .needle { transform-origin: 720px 900px; animation: needle 10s cubic-bezier(.6,0,.2,1) infinite; }
+  @keyframes needle { 0%, 12% { transform: rotate(-59deg); } 25%, 37% { transform: rotate(-23deg); } 50%, 62% { transform: rotate(23deg); } 75%, 87% { transform: rotate(59deg); } 100% { transform: rotate(-59deg); } }
+
+  /* ---------- 08 contact + footer ---------- */
+  .ct { background: #07090c; color: #eceee9; }
+  .bokeh { position: absolute; inset: 0; background:
+      radial-gradient(circle at 12% 70%, rgba(255,176,90,.55) 0 22px, transparent 60px),
+      radial-gradient(circle at 26% 58%, rgba(255,220,160,.35) 0 14px, transparent 44px),
+      radial-gradient(circle at 44% 76%, rgba(120,170,255,.45) 0 26px, transparent 70px),
+      radial-gradient(circle at 63% 62%, rgba(255,120,90,.40) 0 18px, transparent 52px),
+      radial-gradient(circle at 78% 72%, rgba(255,210,120,.45) 0 30px, transparent 80px),
+      radial-gradient(circle at 90% 56%, rgba(140,200,255,.35) 0 16px, transparent 46px),
+      radial-gradient(ellipse at 50% 120%, #1b2433 0, #07090c 70%);
+    filter: blur(6px); }
+  .fogsheet { position: absolute; inset: 0; background: rgba(150,160,172,.16); backdrop-filter: blur(3px); }
+  .ct svg.wipe { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ct h3 { position: absolute; left: 56px; top: 120px; font-size: 150px; line-height: .88; letter-spacing: -.055em; font-weight: 600; }
+  .ct__act { position: absolute; left: 56px; top: 440px; display: flex; align-items: center; gap: 28px; }
+  .ct__btn { height: 96px; padding: 0 44px; border-radius: 60px; background: var(--blue); color: #fff; display: flex; align-items: center; font-size: 26px; font-weight: 600; transform: translate(10px, -4px); box-shadow: 0 20px 50px rgba(49,92,255,.35); }
+  .ct__mail { font-size: 22px; }
+  .ct__mail small { display: block; font: 12px var(--mono); color: var(--dim); letter-spacing: .06em; text-transform: uppercase; }
+  .ct .cur { left: 400px; top: 500px; }
+  .ft { position: absolute; left: 0; right: 0; bottom: 0; height: 330px; border-top: 1px solid rgba(255,255,255,.14); }
+  .ft__word { position: absolute; left: 44px; bottom: 56px; display: flex; align-items: flex-end; font-size: 186px; font-weight: 700; letter-spacing: -.06em; line-height: .8; white-space: nowrap; }
+  .ft__word span { display: inline-block; transform-origin: 0 100%; transition: transform .35s cubic-bezier(.3,.7,.2,1), margin .35s cubic-bezier(.3,.7,.2,1); }
+  .ft__word sup { font-size: .5em; color: var(--blue); align-self: flex-start; }
+  .ft__row { position: absolute; left: 56px; right: 56px; bottom: 18px; display: flex; justify-content: space-between; color: #8a9097; }
+  .ft .cur { transition: left .35s linear; top: 600px; }
+
+  /* ---------- 09 index ---------- */
+  .ix { background: #0c0e11; color: #eceee9; }
+  .ix__tint { position: absolute; inset: 0; transition: background-color .6s; opacity: .3; }
+  .ix__head { position: absolute; left: 56px; right: 56px; top: 110px; display: flex; justify-content: space-between; align-items: end; }
+  .ix__head h3 { font-size: 72px; letter-spacing: -.045em; font-weight: 600; line-height: .95; }
+  .ix__filters { display: flex; gap: 8px; }
+  .ix__filters span { padding: 9px 16px; border-radius: 30px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); font-size: 15px; }
+  .ix__filters span.on { background: #eceee9; color: #0c0e11; }
+  .ix__list { position: absolute; left: 56px; right: 56px; top: 300px; }
+  .ix__row { display: grid; grid-template-columns: 70px 1fr 220px 400px; align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(255,255,255,.12); color: rgba(236,238,233,.34); transition: color .3s, padding .3s; }
+  .ix__row b { font-size: 46px; letter-spacing: -.035em; font-weight: 600; line-height: 1; }
+  .ix__row span { font: 12.5px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+  .ix__row em { font-style: normal; font-size: 16px; }
+  .ix__row.on { color: #eceee9; padding-left: 14px; }
+  .ix__pv { position: absolute; z-index: 10; width: 400px; height: 250px; border-radius: 6px; background-size: cover; background-position: center; box-shadow: 0 30px 70px rgba(0,0,0,.5); transition: top .55s cubic-bezier(.3,.7,.2,1), transform .55s cubic-bezier(.3,.7,.2,1); left: 880px; }
+  .ix .cur { left: 860px; transition: top .45s cubic-bezier(.3,.7,.2,1); }
+
+  /* ---------- 10 story + transitions ---------- */
+  .sto { background: #061016; color: #e8f0f2; }
+
+  /* ---------- phones ---------- */
+  .phones { display: flex; gap: 40px; align-items: flex-start; }
+  .phones figure { width: 234px; }
+  .phones figcaption { font-size: 13px; color: #b9bec3; margin-top: 18px; line-height: 1.4; }
+  .phones figcaption b { color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .wipe-path { stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <div>
+    <p class="mono dim">Landing storyboard · draft 02 · 21 Oct 2026 · replaces the draft 01 wireframe</p>
+    <h1>otherweather<sup>°</sup><br>scroll from fog to night.</h1>
+    <p>The landing page is one continuous weather system. A fogged window opens it, each selected project brings its own atmosphere, and the day turns to dusk and night as the visitor moves toward contact. Frames use the real concept captures; motion loops show intent, not final timing.</p>
+  </div>
+  <div class="meta mono dim">Studio in São Paulo · UTC−3<br>Desktop ≈ 16 screens of scroll<br>7 pinned scenes · 1 WebGL canvas<br>Lenis + GSAP ScrollTrigger</div>
+</header>
+
+<section class="ribbon" aria-label="Scroll timeline">
+  <div class="ribbon__bar">
+    <div class="ribbon__seg pin" style="flex:2; background:#e3e7e8">01–02 Fogged window<small>2 vp · 1 pinned</small></div>
+    <div class="ribbon__seg pin" style="flex:1.25; background:#f0f1ed">03 Statement<small>1.25 vp</small></div>
+    <div class="ribbon__seg pin dark" style="flex:5.4; background:linear-gradient(90deg,#061016 0 16.6%,#132316 0 33.3%,#eae3db 0 50%,#0f3327 0 66.6%,#0a0c22 0 83.3%,#ff5a36 0)">04 Forecast — six selected projects<small>5.4 vp · 0.9 each</small></div>
+    <div class="ribbon__seg pin" style="flex:2.5; background:#ecebe4">05 25 atmospheres<small>2.5 vp · horizontal</small></div>
+    <div class="ribbon__seg pin dark" style="flex:2; background:#2a3346">06 Studio<small>2 vp · 3 steps</small></div>
+    <div class="ribbon__seg pin dark" style="flex:1.25; background:#10151f">07 Process<small>1.25 vp</small></div>
+    <div class="ribbon__seg dark" style="flex:1.6; background:#07090c; box-shadow: inset 0 0 0 1px #2a2f36">08 Contact + footer<small>1.6 vp</small></div>
+  </div>
+  <div class="ribbon__key mono dim"><span>Pinned (scroll drives the scene)</span><span class="sky">Base atmosphere: dawn fog → day → project atmospheres → afternoon → dusk → night</span></div>
+</section>
+
+<section class="principles">
+  <div><b>A cursor you can feel</b><p>The pointer is the degree mark from the wordmark. It wipes glass, bends isobars, magnifies work, drags the strip and pulls buttons. Touch receives its own equivalent, not a degraded hover.</p></div>
+  <div><b>Scroll as a timeline</b><p>Pins are short and always show progress. Every pinned scene has a clear start and end state, and the nav's degree marker shows the section.</p></div>
+  <div><b>The work stays loudest</b><p>Studio chrome is monochrome type; color comes from the project in view. Every concept is shown on desktop <em>and</em> phone, playing its own signature interaction, because all 25 have polished mobile builds.</p></div>
+  <div><b>Fast, then fancy</b><p>Posters paint first; WebGL and video load behind them. One shared canvas, capped pixel ratio, only the active video plays. Reduced motion gets a complete static page.</p></div>
+</section>
+
+<!-- 01 HERO -->
+<section class="scene">
+  <div class="frame"><div class="screen hero">
+    <svg viewBox="0 0 1440 900" aria-hidden="true">
+      <defs>
+        <filter id="fog" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="26"/></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
+        <mask id="wipe" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="900">
+          <g class="wipe-mask" filter="url(#soft)">
+            <path class="wipe-path" pathLength="1" d="M150 520 C 380 400 560 660 800 490 S 1150 350 1330 490" fill="none" stroke="#fff" stroke-width="150" stroke-linecap="round"/>
+          </g>
+        </mask>
+      </defs>
+      <image href="storyboard/kamen-lodge.jpg" x="-40" y="-25" width="1520" height="950" preserveAspectRatio="xMidYMid slice" filter="url(#fog)"/>
+      <rect width="1440" height="900" fill="#e6eaec" opacity=".68"/>
+      <g mask="url(#wipe)">
+        <image href="storyboard/kamen-lodge.jpg" width="1440" height="900" preserveAspectRatio="xMidYMid slice"/>
+        <text font-family="Helvetica Neue, Helvetica, Arial" font-weight="600" font-size="132" letter-spacing="-6" fill="#f3f4f1">
+          <tspan x="48" y="270">A different</tspan><tspan x="48" y="392">atmosphere</tspan><tspan x="48" y="514">for the web.</tspan>
+        </text>
+      </g>
+    </svg>
+    <svg viewBox="0 0 1440 900" aria-hidden="true" style="pointer-events:none">
+      <defs>
+        <mask id="inv" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="900">
+          <rect width="1440" height="900" fill="#fff"/>
+          <g class="wipe-mask" filter="url(#soft)"><path class="wipe-path" pathLength="1" d="M150 520 C 380 400 560 660 800 490 S 1150 350 1330 490" fill="none" stroke="#000" stroke-width="150" stroke-linecap="round"/></g>
+        </mask>
+      </defs>
+      <text mask="url(#inv)" font-family="Helvetica Neue, Helvetica, Arial" font-weight="600" font-size="132" letter-spacing="-6" fill="#101317">
+        <tspan x="48" y="270">A different</tspan><tspan x="48" y="392">atmosphere</tspan><tspan x="48" y="514">for the web.</tspan>
+      </text>
+    </svg>
+    <header class="hd" style="color:#121518"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span class="on">Work</span><span>Studio</span><span class="cta">Start a project</span></nav></header>
+    <div class="hero__copy">otherweather is an independent studio for distinctive websites, motion, and interactive experiences.
+      <div class="btns"><span class="btn solid">Explore the work ↓</span><span class="btn line">Start a project</span></div></div>
+    <div class="hero__glass mono"><span>Behind the glass</span><span class="ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>15 Kamen Lodge →</span></div>
+    <div class="hero__hint mono">Wipe the glass · scroll to clear</div>
+    <i class="cur"></i>
+  </div></div>
+  <div>
+    <p class="scene__no">01 · ARRIVAL</p>
+    <h2>The fogged window</h2>
+    <p class="lede">The whole first screen is a pane of condensation. Behind it, the 25 concepts drift past as blurred color. The cursor wipes the glass clear; type that falls inside the wipe flips to white; beads run from the edges and the fog slowly returns.</p>
+    <dl class="notes">
+      <div><dt>Pointer</dt><dd>Wipe width follows pointer speed. The cleared area holds for about 3 s, then condenses again. Idle for 2 s: a “ghost finger” draws one short stroke to teach the gesture.</dd></div>
+      <div><dt>Behind</dt><dd>Short clips of each concept doing its signature interaction (smoke following a pointer, a plotter drawing, a bench assembling) crossfade every ~5 s under the fog; the ticks show which. Clicking the label opens that project.</dd></div>
+      <div><dt>Build</dt><dd>WebGL: blurred and sharp textures of the current project; a ping-pong wipe mask (pointer strokes, decaying); a droplet normal map that refracts. Headline is real DOM text with a masked white twin.</dd></div>
+      <div><dt>Fallback</dt><dd>Reduced motion or no WebGL: one sharp poster behind a static CSS frost, a pre-drawn wipe across the middle. Copy and actions are identical.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 02 HERO EXIT -->
+<section class="scene">
+  <div>
+    <div class="minis">
+      <figure><div class="frame mini"><div class="screen" style="background:url(storyboard/kamen-lodge.jpg) center/cover">
+        <div style="position:absolute;inset:0;background:rgba(230,234,236,.28);backdrop-filter:blur(6px)"></div>
+        <div style="position:absolute;left:48px;top:150px;font:600 132px/0.92 var(--sans);letter-spacing:-.045em;color:#f3f4f1;transform:translateY(-60px);opacity:.55">A different<br>atmosphere</div>
+      </div></div><figcaption><b>0 → 40%</b> · Scroll takes over the wipe: the fog evaporates from the center out and the beads run off the bottom edge.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen" style="background:#f0f1ed">
+        <div style="position:absolute;left:300px;top:180px;width:840px;height:525px;border-radius:14px;background:url(storyboard/kamen-lodge.jpg) center/cover"></div>
+        <div style="position:absolute;left:96px;top:60px;font:600 76px var(--sans);letter-spacing:-.035em;color:#c3c7c8">otherweather is an independent…</div>
+      </div></div><figcaption><b>40 → 80%</b> · The picture shrinks and rounds its corners while the first words of the statement rise in behind it.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen" style="background:#f0f1ed">
+        <div style="position:absolute;left:96px;top:190px;width:1250px;font:600 76px/1.04 var(--sans);letter-spacing:-.035em;color:#c3c7c8">otherweather is an independent studio for distinctive websites, motion and interactive experiences. Every project gets its own <span class="chip big" style="background-image:url(storyboard/kamen-lodge.jpg);outline:6px solid #315cff"></span> climate.</div>
+      </div></div><figcaption><b>80 → 100%</b> · It lands as an inline image in the sentence: “its own [picture] climate.” The glass becomes content.</figcaption></figure>
+    </div>
+  </div>
+  <div>
+    <p class="scene__no">02 · TRANSITION</p>
+    <h2>Clearing the glass</h2>
+    <p class="lede">One pinned screen. Scrolling clears the fog, then the project behind it flies into the next sentence. The first scroll pays off with a visible transformation.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Pinned for 1 viewport, scrubbed (no autoplay). Scrolling back reverses it exactly.</dd></div>
+      <div><dt>Motion</dt><dd>FLIP from full-bleed to the chip's measured box; corner radius and the montage crossfade freeze at the current project.</dd></div>
+      <div><dt>Fallback</dt><dd>No pin. The poster sits above the statement with a normal reveal.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 03 STATEMENT -->
+<section class="scene">
+  <div class="frame"><div class="screen stmt">
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span>Work</span><span class="on">Studio</span><span class="cta">Start a project</span></nav></header>
+    <p class="stmt__text" id="stmt">otherweather is an independent studio for distinctive websites <span class="chip" style="background-image:url(storyboard/sort.jpg)"></span> motion <span class="chip" style="background-image:url(storyboard/loud-hours.jpg)"></span> and interactive experiences <span class="chip big" style="background-image:url(storyboard/thimble-planet.jpg)"></span>. Every project gets its own <span class="chip" style="background-image:url(storyboard/kamen-lodge.jpg)"></span> climate.</p>
+    <i class="cur"></i>
+    <div class="stmt__foot mono"><span>Studio statement</span><span>Words fill as you scroll · hover a picture to open it</span></div>
+  </div></div>
+  <div>
+    <p class="scene__no">03 · POSITIONING</p>
+    <h2>Words that fill with scroll</h2>
+    <p class="lede">One large sentence states what the studio does. Words fill from grey to ink as the visitor scrolls; small inline pictures make each claim tangible with a real concept.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Pinned 1.25 viewports; fill progress is scrubbed per word.</dd></div>
+      <div><dt>Pointer</dt><dd>A picture under the cursor widens and starts its clip; click goes to that project.</dd></div>
+      <div><dt>Copy</dt><dd>Draft. The service list must match what Pedro actually offers.</dd></div>
+      <div><dt>Fallback</dt><dd>All words in ink, pictures static.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 04 FORECAST -->
+<section class="scene">
+  <div class="frame"><div class="screen fc" id="fc"><div class="front" id="front"></div></div></div>
+  <div>
+    <p class="scene__no">04 · SELECTED WORK · CENTREPIECE</p>
+    <h2>The forecast</h2>
+    <p class="lede">Six projects, one pinned screen each. As a project arrives, a weather front sweeps across and the whole page takes on its atmosphere: background, type color, grain, light. Each project gets a one-line forecast instead of a generic blurb.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Pinned ≈ 0.9 viewport per project with a short hold, so a project can be read at rest. Snaps gently to rest points; it never jumps.</dd></div>
+      <div><dt>Pointer</dt><dd>The capture tilts toward the cursor; a refractive lens magnifies under it; the cursor becomes a “View” disc. Its silhouette blurs with pointer speed.</dd></div>
+      <div><dt>Media</dt><dd>Two muted 6–8 s loops per project, recorded doing its signature interaction: desktop in the tilted frame, phone in the device beside it, parallaxing at a different depth. Posters first; only the active pair plays.</dd></div>
+      <div><dt>Copy</dt><dd>The forecast line is the playful hook; “Try in the concept” states the real interaction, taken from <code>docs/style.md</code>.</dd></div>
+      <div><dt>Front</dt><dd>WebGL wipe with a refraction band at the edge, timed to scroll. DOM text swaps behind it with a line-mask rise.</dd></div>
+      <div><dt>Fallback</dt><dd>Six stacked cards with their atmosphere color, no pin.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 05 OUTLOOK -->
+<section class="scene">
+  <div class="frame"><div class="screen ol">
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span class="on">Work</span><span>Studio</span><span class="cta">Start a project</span></nav></header>
+    <h3 class="ol__title">25 atmospheres<br>so far.</h3>
+    <div class="ol__count mono"><b>07 / 25</b>Organic / Nature</div>
+    <div class="ol__strip" id="strip"></div>
+    <i class="cur lbl">Drag</i>
+    <div class="ol__foot"><span class="mono">Swiss · Brutalist · Editorial · Organic · Dark luxury · 3D · Gradient · Scroll · Kinetic · Retro · Playful · Corporate</span><span class="btn solid">Explore all 25 →</span></div>
+  </div></div>
+  <div>
+    <p class="scene__no">05 · BREADTH</p>
+    <h2>Twenty-five atmospheres</h2>
+    <p class="lede">The full collection passes horizontally while the page holds still. Cards lean with scroll velocity and settle when it stops. The counter and style label update as each card crosses the center.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Pinned 2.5 viewports; vertical scroll moves the strip. Can also be dragged; arrow keys and focus move it card by card.</dd></div>
+      <div><dt>Pointer</dt><dd>“Drag” cursor on the strip; a hovered card lifts and plays a 3 s preview of its signature interaction. Every card carries its phone capture and a one-line interaction caption.</dd></div>
+      <div><dt>Links</dt><dd>Card → project story. “Explore all 25” → /work/.</dd></div>
+      <div><dt>Fallback</dt><dd>Native horizontal scroll with snap points (also the mobile behavior).</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 06 STUDIO -->
+<section class="scene">
+  <div class="frame"><div class="screen st">
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span>Work</span><span class="on">Studio</span><span class="cta">Start a project</span></nav></header>
+    <div class="st__left">
+      <p class="mono" style="color:#aab3c4">Studio</p>
+      <h3>A studio for your next idea.</h3>
+      <div class="st__photo mono">Portrait · to shoot</div>
+      <p class="st__bio">Short first-person introduction from Pedro: background, how he works, who he likes working with. Pending his own words.</p>
+    </div>
+    <div class="st__caps">
+      <div class="st__row"><span>01</span>Website design</div>
+      <div class="st__row on"><span>02</span>Creative development<p>Front-end, WebGL and scroll systems built by the same person who designed them, so the details survive.</p></div>
+      <div class="st__toy"><svg id="iso" viewBox="0 0 700 300" preserveAspectRatio="none"></svg><i class="cur" id="isoCur"></i><span class="tag">Move to bend the isobars</span></div>
+      <div class="st__row" style="margin-top:14px"><span>03</span>Motion &amp; interactive storytelling</div>
+    </div>
+  </div></div>
+  <div>
+    <p class="scene__no">06 · STUDIO</p>
+    <h2>Capabilities you can touch</h2>
+    <p class="lede">Dusk falls. A personal introduction on the left; three capabilities step through on the right while the section is pinned. Each one has a small live demonstration instead of an icon.</p>
+    <dl class="notes">
+      <div><dt>Toys</dt><dd><b>Website design:</b> a type specimen that reflows and changes width under the cursor. <b>Creative development:</b> isobars that bend around the pointer (shown). <b>Motion:</b> a timeline you scrub with x position.</dd></div>
+      <div><dt>Scroll</dt><dd>Pinned 2 viewports, 3 steps; each step links to two projects that prove it.</dd></div>
+      <div><dt>Content</dt><dd>Needs Pedro's bio, a portrait and a confirmed service list.</dd></div>
+      <div><dt>Fallback</dt><dd>Static list; toys render one still frame.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 07 PROCESS -->
+<section class="scene">
+  <div class="frame"><div class="screen pr">
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span>Work</span><span class="on">Studio</span><span class="cta">Start a project</span></nav></header>
+    <h3>How a project<br>moves.</h3>
+    <div class="pr__read"><span class="mono" style="color:#8a9097">Stage 03 / 04</span><b>Build</b><p>Production front-end, motion and WebGL, tested on real phones and slow connections, with you reviewing a live link every week.</p></div>
+    <svg viewBox="0 0 1440 900" id="dial" aria-hidden="true">
+      <circle cx="720" cy="900" r="560" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+      <circle cx="720" cy="900" r="380" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+      <g id="dticks"></g>
+      <g font-family="Helvetica Neue, Helvetica, Arial" font-size="24" font-weight="600" fill="#eceee9" text-anchor="middle">
+        <text x="210" y="595">Direction</text><text x="505" y="395">Design</text><text x="935" y="395">Build</text><text x="1230" y="595">Refine &amp; launch</text>
+      </g>
+      <g class="needle"><line x1="720" y1="900" x2="720" y2="380" stroke="#315cff" stroke-width="4"/><circle cx="720" cy="372" r="9" fill="#315cff"/></g>
+      <circle cx="720" cy="900" r="16" fill="#315cff"/>
+    </svg>
+  </div></div>
+  <div>
+    <p class="scene__no">07 · PROCESS</p>
+    <h2>The barometer</h2>
+    <p class="lede">A large dial rises from the bottom edge. Scroll swings the needle through four stages; the readout explains what happens and what the client receives at each.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Pinned 1.25 viewports, needle scrubbed with a slight overshoot at each stage.</dd></div>
+      <div><dt>Pointer</dt><dd>Ticks near the cursor lean toward it like iron filings.</dd></div>
+      <div><dt>Content</dt><dd>Stage deliverables to confirm once the service scope is set.</dd></div>
+      <div><dt>Fallback</dt><dd>Four-step ordered list beside a static dial.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 08 CONTACT -->
+<section class="scene">
+  <div class="frame"><div class="screen ct">
+    <div class="bokeh"></div><div class="fogsheet"></div>
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span>Work</span><span>Studio</span><span class="cta on">Start a project</span></nav></header>
+    <h3>What are you<br>imagining?</h3>
+    <div class="ct__act"><span class="ct__btn">Start a project ↗</span><span class="ct__mail"><small>or write directly</small>hello@otherweather.studio</span></div>
+    <i class="cur"></i>
+    <div class="ft">
+      <div class="ft__word" id="word"></div>
+      <div class="ft__row mono"><span>Work · Studio · Start a project</span><span>Social links to confirm</span><span>© 2026 otherweather</span></div>
+      <i class="cur" id="wcur"></i>
+    </div>
+  </div></div>
+  <div>
+    <p class="scene__no">08 · ENQUIRY</p>
+    <h2>Night, and the fog comes back</h2>
+    <p class="lede">The hero's glass returns at night with city light behind it: a bookend. A single large magnetic call to action and a plain email address. The footer wordmark stretches letter by letter as the cursor passes, as if wind were moving through it.</p>
+    <dl class="notes">
+      <div><dt>Pointer</dt><dd>Wipe works here too. The button pulls toward the cursor within ~120 px. Footer letters widen (variable-width font axis) near the pointer.</dd></div>
+      <div><dt>Contact</dt><dd>The address is proposed until a real mailbox exists. A short form (name, email, idea, optional budget/timing) needs a delivery service before launch.</dd></div>
+      <div><dt>Fallback</dt><dd>Static frost; wordmark at rest.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 09 INDEX -->
+<section class="scene">
+  <div class="frame"><div class="screen ix">
+    <div class="ix__tint" id="tint"></div>
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span class="on">Work</span><span>Studio</span><span class="cta">Start a project</span></nav></header>
+    <div class="ix__head"><h3>Work &amp;<br>explorations</h3><div class="ix__filters"><span class="on">All 25</span><span>Web design</span><span>Motion</span><span>3D &amp; interaction</span><span>◐ Phone view</span></div></div>
+    <div class="ix__list" id="list"></div>
+    <div class="ix__pv" id="pv"></div>
+    <i class="cur lbl" id="ixcur">View</i>
+  </div></div>
+  <div>
+    <p class="scene__no">09 · /WORK/</p>
+    <h2>The index as a weather map</h2>
+    <p class="lede">All 25 as a large typographic list, each with its signature interaction. The hovered row brightens, a preview follows the cursor and leans with its velocity, and the page tints toward that project's atmosphere.</p>
+    <dl class="notes">
+      <div><dt>Pointer</dt><dd>Preview follows with spring lag; it plays the interaction clip after 400 ms of rest. “Phone view” swaps every preview for the mobile build.</dd></div>
+      <div><dt>Columns</dt><dd>Number, name, style, and the signature interaction in one line, so the list reads as 25 different ideas, not 25 thumbnails.</dd></div>
+      <div><dt>Filters</dt><dd>Counts, keyboard and screen-reader state, kept in the URL and restored on Back. Rows animate out and in (FLIP) when the filter changes.</dd></div>
+      <div><dt>Touch</dt><dd>Becomes a column of cards with posters; no hover-dependent content.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 10 STORY + TRANSITIONS -->
+<section class="scene">
+  <div>
+    <div class="minis">
+      <figure><div class="frame mini"><div class="screen" style="background:#061016;color:#e8f0f2">
+        <div class="fc__meta" style="top:150px"><p class="mono" style="font-size:13px">Selected work — 01 / 06</p><p class="fc__name">Challenger<br>Deep</p></div>
+        <div class="fc__media" style="background-image:url(storyboard/challenger-deep.jpg)"></div><i class="cur lbl" style="left:960px;top:420px">View</i>
+      </div></div><figcaption><b>Click a project.</b> Card media and title are named view-transition elements.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen" style="background:#061016;color:#e8f0f2">
+        <div style="position:absolute;left:200px;top:90px;width:1150px;height:650px;border-radius:4px;background:url(storyboard/challenger-deep.jpg) center/cover;opacity:.95"></div>
+        <p class="fc__name" style="position:absolute;left:56px;top:640px;font-size:150px;opacity:.9">Challenger Deep</p>
+      </div></div><figcaption><b>Morph (≈ 600 ms).</b> Cross-document View Transition: the media grows into the story hero, the title slides to its new place.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen sto">
+        <div style="position:absolute;left:0;top:0;right:0;height:560px;background:url(storyboard/challenger-deep.jpg) center/cover"></div>
+        <p class="fc__name" style="position:absolute;left:56px;top:600px;font-size:150px">Challenger Deep</p>
+        <span class="ct__btn" style="position:absolute;right:56px;top:640px;height:84px;font-size:24px">Open live concept ↗</span>
+      </div></div><figcaption><b>Project story.</b> Brief, 2–3 decisions with real captures, credits, next project.</figcaption></figure>
+    </div>
+    <div class="minis">
+      <figure><div class="frame mini"><div class="screen sto">
+        <div style="position:absolute;left:56px;top:120px;width:620px;height:460px;border-radius:6px;background:url(storyboard/challenger-deep.jpg) 30% center/cover"></div>
+        <p style="position:absolute;left:740px;top:140px;width:600px;font:600 52px/1.05 var(--sans);letter-spacing:-.03em">The descent is the navigation: scroll depth maps to ocean depth.</p>
+        <p class="mono" style="position:absolute;left:740px;top:460px;font-size:16px;opacity:.6">Decision 02 / 03</p>
+      </div></div><figcaption><b>Decisions.</b> Each pinned briefly beside its artifact; captures scrub with scroll where they show motion.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen" style="background:#061016">
+        <div style="position:absolute;inset:0;background:url(storyboard/challenger-deep.jpg) center/cover;clip-path:inset(0 0 0 58%)"></div>
+        <div style="position:absolute;top:0;bottom:0;left:52%;width:12%;backdrop-filter:blur(16px);background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent)"></div>
+        <p class="fc__name" style="position:absolute;left:56px;top:360px;color:#e8f0f2;font-size:120px">Into the<br>concept →</p>
+      </div></div><figcaption><b>Open live concept.</b> A front sweeps across in the project's atmosphere, then a normal navigation to /work/&lt;slug&gt;/.</figcaption></figure>
+      <figure><div class="frame mini"><div class="screen" style="background:url(storyboard/challenger-deep.jpg) center/cover"></div></div><figcaption><b>The live concept,</b> untouched. Browser Back returns to the story at the same scroll.</figcaption></figure>
+    </div>
+  </div>
+  <div>
+    <p class="scene__no">10 · STORY &amp; TRANSITIONS</p>
+    <h2>Pages that hand over</h2>
+    <p class="lede">Real multi-page navigation (static HTML, working Back button, shareable URLs) that feels continuous, using cross-document View Transitions.</p>
+    <dl class="notes">
+      <div><dt>Support</dt><dd>Chrome, Edge and Safari 18.2+ morph; other browsers navigate normally. Nothing depends on the effect.</dd></div>
+      <div><dt>Concepts</dt><dd>The 25 live concepts stay exactly as built; the transition happens before leaving the story page.</dd></div>
+      <div><dt>Stories</dt><dd>All 25 get a concise page; the six selected get the richer pinned version.</dd></div>
+    </dl>
+  </div>
+</section>
+
+
+<!-- 11 PLAY IT LIVE -->
+<section class="scene">
+  <div class="frame"><div class="screen" style="background:#132316;color:#e9eedf">
+    <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span class="on">Work</span><span>Studio</span><span class="cta">Start a project</span></nav></header>
+    <p class="mono" style="position:absolute;left:56px;top:140px;font-size:13px;opacity:.7">Mossline · Play it here</p>
+    <p style="position:absolute;left:56px;top:180px;width:470px;font:600 72px/.95 var(--sans);letter-spacing:-.045em">The real site, in your hand.</p>
+    <p style="position:absolute;left:56px;top:430px;width:430px;font-size:19px;line-height:1.4;opacity:.85">Lift the specimen, scrub the probe, open a plot. This is the live concept running in the frame, not a recording.</p>
+    <div style="position:absolute;left:56px;top:560px;display:flex;gap:0;border-radius:40px;box-shadow:inset 0 0 0 1.5px #e9eedf;font-size:17px;font-weight:600"><span style="padding:14px 26px;border-radius:40px;background:#e9eedf;color:#132316">Phone</span><span style="padding:14px 26px">Desktop</span></div>
+    <span class="tag" style="position:absolute;left:56px;top:650px;opacity:.7">Open full screen ↗</span>
+    <div style="position:absolute;left:600px;top:150px;width:700px;height:440px;border-radius:10px;background:url(storyboard/mossline.jpg) center/cover;opacity:.28;filter:blur(1px)"></div>
+    <div style="position:absolute;left:880px;top:120px;width:330px;height:714px;border-radius:44px;background:url(storyboard/m/mossline.jpg) top center/cover;box-shadow:0 0 0 10px #0c0f0d,0 0 0 11px rgba(255,255,255,.3),0 40px 90px rgba(0,0,0,.55)"></div>
+    <i class="cur" style="left:1040px;top:420px;width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(49,92,255,.25)"></i>
+    <span class="mono" style="position:absolute;left:1240px;top:430px;width:160px;font-size:12px;opacity:.7;line-height:1.5">Touch ring shows where the visitor's finger acts</span>
+  </div></div>
+  <div>
+    <p class="scene__no">11 · STORY · LIVE DEVICE</p>
+    <h2>Play it here</h2>
+    <p class="lede">Every story page lets the visitor use the actual concept inside a device frame, phone first. It is the strongest proof of the two things all 25 share: their own interactions and a polished mobile build.</p>
+    <dl class="notes">
+      <div><dt>Load</dt><dd>Nothing loads until “Play” is pressed (poster with a play badge). Then a same-origin iframe of <code>/work/&lt;slug&gt;/</code> at 390 × 844, scaled to fit; Desktop switches it to 1440 × 900.</dd></div>
+      <div><dt>Scope</dt><dd>One live frame per page, unloaded when it leaves the viewport. The index and landing never run live concepts.</dd></div>
+      <div><dt>Check</dt><dd>Verify each concept inside an iframe (sound, pointer capture, fixed headers, scroll pins) before enabling it for that project; fall back to clips if one misbehaves.</dd></div>
+      <div><dt>Access</dt><dd>Titled iframe, “Open full screen” link beside it, Esc returns focus to the page.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- MOBILE -->
+<section class="scene">
+  <div class="phones">
+    <figure><div class="phone"><div class="screen" style="background:url(storyboard/m/night-train.jpg) center 30%/cover">
+      <div style="position:absolute;inset:0;background:rgba(230,234,236,.62);backdrop-filter:blur(14px)"></div>
+      <div style="position:absolute;left:-40px;top:420px;width:520px;height:120px;border-radius:80px;transform:rotate(-14deg);background:url(storyboard/m/night-train.jpg) center 30%/cover;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)"></div>
+      <div class="hd" style="left:22px;right:22px;top:22px;grid-template-columns:1fr auto;color:#121518"><b class="wm" style="font-size:20px">otherweather<sup>°</sup></b><span style="font-size:15px">Menu</span></div>
+      <p style="position:absolute;left:22px;top:150px;font:600 62px/.92 var(--sans);letter-spacing:-.045em;color:#101317">A different atmosphere for the web.</p>
+      <p class="mono" style="position:absolute;left:22px;bottom:30px;color:#121518">Drag across the glass</p>
+    </div></div><figcaption><b>Hero.</b> Horizontal drags wipe; vertical drags scroll normally. Lower texture size, same idea.</figcaption></figure>
+    <figure><div class="phone"><div class="screen" style="background:#132316;color:#e9eedf">
+      <div class="hd" style="left:22px;right:22px;top:22px;grid-template-columns:1fr auto"><b class="wm" style="font-size:20px">otherweather<sup>°</sup></b><span style="font-size:15px">Menu</span></div>
+      <p class="mono" style="position:absolute;left:22px;top:100px;font-size:12px">Selected work — 02 / 06</p>
+      <div style="position:absolute;left:22px;right:22px;top:136px;height:420px;border-radius:6px;background:url(storyboard/m/mossline.jpg) top center/cover"></div>
+      <p style="position:absolute;left:22px;top:580px;font:600 60px/.9 var(--sans);letter-spacing:-.05em">Mossline</p>
+      <p style="position:absolute;left:22px;top:650px;right:22px;font-size:18px;line-height:1.35">Humid and still. Carbon settling slowly into the soil.</p>
+    </div></div><figcaption><b>Forecast.</b> Media above, text below; atmosphere still changes per project; pins shortened.</figcaption></figure>
+    <figure><div class="phone"><div class="screen" style="background:#0c0e11;color:#eceee9">
+      <div class="hd" style="left:22px;right:22px;top:22px;grid-template-columns:1fr auto"><b class="wm" style="font-size:20px">otherweather<sup>°</sup></b><span style="font-size:15px">Menu</span></div>
+      <p style="position:absolute;left:22px;top:96px;font:600 44px/.95 var(--sans);letter-spacing:-.04em">Work &amp; explorations</p>
+      <div style="position:absolute;left:22px;right:22px;top:210px;display:flex;gap:8px;font-size:13px"><span style="padding:7px 12px;border-radius:20px;background:#eceee9;color:#0c0e11">All 25</span><span style="padding:7px 12px;border-radius:20px;box-shadow:inset 0 0 0 1px #555">Motion</span><span style="padding:7px 12px;border-radius:20px;box-shadow:inset 0 0 0 1px #555">3D</span></div>
+      <div style="position:absolute;left:22px;right:22px;top:262px;height:216px;border-radius:6px;background:url(storyboard/snack-atlas.jpg) center/cover"></div>
+      <p style="position:absolute;left:22px;top:490px;font-size:22px;font-weight:600">Snack Atlas</p>
+      <div style="position:absolute;left:22px;right:22px;top:546px;height:216px;border-radius:6px;background:url(storyboard/sort.jpg) center/cover"></div>
+      <p style="position:absolute;left:22px;top:774px;font-size:22px;font-weight:600">SORT</p>
+    </div></div><figcaption><b>Index.</b> Cards with posters; filters stay sticky.</figcaption></figure>
+  </div>
+  <div>
+    <p class="scene__no">MOBILE</p>
+    <h2>Same weather, smaller sky</h2>
+    <p class="lede">The studio site has to be as polished on a phone as the 25 concepts are. Every scene keeps its idea, with shorter pins and touch-native gestures. Nothing important hides behind hover.</p>
+    <dl class="notes">
+      <div><dt>Scroll</dt><dd>Native scroll on touch devices (Lenis desktop only). Pins at most 1 viewport; horizontal strip becomes swipe with snap.</dd></div>
+      <div><dt>Perf</dt><dd>Canvas at DPR ≤ 1.5, posters under 120 KB, clips only on Wi-Fi-class connections or tap.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<script>
+  // Statement: words fill in a loop.
+  (() => {
+    const p = document.getElementById('stmt');
+    p.childNodes.forEach(n => {
+      if (n.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t => {
+        if (!t.trim()) { frag.append(t); return; }
+        const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.append(s);
+      });
+      n.replaceWith(frag);
+    });
+    const words = [...p.querySelectorAll('.w')];
+    let i = 0;
+    setInterval(() => {
+      if (i > words.length + 8) { words.forEach(w => w.classList.remove('on')); i = 0; return; }
+      if (words[i]) words[i].classList.add('on');
+      i++;
+    }, 160);
+  })();
+
+  // Forecast: six atmospheres swept in by a front.
+  (() => {
+    const P = [
+      ['challenger-deep', 'Challenger Deep', '#061016', '#e8f0f2', 'Pressure rising past 1,000 bar. Light gone by 200 m.', 'Native scroll is the descent: depth, light, pressure and labels all follow it, through a staged window crack to the seabed.'],
+      ['mossline', 'Mossline', '#132316', '#e9eedf', 'Humid and still. Carbon settling slowly into the soil.', 'A pinned image sequence turns a rendered soil specimen, descends its horizons and inserts the probe beside live readouts.'],
+      ['sort', 'SORT®', '#eae3db', '#1b2bd6', 'Clear and high contrast. One strong front, six objects.', 'Reorder the wordmark and a traveling rule hands the same order to the product grid.'],
+      ['house-of-vey', 'House of Vey', '#0f3327', '#efe6d2', 'Indoors. Four rooms, lamps on by evening.', 'The gate opens into the 3D front door; four lit rooms, one bag each, with colorways that recolor the scene.'],
+      ['thimble-planet', 'Thimble Planet', '#0a0c22', '#eef0ff', 'A small world turning. Local weather, tiny and clear.', 'Fly to a landmark and work it: turn the lighthouse beam, grind flour, change the tide.'],
+      ['snack-atlas', 'Snack Atlas', '#ff5a36', '#2a1036', 'Warm spells, scattered crumbs, a good chance of seconds.', 'Pick a country, pack the box, close it, and watch it become a postcard stamp.'],
+    ];
+    const fc = document.getElementById('fc'), front = document.getElementById('front');
+    const layers = P.map(([slug, name, bg, fg, cast, sig], i) => {
+      const L = document.createElement('div');
+      L.className = 'layer'; L.style.cssText = `background:${bg};color:${fg};z-index:${i}`;
+      const lx = 260, ly = 150;
+      L.innerHTML = `
+        <header class="hd"><b class="wm">otherweather<sup>°</sup></b><span class="cond">São Paulo 19:13 · 22° · light drizzle</span><nav><span class="on">Work</span><span>Studio</span><span class="cta">Start a project</span></nav></header>
+        <div class="fc__meta"><p class="mono" style="font-size:13px">Selected work — 0${i + 1} / 06</p>
+          <p class="fc__name">${name.replace(' ', '<br>')}</p>
+          <p class="fc__cast"><em>Forecast</em>${cast}</p>
+          <p class="fc__sig"><em>Try in the concept</em>${sig}</p></div>
+        <p class="fc__label tag" style="opacity:.7">Self-initiated concept · Desktop + mobile · View project →</p>
+        <div class="fc__media" style="background-image:url(storyboard/${slug}.jpg)"><div class="lens" style="left:${lx}px;top:${ly}px;background-image:url(storyboard/${slug}.jpg);background-position:${-(lx + 100) * 1.8 + 100}px ${-(ly + 100) * 1.8 + 100}px"></div></div>
+        <div class="fc__phone" style="background-image:url(storyboard/m/${slug}.jpg)"></div>
+        <i class="cur lbl glass" style="left:${540 + lx + 100}px;top:${160 + ly + 100}px">View</i>
+        <div class="fc__prog">${P.map((_, j) => `<i class="${j === i ? 'on' : ''}"></i>`).join('')}<b>0${i + 1} / 06</b></div>`;
+      fc.append(L); return L;
+    });
+    layers[0].classList.add('in');
+    let cur = 0, z = 10;
+    setInterval(() => {
+      const next = (cur + 1) % layers.length;
+      const L = layers[next];
+      L.style.transition = 'none'; L.classList.remove('in'); L.style.zIndex = ++z; void L.offsetWidth; L.style.transition = '';
+      L.classList.add('in');
+      front.classList.remove('go'); void front.offsetWidth; front.classList.add('go');
+      cur = next;
+    }, 3000);
+  })();
+
+  // Outlook strip.
+  (() => {
+    const all = [['brisure-capital','Brisure Capital','Swiss','Contours grow over seven years'],['cal-sombra','Cal & Sombra','Swiss','One sun lights the whole page'],['seedfile','Seedfile','Brutalist','A pen plotter draws live'],['fieldbook','Fieldbook Type','Brutalist','Pointer drives width and weight'],['side-street','Side Street','Editorial','Walk the long block'],['nice-specific','Nice & Specific','Editorial','Find the buried detail'],['corkwood','Corkwood Public','Organic','Scroll assembles the bench'],['mossline','Mossline','Organic','Lift and probe the soil'],['noct-vale','Noct & Vale','Dark luxury','Smoke follows the pointer'],['silver-hour','Silver Hour','Dark luxury','Prints develop as you arrive'],['thimble-planet','Thimble Planet','3D','A planet you can play'],['challenger-deep','Challenger Deep','3D','Scroll is the descent'],['vectorhaus','Vectorhaus','Gradient','0.84 s made physical'],['undersun','Undersun','Gradient','Down to the heat and back'],['kamen-lodge','Kamen Lodge','Scroll','Climb to the lodge'],['house-of-vey','House of Vey','Scroll','Walk through four rooms']];
+    document.getElementById('strip').innerHTML = all.map(([s, n, z, sig]) => `<div class="ol__card"><div style="background-image:url(storyboard/${s}.jpg)"><i style="background-image:url(storyboard/m/${s}.jpg)"></i></div><p>${n}<span>${z}</span></p><small>${sig}</small></div>`).join('');
+  })();
+
+  // Isobars bending around a moving cursor.
+  (() => {
+    const svg = document.getElementById('iso'), c = document.getElementById('isoCur');
+    const W = 700, H = 300, N = 13;
+    const paths = [...Array(N)].map(() => { const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); p.setAttribute('fill', 'none'); p.setAttribute('stroke', 'rgba(236,238,233,.55)'); p.setAttribute('stroke-width', '1.4'); p.setAttribute('vector-effect', 'non-scaling-stroke'); svg.append(p); return p; });
+    let t = 0;
+    (function frame() {
+      t += 0.012;
+      const cx = W / 2 + Math.cos(t) * 240, cy = H / 2 + Math.sin(t * 1.7) * 80;
+      c.style.left = (cx / W * 100) + '%'; c.style.top = (cy / H * 100) + '%';
+      paths.forEach((p, k) => {
+        const y0 = (k + .5) * H / N; let d = '';
+        for (let x = 0; x <= W; x += 10) {
+          const dx = x - cx, dy = y0 - cy, r2 = dx * dx + dy * dy;
+          const push = 70 * Math.exp(-r2 / 9000) * Math.sign(dy || 1);
+          const y = y0 + push + Math.sin(x / 90 + k + t) * 3;
+          d += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1);
+        }
+        p.setAttribute('d', d);
+      });
+      requestAnimationFrame(frame);
+    })();
+  })();
+
+  // Process dial ticks.
+  (() => {
+    const g = document.getElementById('dticks'); let s = '';
+    for (let a = -84; a <= 84; a += 3) {
+      const r = a * Math.PI / 180, big = a % 21 === 0, r1 = 560, r2 = big ? 520 : 540;
+      s += `<line x1="${720 + Math.sin(r) * r1}" y1="${900 - Math.cos(r) * r1}" x2="${720 + Math.sin(r) * r2}" y2="${900 - Math.cos(r) * r2}" stroke="rgba(255,255,255,${big ? .7 : .3})" stroke-width="${big ? 2 : 1.2}"/>`;
+    }
+    g.innerHTML = s;
+  })();
+
+  // Footer wordmark stretched by a passing "wind".
+  (() => {
+    const w = document.getElementById('word'), cur = document.getElementById('wcur');
+    w.innerHTML = [...'otherweather'].map(ch => `<span>${ch}</span>`).join('') + '<sup>°</sup>';
+    const spans = [...w.querySelectorAll('span')];
+    let t = 0;
+    setInterval(() => {
+      t += 0.08;
+      const x = 120 + (Math.sin(t) * .5 + .5) * 1200;
+      cur.style.left = x + 'px'; cur.style.top = '160px';
+      spans.forEach(s => {
+        const mid = 44 + s.offsetLeft + s.offsetWidth / 2;
+        const f = Math.exp(-((mid - x) ** 2) / 26000), g = f * .4;
+        s.style.transform = `scaleX(${1 + g}) scaleY(${1 - f * .08})`;
+        s.style.marginRight = `${s.offsetWidth * g}px`;
+      });
+    }, 350);
+  })();
+
+  // Index hover cycle.
+  (() => {
+    const rows = [['01','Brisure Capital','Swiss / Minimal','Contours grow over a loan’s seven years','brisure-capital','#e9e6df'],['02','Cal & Sombra','Swiss / Minimal','One sun moves every shadow on the page','cal-sombra','#d9d9d6'],['03','Seedfile','Brutalist / Raw','A pen plotter draws the hero live','seedfile','#202020'],['04','Fieldbook Type','Brutalist / Raw','Pointer drives width and weight','fieldbook','#e7e4da'],['05','Side Street','Editorial','A pinned walk along the long block','side-street','#e3ddcf'],['06','Nice & Specific','Editorial','A dull brochure finds its headline','nice-specific','#f0b39c'],['07','Corkwood Public','Organic / Nature','Scroll assembles the 3D bench','corkwood','#d8c39c'],['08','Mossline','Organic / Nature','Lift, turn and probe the soil','mossline','#244a2a'],['09','Noct & Vale','Dark luxury','Incense smoke follows the pointer','noct-vale','#3a2316']];
+    const list = document.getElementById('list'), pv = document.getElementById('pv'), cur = document.getElementById('ixcur'), tint = document.getElementById('tint');
+    list.innerHTML = rows.map(r => `<div class="ix__row"><span>${r[0]}</span><b>${r[1]}</b><span>${r[2]}</span><em>${r[3]}</em></div>`).join('');
+    const els = [...list.children]; let i = 0, last = 0;
+    function go() {
+      els.forEach(e => e.classList.remove('on')); const e = els[i]; e.classList.add('on');
+      const top = Math.min(600, 300 + e.offsetTop - 90), dir = Math.sign(i - last) || 1;
+      pv.style.top = top + 'px'; pv.style.backgroundImage = `url(storyboard/${rows[i][4]}.jpg)`;
+      pv.style.transform = `rotate(${dir * 4}deg)`; setTimeout(() => pv.style.transform = 'rotate(0)', 450);
+      cur.style.top = (300 + e.offsetTop + 30) + 'px'; tint.style.backgroundColor = rows[i][5];
+      last = i; i = [0, 2, 5, 7, 6, 3, 1, 8, 4][(([0, 2, 5, 7, 6, 3, 1, 8, 4].indexOf(i)) + 1) % 9];
+    }
+    go(); setInterval(go, 1400);
+  })();
+</script>
+</body>
+</html>

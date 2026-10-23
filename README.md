@@ -1,6 +1,6 @@
-# Portfolio
+# otherweather° — portfolio
 
-25 finished website concepts, prepared for the next phase: building the portfolio that presents them. The portfolio homepage has not been built yet.
+A static studio portfolio presenting 25 finished website concepts. The fog-to-night homepage, work index and 25 project stories surround the original, unchanged concepts.
 
 ## Local development
 
@@ -10,17 +10,36 @@ Requirements: Python 3.9+ for the preview server; Node.js 24+ for JavaScript che
 python3 scripts/preview.py
 ```
 
-Open <http://127.0.0.1:4173/work/> to browse the page folders, or open a specific page, such as <http://127.0.0.1:4173/work/mossline/>. The preview uses concurrent requests for image sequences. Choose another port with `--port 4317` if needed. Stop with Ctrl-C.
+Open <http://127.0.0.1:4173/> for the studio, <http://127.0.0.1:4173/work/> for all 25 projects, or a live concept such as <http://127.0.0.1:4173/work/mossline/>. Stories live at `/projects/<slug>/`. The preview uses concurrent requests for image sequences and compresses text responses. Choose another port with `--port 4317` if needed. Stop with Ctrl-C.
 
 ```sh
 python3 scripts/check_site.py
 ```
 
-Checks the page catalog, required files, local asset references, all four Mossline frame sets, and JavaScript syntax. The same check runs in GitHub Actions. These are structural checks; visual and interaction testing remains a separate step when changing a page.
+Checks the catalog, all 27 portfolio routes and 25 concepts, generated output, story content, poster/clip presence, local asset references, all four Mossline frame sets, and JavaScript syntax. The same check runs in GitHub Actions. These are structural checks; browser verification remains a separate step.
+
+The committed pages need no build step to view. After changing the project catalog or studio template, regenerate with `python3 scripts/build_portfolio.py`. Optional browser journeys use `node scripts/test_portfolio.mjs`; see [implementation and launch notes](docs/PORTFOLIO-IMPLEMENTATION.md) for tooling overrides and verification limits.
+
+Create a deployment directory with `python3 scripts/export_site.py --output dist`. This runs checks and copies runtime files only, excluding `_src/`, dotfiles and the standalone prototype. The output must be new or empty; serve it as the static host's document root.
+
+### Live Tunnel (GitHub Pages + Cloudflare)
+
+Share the portfolio publicly via a fixed link that redirects to a live Cloudflare tunnel (active for up to 24h per run):
+
+```sh
+node scripts/tunel.mjs
+# or: npm run tunnel
+```
+
+The script verifies the local preview server on port 4173, starts `cloudflared`, tests the route through public DNS, updates `destino.json` on GitHub Pages, and presents the fixed link at <https://pedroi1s.github.io/portfolio/>. Press Ctrl-C in that terminal to turn off the tunnel and mark the fixed link as offline.
 
 ## Layout
 
 ```text
+site/index.html      otherweather° landing page
+site/_studio/        Shared studio styles, motion, fonts and captured media
+site/projects/<slug>/ Generated project stories
+site/work/index.html Filterable collection of all 25 concepts
 site/work/<slug>/     Finished pages and their runtime assets
   _src/              Editable asset-generation scripts and current source models
 docs/                Page catalog and handoff for the portfolio build
@@ -29,7 +48,7 @@ scripts/             Local preview and repository checks
 legacy/              Local archive, ignored by Git (not present in fresh clones)
 ```
 
-See [the page list](docs/PAGES.md) and [the build handoff](docs/HANDOFF.md). The `site/` directory is the document root; existing `/work/<slug>/` routes are preserved.
+See [the page list](docs/PAGES.md), [build handoff](docs/HANDOFF.md), [portfolio plan](docs/PORTFOLIO-PLAN.md), and [media QA](docs/MEDIA-QA.md). The `site/` directory is the document root; existing `/work/<slug>/` routes are preserved.
 
 ## Source assets and local history
 

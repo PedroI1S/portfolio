@@ -1,0 +1,1292 @@
+[
+  {
+    "number": 1,
+    "name": "Brisure Capital",
+    "slug": "brisure-capital",
+    "style": "Swiss / Minimal",
+    "path": "/work/brisure-capital/",
+    "premise": "Patient capital, drawn as a landscape that grows over seven years.",
+    "brief": {
+      "subject": "Self-initiated concept. A private-credit firm's website explaining patient five-to-seven-year lending, its approach, facilities, and contact desks.",
+      "visitor": "Founders exploring the imagined firm’s approach to long-term lending.",
+      "question": "How can the time a business needs to grow become visible on a financial website?"
+    },
+    "signature": "Scroll through seven years of a growing contour landscape.",
+    "interactions": [
+      "Contour-field arrival and a pointer-responsive elevation bump.",
+      "A reversible scroll scene advances through seven years, synchronizing growing contours, a rolling year, captions, and illustrative lending readouts.",
+      "Strategy range bars highlight on hover/focus; image plates follow the pointer on desktop and expand as an accordion on touch.",
+      "Digit-roll facts and office clocks support the quieter information sections."
+    ],
+    "decisions": [
+      {
+        "title": "Make time tangible",
+        "body": "The red full stop becomes a company point. As the visitor scrolls, contour rings grow around it while the year and illustrative lending figures advance together."
+      },
+      {
+        "title": "Keep the details close",
+        "body": "Strategy bars reveal image plates on desktop and open as touch accordions. The same spare grid carries the quieter facilities, facts and contact information."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#FFFFFF",
+      "ink": "#2B2B2B"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Brisure Capital is fictional; its offices, figures, terms and seven-year lending example are illustrative. It offers no loans or investments.",
+    "media": {
+      "desktop": "/_studio/media/brisure-capital-desktop.webp",
+      "phone": "/_studio/media/brisure-capital-phone.webp",
+      "blur": "/_studio/media/brisure-capital-blur.webp",
+      "desktopClip": "/_studio/media/brisure-capital-desktop.mp4",
+      "phoneClip": "/_studio/media/brisure-capital-phone.mp4"
+    },
+    "embedEnabled": false,
+    "embedNote": "Existing terrain captions overlap at later years; use the standalone concept.",
+    "mobileSignature": "Open a strategy to reveal its image and lending details."
+  },
+  {
+    "number": 2,
+    "name": "Cal & Sombra",
+    "slug": "cal-sombra",
+    "style": "Swiss / Minimal",
+    "path": "/work/cal-sombra/",
+    "premise": "An architecture portfolio lit by one sun, from morning to dusk.",
+    "brief": {
+      "subject": "Self-initiated concept. An architecture and interiors practice's website presenting projects, services, people, and contact information.",
+      "visitor": "Prospective architecture and interiors clients browsing an imagined practice.",
+      "question": "How can light explain an architecture practice before a visitor reads its services?"
+    },
+    "signature": "A courtyard model turns into a measured plan as the sun moves.",
+    "interactions": [
+      "A sunrise arrival introduces the wordmark and architectural model.",
+      "A pinned 3D courtyard model tilts from an oblique view into a measured plan as dimension lines appear.",
+      "Scroll changes the shared sun direction and shadow length; the page darkens toward the footer.",
+      "Services reveal floor-plan drawings; the people track supports dragging and keyboard movement."
+    ],
+    "decisions": [
+      {
+        "title": "One sun across the page",
+        "body": "The courtyard model, wordmark shadows and section lighting share the same changing sun direction. Scrolling carries the whole page toward dusk."
+      },
+      {
+        "title": "From atmosphere to drawing",
+        "body": "The model tilts from an oblique view into a plan, where dimension lines appear. Service drawings and a draggable people track extend the architectural language into practical information."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#FFFFFF",
+      "ink": "#111111"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Project photographs are AI-generated and show no real buildings. The practice, projects and people are fictional; no architectural services are offered.",
+    "media": {
+      "desktop": "/_studio/media/cal-sombra-desktop.webp",
+      "phone": "/_studio/media/cal-sombra-phone.webp",
+      "blur": "/_studio/media/cal-sombra-blur.webp",
+      "desktopClip": "/_studio/media/cal-sombra-desktop.mp4",
+      "phoneClip": "/_studio/media/cal-sombra-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 3,
+    "name": "Seedfile",
+    "slug": "seedfile",
+    "style": "Brutalist / Raw",
+    "path": "/work/seedfile/",
+    "premise": "A creative-coding studio that demonstrates its work one pen stroke at a time.",
+    "brief": {
+      "subject": "Self-initiated concept. A creative-coding studio's website presenting generative identities, plotter installations, data tools, and a project ledger.",
+      "visitor": "Art directors and collaborators exploring an imagined generative-design practice.",
+      "question": "How can a studio’s process become the way visitors see its portfolio?"
+    },
+    "signature": "Reseed a drawing, then scroll to draw and reverse eight plots.",
+    "interactions": [
+      "The hero performs a preflight/homing sequence and draws a seeded composition stroke by stroke, with reseed and skip controls.",
+      "A scroll-scrubbed reel draws and reverses eight plots while the job readout follows the active drawing.",
+      "Ledger rows reveal plots; services can generate fresh sketches.",
+      "A stepped dark-to-paper transition, G grid overlay, and copy-email feedback complete the workshop language."
+    ],
+    "decisions": [
+      {
+        "title": "Show the drawing happen",
+        "body": "A preflight and homing sequence precedes the first mark. Reseed and skip controls let visitors choose between watching the process and reaching the work."
+      },
+      {
+        "title": "Use one pen throughout",
+        "body": "The same drawing engine supplies the hero, scroll reel, ledger previews and service sketches. Its changing job readout makes the visible workshop structure part of the identity."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#0F0F0F",
+      "ink": "#CECECE"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Drawings are generated in the browser; static figures are exports of the same code. Set in Geist Mono. Projects, clients, awards and addresses are invented; the Porto and Berlin clocks show real local time.",
+    "media": {
+      "desktop": "/_studio/media/seedfile-desktop.webp",
+      "phone": "/_studio/media/seedfile-phone.webp",
+      "blur": "/_studio/media/seedfile-blur.webp",
+      "desktopClip": "/_studio/media/seedfile-desktop.mp4",
+      "phoneClip": "/_studio/media/seedfile-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 4,
+    "name": "Fieldbook Type",
+    "slug": "fieldbook",
+    "style": "Brutalist / Raw",
+    "path": "/work/fieldbook/",
+    "premise": "A type foundry imagined as an instrument for measuring and manipulating letters.",
+    "brief": {
+      "subject": "An independent type foundry's website for exploring fictional font families, testing type, and comparing licence options.",
+      "visitor": "Designers exploring fictional font families and testing their own words.",
+      "question": "How can browsing a type collection feel as direct as working with the type itself?"
+    },
+    "signature": "Morph a 24-card type gallery between Ring, Grid, Spiral and Scatter.",
+    "interactions": [
+      "The hero Plot maps pointer position to variable width and weight, with metric lines, rulers, and live axis values.",
+      "A 24-card 3D specimen gallery morphs between Ring, Grid, Spiral, and Scatter, with drag inertia, pause/resume, and keyboard selection.",
+      "Choosing a specimen transfers its family into the editable tester with size/weight controls.",
+      "Paper/Ink and the G grid toggle expose the page's underlying system."
+    ],
+    "decisions": [
+      {
+        "title": "Make the specimen adjustable",
+        "body": "Pointer position drives width and weight in the hero Plot, with rulers and live values exposing the axes. The letterform is something the visitor can handle."
+      },
+      {
+        "title": "Connect exploration to use",
+        "body": "The spatial gallery supports drag, pause and keyboard selection. Choosing a card transfers its family into the editable tester, linking an expressive discovery mode to a practical proof."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#FFFFFF",
+      "ink": "#000000"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Fictional font families use real SIL Open Font License fonts: Archivo (Omnibus-Type), Fraunces (Undercase Type), Space Grotesk (Florian Karsten), Instrument Serif (Rodrigo Fuenzalida and Jordan Egstad), Bricolage Grotesque (Mathieu Triay), Martian Mono (Roman Shamin and Evil Martians), Newsreader (Production Type), Big Shoulders (Patric King) and Inter Tight (Rasmus Andersson). Family names, prices and licences presented by the fictional foundry are illustrative; nothing is sold.",
+    "media": {
+      "desktop": "/_studio/media/fieldbook-desktop.webp",
+      "phone": "/_studio/media/fieldbook-phone.webp",
+      "blur": "/_studio/media/fieldbook-blur.webp",
+      "desktopClip": "/_studio/media/fieldbook-desktop.mp4",
+      "phoneClip": "/_studio/media/fieldbook-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 5,
+    "name": "Side Street Quarterly",
+    "slug": "side-street",
+    "style": "Editorial / Magazine",
+    "path": "/work/side-street/",
+    "premise": "A magazine issue that unfolds into a street worth walking slowly.",
+    "brief": {
+      "subject": "Self-initiated concept. A quarterly publication's website introducing an issue about cities at walking pace, its articles, contributors, and subscription.",
+      "visitor": "Readers interested in everyday city life, public space and independent magazines.",
+      "question": "How can the structure of a publication borrow the pace and discoveries of a walk?"
+    },
+    "signature": "Open shopfront contents, then walk a long illustrated street with scroll.",
+    "interactions": [
+      "A dawn clock and upward wipe reveal the cover.",
+      "Five shopfront accordions open beneath scalloped awnings; After Hours changes the contents scene to night.",
+      "The Long Block is a pinned SVG street panorama with a fold line, distance odometer, bench count, and station captions.",
+      "Clippings react gently to hover; the street has a directly scrollable static alternative."
+    ],
+    "decisions": [
+      {
+        "title": "Turn contents into places",
+        "body": "Five departments open beneath scalloped awnings. The After Hours control changes the same street to night, giving the table of contents a setting of its own."
+      },
+      {
+        "title": "Let the feature occupy a whole block",
+        "body": "The Long Block moves a panorama past a fold line, distance counter and station captions. A directly scrollable static version preserves the walk when the animated treatment is unavailable."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#ECE9E2",
+      "ink": "#1A1918"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated and show no real places. The publication, contributors, stories, figures and prices are fictional; subscriptions are not sold.",
+    "media": {
+      "desktop": "/_studio/media/side-street-desktop.webp",
+      "phone": "/_studio/media/side-street-phone.webp",
+      "blur": "/_studio/media/side-street-blur.webp",
+      "desktopClip": "/_studio/media/side-street-desktop.mp4",
+      "phoneClip": "/_studio/media/side-street-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 6,
+    "name": "Nice & Specific",
+    "slug": "nice-specific",
+    "style": "Editorial / Magazine",
+    "path": "/work/nice-specific/",
+    "premise": "A content studio turns one overlooked detail into the entire story.",
+    "brief": {
+      "subject": "Self-initiated concept. A B2B content studio's website offering articles, short films, and podcasts, with example work and an illustrated process.",
+      "visitor": "B2B teams considering an imagined studio for articles, short films or podcasts.",
+      "question": "How can a content studio demonstrate its editorial judgment inside the page?"
+    },
+    "signature": "Scroll to pull a buried brochure detail into a full-size headline.",
+    "interactions": [
+      "The cover arrives in stages: nameplate letters, a highlighter swipe, and overlapping clippings.",
+      "The Detail Pass scroll sequence rejects generic brochure lines, finds one buried detail, lifts it into a large headline, and hands it into a vertical-format work card.",
+      "Recent-work cards advance with pause controls and enlarge the active item on desktop.",
+      "A coral quote carousel and large editorial process verbs vary the page's rhythm."
+    ],
+    "decisions": [
+      {
+        "title": "Make editing visible",
+        "body": "The Detail Pass crosses out generic brochure language, finds a specific detail and enlarges it into a headline. That headline then enters a vertical work card, connecting judgment to output."
+      },
+      {
+        "title": "Give the page a publication rhythm",
+        "body": "A staged cover, overlapping clippings, work cards with pause controls and a coral quote carousel alternate dense reading with moments of movement."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#EAE9E6",
+      "ink": "#181818"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated and show no real people or places. Set in Instrument Serif, Hanken Grotesk and IBM Plex Mono. The studio, clients, quotes, prices and view counts are invented.",
+    "media": {
+      "desktop": "/_studio/media/nice-specific-desktop.webp",
+      "phone": "/_studio/media/nice-specific-phone.webp",
+      "blur": "/_studio/media/nice-specific-blur.webp",
+      "desktopClip": "/_studio/media/nice-specific-desktop.mp4",
+      "phoneClip": "/_studio/media/nice-specific-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 7,
+    "name": "Corkwood Public",
+    "slug": "corkwood",
+    "style": "Organic / Nature",
+    "path": "/work/corkwood/",
+    "premise": "A public-furniture collection explained through one repairable kit of parts.",
+    "brief": {
+      "subject": "Self-initiated concept. A public-furniture company's website explaining its collections, materials, repairability, applications, and bench configurations.",
+      "visitor": "Architects and public-space specifiers exploring imagined furniture and materials.",
+      "question": "How can repairability be shown as a physical design decision?"
+    },
+    "signature": "Assemble a bench with scroll, then change its finish and length.",
+    "interactions": [
+      "Scroll assembles the Sobreiro bench from blocks, slats, bolts, and a hex key; a parts counter and callouts explain the components.",
+      "The finished 3D bench transitions into its product photograph.",
+      "Collections change scene tint; material photographs expand through a darker workshop sequence.",
+      "Places reveal drawn plans; the configurator changes base finish, length, and the resulting specification."
+    ],
+    "decisions": [
+      {
+        "title": "Expose the construction",
+        "body": "Blocks, slats, bolts and a hex key assemble in view. The parts counter and callouts make the replaceable components the central product explanation."
+      },
+      {
+        "title": "Carry the object into the catalogue",
+        "body": "The completed 3D bench becomes a product photograph. Material scenes and a finish-and-length configurator continue the same object story into its specification."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#F2EFEA",
+      "ink": "#241F21"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Product and material photographs are AI-generated; the 3D bench, plans and drawings are made in code. Products, projects, figures and guarantees are fictional; nothing is sold.",
+    "media": {
+      "desktop": "/_studio/media/corkwood-desktop.webp",
+      "phone": "/_studio/media/corkwood-phone.webp",
+      "blur": "/_studio/media/corkwood-blur.webp",
+      "desktopClip": "/_studio/media/corkwood-desktop.mp4",
+      "phoneClip": "/_studio/media/corkwood-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 8,
+    "name": "Mossline",
+    "slug": "mossline",
+    "style": "Organic / Nature",
+    "path": "/work/mossline/",
+    "premise": "Lift a piece of living ground into view, then follow the measurement beneath it.",
+    "brief": {
+      "subject": "Self-initiated concept. A soil-carbon monitoring concept explaining buried probes, measurement models, reports, plot readings, and regenerative-farming applications.",
+      "visitor": "Farmers and project partners exploring an imagined soil-carbon monitoring system.",
+      "question": "How can a buried measurement process become visible without losing the life above it?"
+    },
+    "signature": "Turn a living soil specimen, descend its horizons and insert the probe.",
+    "interactions": [
+      "The specimen rises with plant growth, then sways gently with a small pointer-driven frame nudge.",
+      "A pinned image sequence turns the specimen, moves down its profile, and inserts a probe whose three bands align with depth labels and readouts.",
+      "The sequence leads into a five-season soil-carbon chart with plot controls and keyboard tooltips.",
+      "An illustrated field map connects plot selection to probe pillars and readings."
+    ],
+    "decisions": [
+      {
+        "title": "Start with the living ground",
+        "body": "Plant growth and a gently swaying specimen establish the subject before any chart appears. A small pointer-driven frame nudge keeps the rendered object responsive."
+      },
+      {
+        "title": "Make the cut explain the instrument",
+        "body": "Blender-rendered image sequences turn toward the cut face, descend through the horizons and place the probe. Three bands align with depth labels and readouts. The delivered cut uses discrete frames; the hero sway blends."
+      },
+      {
+        "title": "Carry the story into data",
+        "body": "A five-season chart and illustrated field map extend the specimen into plot-level readings. Plot controls and keyboard tooltips make the illustrative measurements explorable."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#132316",
+      "ink": "#E9EEDF"
+    },
+    "featured": true,
+    "forecast": "Humid and still. A living landscape below the surface.",
+    "credits": "Concept, design and build by otherweather. The specimen is rendered in Blender Cycles and delivered as desktop and mobile image sequences. Farms, plots and readings are illustrative. Mossline is fictional and sells no sensors, carbon credits or verification services.",
+    "media": {
+      "desktop": "/_studio/media/mossline-desktop.webp",
+      "phone": "/_studio/media/mossline-phone.webp",
+      "blur": "/_studio/media/mossline-blur.webp",
+      "desktopClip": "/_studio/media/mossline-desktop.mp4",
+      "phoneClip": "/_studio/media/mossline-phone.mp4"
+    },
+    "embedEnabled": false,
+    "embedNote": "Existing mobile layout reports horizontal overflow; use the standalone concept."
+  },
+  {
+    "number": 9,
+    "name": "Noct & Vale",
+    "slug": "noct-vale",
+    "style": "Dark Luxury",
+    "path": "/work/noct-vale/",
+    "premise": "A perfume archive translated into smoke, engraved glass and changing light.",
+    "brief": {
+      "subject": "Self-initiated concept. A perfume house's anniversary website presenting current scents, bottle details, ingredient histories, and a fifteen-year archive.",
+      "visitor": "Fragrance enthusiasts exploring an imagined house and its scent histories.",
+      "question": "How can a screen give each scent an atmosphere of its own?"
+    },
+    "signature": "Move the pointer through incense smoke and scroll between scent worlds.",
+    "interactions": [
+      "A real-time incense-smoke field responds to the pointer; Enter produces a smoke transition.",
+      "A pinned scent sequence changes the photograph, name, notes, page tint, smoke palette, and vial progress indicators.",
+      "A bottle zoom catches its engraving with a light sweep.",
+      "Archive filters and individual smoke-dissolve previews reveal the history; a word-by-word quote leads to the closing scene."
+    ],
+    "decisions": [
+      {
+        "title": "Give scent a visible presence",
+        "body": "A real-time smoke field responds to the pointer. Each scent changes the photograph, notes, page tint and smoke palette, while vial indicators keep the sequence legible."
+      },
+      {
+        "title": "Use light to reveal detail",
+        "body": "A close view of the bottle catches its engraving with a light sweep. Filtered archive entries and smoke-dissolve previews repeat the same restrained reveal at a smaller scale."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#0C090D",
+      "ink": "#E6E0DA"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photography was generated for this concept. Set in Instrument Serif and DM Sans. Scents, perfumers, the atelier and its archive are invented; nothing is sold.",
+    "media": {
+      "desktop": "/_studio/media/noct-vale-desktop.webp",
+      "phone": "/_studio/media/noct-vale-phone.webp",
+      "blur": "/_studio/media/noct-vale-blur.webp",
+      "desktopClip": "/_studio/media/noct-vale-desktop.mp4",
+      "phoneClip": "/_studio/media/noct-vale-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 10,
+    "name": "Silver Hour",
+    "slug": "silver-hour",
+    "style": "Dark Luxury",
+    "path": "/work/silver-hour/",
+    "premise": "A photography retrospective where looking means bringing a print into the light.",
+    "brief": {
+      "subject": "An exhibition website for a fictional photographer's retrospective, showing eight works, captions, an archive index, and visitor information.",
+      "visitor": "Visitors browsing an imagined photographer’s retrospective and exhibition information.",
+      "question": "How can the act of revealing a photograph shape the pace of looking at it?"
+    },
+    "signature": "Develop prints with scroll, then move a spotlight through the dark-room viewer.",
+    "interactions": [
+      "The title develops through recorded noise/light stages.",
+      "An eight-print exhibition walk varies image scale and placement, developing photographs with highlights first and shadows later.",
+      "List/Grid changes how the full collection is browsed.",
+      "Shared-element transitions enter the dark room, where a moving spotlight, full-light control, arrows, keyboard controls, and touch gestures support viewing."
+    ],
+    "decisions": [
+      {
+        "title": "Develop the image in stages",
+        "body": "Each print appears with highlights before shadows. Varied scale and placement make the eight-work walk feel like an exhibition rather than a uniform gallery."
+      },
+      {
+        "title": "Give the visitor the light",
+        "body": "A shared-element transition takes a print into the dark room. Spotlight, full-light, keyboard and touch controls offer several ways to inspect the same image; List/Grid provides a separate collection view."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#000000",
+      "ink": "#E3E3E3"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. The photographs were made with an image generator. Inês Valadares, the Meia-Luz venue, people and moments are fictional; the towns named in captions are real. Set in Newsreader.",
+    "media": {
+      "desktop": "/_studio/media/silver-hour-desktop.webp",
+      "phone": "/_studio/media/silver-hour-phone.webp",
+      "blur": "/_studio/media/silver-hour-blur.webp",
+      "desktopClip": "/_studio/media/silver-hour-desktop.mp4",
+      "phoneClip": "/_studio/media/silver-hour-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 11,
+    "name": "Thimble Planet",
+    "slug": "thimble-planet",
+    "style": "3D / WebGL",
+    "path": "/work/thimble-planet/",
+    "premise": "A portfolio becomes a tiny world, with something to do at every landmark.",
+    "brief": {
+      "subject": "A fictional one-person 3D studio's playable portfolio, where a tiny planet's landmarks represent interactive projects.",
+      "visitor": "Curious visitors and potential collaborators exploring an imagined one-person 3D studio.",
+      "question": "How can a portfolio communicate its craft by letting visitors play with the work?"
+    },
+    "signature": "Fly to a landmark and work its lighthouse beam, windmill or tide.",
+    "interactions": [
+      "Orbit/drag the planet or choose a place to fly the camera to its landmark.",
+      "Turn the lighthouse beam to uncover logbook lines; scrub the cottage through twelve months.",
+      "Hold the windmill control to grind flour, change the dock's tide, and scrub tree growth in the grove.",
+      "Each flight changes time-of-day lighting; menu, reset, optional sound, and an illustrated list provide alternate access."
+    ],
+    "decisions": [
+      {
+        "title": "Make navigation spatial",
+        "body": "Dragging or orbiting reveals the planet; choosing a place flies the camera to its landmark and changes the light. The menu and illustrated list offer direct routes to the same projects."
+      },
+      {
+        "title": "Give every stop a small purpose",
+        "body": "The lighthouse uncovers logbook lines, the cottage passes through twelve months and the windmill grinds flour. Tide and tree-growth controls turn the other landmarks into working scenes."
+      },
+      {
+        "title": "Keep the world self-contained",
+        "body": "Procedural models, sky and optional sound create the diorama in the browser. A reset control lets exploration begin again without needing an avatar or a score."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#0A0C22",
+      "ink": "#EEF0FF"
+    },
+    "featured": true,
+    "forecast": "A small world turning. Local weather, tiny and clear.",
+    "credits": "Concept, design and build by otherweather. Models, sky and sound are generated in the browser with Three.js r170, without image or audio files. Type: Playfair Display, Lato and IBM Plex Mono. The studio, artist, clients and projects are fictional.",
+    "media": {
+      "desktop": "/_studio/media/thimble-planet-desktop.webp",
+      "phone": "/_studio/media/thimble-planet-phone.webp",
+      "blur": "/_studio/media/thimble-planet-blur.webp",
+      "desktopClip": "/_studio/media/thimble-planet-desktop.mp4",
+      "phoneClip": "/_studio/media/thimble-planet-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 12,
+    "name": "10,935 m: A Descent into the Challenger Deep",
+    "slug": "challenger-deep",
+    "style": "3D / WebGL",
+    "path": "/work/challenger-deep/",
+    "premise": "A continuous descent that gives ocean depth a physical scale.",
+    "brief": {
+      "subject": "A factual editorial experience taking visitors from the ocean surface toward the Challenger Deep, with depth-related events, explanatory notes, and listed sources.",
+      "visitor": "General readers curious about the deep ocean, its scale and exploration.",
+      "question": "How can a familiar scroll gesture make an unfamiliar depth understandable?"
+    },
+    "signature": "Cross the waterline and scroll toward the seabed as depth, light and pressure change.",
+    "interactions": [
+      "Pointer/tap rings distort the reflected title on the water.",
+      "The plunge creates an above/below-water split view, bubbles, and an exposure change before the camera enters the ocean.",
+      "Native scroll drives depth, zone, light, pressure, particles, landmark positions, and projected labels; a chapter rail supports jumps.",
+      "A staged window-crack effect near the deepest section leads to the seabed, dive history, sources, and credits."
+    ],
+    "decisions": [
+      {
+        "title": "Cross a real boundary in the scene",
+        "body": "Pointer or tap rings disturb the title’s reflection. The plunge passes through a split view of air and water, with bubbles and an exposure change marking the transition."
+      },
+      {
+        "title": "Tie the reading to the descent",
+        "body": "Native scroll controls depth, light, pressure, particles and projected labels. A chapter rail permits direct jumps while the continuous ocean keeps each section in spatial context."
+      },
+      {
+        "title": "Keep the evidence in view",
+        "body": "The deepest sequence leads into dive history, notes on approximate figures and a source list. The factual text remains readable as HTML, with a separate route to view the piece without 3D."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#061016",
+      "ink": "#E8F0F2"
+    },
+    "featured": true,
+    "forecast": "Light fading. An ocean of distance beneath the surface.",
+    "credits": "Words, design and code by otherweather. The live Three.js r170 scene uses a water shader, points and fog, without images. Type: Jost and IBM Plex Mono. This factual editorial concept lists NOAA, WHOI, Smithsonian, scientific papers and other sources in the live page; figures are rounded. It is not affiliated with those institutions or expeditions.",
+    "media": {
+      "desktop": "/_studio/media/challenger-deep-desktop.webp",
+      "phone": "/_studio/media/challenger-deep-phone.webp",
+      "blur": "/_studio/media/challenger-deep-blur.webp",
+      "desktopClip": "/_studio/media/challenger-deep-desktop.mp4",
+      "phoneClip": "/_studio/media/challenger-deep-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 13,
+    "name": "Vectorhaus",
+    "slug": "vectorhaus",
+    "style": "Gradient Tech",
+    "path": "/work/vectorhaus/",
+    "premise": "An invisible compute request becomes a field of light waking up.",
+    "brief": {
+      "subject": "Self-initiated concept. A serverless GPU-inference platform concept explaining startup latency, deployment, regions, scaling, code examples, and usage-based pricing.",
+      "visitor": "Developers evaluating an imagined serverless GPU-inference platform.",
+      "question": "How can a fraction of a second become a clear, memorable product explanation?"
+    },
+    "signature": "Wake luminous strands through a synchronized first-token sequence.",
+    "interactions": [
+      "An ignition intro and a pinned wake sequence synchronize ribbon emission, a large 0.84-second clock, and three milestones.",
+      "A command palette supports section jumps and install-command copying.",
+      "Region chips interact with a draggable globe; code tabs switch examples and copy their contents.",
+      "A pricing calculator updates estimates from GPU choice, request duration, and daily volume; the field resolves to a dawn horizon at the close."
+    ],
+    "decisions": [
+      {
+        "title": "Give latency a visible sequence",
+        "body": "Dormant ribbons ignite alongside an illustrative 0.84-second clock and three milestones. The field continues through the page, resolving into a dawn horizon at the end."
+      },
+      {
+        "title": "Pair spectacle with useful controls",
+        "body": "The command palette, globe regions, code tabs and copy actions make the product story navigable. A calculator lets visitors change GPU class, request duration and daily volume to explore illustrative estimates."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#0E1220",
+      "ink": "#F5F7FC"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. The platform offers no service; prices, benchmarks, regions, example code and customers are illustrative. NVIDIA model names identify hardware classes and imply no affiliation.",
+    "media": {
+      "desktop": "/_studio/media/vectorhaus-desktop.webp",
+      "phone": "/_studio/media/vectorhaus-phone.webp",
+      "blur": "/_studio/media/vectorhaus-blur.webp",
+      "desktopClip": "/_studio/media/vectorhaus-desktop.mp4",
+      "phoneClip": "/_studio/media/vectorhaus-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 14,
+    "name": "Undersun",
+    "slug": "undersun",
+    "style": "Gradient Tech",
+    "path": "/work/undersun/",
+    "premise": "Follow a closed loop down to the heat and back into the daylight.",
+    "brief": {
+      "subject": "Self-initiated concept. A closed-loop geothermal energy concept explaining the system, pilot sites, industrial/district-heating applications, and careers.",
+      "visitor": "Industrial and district-heating teams exploring an imagined geothermal system.",
+      "question": "How can the route of energy underground become a story a visitor can follow?"
+    },
+    "signature": "Scroll below the ground as strata, temperatures and loop flow change together.",
+    "interactions": [
+      "A staged arrival raises the wellhead through the horizon and draws the underground pipes.",
+      "Pilot-site maps draw their heat mains and highlight active sites.",
+      "A scroll-driven descent synchronizes depth, rock temperature, water temperature, strata, casing, and the cold/hot loop legs.",
+      "The return to the surface becomes the careers sunrise and closing half-disc motif."
+    ],
+    "decisions": [
+      {
+        "title": "Establish the surface first",
+        "body": "The wellhead rises through the horizon and pilot maps draw their heat mains. These sites give the underground journey a destination before the descent begins."
+      },
+      {
+        "title": "Follow both sides of the loop",
+        "body": "Depth, strata, casing and water temperatures change together as the visitor follows cold and hot legs. Returning to the surface becomes the careers sunrise, closing the same visual circuit."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#FFF6EE",
+      "ink": "#1B1B1B"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Undersun is fictional: sites, figures, people and roles are illustrative. It does not drill wells, sell heat or power, or offer investments.",
+    "media": {
+      "desktop": "/_studio/media/undersun-desktop.webp",
+      "phone": "/_studio/media/undersun-phone.webp",
+      "blur": "/_studio/media/undersun-blur.webp",
+      "desktopClip": "/_studio/media/undersun-desktop.mp4",
+      "phoneClip": "/_studio/media/undersun-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 15,
+    "name": "Kamen Lodge",
+    "slug": "kamen-lodge",
+    "style": "Scroll Storytelling",
+    "path": "/work/kamen-lodge/",
+    "premise": "A mountain retreat introduced as a journey from altitude to warmth.",
+    "brief": {
+      "subject": "A mountain-lodge website introducing a fictional forty-room retreat, its approach route, rooms, sauna/lake rituals, seasons, table, and booking enquiry.",
+      "visitor": "Travellers exploring an imagined lodge, its rooms, rituals and seasons.",
+      "question": "How can a hotel website give arrival a sense of place before showing a room?"
+    },
+    "signature": "Push into glowing lodge windows, then switch the mountain from Summer to Winter.",
+    "interactions": [
+      "An altitude loader counts from valley to lodge and transfers the final elevation into the hero.",
+      "A pinned push-in darkens the valley, warms the windows, unthreads the wordmark, and hands amber light into the paper page.",
+      "An arrival map follows the shuttle; the rooms carousel supports weighted dragging and image parallax.",
+      "Sauna/lake temperatures drive changing grades; a Summer/Winter switch lowers a ridge-shaped snow line."
+    ],
+    "decisions": [
+      {
+        "title": "Make the arrival continuous",
+        "body": "An altitude count lands in the hero. The valley darkens, windows warm and the wordmark unthreads as the camera approaches; amber light carries the visitor into the paper page."
+      },
+      {
+        "title": "Let climate organize the stay",
+        "body": "A shuttle map and draggable rooms establish the visit. Sauna and lake temperatures change the grade, while a single Summer/Winter switch lowers a ridge-shaped snow line over the landscape."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#40362B",
+      "ink": "#F4F1EC"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated renders. The lodge, Tihadol valley, rooms, prices, menu and contact details are invented; nothing can be booked.",
+    "media": {
+      "desktop": "/_studio/media/kamen-lodge-desktop.webp",
+      "phone": "/_studio/media/kamen-lodge-phone.webp",
+      "blur": "/_studio/media/kamen-lodge-blur.webp",
+      "desktopClip": "/_studio/media/kamen-lodge-desktop.mp4",
+      "phoneClip": "/_studio/media/kamen-lodge-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 16,
+    "name": "House of Vey",
+    "slug": "house-of-vey",
+    "style": "Scroll Storytelling",
+    "path": "/work/house-of-vey/",
+    "premise": "Four bags introduced through four rooms and one continuous walk.",
+    "brief": {
+      "subject": "Self-initiated concept. An accessories-house collection launch introducing four bags through a walk-through townhouse and a final collection grid.",
+      "visitor": "Visitors discovering the first collection of an imagined accessories house.",
+      "question": "How can a collection have the intimacy and continuity of visiting a home?"
+    },
+    "signature": "Enter the townhouse and recolor a bag inside its room.",
+    "interactions": [
+      "Entering opens the arch into the front door; the camera moves into the house while the facade and lamps light up.",
+      "Scroll advances through four rooms with different proportions, colors, and lighting.",
+      "Bag hotspots open detail panels; colorway swatches update both the panel and the bag in the 3D scene.",
+      "The bedroom window opens and expands into the collection grid; sound is optional."
+    ],
+    "decisions": [
+      {
+        "title": "Make the threshold a real transition",
+        "body": "The opening arch leads into the front door as the facade and lamps light up. Repeated arches keep the gate, room passages and final window part of one journey."
+      },
+      {
+        "title": "Let the product inhabit the scene",
+        "body": "Each room gives one bag its own proportion, color and light. Hotspots open detail panels, and swatches recolor both the panel image and the bag inside the room."
+      },
+      {
+        "title": "Open the house into the collection",
+        "body": "The bedroom window expands into the final collection grid. The narrative reaches a straightforward product view without abandoning the architectural motif."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#0F3327",
+      "ink": "#EFE6D2"
+    },
+    "featured": true,
+    "forecast": "Indoors. Four rooms, lamps on by evening.",
+    "credits": "Concept, design and build by otherweather. Bags are AI-generated renders of fictional products; prices, dates and addresses are illustrative, and nothing is sold. Optional sound is generated in the browser and starts off.",
+    "media": {
+      "desktop": "/_studio/media/house-of-vey-desktop.webp",
+      "phone": "/_studio/media/house-of-vey-phone.webp",
+      "blur": "/_studio/media/house-of-vey-blur.webp",
+      "desktopClip": "/_studio/media/house-of-vey-desktop.mp4",
+      "phoneClip": "/_studio/media/house-of-vey-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 17,
+    "name": "Night Train to Porto",
+    "slug": "night-train",
+    "style": "Scroll Storytelling",
+    "path": "/work/night-train/",
+    "premise": "An overnight journey told through painted windows and a ticket that keeps the memory.",
+    "brief": {
+      "subject": "A campaign for fictional rail operator Linha Atlântica, presenting an overnight Atlantic-coast journey to Porto through five stops and an invented upgrade reward.",
+      "visitor": "Travellers following a fictional rail campaign along the Atlantic coast.",
+      "question": "How can a ticket carry the visitor’s progress through a scrolling journey?"
+    },
+    "signature": "Tear a ticket, collect five chapter stamps and reveal its gold upgrade.",
+    "interactions": [
+      "Start punches and tears the opening ticket, then sends its stub into the stamp card.",
+      "Painted chapters use different window silhouettes, lateral movement, rising shutters, and camera depth.",
+      "Passing the chapter ranges collects stamps, including during fast scrolling.",
+      "Completing the journey reissues a gold GRAND ticket; optional procedural sound and timetable details reinforce the railway world."
+    ],
+    "decisions": [
+      {
+        "title": "Let one object remember the trip",
+        "body": "The opening ticket is punched and torn; its stub becomes the stamp card. Passing the chapter ranges collects stamps even during fast scrolling, then reissues the completed ticket in gold."
+      },
+      {
+        "title": "Change the view with every stop",
+        "body": "Painted scenes use distinct window silhouettes, shutters and camera depth. The timetable and optional procedural sound extend the railway setting around the chapters."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#12202E",
+      "ink": "#F1E8D6"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Painted scenes are AI-generated illustrations. Linha Atlântica, Sleeper No. 7, the through-route, timetable, fares and upgrade are invented; nothing can be booked.",
+    "media": {
+      "desktop": "/_studio/media/night-train-desktop.webp",
+      "phone": "/_studio/media/night-train-phone.webp",
+      "blur": "/_studio/media/night-train-blur.webp",
+      "desktopClip": "/_studio/media/night-train-desktop.mp4",
+      "phoneClip": "/_studio/media/night-train-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 18,
+    "name": "SORT®",
+    "slug": "sort",
+    "style": "Kinetic Typography",
+    "path": "/work/sort/",
+    "premise": "A merchandise label whose name tells the shop what to do.",
+    "brief": {
+      "subject": "Self-initiated concept. A design team's limited-run merchandise storefront concept, with six products, an issue archive, product details, and a local shopping bag.",
+      "visitor": "Design-minded shoppers browsing an imagined limited-run merchandise collection.",
+      "question": "How can the identity become a useful interaction in the storefront?"
+    },
+    "signature": "Reorder the wordmark and the product grid rearranges to match.",
+    "interactions": [
+      "Wordmark letters arrive and can reorder through logo controls.",
+      "A traveling rule highlight hands the selected logo mode into a matching product-grid arrangement.",
+      "Product cards reveal a second photograph; quick view supports size selection and local add/remove bag behavior.",
+      "Variable-width type, an image slot, archive treatments, and a velocity-reactive marquee extend the graphic system."
+    ],
+    "decisions": [
+      {
+        "title": "Give the logo a job",
+        "body": "Letter controls change the wordmark’s order. A travelling rule highlight carries the chosen mode down into a corresponding product-grid arrangement, connecting identity to browsing."
+      },
+      {
+        "title": "Keep commerce tactile",
+        "body": "Paired photographs reveal front and detail views. Quick view, size selection and local add/remove bag states make each object inspectable, while the page clearly identifies the shop as a concept."
+      },
+      {
+        "title": "Let type carry the graphic system",
+        "body": "Variable-width lettering, offset columns, archive treatments and a velocity-reactive marquee extend the same cobalt-on-putty language beyond the opening wordmark."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#EAE3DB",
+      "ink": "#1B2BD6"
+    },
+    "featured": true,
+    "forecast": "Clear and high contrast. One strong front, six objects.",
+    "credits": "Concept, design and build by otherweather. Products are AI-generated photographs of objects that do not exist. Prices, weights and workshops are illustrative; the shopping bag is local and never checks out.",
+    "media": {
+      "desktop": "/_studio/media/sort-desktop.webp",
+      "phone": "/_studio/media/sort-phone.webp",
+      "blur": "/_studio/media/sort-blur.webp",
+      "desktopClip": "/_studio/media/sort-desktop.mp4",
+      "phoneClip": "/_studio/media/sort-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 19,
+    "name": "Loud Hours",
+    "slug": "loud-hours",
+    "style": "Kinetic Typography",
+    "path": "/work/loud-hours/",
+    "premise": "A creative agency’s type turns up the volume as the page unfolds.",
+    "brief": {
+      "subject": "Self-initiated concept. A social-first creative agency concept presenting six services, short-form creative treatments, a manifesto, and contact.",
+      "visitor": "Brand teams exploring an imagined social-first creative agency.",
+      "question": "How can typography demonstrate the pace and energy of short-form creative work?"
+    },
+    "signature": "Expand a tiny headline loop into a work canvas, then turn up the manifesto.",
+    "interactions": [
+      "Masked lines cascade into the hero and an embedded slot cycles original procedural loops.",
+      "Large service rows dim siblings and open their own animated examples.",
+      "Shorts enlarges its bracketed media into a work canvas with three treatments and a shared pause control.",
+      "Scroll changes manifesto width/weight and the VOL meter, then carries the key phrase into the two-tone footer."
+    ],
+    "decisions": [
+      {
+        "title": "Let the work emerge from the type",
+        "body": "The hero’s embedded media slot cycles procedural loops. Later, the bracketed Shorts media expands into a larger canvas with three treatments and a shared pause control."
+      },
+      {
+        "title": "Make volume something to see",
+        "body": "Service rows isolate their animated examples. Scroll then increases the manifesto’s width and weight alongside a VOL meter, carrying its final phrase into the footer."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#EEE9E2",
+      "ink": "#191919"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Loops are drawn in code. The agency, services, turnarounds and contact details are illustrative; no real people, clients or campaigns are shown.",
+    "media": {
+      "desktop": "/_studio/media/loud-hours-desktop.webp",
+      "phone": "/_studio/media/loud-hours-phone.webp",
+      "blur": "/_studio/media/loud-hours-blur.webp",
+      "desktopClip": "/_studio/media/loud-hours-desktop.mp4",
+      "phoneClip": "/_studio/media/loud-hours-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 20,
+    "name": "Throwback Pace Co.",
+    "slug": "throwback-pace",
+    "style": "Retro / Y2K",
+    "path": "/work/throwback-pace/",
+    "premise": "A running capsule imagined as a sticker book that wants to move.",
+    "brief": {
+      "subject": "Self-initiated concept. A retro running capsule and club concept presenting apparel colorways, group runs, a local bag, and a signup.",
+      "visitor": "Runners exploring a fictional apparel capsule and local running club.",
+      "question": "How can nostalgic print graphics turn into active, tactile controls?"
+    },
+    "signature": "Toss desktop stickers, change apparel colorways and reveal a club-run route.",
+    "interactions": [
+      "Desktop stickers can be dragged and tossed within bounds; the headline pops into place.",
+      "Scroll velocity drives fast-forward/rewind cues and stepped directional image wipes.",
+      "The blue track morphs into a frame around the product row; swatches change product photography.",
+      "The calendar filters by distance, Join controls expose route drawings, and the local bag/signup provide working front-end states."
+    ],
+    "decisions": [
+      {
+        "title": "Give the print language momentum",
+        "body": "Stickers can be dragged and tossed on desktop. Scroll velocity drives rewind and fast-forward cues, while directional image wipes give the page a stepped campaign rhythm."
+      },
+      {
+        "title": "Run the track through the shop",
+        "body": "The opening blue track becomes a frame around the product row. Colorway swatches, distance filters and route drawings connect campaign graphics to working local shopping and club states."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#F4F4F4",
+      "ink": "#000000"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated and show no real people. The capsule, prices, runs and history are fictional; bag and join actions stay on the page, and signup sends no data.",
+    "media": {
+      "desktop": "/_studio/media/throwback-pace-desktop.webp",
+      "phone": "/_studio/media/throwback-pace-phone.webp",
+      "blur": "/_studio/media/throwback-pace-blur.webp",
+      "desktopClip": "/_studio/media/throwback-pace-desktop.mp4",
+      "phoneClip": "/_studio/media/throwback-pace-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 21,
+    "name": "hello.exe",
+    "slug": "hello-exe",
+    "style": "Retro / Y2K",
+    "path": "/work/hello-exe/",
+    "premise": "A fictional designer’s portfolio runs as a desktop full of working little applications.",
+    "brief": {
+      "subject": "A fictional designer-engineer's portfolio presented as a working desktop of interactive mini applications.",
+      "visitor": "People exploring the interface and creative-development work of fictional designer Juno Rebelo.",
+      "question": "How can a portfolio prove interface craft by behaving like software?"
+    },
+    "signature": "Open and arrange working apps, from a ticket kiosk to an FM synthesizer.",
+    "interactions": [
+      "Procedural chrome lettering and a 3D cursor introduce the desktop.",
+      "Open, drag, focus, minimize, restore, and close app windows; a dock and mobile Focus window action keep them reachable.",
+      "Use a ticket kiosk, FM synthesizer, variable tile-font tester, pixel forecast, virtualized table, typing readme, and recycle bin.",
+      "Theme/sound controls, copy-email feedback, and consistent visibility pauses support the desktop."
+    ],
+    "decisions": [
+      {
+        "title": "Make the desktop usable",
+        "body": "Windows can open, drag, focus, minimize, restore and close. A dock keeps apps reachable, with a Focus window action for the smaller mobile workspace."
+      },
+      {
+        "title": "Put the proof inside the apps",
+        "body": "The kiosk, synthesizer, tile-font tester, forecast, table, readme and recycle bin each have their own working behavior. Theme, sound and visibility controls make them parts of one system."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#BFDDF0",
+      "ink": "#0A0A0A"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Set in TikTok Sans, Unbounded and Space Mono. Juno Rebelo, projects, clients, figures and email address are fictional; the displayed address cannot receive mail.",
+    "media": {
+      "desktop": "/_studio/media/hello-exe-desktop.webp",
+      "phone": "/_studio/media/hello-exe-phone.webp",
+      "blur": "/_studio/media/hello-exe-blur.webp",
+      "desktopClip": "/_studio/media/hello-exe-desktop.mp4",
+      "phoneClip": "/_studio/media/hello-exe-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 22,
+    "name": "Snack Atlas",
+    "slug": "snack-atlas",
+    "style": "Playful / Illustrative",
+    "path": "/work/snack-atlas/",
+    "premise": "A snack subscription explained as a little journey inside a box.",
+    "brief": {
+      "subject": "Self-initiated concept. A monthly international-snack subscription concept explaining the box, a featured country, plan options, FAQs, and newsletter signup.",
+      "visitor": "Curious eaters exploring an imagined monthly international-snack subscription.",
+      "question": "How can the subscription journey feel as playful as opening the box?"
+    },
+    "signature": "Watch a country map become a packed box, then a postcard stamp.",
+    "interactions": [
+      "The hero box arrives with bursting snacks; tapping a snack crumbles it.",
+      "A scroll scene selects Mexico on a map, packs snacks, closes the box, and turns it into a postcard stamp.",
+      "The country postcard flips; snack crunch meters animate.",
+      "Billing controls change displayed plan prices; FAQ and newsletter validation provide local interaction states."
+    ],
+    "decisions": [
+      {
+        "title": "Make the first encounter edible",
+        "body": "The box arrives with illustrated snacks bursting out. Tapping a snack crumbles it, introducing the same small physical jokes that appear throughout the page."
+      },
+      {
+        "title": "Explain the trip through one object",
+        "body": "A scroll sequence selects Mexico, packs the snacks and closes the box. The box becomes a postcard stamp, connecting the subscription steps to the featured country."
+      },
+      {
+        "title": "Keep the details easy to inspect",
+        "body": "The country postcard flips, crunch meters animate and billing controls update displayed prices. FAQ and newsletter validation provide local states around the illustrated story."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#FF5A36",
+      "ink": "#2A1036"
+    },
+    "featured": true,
+    "forecast": "Warm spells, scattered crumbs, a good chance of seconds.",
+    "credits": "Concept, design and build by otherweather, with original SVG snack and mascot illustrations. The subscription, plans, prices, products and allergen details are illustrative. No snacks are sold or shipped.",
+    "media": {
+      "desktop": "/_studio/media/snack-atlas-desktop.webp",
+      "phone": "/_studio/media/snack-atlas-phone.webp",
+      "blur": "/_studio/media/snack-atlas-blur.webp",
+      "desktopClip": "/_studio/media/snack-atlas-desktop.mp4",
+      "phoneClip": "/_studio/media/snack-atlas-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default.",
+    "mobileSignature": "Flip the country postcard to read its handwritten note."
+  },
+  {
+    "number": 23,
+    "name": "Sowsheet",
+    "slug": "sowsheet",
+    "style": "Playful / Illustrative",
+    "path": "/work/sowsheet/",
+    "premise": "A garden sketch becomes an editable bed and follows its planting through the seasons.",
+    "brief": {
+      "subject": "Self-initiated concept. A garden-planning app concept with an actual browser-local bed planner, seasonal visualization, plan comparison, and waitlist.",
+      "visitor": "People exploring a small-garden planning app concept for a balcony or yard.",
+      "question": "How can a landing page let visitors try the very plan it is describing?"
+    },
+    "signature": "Plant a 6×4 bed and watch the same arrangement pass through four seasons.",
+    "interactions": [
+      "The annotated hero garden appears plant by plant, with live plot coordinates.",
+      "Place, move, or remove plants on a 6×4 bed using drag, touch placement, or keyboard controls.",
+      "Sun/shade overlays, spread rings, and spacing/neighbour notes respond to the arrangement.",
+      "The live axonometric view reflects the edited bed across four seasons, with hemisphere controls; the waitlist has validation and a sprouting success state."
+    ],
+    "decisions": [
+      {
+        "title": "Let the visitor make the plan",
+        "body": "Drag, touch placement and keyboard controls place, move or remove plants. Overlays, spread rings and spacing notes respond to the arrangement rather than sitting beside a canned demo."
+      },
+      {
+        "title": "Keep the edited garden alive",
+        "body": "The axonometric seasonal view uses the visitor’s own bed. Season and hemisphere controls continue the same plan into a different view, while the sketchbook language ties the tool to the rest of the page."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#FDF2DE",
+      "ink": "#0B3A8F"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. All illustrations are drawn in code. The app, prices and waitlist are fictional; the form sends no data. Planner spacing and sun figures are rough illustrative rules of thumb.",
+    "media": {
+      "desktop": "/_studio/media/sowsheet-desktop.webp",
+      "phone": "/_studio/media/sowsheet-phone.webp",
+      "blur": "/_studio/media/sowsheet-blur.webp",
+      "desktopClip": "/_studio/media/sowsheet-desktop.mp4",
+      "phoneClip": "/_studio/media/sowsheet-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 24,
+    "name": "Grevholt Group",
+    "slug": "grevholt",
+    "style": "Corporate Premium",
+    "path": "/work/grevholt/",
+    "premise": "A corporate group’s product story, from raw material to repair.",
+    "brief": {
+      "subject": "Self-initiated concept. A corporate group website organizing four workwear/outdoor/safety/textile brands, operations, investor information, news, careers, and responsibility.",
+      "visitor": "Investors, partners and job seekers browsing an imagined group of four industrial brands.",
+      "question": "How can a broad corporate group explain its purpose through one understandable product?"
+    },
+    "signature": "Scroll from material panels to a stitched boot, then replace its worn sole.",
+    "interactions": [
+      "The hero uses a slow photographic move; a Group mega-menu and single-open brand panels organize the portfolio.",
+      "One pair, three lives scrolls from separate material panels into a stitched boot, then replaces its worn outsole.",
+      "An explicitly illustrative market chart supports period selection and pointer/keyboard inspection.",
+      "A news carousel, KPI counters, and repaired-boot handoff connect product craft to the responsibility section."
+    ],
+    "decisions": [
+      {
+        "title": "Give the corporate story an object",
+        "body": "One pair, three lives assembles a boot from material panels and later replaces the outsole. The repaired boot carries the narrative into responsibility, making product life the connecting idea."
+      },
+      {
+        "title": "Keep a large organization navigable",
+        "body": "A Group mega-menu and single-open brand panels organize four businesses. Period controls and keyboard inspection make the illustrative investor chart browsable alongside news and careers."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "motion"
+    ],
+    "palette": {
+      "background": "#FFFFFF",
+      "ink": "#0A0A0A"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated. Brands, people, figures, addresses and news are invented. GRVH is not a real security; share data is illustrative.",
+    "media": {
+      "desktop": "/_studio/media/grevholt-desktop.webp",
+      "phone": "/_studio/media/grevholt-phone.webp",
+      "blur": "/_studio/media/grevholt-blur.webp",
+      "desktopClip": "/_studio/media/grevholt-desktop.mp4",
+      "phoneClip": "/_studio/media/grevholt-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  },
+  {
+    "number": 25,
+    "name": "Tidewright",
+    "slug": "tidewright",
+    "style": "Corporate Premium",
+    "path": "/work/tidewright/",
+    "premise": "An autonomous marine inspection made legible through a vessel, a route and its findings.",
+    "brief": {
+      "subject": "Self-initiated concept. An autonomous marine-drone company concept presenting capabilities, vessel comparisons, mission examples, leadership, press, and a survey enquiry.",
+      "visitor": "Offshore and port teams exploring an imagined marine-drone company’s capabilities.",
+      "question": "How can autonomy become a sequence of observable actions instead of an abstract claim?"
+    },
+    "signature": "Play a mission from approach through sonar to its illustrative result.",
+    "interactions": [
+      "A retractable index tracks section progress and preserves its collapsed state; mobile uses a top/index treatment.",
+      "Telemetry/leader lines identify the vessel and sensor mast, while an aerial sequence illustrates station keeping.",
+      "Fleet specs switch metric/imperial order and highlight corresponding rows across cards.",
+      "A schematic mission map filters eight points and runs finite approach/sonar/result replays with Play, Pause, Resume, Replay, and Coast controls."
+    ],
+    "decisions": [
+      {
+        "title": "Show what the vessel does",
+        "body": "Telemetry and leader lines identify the vessel and mast, while an aerial sequence illustrates station keeping. Fleet cards align specifications and switch metric/imperial presentation for comparison."
+      },
+      {
+        "title": "Make the mission inspectable",
+        "body": "A schematic map filters eight points and runs finite approach, sonar and result replays. Play, Pause, Resume, Replay and Coast controls give the visitor command of the demonstration."
+      }
+    ],
+    "tags": [
+      "web-design",
+      "interaction"
+    ],
+    "palette": {
+      "background": "#FBFCFC",
+      "ink": "#0F1A20"
+    },
+    "featured": false,
+    "forecast": "",
+    "credits": "Concept, design and build by otherweather. Photographs are AI-generated. Drones, specifications, missions, clients, people and press coverage are fictional. The chart is schematic, the tide is simulated and nothing is sold.",
+    "media": {
+      "desktop": "/_studio/media/tidewright-desktop.webp",
+      "phone": "/_studio/media/tidewright-phone.webp",
+      "blur": "/_studio/media/tidewright-blur.webp",
+      "desktopClip": "/_studio/media/tidewright-desktop.mp4",
+      "phoneClip": "/_studio/media/tidewright-phone.mp4"
+    },
+    "embedEnabled": true,
+    "embedNote": "Desktop and phone interaction tested in a same-origin iframe; muted by default."
+  }
+]
