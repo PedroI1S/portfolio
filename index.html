@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0d12">
+<title>Pedro Mariano · Portfolio Preview</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d12'/><text x='50' y='65' fill='%23e6edf3' font-family='system-ui,sans-serif' font-size='50' font-weight='600' text-anchor='middle'>P</text></svg>">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: radial-gradient(circle at 50% 30%, #151b26 0%, #0a0d12 100%);
+    color: #e6edf3;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    text-align: center;
+  }
+  main {
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 36px 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+  }
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    margin: 0 auto 16px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    color: #fff;
+  }
+  .sub {
+    color: #8b949e;
+    font-size: 14px;
+    margin: 0 0 24px;
+  }
+  .spin {
+    width: 28px;
+    height: 28px;
+    margin: 20px auto 16px;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-top-color: #58a6ff;
+    border-radius: 50%;
+    animation: rot 0.8s linear infinite;
+  }
+  @keyframes rot { to { transform: rotate(360deg); } }
+  .msg {
+    margin: 0;
+    font-size: 15px;
+    color: #c9d1d9;
+  }
+  .offline-card {
+    display: none;
+    margin-top: 16px;
+    text-align: left;
+  }
+  .offline-card p {
+    margin: 0 0 12px;
+    color: #c9d1d9;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .offline-card strong {
+    color: #fff;
+  }
+  .cmd {
+    display: block;
+    background: #06090e;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    color: #79c0ff;
+    margin: 14px 0 16px;
+    overflow-x: auto;
+  }
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #8b949e;
+    text-align: center;
+  }
+  .footer a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  body.offline .offline-card { display: block; }
+  body.offline .spin, body.offline .msg { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">PM</div>
+  <h1>Pedro Mariano</h1>
+  <p class="sub">25 Websites · Portfolio Live Preview</p>
+
+  <div class="spin"></div>
+  <p class="msg">Conectando ao túnel Cloudflare…</p>
+
+  <div class="offline-card">
+    <p><strong>O preview ao vivo está pausado no momento.</strong></p>
+    <p>O link fixo no GitHub Pages redireciona automaticamente para o túnel Cloudflare seguro (válido por 24h) assim que o servidor local estiver no ar.</p>
+    <p>Para ligar o túnel com link público:</p>
+    <code class="cmd">node scripts/tunel.mjs</code>
+    <div class="footer">
+      Código-fonte no <a href="https://github.com/PedroI1S/portfolio" target="_blank" rel="noopener">GitHub (PedroI1S/portfolio)</a>
+    </div>
+  </div>
+</main>
+<script>
+  (async function () {
+    var base = '/portfolio';
+    var path = location.pathname;
+    var resto = path.indexOf(base) === 0 ? path.slice(base.length) : path;
+    if (!resto || resto === '/' || resto === '/index.html' || resto === '/404.html') resto = '/';
+    if (!resto.startsWith('/')) resto = '/' + resto;
+
+    function offline() { document.body.className = 'offline'; }
+
+    function comTempo(promessa, ms) {
+      return Promise.race([
+        promessa,
+        new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, ms); })
+      ]);
+    }
+
+    try {
+      var r = await comTempo(fetch(base + '/destino.json?t=' + Date.now(), { cache: 'no-store' }), 8000);
+      if (!r.ok) return offline();
+      var dados = await r.json();
+      var destino = dados && dados.url ? dados.url.replace(/\/+$/, '') : null;
+      if (!destino) return offline();
+
+      // Checagem de CORS: túnel Cloudflare ativo responde 200 com header Access-Control-Allow-Origin
+      var saude = await comTempo(fetch(destino + '/api/health?t=' + Date.now(), { cache: 'no-store' }), 8000);
+      if (!saude.ok) return offline();
+
+      location.replace(destino + resto + location.search + location.hash);
+    } catch (e) {
+      offline();
+    }
+  })();
+</script>
+</body>
+</html>
