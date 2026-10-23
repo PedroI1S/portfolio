@@ -21,6 +21,7 @@ const log = (m) => console.log(`\x1b[36m[túnel]\x1b[0m ${m}`)
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms))
 
 let previewProcess = null
+let encerrando = false
 
 // ---------- 1. Garantir que o preview server está no ar ----------
 async function checarPreviewLocal() {
@@ -38,6 +39,8 @@ if (!(await checarPreviewLocal())) {
     cwd: ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
   })
+
+  previewProcess.stderr.on('data', (d) => process.stderr.write(d))
 
   previewProcess.on('exit', (code) => {
     if (!encerrando && code !== 0) {
@@ -67,10 +70,8 @@ if (!(await checarPreviewLocal())) {
 // ---------- 2. Publicar destino no GitHub Pages ----------
 function obterShaDestino(caminho, branch) {
   try {
-    const args = ['api', `repos/${REPO}/contents/${caminho}`]
-    if (branch) args.push('-f', `ref=${branch}`)
-    args.push('--jq', '.sha')
-    return execFileSync('gh', args, { encoding: 'utf8' }).trim()
+    const url = branch ? `repos/${REPO}/contents/${caminho}?ref=${branch}` : `repos/${REPO}/contents/${caminho}`
+    return execFileSync('gh', ['api', url, '--jq', '.sha'], { encoding: 'utf8' }).trim()
   } catch {
     return null
   }
@@ -158,7 +159,6 @@ const cf = spawn('cloudflared', ['tunnel', '--no-autoupdate', '--url', `http://1
 
 let url = null
 let registrado = false
-let encerrando = false
 
 const ler = (dados) => {
   const texto = dados.toString()
