@@ -1,11 +1,9 @@
 // Sobe o túnel da Cloudflare e aponta o link fixo (GitHub Pages) para ele.
-//   node scripts/tunel.mjs      → sobe servidor se necessário, publica o destino e mantém rodando
+//   node scripts/tunel.mjs      → sobe servidor se necessário, publica o destino e mantém rodando com auto-reconexão
 //   Ctrl+C                      → derruba o túnel e marca o link como "desligado"
 import { execFileSync, spawn } from 'node:child_process'
 import { Resolver } from 'node:dns/promises'
 import https from 'node:https'
-import http from 'node:http'
-import { existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -21,7 +19,20 @@ const log = (m) => console.log(`\x1b[36m[túnel]\x1b[0m ${m}`)
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms))
 
 let previewProcess = null
+let caffeinateProcess = null
+let cfProcess = null
+let currentTunnelUrl = null
 let encerrando = false
+
+// ---------- 0. Prevenir suspensão de sistema enquanto o túnel rodar (macOS) ----------
+if (process.platform === 'darwin') {
+  try {
+    // -i: prevent idle system sleep; -m: prevent disk sleep; -s: prevent system sleep on AC
+    caffeinateProcess = spawn('caffeinate', ['-dims'], { stdio: 'ignore' })
+    caffeinateProcess.unref()
+    log('Modo anti-suspensão ativo (caffeinate -dims) ✓')
+  } catch {}
+}
 
 // ---------- 1. Garantir que o preview server está no ar ----------
 async function checarPreviewLocal() {
@@ -37,20 +48,24 @@ function liberarPorta(porta) {
   try {
     const pids = execFileSync('lsof', ['-ti', `:${porta}`], { encoding: 'utf8' }).trim().split(/\s+/).filter(Boolean)
     for (const pid of pids) {
+      if (previewProcess && String(previewProcess.pid) === pid) continue
       try { process.kill(Number(pid), 'SIGKILL') } catch {}
     }
   } catch {}
 }
 
-if (!(await checarPreviewLocal())) {
+async function garantirPreview() {
+  if (await checarPreviewLocal()) return true
   liberarPorta(PORTA)
-  log(`Servidor local não detectado na porta ${PORTA}. Iniciando scripts/preview.py…`)
+  log(`Iniciando servidor local (preview.py) na porta ${PORTA}…`)
   previewProcess = spawn('python3', [resolve(ROOT, 'scripts/preview.py'), '--port', String(PORTA)], {
     cwd: ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
   })
 
-  previewProcess.stderr.on('data', (d) => process.stderr.write(d))
+  previewProcess.stderr.on('data', (d) => {
+    if (!encerrando) process.stderr.write(d)
+  })
 
   previewProcess.on('exit', (code) => {
     if (!encerrando && code !== 0) {
@@ -58,23 +73,15 @@ if (!(await checarPreviewLocal())) {
     }
   })
 
-  // Aguarda até 5 segundos para o servidor responder
-  let pronto = false
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 30; i++) {
     await esperar(200)
     if (await checarPreviewLocal()) {
-      pronto = true
-      break
+      log(`Preview server rodando em http://127.0.0.1:${PORTA}/ ✓`)
+      return true
     }
   }
-
-  if (!pronto) {
-    console.error(`\n❌ Não foi possível iniciar o preview server na porta ${PORTA}.\nRode manualmente em outro terminal: python3 scripts/preview.py\n`)
-    process.exit(1)
-  }
-  log(`Preview server rodando em http://127.0.0.1:${PORTA}/ ✓`)
-} else {
-  log(`Preview server já ativo em http://127.0.0.1:${PORTA}/ ✓`)
+  log(`❌ Não foi possível iniciar o preview server na porta ${PORTA}.`)
+  return false
 }
 
 // ---------- 2. Publicar destino no GitHub Pages ----------
@@ -109,12 +116,10 @@ function publicarArquivo(caminho, branch, url) {
 }
 
 function publicar(url) {
-  // Publica na branch do GitHub Pages (gh-pages) e também atualiza pages/destino.json caso exista
   try {
     publicarArquivo('destino.json', BRANCH, url)
   } catch (err) {
     log(`Aviso ao publicar em ${BRANCH}/destino.json: ${err.message}`)
-    // Fallback: tentar atualizar na raiz de main ou pages/destino.json
     try {
       publicarArquivo('pages/destino.json', 'main', url)
     } catch (e) {
@@ -124,7 +129,7 @@ function publicar(url) {
 }
 
 async function aguardarPublicacao(url) {
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 40; i++) {
     try {
       const r = await fetch(`${LINK_FIXO}destino.json?t=${Date.now()}`, { cache: 'no-store' })
       if (r.ok) {
@@ -137,17 +142,20 @@ async function aguardarPublicacao(url) {
   return false
 }
 
-// ---------- 3. Checar o túnel pelo DNS público ----------
+// ---------- 3. Checar túnel pela internet via DNS público ----------
 const dnsPublico = new Resolver()
 dnsPublico.setServers(['1.1.1.1', '8.8.8.8'])
 
 async function tunelResponde(url) {
+  if (!url) return false
   try {
     const host = new URL(url).hostname
-    const [ip] = await dnsPublico.resolve4(host)
+    const ips = await dnsPublico.resolve4(host).catch(() => [])
+    if (!ips || ips.length === 0) return false
+    const ip = ips[0]
     return new Promise((resolve) => {
       const req = https.get(
-        { host: ip, servername: host, path: '/api/health', headers: { host }, timeout: 8000 },
+        { host: ip, servername: host, path: '/api/health', headers: { host }, timeout: 6000 },
         (res) => resolve(res.statusCode === 200)
       )
       req.on('error', () => resolve(false))
@@ -161,23 +169,80 @@ async function tunelResponde(url) {
   }
 }
 
-// ---------- 4. Subir o túnel Cloudflare ----------
-log('Iniciando túnel da Cloudflare (cloudflared)…')
-const cf = spawn('cloudflared', ['tunnel', '--no-autoupdate', '--url', `http://127.0.0.1:${PORTA}`], {
-  stdio: ['ignore', 'pipe', 'pipe'],
-})
+// ---------- 4. Lifecycle do Cloudflare Tunnel com Auto-Reconexão ----------
+async function iniciarCloudflared() {
+  if (cfProcess) {
+    try { cfProcess.kill('SIGKILL') } catch {}
+    cfProcess = null
+  }
 
-let url = null
-let registrado = false
+  log('Iniciando túnel da Cloudflare (cloudflared)…')
+  const cf = spawn('cloudflared', ['tunnel', '--no-autoupdate', '--url', `http://127.0.0.1:${PORTA}`], {
+    stdio: ['ignore', 'pipe', 'pipe'],
+  })
+  cfProcess = cf
 
-const ler = (dados) => {
-  const texto = dados.toString()
-  const m = texto.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/)
-  if (m && !url) url = m[0]
-  if (texto.includes('Registered tunnel connection')) registrado = true
+  let url = null
+  let registrado = false
+
+  const ler = (dados) => {
+    const texto = dados.toString()
+    const m = texto.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/)
+    if (m && !url) url = m[0]
+    if (texto.includes('Registered tunnel connection')) registrado = true
+  }
+  cf.stdout.on('data', ler)
+  cf.stderr.on('data', ler)
+
+  cf.on('exit', () => {
+    if (!encerrando) {
+      log('⚠️ Conexão do cloudflared encerrou. O monitor de reconexão irá restabelecer…')
+    }
+  })
+
+  for (let i = 0; i < 120 && !(url && registrado); i++) {
+    if (encerrando) return null
+    await esperar(500)
+  }
+
+  if (!url || !registrado) {
+    log('⚠️ O túnel não registrou em 60 s.')
+    try { cf.kill() } catch {}
+    return null
+  }
+
+  log(`Túnel registrado com sucesso: ${url}`)
+
+  let ok = false
+  for (let i = 0; i < 20 && !ok; i++) {
+    if (encerrando) return null
+    ok = await tunelResponde(url).catch(() => false)
+    if (!ok) await esperar(3000)
+  }
+
+  if (!ok) {
+    log('⚠️ Túnel registrou mas não respondeu externamente via DNS.')
+    try { cf.kill() } catch {}
+    return null
+  }
+
+  log('Túnel respondendo pela internet via DNS público ✓')
+  return url
 }
-cf.stdout.on('data', ler)
-cf.stderr.on('data', ler)
+
+function exibirBanner(url) {
+  const linhas = [
+    '✨ Portfolio Pedro Mariano no ar!',
+    '',
+    `Link fixo:          ${LINK_FIXO}`,
+    `Túnel Cloudflare:   ${url}/`,
+    `Monitor ativo:      Auto-reconexão e anti-suspensão ligados`,
+    '',
+    'Mantenha este terminal aberto. Pressione Ctrl+C para desligar.',
+  ]
+  const largura = Math.max(...linhas.map((l) => l.length)) + 2
+  console.log(['', `  ┌${'─'.repeat(largura + 2)}┐`, ...linhas.map((l) => `  │ ${l.padEnd(largura)} │`), `  └${'─'.repeat(largura + 2)}┘`, ''].join('\n'))
+}
 
 async function encerrar(codigo = 0) {
   if (encerrando) return
@@ -188,9 +253,14 @@ async function encerrar(codigo = 0) {
   } catch (e) {
     log(`⚠️ Não consegui atualizar o link fixo: ${e.message}`)
   }
-  try { cf.kill() } catch {}
+  if (cfProcess) {
+    try { cfProcess.kill('SIGKILL') } catch {}
+  }
   if (previewProcess) {
-    try { previewProcess.kill() } catch {}
+    try { previewProcess.kill('SIGKILL') } catch {}
+  }
+  if (caffeinateProcess) {
+    try { caffeinateProcess.kill('SIGKILL') } catch {}
   }
   process.exit(codigo)
 }
@@ -198,44 +268,66 @@ async function encerrar(codigo = 0) {
 process.on('SIGINT', () => encerrar(0))
 process.on('SIGTERM', () => encerrar(0))
 
-cf.on('exit', () => {
-  if (!encerrando) {
-    log('❌ O cloudflared parou inesperadamente. Tente rodar `node scripts/tunel.mjs` novamente.')
-    encerrar(1)
+// ---------- 5. Loop Principal e Monitor de Saúde ----------
+async function principal() {
+  const previewOk = await garantirPreview()
+  if (!previewOk) {
+    console.error(`\n❌ Não foi possível preparar o servidor preview local.\n`)
+    process.exit(1)
   }
+
+  while (!encerrando) {
+    await garantirPreview()
+    const novaUrl = await iniciarCloudflared()
+
+    if (!novaUrl) {
+      log('Tentando reconectar em 10 segundos…')
+      await esperar(10000)
+      continue
+    }
+
+    currentTunnelUrl = novaUrl
+    log('Atualizando o link fixo no GitHub Pages…')
+    publicar(currentTunnelUrl)
+    const publicado = await aguardarPublicacao(currentTunnelUrl)
+    log(publicado ? 'Link fixo atualizado e verificado no GitHub Pages ✓' : '⚠️ Atualização enviada ao GitHub; o cache do CDN pode levar alguns instantes para sincronizar.')
+
+    exibirBanner(currentTunnelUrl)
+
+    // Monitor contínuo a cada 30 segundos
+    let falhasConsecutivas = 0
+    while (!encerrando) {
+      await esperar(30000)
+      if (encerrando) break
+
+      const previewVivo = await checarPreviewLocal()
+      if (!previewVivo) {
+        log('⚠️ Servidor local caiu. Reiniciando…')
+        await garantirPreview()
+      }
+
+      const responde = await tunelResponde(currentTunnelUrl)
+      if (responde) {
+        falhasConsecutivas = 0
+      } else {
+        falhasConsecutivas++
+        log(`⚠️ Verificação de saúde falhou (${falhasConsecutivas}/2). Testando novamente em 5s…`)
+        await esperar(5000)
+        const recheck = await tunelResponde(currentTunnelUrl)
+        if (recheck) {
+          falhasConsecutivas = 0
+          continue
+        }
+        if (falhasConsecutivas >= 2) {
+          log('🚨 Túnel Cloudflare desconectado (queda de conexão ou suspensão detectada). Reiniciando túnel e atualizando link fixo…')
+          break
+        }
+      }
+    }
+  }
+}
+
+principal().catch((err) => {
+  console.error('Erro fatal no túnel:', err)
+  encerrar(1)
 })
-
-for (let i = 0; i < 120 && !(url && registrado); i++) await esperar(500)
-if (!url || !registrado) {
-  log('❌ O túnel não registrou em 60 s. Verifique a internet e tente novamente.')
-  await encerrar(1)
-}
-log(`Túnel registrado com sucesso: ${url}`)
-
-let ok = false
-for (let i = 0; i < 20 && !ok; i++) {
-  ok = await tunelResponde(url).catch(() => false)
-  if (!ok) await esperar(3000)
-}
-if (!ok) {
-  log('❌ O túnel não respondeu pela internet.')
-  await encerrar(1)
-}
-log('Túnel respondendo pela internet via DNS público ✓')
-
-log('Atualizando o link fixo no GitHub Pages…')
-publicar(url)
-const publicado = await aguardarPublicacao(url)
-log(publicado ? 'Link fixo atualizado e verificado no GitHub Pages ✓' : '⚠️ Atualização enviada ao GitHub; o cache do CDN pode levar alguns instantes para sincronizar.')
-
-const linhas = [
-  '✨ Portfolio Pedro Mariano no ar!',
-  '',
-  `Link fixo:       ${LINK_FIXO}`,
-  `Túnel direto:    ${url}/`,
-  `Validade túnel:  ~24 horas contínuas`,
-  '',
-  'Mantenha este terminal aberto. Pressione Ctrl+C para desligar.',
-]
-const largura = Math.max(...linhas.map((l) => l.length)) + 2
-console.log(['', `  ┌${'─'.repeat(largura + 2)}┐`, ...linhas.map((l) => `  │ ${l.padEnd(largura)} │`), `  └${'─'.repeat(largura + 2)}┘`, ''].join('\n'))
