@@ -33,7 +33,17 @@ async function checarPreviewLocal() {
   }
 }
 
+function liberarPorta(porta) {
+  try {
+    const pids = execFileSync('lsof', ['-ti', `:${porta}`], { encoding: 'utf8' }).trim().split(/\s+/).filter(Boolean)
+    for (const pid of pids) {
+      try { process.kill(Number(pid), 'SIGKILL') } catch {}
+    }
+  } catch {}
+}
+
 if (!(await checarPreviewLocal())) {
+  liberarPorta(PORTA)
   log(`Servidor local não detectado na porta ${PORTA}. Iniciando scripts/preview.py…`)
   previewProcess = spawn('python3', [resolve(ROOT, 'scripts/preview.py'), '--port', String(PORTA)], {
     cwd: ROOT,
